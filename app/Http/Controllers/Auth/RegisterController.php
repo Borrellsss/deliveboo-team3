@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class RegisterController extends Controller
@@ -54,10 +55,10 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'business_name' => ['required', 'string', 'max:255'],
-            // 'cover' => ['image', 'max:1024', 'nullable'],
+            'cover' => ['image', 'max:1024', 'nullable'],
             'address' => ['required', 'max:60000'],
             'vat' => ['required', 'string', 'max:20'],
-            'slug' => ['required', 'string', 'max:255', 'unique'],
+            // 'slug' => ['required', 'string', 'max:255', 'unique'],
         ]);
     }
 
@@ -69,31 +70,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {   
-        return view('');
-        $slug = $this->getSlugFromBusinessName($data['business_name']);
+        // $slug = $this->getSlugFromBusinessName($data['business_name']);
+        // $slug = 'slug-test';
+        // $data['slug'] = 'test';
 
-        $data = [
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'business_name' => $data['business_name'],
-            // 'cover' => $data['cover'],
-            'address' => $data['address'],
-            'vat' => $data['vat'],
-            'slug' => $slug
-        ];
-        
-        $new_user = new User();
-        $new_user->fill($data);
-        $new_user->save();
-        
+        if(isset($data['cover'])) {
+            $cover_path = Storage::put('restaurants-cover', $data['cover']);
+            $data['cover'] = $cover_path;
+        }
+
         return User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'business_name' => $data['business_name'],
-            // 'cover' => $data['cover'],
+            'cover' => $data['cover'],
             'address' => $data['address'],
             'vat' => $data['vat'],
-            'slug' => $slug
+            // 'slug' => $data['slug']
         ]);
     }
 
