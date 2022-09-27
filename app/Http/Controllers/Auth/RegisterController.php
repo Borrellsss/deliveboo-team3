@@ -74,6 +74,7 @@ class RegisterController extends Controller
         // $slug = 'slug-test';
         // $data['slug'] = 'test';
 
+        // se la chiave $data['cover'] è settata salviamo l'immagine nella cartella restaurants-cover e salviamo il path dell'immagine in $data['cover'] 
         if(isset($data['cover'])) {
             $cover_path = Storage::put('restaurants-cover', $data['cover']);
             $data['cover'] = $cover_path;

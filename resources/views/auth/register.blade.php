@@ -111,6 +111,18 @@
                                 @enderror
                             </div>
                         </div>
+
+                        {{-- form category --}}
+                        <div class="container">
+                            @foreach ($categories as $category)
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="category-{{$category->id}}">
+                                <label class="form-check-label" for="category-{{$category->id}}" name="categories[]">
+                                    {{$category->name}}
+                                </label>
+                            </div>
+                            @endforeach
+                        </div>
                         {{-- END INPUTS --}}
 
                         <div class="form-group row mb-0">
