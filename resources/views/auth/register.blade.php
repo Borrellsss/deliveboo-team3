@@ -116,8 +116,8 @@
                         <div class="container">
                             @foreach ($categories as $category)
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="category-{{$category->id}}">
-                                <label class="form-check-label" for="category-{{$category->id}}" name="categories[]">
+                                <input class="form-check-input" type="checkbox" value="{{$category->id}}" id="category-{{$category->id}}" name="categories[]">
+                                <label class="form-check-label" for="category-{{$category->id}}">
                                     {{$category->name}}
                                 </label>
                             </div>

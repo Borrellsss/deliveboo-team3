@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Category;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -80,15 +81,27 @@ class RegisterController extends Controller
             $data['cover'] = $cover_path;
         }
 
-        return User::create([
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'business_name' => $data['business_name'],
-            'cover' => $data['cover'],
-            'address' => $data['address'],
-            'vat' => $data['vat'],
-            // 'slug' => $data['slug']
-        ]);
+        // $new_user = User::create([
+        //     'email' => $data['email'],
+        //     'password' => Hash::make($data['password']),
+        //     'business_name' => $data['business_name'],
+        //     'cover' => $data['cover'],
+        //     'address' => $data['address'],
+        //     'vat' => $data['vat'],
+        //     'slug' => $data['slug']
+        // ]);
+        
+        $data['password'] = Hash::make($data['password']);
+
+        $user = new User();
+        $user->fill($data);
+        $user->save();
+
+        if(isset($data['categories'])) {
+            $user->categories()->sync($data['categories']);
+        }
+
+        return $user;
     }
 
     protected function getSlugFromBusinessName($business_name) {
