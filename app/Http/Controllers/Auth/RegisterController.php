@@ -71,36 +71,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {   
-        // $slug = $this->getSlugFromBusinessName($data['business_name']);
-        // $slug = 'slug-test';
-        // $data['slug'] = 'test';
-
         // se la chiave $data['cover'] è settata salviamo l'immagine nella cartella restaurants-cover e salviamo il path dell'immagine in $data['cover'] 
         if(isset($data['cover'])) {
             $cover_path = Storage::put('restaurants-cover', $data['cover']);
             $data['cover'] = $cover_path;
         }
-
-        // $new_user = User::create([
-        //     'email' => $data['email'],
-        //     'password' => Hash::make($data['password']),
-        //     'business_name' => $data['business_name'],
-        //     'cover' => $data['cover'],
-        //     'address' => $data['address'],
-        //     'vat' => $data['vat'],
-        //     'slug' => $data['slug']
-        // ]);
         
+        // cripto la password dell'utente
         $data['password'] = Hash::make($data['password']);
 
         $user = new User();
         $user->fill($data);
+        // assegno alla colonna slug di users lo slug generato dalla funzione getSlugFromBusinessName() passandogli $data['business_name']
+        $user->slug = $this->getSlugFromBusinessName($data['business_name']);
         $user->save();
 
+        // se è presente almeno una categoria nell'array $data['categories'] faccio il sync delle relazioni 
         if(isset($data['categories'])) {
             $user->categories()->sync($data['categories']);
         }
 
+        // ritorno i dati dell'utente da stampare nella homepage
         return $user;
     }
 
