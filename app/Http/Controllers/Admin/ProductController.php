@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Product;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -14,7 +16,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+
+        $data = [
+            'products' => $products
+        ];
+
+        return view('admin.products.index', $data);
     }
 
     /**
@@ -24,7 +32,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create');
     }
 
     /**
@@ -35,7 +43,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+        // dd($form_data);
+
+        // se la chiave $form_data['cover'] è settata salviamo l'immagine nella cartella dishes-cover e salviamo il path dell'immagine in $form_data['cover'] 
+        if(isset($form_data['cover'])) {
+            $cover_path = Storage::put('dishes-cover', $form_data['cover']);
+            $form_data['cover'] = $cover_path;
+        }
+
+        $new_product = new Product();
+        
     }
 
     /**
