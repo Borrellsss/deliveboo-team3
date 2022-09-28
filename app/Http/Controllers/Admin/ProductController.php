@@ -66,7 +66,7 @@ class ProductController extends Controller
 
         // dd($new_product);
 
-
+        return redirect()->route('admin.products.show', ['product' => $new_product->id]);
     }
 
     /**
@@ -77,7 +77,13 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $data = [
+            'product' => $product
+        ];
+
+        return view('admin.products.show', $data);
     }
 
     /**
@@ -114,6 +120,7 @@ class ProductController extends Controller
         //
     }
 
+    // funzione per validare i dati del form
     public function getValidationRules() {
         return [
             'name' => ['required', 'string', 'max:255'],
