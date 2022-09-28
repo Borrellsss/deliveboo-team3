@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
     <section>
-        <h1>ciao sono la index/my foods</h1>
+        <h1>Il tuo Menu</h1>
         <a href="{{route('admin.products.create')}}">aggiungi nuovo piatto</a>
         <div class="container">
             <div class="row row-cols-3">
                 @if (isset($products))
                     @foreach ($products as $product)
-                    <div class="col">
+                    <div class="col mb-4">
                         {{-- card singola --}}
                         <div class="card">
                             {{-- <img src="..." class="card-img-top" alt="..."> --}}

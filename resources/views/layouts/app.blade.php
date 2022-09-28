@@ -69,8 +69,8 @@
             </div>
         </nav>
 
-        <main class="py-4 d-flex">
-            <aside style="width: 10%; background-color: pink">
+        <main class="d-flex">
+            <aside class="py-4" style="width: 10%; background-color: lightgray">
                 <div>
                     <a href="{{route('admin.home')}}">my home</a>
                 </div>
@@ -81,7 +81,7 @@
                     <a href="">my orders</a>
                 </div>
             </aside>
-            <section style="width: 90%">
+            <section class="py-4" style="width: 90%">
                 <div class="container">
                     @yield('content')
                 </div>
