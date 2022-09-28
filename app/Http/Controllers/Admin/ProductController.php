@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
+use App\User;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -16,7 +19,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        // salvo in una variabile l'utente al momento loggato
+        $user = Auth::user();
+
+        // salvo in $products tutta la lista dei prodotti associati all'utente loggato
+        $products = $user->product;
+
+        // dd($products);
 
         $data = [
             'products' => $products
@@ -53,20 +62,39 @@ class ProductController extends Controller
 
         // dd($form_data);
 
+        $user = Auth::user();
+        
         // se la chiave $form_data['cover'] è settata salviamo l'immagine nella cartella dishes-cover e salviamo il path dell'immagine in $form_data['cover'] 
         if(isset($form_data['cover'])) {
             $cover_path = Storage::put('dishes-cover', $form_data['cover']);
             $form_data['cover'] = $cover_path;
+
+            $user->product()->create([
+                'name' => $form_data['name'],
+                'cover' => $form_data['cover'],
+                'description' => $form_data['description'],
+                'ingredients' => $form_data['ingredients'],
+                'cooking_time' => $form_data['cooking_time'],
+                'price' => $form_data['price'],
+            ]);
+        } else {
+            $user->product()->create([
+                'name' => $form_data['name'],
+                'description' => $form_data['description'],
+                'ingredients' => $form_data['ingredients'],
+                'cooking_time' => $form_data['cooking_time'],
+                'price' => $form_data['price'],
+            ]);
         }
 
-        // creiamo una nuova istanza di products e la salviamo nel database
-        $new_product = new Product();
-        $new_product->fill($form_data);
-        $new_product->save();   
+        // converto la collection $user->product in un array tramite la funzione getArrayFromCollection()
+        $new_array = $this->getArrayFromCollection($user->product);
 
-        // dd($new_product);
+        // mi calcolo l'ultima key(index) dell'array $new_array
+        $last_array_key = count($new_array) - 1;
 
-        return redirect()->route('admin.products.show', ['product' => $new_product->id]);
+        // passo nel return l'ultimo prodotto creato presente nell'array $new_array
+        return redirect()->route('admin.products.show', ['product' => $new_array[$last_array_key]['id']]);
     }
 
     /**
@@ -130,5 +158,10 @@ class ProductController extends Controller
             'cooking_time' => ['max:2', 'nullable'],
             'price' => ['required', 'numeric', 'between: 0.01, 999.99'],
         ];
+    }
+
+    // funzione per convertire una collection in un array
+    public function getArrayFromCollection($collection) {
+        return $collection->toArray();
     }
 }
