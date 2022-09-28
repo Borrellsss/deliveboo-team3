@@ -43,7 +43,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // validiamo i dati ottenuti dal form
+        $request->validate($this->getValidationRules());
+
+        // una volta validati se sono corretti li salviamo in $form_data
         $form_data = $request->all();
+        $form_data['cooking_time'] = intval($form_data['cooking_time']);
+        $form_data['price'] = floatval($form_data['price']);
+
         // dd($form_data);
 
         // se la chiave $form_data['cover'] è settata salviamo l'immagine nella cartella dishes-cover e salviamo il path dell'immagine in $form_data['cover'] 
@@ -52,8 +59,14 @@ class ProductController extends Controller
             $form_data['cover'] = $cover_path;
         }
 
+        // creiamo una nuova istanza di products e la salviamo nel database
         $new_product = new Product();
-        
+        $new_product->fill($form_data);
+        $new_product->save();   
+
+        // dd($new_product);
+
+
     }
 
     /**
@@ -99,5 +112,16 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getValidationRules() {
+        return [
+            'name' => ['required', 'string', 'max:255'],
+            'cover' => ['image', 'max:1024', 'nullable'],
+            'description' => ['max:60000', 'nullable'],
+            'ingredients' => ['max:60000', 'nullable'],
+            'cooking_time' => ['max:2', 'nullable'],
+            'price' => ['required', 'numeric', 'between: 0.01, 999.99'],
+        ];
     }
 }

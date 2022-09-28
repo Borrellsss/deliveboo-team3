@@ -6,6 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $fillable = [
+        'name',
+        'cover',
+        'description',
+        'ingredients',
+        'cooking_time',
+        'price',
+        'visible',
+    ];
+
     public function user() {
         return $this->hasMany('App\User');
     }
