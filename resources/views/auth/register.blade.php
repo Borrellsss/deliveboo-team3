@@ -27,7 +27,7 @@
                                 @enderror
                             </div>
                         </div>
-                        {{-- {{$errors}} --}}
+
                         {{-- form password --}}
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{!! __('Password <span style="color: #e3342f">*</span>') !!}</label>
