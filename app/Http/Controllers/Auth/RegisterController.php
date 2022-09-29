@@ -59,7 +59,7 @@ class RegisterController extends Controller
             'cover' => ['image', 'max:1024', 'nullable'],
             'address' => ['required', 'max:60000'],
             'vat' => ['required', 'string', 'max:20'],
-            // 'slug' => ['required', 'string', 'max:255', 'unique'],
+            'categories' => ['required', 'in:1']
         ]);
     }
 

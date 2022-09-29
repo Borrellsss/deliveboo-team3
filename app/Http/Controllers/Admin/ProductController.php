@@ -105,11 +105,30 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        $user = Auth::user();
+
+        // converto la collection $user->product in un array tramite la funzione getArrayFromCollection()
+        $new_array = $this->getArrayFromCollection($user->product);
+
+        // definisco un array vuoto $ids_array
+        $ids_array = [];
+
+        // tramite un ciclo foreach mi salvo l'id di ogni $item nell'array $ids_array
+        foreach($new_array as $item) {
+            $ids_array[] = $item['id'];
+        }
+
+        // mi prendo tramite findOrFail il prodotto da mostrare in pagina tramite $id e lo salvo in $product
         $product = Product::findOrFail($id);
 
-        $data = [
-            'product' => $product
-        ];
+        // se $product->id è presente in $ids_array salvo $product nei $data e lo passo alla view altrimenti ritorno la pagina 404
+        if(in_array($product->id, $ids_array)) {
+            $data = [
+                'product' => $product
+            ];
+        } else {
+            return abort('404');
+        }
 
         return view('admin.products.show', $data);
     }
