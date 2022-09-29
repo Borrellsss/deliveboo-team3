@@ -21,3 +21,9 @@ Route::middleware('auth')
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('/products', 'ProductController');
 });
+
+
+// rotta home pubblica, porzione guest
+Route::get('{any?}' , function(){
+    return view('guest/home');
+    })->where('any' , '.*');
