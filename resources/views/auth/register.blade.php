@@ -111,7 +111,8 @@
                                 @enderror
                             </div>
                         </div>
-
+                        
+                        {{-- form category --}}
                         <div>Seleziona una o più categorie *</div>
                         <div class="form-group row mb-4" style="width: 35%; margin: 0 auto">
                             @foreach ($categories as $category)
@@ -128,29 +129,6 @@
                             </div>
                             @endforeach
                         </div>
-
-                        {{$errors}}
-
-                        {{-- form category --}}
-                        {{-- <div class="col-md-6">
-                            @foreach ($categories as $category)
-                            <div class="form-check">
-                                <input class="form-check-input @error('categories') is-invalid @enderror" type="checkbox" value="{{$category->id}}" id="category-{{$category->id}}" name="categories[]">
-                                <label class="form-check-label" for="category-{{$category->id}}">
-                                    {{$category->name}}
-                                </label>
-                                @error('categories')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                            </div>
-                            @endforeach
-                            
-                            @error('categories')
-                                <div class="alert alert-danger">{{$message}}</div>
-                            @enderror
-                        </div> --}}
                         {{-- END INPUTS --}}
 
                         <div class="mb-4" style="text-align: center; color: red">
