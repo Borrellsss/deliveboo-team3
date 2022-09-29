@@ -15,7 +15,7 @@
                         {{-- START INPUTS --}}
                         {{-- form email --}}
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email *') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{!! __('Email <span style="color: #e3342f">*</span>') !!}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
@@ -30,7 +30,7 @@
                         {{-- {{$errors}} --}}
                         {{-- form password --}}
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password *') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{!! __('Password <span style="color: #e3342f">*</span>') !!}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
@@ -45,7 +45,7 @@
 
                         {{-- form confirm password --}}
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password *') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{!! __('Conferma Password <span style="color: #e3342f">*</span>') !!}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation"autocomplete="new-password">
@@ -54,7 +54,7 @@
 
                         {{-- form business_name --}}
                         <div class="form-group row">
-                            <label for="business_name" class="col-md-4 col-form-label text-md-right">Nome Attività *</label>
+                            <label for="business_name" class="col-md-4 col-form-label text-md-right">Nome Attività <span style="color: #e3342f">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="business_name" type="text" class="form-control @error('business_name') is-invalid @enderror" name="business_name" value="{{ old('business_name') }}">
@@ -69,7 +69,7 @@
 
                         {{-- form address --}}
                         <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">Indirizzo Attività *</label>
+                            <label for="address" class="col-md-4 col-form-label text-md-right">Indirizzo Attività <span style="color: #e3342f">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}">
@@ -84,7 +84,7 @@
 
                         {{-- form vat --}}
                         <div class="form-group row">
-                            <label for="vat" class="col-md-4 col-form-label text-md-right">Partita IVA *</label>
+                            <label for="vat" class="col-md-4 col-form-label text-md-right">Partita IVA <span style="color: #e3342f">*</span></label>
 
                             <div class="col-md-6">
                                 <input id="vat" type="text" class="form-control @error('vat') is-invalid @enderror" name="vat" value="{{ old('vat') }}" maxlength="11">
@@ -113,30 +113,28 @@
                         </div>
 
                         {{-- form category --}}
-                        <div>Seleziona una o più categorie *</div>
+                        <div>Seleziona una o più categorie <span style="color: #e3342f">*</span></div>
                         <div class="form-group row mb-4" style="width: 35%; margin: 0 auto">
                             @foreach ($categories as $category)
                             <div class="col-md-6">
-                                <input class="form-check-input @error('categories') is-invalid @enderror" type="checkbox" value="{{$category->id}}" id="category-{{$category->id}}" name="categories[]">
-                                @error('cover')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input class="form-check-input" type="checkbox" value="{{$category->id}}" id="category-{{$category->id}}" name="categories[]">
                                 <label class="form-check-label" for="category-{{$category->id}}">
                                     {{$category->name}}
                                 </label>
                             </div>
                             @endforeach
+                            @error('categories')
+                                <span style="font-size: 0.875em; color: #e3342f" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         {{-- END INPUTS --}}
 
-                        <div class="mb-4" style="text-align: center; color: red">
-                            i campi contrassegnati da uno (*) sono obbligatori
+                        <div class="mb-4" style="text-align: center">
+                            i campi contrassegnati da uno (<span style="color: #e3342f">*</span>) sono obbligatori
                         </div>
-                        <div>
-                            ciao
-                        </div>
+
                         <div class="form-group row mb-0">
                             <button type="submit" class="btn btn-primary" style="margin: 0 auto">
                                 {{ __('Registrati') }}

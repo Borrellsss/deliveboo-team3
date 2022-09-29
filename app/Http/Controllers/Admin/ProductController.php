@@ -112,7 +112,7 @@ class ProductController extends Controller
 
         // definisco un array vuoto $ids_array
         $ids_array = [];
-        
+
         // tramite un ciclo foreach mi salvo l'id di ogni $item nell'array $ids_array
         foreach($new_array as $item) {
             $ids_array[] = $item['id'];
@@ -141,7 +141,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $data = [
+            'product' => $product
+        ];
+
+        return view('admin.products.edit', $data);
     }
 
     /**

@@ -1,16 +1,28 @@
 @extends('layouts.app')
 @section('content')
     <section>
-        <h1>ciao sono la create</h1>
-        <form action="{{route('admin.products.store')}}" enctype="multipart/form-data" method="post">
+        <h1>ciao sono la Edit</h1>
+        <form action="{{route('admin.products.update', ['product' => $product->id])}}" enctype="multipart/form-data">
             @csrf
-            @method('POST')
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="name" class="form-label">Nome *</label>
                 <input type="text" class="form-control" id="name" name="name">
                 @error('name')
                     <div class="alert alert-danger">{{$message}}</div>
                 @enderror
+            </div> --}}
+            <div class="form-group">
+                <label for="name" class="form-label">Nome Piatto <span style="color: #e3342f">*</span></label>
+
+                <div class="col-md-6">
+                    <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name">
+
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
             </div>
 
             <div class="mb-3">

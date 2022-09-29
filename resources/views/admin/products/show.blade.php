@@ -8,5 +8,6 @@
         <div>{{$product->cooking_time}} min.</div>
         <div>{{$product->price}} €</div>
         <div style="color: {{$product->visible == 0 ? 'red' : 'green'}}">{{$product->visible == 0 ? 'Non disponibile' : 'Disponibile'}}</div>
+        <a href="{{route('admin.products.edit', ['product' => $product->id])}}" class="btn btn-warning">Modifica Piatto</a>
     </section>
 @endsection
