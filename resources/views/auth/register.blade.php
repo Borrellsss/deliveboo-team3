@@ -111,7 +111,7 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         {{-- form category --}}
                         <div>Seleziona una o più categorie *</div>
                         <div class="form-group row mb-4" style="width: 35%; margin: 0 auto">
@@ -133,6 +133,9 @@
 
                         <div class="mb-4" style="text-align: center; color: red">
                             i campi contrassegnati da uno (*) sono obbligatori
+                        </div>
+                        <div>
+                            ciao
                         </div>
                         <div class="form-group row mb-0">
                             <button type="submit" class="btn btn-primary" style="margin: 0 auto">
