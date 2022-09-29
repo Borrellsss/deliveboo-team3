@@ -51,16 +51,30 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'business_name' => ['required', 'string', 'max:255'],
-            'cover' => ['image', 'max:1024', 'nullable'],
-            'address' => ['required', 'max:60000'],
-            'vat' => ['required', 'string', 'max:20'],
-            'categories' => ['required', 'in:1']
-        ]);
+    {   
+        if(isset($data['categories'])) {
+            return Validator::make($data, [
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'business_name' => ['required', 'string', 'max:255'],
+                'cover' => ['image', 'max:1024', 'nullable'],
+                'address' => ['required', 'max:60000'],
+                'vat' => ['required', 'string', 'max:20'],
+                'categories' => ['required', 'exists:categories,id']
+            ]);
+        } else {
+            $data['categories'] = null;
+
+            return Validator::make($data, [
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'business_name' => ['required', 'string', 'max:255'],
+                'cover' => ['image', 'max:1024', 'nullable'],
+                'address' => ['required', 'max:60000'],
+                'vat' => ['required', 'string', 'max:20'],
+                'categories' => ['required', 'exists:categories,id']
+            ]);
+        }
     }
 
     /**
@@ -71,6 +85,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {   
+        dd($data);
         // se la chiave $data['cover'] è settata salviamo l'immagine nella cartella restaurants-cover e salviamo il path dell'immagine in $data['cover'] 
         if(isset($data['cover'])) {
             $cover_path = Storage::put('restaurants-cover', $data['cover']);
