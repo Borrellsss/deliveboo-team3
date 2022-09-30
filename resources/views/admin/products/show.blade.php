@@ -11,13 +11,35 @@
                 Piatto modificato con successo!
             </div>
         @endif
+
+        {{-- nome --}}
         <h1>{{$product->name}}</h1>
+
+        {{-- immagine --}}
         <img src="{{asset('storage/' . $product->cover)}}" alt="{{$product->name}}" style="width: 250px">
-        <p>{{$product->ingredients}}</p>
-        <p>{{$product->description}}</p>
-        <div>{{$product->cooking_time}} min.</div>
-        <div>{{$product->price}} €</div>
+
+        {{-- ingredienti --}}
+        @if ($product->ingredients)
+            <p><span style="color: #0073ffff">Ingredienti:</span> {{$product->ingredients}}</p>
+        @endif
+
+        {{-- descrizione --}}
+        @if ($product->description)
+            <p><span style="color: #0073ffff">Descrizione:</span> {{$product->description}}</p>
+        @endif
+
+        {{-- tempo di cottura --}}
+        @if ($product->cooking_time)
+            <div><span style="color: #0073ffff">Tempo di cottura:</span> {{$product->cooking_time}} min.</div>
+        @endif
+
+        {{-- prezzo --}}
+        <div><span style="color: #0073ffff">Prezzo:</span> {{$product->price}} €</div>
+
+        {{-- disponibilità --}}
         <div style="color: {{$product->visible == 0 ? 'red' : 'green'}}">{{$product->visible == 0 ? 'Non disponibile' : 'Disponibile'}}</div>
+        
+        {{-- bottoni modifica ed elimina --}}
         <form action="{{route('admin.products.destroy', ['product' => $product->id])}}" method="POST">
             @csrf
             @method('DELETE')
