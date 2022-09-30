@@ -13,7 +13,7 @@
             </div>
             @endif
         @endif
-        <a href="{{route('admin.products.create')}}">aggiungi nuovo prodotto</a>
+        <a class="btn btn-success mb-3" href="{{route('admin.products.create')}}">aggiungi nuovo prodotto</a>
         <div class="container">
             <div class="row row-cols-3">
                 @if (isset($products))
