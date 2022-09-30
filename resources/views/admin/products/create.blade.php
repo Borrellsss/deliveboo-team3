@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <section>
-        <h1>Crea il Tuo Nuovo Piatto</h1>
+        <h1>Aggiungi prodotto</h1>
 
         <form action="{{route('admin.products.store')}}" enctype="multipart/form-data" method="post">
             @csrf
