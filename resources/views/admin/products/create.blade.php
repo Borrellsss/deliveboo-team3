@@ -66,7 +66,7 @@
             {{-- form price --}}
             <div class="form-group">
                 <label for="price" class="form-label">Prezzo <span style="color: #e3342f">*</span></label>
-                <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" placeholder="€" min="0.00" max="999.99">
+                <input id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" placeholder="€" min="0.00" max="999.99" step="0.01">
                 @error('price')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
