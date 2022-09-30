@@ -5,15 +5,15 @@
         @if (isset($product_deleted_confirm))
             @if ($product_deleted_confirm === 'y')
             <div class="alert alert-success" role="alert">
-                Piatto eliminato con successo
+                prodotto eliminato con successo
             </div>
             @else
             <div class="alert alert-danger" role="alert">
-                Si è verificato un errore durante la cancellazione del Piatto
+                Si è verificato un errore durante la cancellazione del prodotto
             </div>
             @endif
         @endif
-        <a href="{{route('admin.products.create')}}">aggiungi nuovo piatto</a>
+        <a href="{{route('admin.products.create')}}">aggiungi nuovo prodotto</a>
         <div class="container">
             <div class="row row-cols-3">
                 @if (isset($products))
@@ -29,11 +29,11 @@
                                     @csrf
                                     @method('DELETE')
 
-                                    <a href="{{route('admin.products.show', ['product' => $product->id])}}" class="btn btn-primary">mostra piatto</a>
-                                    <a href="{{route('admin.products.edit', ['product' => $product->id])}}" class="btn btn-warning">Modifica Piatto</a>
+                                    <a href="{{route('admin.products.show', ['product' => $product->id])}}" class="btn btn-primary">mostra prodotto</a>
+                                    <a href="{{route('admin.products.edit', ['product' => $product->id])}}" class="btn btn-warning">Modifica prodotto</a>
                                     
-                                    {{-- eliminazione piatto con richiesta di conferma --}}
-                                    <a href="#myModal" class="btn btn-danger" data-toggle="modal">Elimina Piatto</a>
+                                    {{-- eliminazione prodotto con richiesta di conferma --}}
+                                    <a href="#myModal" class="btn btn-danger" data-toggle="modal">Elimina prodotto</a>
 
                                     <div id="myModal" class="modal fade">
                                         <div class="modal-dialog modal-confirm">
@@ -46,7 +46,7 @@
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>L'eliminazione del Piatto è irreversibile</p>
+                                                    <p>L'eliminazione del prodotto è irreversibile</p>
                                                 </div>
                                                 <div class="modal-footer justify-content-center">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
