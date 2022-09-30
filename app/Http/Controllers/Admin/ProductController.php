@@ -69,6 +69,7 @@ class ProductController extends Controller
         $form_data['cooking_time'] = intval($form_data['cooking_time']);
         $form_data['price'] = floatval($form_data['price']);
         
+        // salvo in una variabile l'utente al momento loggato
         $user = Auth::user();
         
         // se $form_data['visible'] è presente, e dunque l'utente ha impostato la input
@@ -124,6 +125,7 @@ class ProductController extends Controller
      */
     public function show($id, Request $request)
     {
+        // salvo in una variabile l'utente al momento loggato
         $user = Auth::user();
 
         // converto la collection $user->product in un array tramite la funzione getArrayFromCollection()
