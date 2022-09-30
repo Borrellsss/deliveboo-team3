@@ -57,7 +57,7 @@ class RegisterController extends Controller
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
                 'business_name' => ['required', 'string', 'max:255'],
-                'cover' => ['image', 'max:1024', 'nullable'],
+                'cover' => ['file', 'mimes:jpeg,jpg,bmp,png', 'max:1024', 'nullable'],
                 'address' => ['required', 'max:60000'],
                 'vat' => ['required', 'string', 'max:20'],
                 'categories' => ['required', 'exists:categories,id']
@@ -69,7 +69,7 @@ class RegisterController extends Controller
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
                 'business_name' => ['required', 'string', 'max:255'],
-                'cover' => ['image', 'max:1024', 'nullable'],
+                'cover' => ['file', 'mimes:jpeg,jpg,bmp,png', 'max:1024', 'nullable'],
                 'address' => ['required', 'max:60000'],
                 'vat' => ['required', 'string', 'max:20'],
                 'categories' => ['required', 'exists:categories,id']

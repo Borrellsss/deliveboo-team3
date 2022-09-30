@@ -60,7 +60,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <p>Vuoi davvero eliminare il Piatto? Il procedimento è irreversibile</p>
+                            <p>L'eliminazione del Piatto è irreversibile</p>
                         </div>
                         <div class="modal-footer justify-content-center">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
