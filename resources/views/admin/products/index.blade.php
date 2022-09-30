@@ -31,9 +31,31 @@
 
                                     <a href="{{route('admin.products.show', ['product' => $product->id])}}" class="btn btn-primary">mostra piatto</a>
                                     <a href="{{route('admin.products.edit', ['product' => $product->id])}}" class="btn btn-warning">Modifica Piatto</a>
-                                    <input class="btn btn-danger" type="submit" value="Elimina Piatto">
+                                    
+                                    {{-- eliminazione piatto con richiesta di conferma --}}
+                                    <a href="#myModal" class="btn btn-danger" data-toggle="modal">Elimina Piatto</a>
+
+                                    <div id="myModal" class="modal fade">
+                                        <div class="modal-dialog modal-confirm">
+                                            <div class="modal-content">
+                                                <div class="modal-header flex-column">
+                                                    <div class="icon-box">
+                                                        <i class="material-icons">&#xE5CD;</i>
+                                                    </div>						
+                                                    <h4 class="modal-title w-100">Sei sicurə?</h4>	
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Vuoi davvero eliminare il Piatto? Il procedimento è irreversibile</p>
+                                                </div>
+                                                <div class="modal-footer justify-content-center">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                                                    <input class="btn btn-danger" type="submit" value="Conferma">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>   
                                 </form>
-                            </div>
                             </div>
                         </div>
                     @endforeach

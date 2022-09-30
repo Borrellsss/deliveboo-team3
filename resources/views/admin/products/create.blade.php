@@ -22,7 +22,7 @@
             {{-- form cover --}}
             <div class="form-group">
                 <label for="cover" class="form-label">Foto</label>
-                <input id="cover" type="file" class="form-control @error('cover') is-invalid @enderror" name="cover" value="{{ old('cover') }}" autocomplete="cover">
+                <input id="cover" type="file" class="form-control @error('cover') is-invalid @enderror" name="cover">
                 @error('cover')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

@@ -68,14 +68,17 @@ class ProductController extends Controller
         $form_data = $request->all();
         $form_data['cooking_time'] = intval($form_data['cooking_time']);
         $form_data['price'] = floatval($form_data['price']);
-
+        
+        $user = Auth::user();
+        
         // se $form_data['visible'] è presente, e dunque l'utente ha impostato la input
         // "Disponibilità" su "on" allora converto il dato ottenuto dal form in 1
         if(isset($form_data['visible'])) {
             $form_data['visible'] = 1;
+        } else {
+            $form_data['visible'] = 0;
         }
 
-        $user = Auth::user();
         
         // se la chiave $form_data['cover'] è settata salviamo l'immagine nella cartella
         // dishes-cover e salviamo il path dell'immagine in $form_data['cover'] 

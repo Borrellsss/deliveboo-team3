@@ -22,12 +22,18 @@
             {{-- form cover --}}
             <div class="form-group">
                 <label for="cover" class="form-label">Foto</label>
-                <input id="cover" type="file" class="form-control @error('cover') is-invalid @enderror" name="cover" value="{{ old('cover', $product->cover) }}" autocomplete="cover">
+                <input id="cover" type="file" class="form-control @error('cover') is-invalid @enderror mb-3" name="cover">
                 @error('cover')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
+                @if ($product->cover)
+                    <div>
+                        Foto attualmente caricata
+                    </div>
+                    <img class="img-thumbnail w-25" src="{{asset('storage/' . $product->cover)}}" alt="{{$product->name}}">
+                @endif
             </div>
 
             {{-- form description --}}
