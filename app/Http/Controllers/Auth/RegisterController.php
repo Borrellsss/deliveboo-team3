@@ -85,7 +85,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {   
-        dd($data);
         // se la chiave $data['cover'] è settata salviamo l'immagine nella cartella restaurants-cover e salviamo il path dell'immagine in $data['cover'] 
         if(isset($data['cover'])) {
             $cover_path = Storage::put('restaurants-cover', $data['cover']);
