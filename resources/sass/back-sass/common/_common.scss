@@ -1,6 +1,29 @@
-// reset
+// resets
 a {
     color: inherit;
+}
+label:not(.ms_visible-label){
+    width: 0;
+    height: 0;
+    color: transparent;
+    display: block;
+}
+input {
+    
+    &:not([type="checkbox"]) {
+        padding-block: 0.5rem;
+        padding-left: 0.5rem;
+        width: 100%;
+        border: none; 
+        border-bottom: 1px solid grey;
+
+        &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 4px  $primary-color;
+            border-bottom: 1px solid $primary-color;
+            border-radius: 0.5rem;
+        }
+    }
 }
 
 // common

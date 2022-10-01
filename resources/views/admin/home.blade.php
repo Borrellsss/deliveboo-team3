@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('content')
+@section('main_content')
     <div>
         <h1>Area privata di {{$user->business_name}}</h1>
         <div>Email: {{$user->email}}</div>

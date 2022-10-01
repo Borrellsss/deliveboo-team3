@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('content')
+@section('main_content')
     <section>
         <h1>Modifica Piatto</h1>
 

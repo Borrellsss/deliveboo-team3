@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('content')
+@section('main_content')
     <section>
         @if (isset($product_created_confirm) && $product_created_confirm === 'y')
             <div class="alert alert-success" role="alert">

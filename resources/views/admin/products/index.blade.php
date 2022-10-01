@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('content')
+@section('main_content')
     <section>
         <h1>Il tuo Menu</h1>
         @if (isset($product_deleted_confirm))

@@ -1,5 +1,8 @@
 @extends('layouts.app')
-@section('content')
+
+@include('admin.components.header')
+
+@section('main_content')
     <section>
         <h1>Aggiungi prodotto</h1>
 
