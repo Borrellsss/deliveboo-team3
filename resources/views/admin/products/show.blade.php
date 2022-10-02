@@ -3,12 +3,12 @@
 @section('main_content')
     <section>
         @if (isset($product_created_confirm) && $product_created_confirm === 'y')
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success text-center" role="alert">
                 prodotto creato con successo!
             </div>
         @endif
         @if (isset($product_updated_confirm) && $product_updated_confirm === 'y')
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success text-center" role="alert">
                 prodotto modificato con successo!
             </div>
         @endif
@@ -45,31 +45,31 @@
             @csrf
             @method('DELETE')
 
-            <a href="{{route('admin.products.edit', ['product' => $product->id])}}" class="btn btn-warning">Modifica prodotto</a>
+            <a href="{{route('admin.products.edit', ['product' => $product->id])}}" class="ms_btn ms_btn-secondary">Modifica prodotto</a>
             
             {{-- eliminazione prodotto con richiesta di conferma --}}
-            <a href="#myModal" class="btn btn-danger" data-toggle="modal">Elimina prodotto</a>
+            <a href="#myModal" class="ms_btn ms_btn-primary" data-toggle="modal">Elimina prodotto</a>
 
             <div id="myModal" class="modal fade">
                 <div class="modal-dialog modal-confirm">
                     <div class="modal-content">
                         <div class="modal-header flex-column">
-                            <div class="icon-box">
-                                <i class="material-icons">&#xE5CD;</i>
-                            </div>						
-                            <h4 class="modal-title w-100">Sei sicurə?</h4>	
+                            <div class="icon-box d-flex justify-content-center align-items-center mb-3">
+                                <i class="fa-solid fa-exclamation"></i>
+                            </div>		
+                            <h4 class="modal-title mb-3">Sei sicurə?</h4>	
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <p>L'eliminazione del prodotto è irreversibile</p>
+                            <p class="pb-2">L'eliminazione del prodotto è <span class="ms_txt-danger">irreversibile</span></p>
                         </div>
                         <div class="modal-footer justify-content-center">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
-                            <input class="btn btn-danger" type="submit" value="Conferma">
+                            <button type="button" class="ms_btn ms_btn-secondary" data-dismiss="modal">Annulla</button>
+                            <input class="ms_btn" type="submit" value="Conferma">
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </form>
     </section>
 @endsection

@@ -9,12 +9,12 @@
                 <ul>
                     <li>
                         <i class="fa-solid fa-house"></i>
-                        <a href="{{route('admin.home')}}">my home</a>
+                        <a href="{{route('admin.home')}}">Home</a>
                     </li>
 
                     <li>
                         <i class="fa-solid fa-utensils"></i>
-                        <a href="{{route('admin.products.index')}}">my foods</a>
+                        <a href="{{route('admin.products.index')}}">Il mio Menu</a>
                     </li>
                 </ul>
             </nav>

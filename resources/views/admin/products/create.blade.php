@@ -67,7 +67,7 @@
                 {{-- form price --}}
                 <div>
                     <label for="price">Prezzo *</label>
-                    <input id="price" type="number" class="@error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" placeholder="Prezzo (€)" min="0.00" max="999.99" step="0.01">
+                    <input id="price" type="number" class="@error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" placeholder="Prezzo * (€)" min="0.00" max="999.99" step="0.01">
                     @error('price')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -76,9 +76,9 @@
                 </div>
                 
                 {{-- form visible --}}
-                <div class="custom-control custom-switch">
+                <div class="custom-control custom-switch mt-3 mb-3">
                     <input class="custom-control-input" type="checkbox" id="visible" name="visible" {{ old('visible') ? "checked" : ""}}>
-                    <label class="custom-control-label" for="visible">Disponibilità</label>
+                    <label class="custom-control-label ms_visible-label" for="visible">Disponibilità</label>
                 </div>
                 {{-- END INPUTS --}}
 

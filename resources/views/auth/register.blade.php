@@ -40,7 +40,7 @@
                     {{-- form confirm password --}}
                     <div>
                         <label for="password-confirm">Conferma Password *</label>
-                        <input id="password-confirm" type="password" class=" name="password_confirmation" autocomplete="new-password" placeholder="Conferma Password *">
+                        <input id="password-confirm" type="password" name="password_confirmation" autocomplete="new-password" placeholder="Conferma Password *">
                     </div>
 
                     {{-- form business_name --}}

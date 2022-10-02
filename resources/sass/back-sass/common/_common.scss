@@ -67,8 +67,14 @@ textarea {
 }
 
 // COMMONS
+:is(h1, h2, h3, h4, h5, h6) {
+    margin-bottom: 0.5em;
+}
 .ms_asterisk {
     color: $primary-color;
+}
+.ms_txt-danger {
+    color: #f00;
 }
 
 // header
@@ -92,12 +98,14 @@ header {
 
 // aside
 aside {
+    padding-top: 2rem;
     width: 150px;
     height: calc(100vh - 70px);
     background-color: $secondary-color;
     color: $primary-color;
 
     li {
+        padding-bottom: 0.5rem;
         padding-left: 1rem;
     }
 }
@@ -113,6 +121,7 @@ section {
 
 // buttons
 .ms_btn {
+    margin-bottom: 0.5rem;
     padding: 0.5em 1.5em;
     display: inline-block;
     border: none;
@@ -124,45 +133,78 @@ section {
         text-decoration: none;
         color: $primary-color;
     }
+    &-secondary {
+        background-color: $primary-color;
+        color: $secondary-color;
+
+        &:hover {
+            text-decoration: none;
+            color: $secondary-color;
+        }
+    }
+    &-tertiary {
+        background-color: #007bff;
+        color: #fff;
+
+        &:hover {
+            text-decoration: none;
+            color: #fff;
+        }
+    }
 }
 
-
+// CARDS
+// product card 
+.ms_product-card {
+    padding: 2rem;
+    border: 1px solid $secondary-color;
+    border-radius: 1rem;
+    box-shadow: 0 0 4px $secondary-color;
+}
 
 // start banner elimination confirm
+#myModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: 2000;
+}
 .modal-confirm {		
-    color: #636363;
+    color: $primary-color;
     width: 400px;
 }
 .modal-confirm .modal-content {
-    padding: 20px;
-    border-radius: 5px;
-    border: none;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid $secondary-color;
     text-align: center;
     font-size: 14px;
 }
 .modal-confirm .modal-header {
+    padding: 0;
     border-bottom: none;   
     position: relative;
 }
 .modal-confirm h4 {
-    text-align: center;
-    font-size: 26px;
-    margin: 30px 0 -10px;
+    margin-inline: auto;
+    font-size: 2.2rem;
 }
 .modal-confirm .close {
     position: absolute;
-    top: -5px;
-    right: -2px;
+    top: 0;
+    right: 0;
+    color: red;
 }
 .modal-confirm .modal-body {
+    padding: 0;
     color: #999;
 }
 .modal-confirm .modal-footer {
+    padding: 0;
     border: none;
     text-align: center;		
-    border-radius: 5px;
-    font-size: 13px;
-    padding: 10px 15px 25px;
+    font-size: 1rem;
 }
 .modal-confirm .modal-footer a {
     color: #999;
@@ -170,17 +212,14 @@ section {
 .modal-confirm .icon-box {
     width: 80px;
     height: 80px;
-    margin: 0 auto;
+    margin-inline: auto;
     border-radius: 50%;
-    z-index: 9;
-    text-align: center;
-    border: 3px solid #f15e5e;
+    z-index: 1000;
+    border: 4px solid #f00;
 }
 .modal-confirm .icon-box i {
-    color: #f15e5e;
-    font-size: 46px;
-    display: inline-block;
-    margin-top: 13px;
+    color: #f00;
+    font-size: 3rem;
 }
 .modal-confirm .btn, .modal-confirm .btn:active {
     color: #fff;
@@ -194,18 +233,6 @@ section {
     min-height: 40px;
     border-radius: 3px;
     margin: 0 5px;
-}
-.modal-confirm .btn-secondary {
-    background: #c1c1c1;
-}
-.modal-confirm .btn-secondary:hover, .modal-confirm .btn-secondary:focus {
-    background: #a8a8a8;
-}
-.modal-confirm .btn-danger {
-    background: #f15e5e;
-}
-.modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
-    background: #ee3535;
 }
 .trigger-btn {
     display: inline-block;
