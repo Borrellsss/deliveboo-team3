@@ -2,6 +2,10 @@ a {
   color: inherit;
 }
 
+.ms_link {
+  color: #feaa02;
+}
+
 label:not(.ms_visible-label) {
   width: 0;
   height: 0;
@@ -14,7 +18,7 @@ input:not([type=checkbox]) {
   padding-inline: 0.5rem;
   width: 100%;
   border: none;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #5D1100;
 }
 
 input:not([type=checkbox]):focus-visible {
@@ -47,6 +51,15 @@ input:not([type=checkbox]):focus-visible {
 aside {
   padding: 4rem;
   background-color: #feaa02;
+}
+
+.ms_btn {
+  padding: 0.5em 1.5em;
+  display: inline-block;
+  border: none;
+  border-radius: 10rem;
+  background-color: #5D1100;
+  color: #feaa02;
 }
 
 .modal-confirm {
@@ -166,24 +179,28 @@ aside {
 .ms_form-card {
   width: 50%;
   background-color: white;
-  border: 1px solid lightgray;
+  border: 1px solid #5D1100;
   border-radius: 0.3rem;
 }
 
 .ms_form-card.ms_login-card {
-  width: 30%;
+  width: 40%;
+}
+
+.ms_form-card input:not([type=checkbox]) {
+  margin-bottom: 0.5rem;
 }
 
 .ms_form-card-header {
   padding-block: 1rem;
   text-align: center;
   color: #feaa02;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #5D1100;
   font-size: 2rem;
   font-weight: 600;
 }
 
 .ms_form-card-body {
-  padding: 4rem;
+  padding: 2rem 4rem;
 }
 

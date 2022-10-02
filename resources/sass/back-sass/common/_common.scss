@@ -1,6 +1,9 @@
-// resets
+// RESETS
 a {
     color: inherit;
+}
+.ms_link {
+    color: $primary-color;
 }
 
 // inputs
@@ -17,11 +20,11 @@ input {
         padding-inline: 0.5rem;
         width: 100%;
         border: none; 
-        border-bottom: 1px solid grey;
+        border-bottom: 1px solid $secondary-color;
 
         &:focus-visible {
             outline: none;
-            box-shadow: 0 0 4px  $primary-color;
+            box-shadow: 0 0 4px $primary-color;
             border-bottom: 1px solid $primary-color;
             border-radius: 0.5rem;
         }
@@ -41,13 +44,23 @@ input {
     font-size: 1rem;
 }
 
-// common
+// COMMONS
 .ms_asterisk {
     color: $primary-color;
 }
 aside {
     padding: 4rem;
     background-color: $primary-color;
+}
+
+// buttons
+.ms_btn {
+    padding: 0.5em 1.5em;
+    display: inline-block;
+    border: none;
+    border-radius: 10rem;
+    background-color: $secondary-color;
+    color: $primary-color;
 }
 
 
