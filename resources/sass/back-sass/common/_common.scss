@@ -2,6 +2,8 @@
 a {
     color: inherit;
 }
+
+// inputs
 label:not(.ms_visible-label){
     width: 0;
     height: 0;
@@ -12,7 +14,7 @@ input {
     
     &:not([type="checkbox"]) {
         padding-block: 0.5rem;
-        padding-left: 0.5rem;
+        padding-inline: 0.5rem;
         width: 100%;
         border: none; 
         border-bottom: 1px solid grey;
@@ -24,6 +26,19 @@ input {
             border-radius: 0.5rem;
         }
     }
+}
+.ms_checkbox-wrapper {
+    gap: 0.5rem 0.7rem;
+}
+.ms_checkbox-group {
+    padding-block: 1.5rem;
+
+    > div:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+.ms_checkbox-group-title {
+    font-size: 1rem;
 }
 
 // common

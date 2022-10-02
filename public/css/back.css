@@ -11,7 +11,7 @@ label:not(.ms_visible-label) {
 
 input:not([type=checkbox]) {
   padding-block: 0.5rem;
-  padding-left: 0.5rem;
+  padding-inline: 0.5rem;
   width: 100%;
   border: none;
   border-bottom: 1px solid grey;
@@ -22,6 +22,22 @@ input:not([type=checkbox]):focus-visible {
   box-shadow: 0 0 4px #feaa02;
   border-bottom: 1px solid #feaa02;
   border-radius: 0.5rem;
+}
+
+.ms_checkbox-wrapper {
+  gap: 0.5rem 0.7rem;
+}
+
+.ms_checkbox-group {
+  padding-block: 1.5rem;
+}
+
+.ms_checkbox-group > div:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.ms_checkbox-group-title {
+  font-size: 1rem;
 }
 
 .ms_asterisk {
@@ -134,10 +150,28 @@ aside {
   margin: 100px auto;
 }
 
+.ms_form-card-wrapper {
+  padding-block: 4rem;
+  width: 100vw;
+  background: center/cover url(/images/background-registerform.jpg?93c302b9a8bb0679b63f58318d1bb831);
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.5) inset;
+}
+
+.ms_form-card-wrapper-login {
+  height: 100vh;
+}
+
 .ms_form-card {
   width: 50%;
+  background-color: white;
   border: 1px solid lightgray;
   border-radius: 0.3rem;
+}
+
+.ms_form-card.ms_login-card {
+  width: 30%;
 }
 
 .ms_form-card-header {
@@ -145,9 +179,11 @@ aside {
   text-align: center;
   color: #feaa02;
   border-bottom: 1px solid lightgray;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .ms_form-card-body {
-  padding: 2rem;
+  padding: 4rem;
 }
 

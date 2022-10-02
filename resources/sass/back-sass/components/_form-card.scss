@@ -1,7 +1,24 @@
+.ms_form-card-wrapper {
+    padding-block: 4rem;
+    width: 100vw;
+    background: center / cover url('../../../../public/storage/images/background-images/background-registerform.jpg');
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.5) inset;
+
+    &-login {
+        height: 100vh;
+    }
+}
 .ms_form-card {
     width: 50%;
+    background-color: white;
     border: 1px solid lightgray;
     border-radius: 0.3rem;
+
+    &.ms_login-card {
+        width: 30%;
+    }
 }
 
 // card header
@@ -10,9 +27,11 @@
     text-align: center;
     color: $primary-color;
     border-bottom: 1px solid lightgray;
+    font-size: 2rem;
+    font-weight: 600;
 }
 
 // card body
 .ms_form-card-body {
-    padding: 2rem;
+    padding: 4rem;
 }
