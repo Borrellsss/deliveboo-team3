@@ -1,4 +1,26 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+ul {
+  list-style-type: none;
+}
+
 a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
   color: inherit;
 }
 
@@ -13,15 +35,16 @@ label:not(.ms_visible-label) {
   display: block;
 }
 
-input:not([type=checkbox]) {
+input:not([type=checkbox], .ms_btn),
+textarea:not([type=checkbox], .ms_btn) {
   padding-block: 0.5rem;
   padding-inline: 0.5rem;
   width: 100%;
   border: none;
   border-bottom: 1px solid #5D1100;
 }
-
-input:not([type=checkbox]):focus-visible {
+input:not([type=checkbox], .ms_btn):focus-visible,
+textarea:not([type=checkbox], .ms_btn):focus-visible {
   outline: none;
   box-shadow: 0 0 4px #feaa02;
   border-bottom: 1px solid #feaa02;
@@ -35,7 +58,6 @@ input:not([type=checkbox]):focus-visible {
 .ms_checkbox-group {
   padding-block: 1.5rem;
 }
-
 .ms_checkbox-group > div:not(:last-child) {
   margin-bottom: 1rem;
 }
@@ -48,9 +70,40 @@ input:not([type=checkbox]):focus-visible {
   color: #feaa02;
 }
 
+header {
+  padding-inline: 1rem;
+  height: 70px;
+  background-color: white;
+  color: #5D1100;
+  border-bottom: 2px solid #feaa02;
+}
+header > nav {
+  height: 100%;
+}
+header .ms_profile-pic {
+  width: 30px;
+  aspect-ratio: 1/1;
+  border: 2px solid #feaa02;
+  border-radius: 50%;
+}
+
 aside {
-  padding: 4rem;
-  background-color: #feaa02;
+  width: 150px;
+  height: calc(100vh - 70px);
+  background-color: #5D1100;
+  color: #feaa02;
+}
+aside li {
+  padding-left: 1rem;
+}
+
+main {
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+}
+
+section {
+  padding: 2rem;
 }
 
 .ms_btn {
@@ -59,6 +112,10 @@ aside {
   border: none;
   border-radius: 10rem;
   background-color: #5D1100;
+  color: #feaa02;
+}
+.ms_btn:hover {
+  text-decoration: none;
   color: #feaa02;
 }
 
@@ -125,8 +182,7 @@ aside {
   margin-top: 13px;
 }
 
-.modal-confirm .btn,
-.modal-confirm .btn:active {
+.modal-confirm .btn, .modal-confirm .btn:active {
   color: #fff;
   border-radius: 4px;
   background: #60c7c1;
@@ -144,8 +200,7 @@ aside {
   background: #c1c1c1;
 }
 
-.modal-confirm .btn-secondary:hover,
-.modal-confirm .btn-secondary:focus {
+.modal-confirm .btn-secondary:hover, .modal-confirm .btn-secondary:focus {
   background: #a8a8a8;
 }
 
@@ -153,8 +208,7 @@ aside {
   background: #f15e5e;
 }
 
-.modal-confirm .btn-danger:hover,
-.modal-confirm .btn-danger:focus {
+.modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
   background: #ee3535;
 }
 
@@ -166,12 +220,11 @@ aside {
 .ms_form-card-wrapper {
   padding-block: 4rem;
   width: 100vw;
-  background: center/cover url(/images/background-registerform.jpg?93c302b9a8bb0679b63f58318d1bb831);
+  background: center/cover url("../images/background-registerform.jpg");
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.5) inset;
 }
-
 .ms_form-card-wrapper-login {
   height: 100vh;
 }
@@ -180,15 +233,11 @@ aside {
   width: 50%;
   background-color: white;
   border: 1px solid #5D1100;
-  border-radius: 0.3rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px black;
 }
-
 .ms_form-card.ms_login-card {
   width: 40%;
-}
-
-.ms_form-card input:not([type=checkbox]) {
-  margin-bottom: 0.5rem;
 }
 
 .ms_form-card-header {
@@ -203,4 +252,7 @@ aside {
 .ms_form-card-body {
   padding: 2rem 4rem;
 }
-
+.ms_form-card-body input:not([type=checkbox]),
+.ms_form-card-body textarea {
+  margin-bottom: 0.5rem;
+}

@@ -1,7 +1,7 @@
 .ms_form-card-wrapper {
     padding-block: 4rem;
     width: 100vw;
-    background: center / cover url('../../../../public/storage/images/background-images/background-registerform.jpg');
+    background: center / cover url('../images/background-registerform.jpg');
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.5) inset;
@@ -14,14 +14,11 @@
     width: 50%;
     background-color: white;
     border: 1px solid $secondary-color;
-    border-radius: 0.3rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px black;
 
     &.ms_login-card {
         width: 40%;
-    }
-
-    input:not([type="checkbox"]) {
-        margin-bottom: 0.5rem;
     }
 }
 
@@ -38,4 +35,9 @@
 // card body
 .ms_form-card-body {
     padding: 2rem 4rem;
+
+    input:not([type="checkbox"]),
+    textarea {
+        margin-bottom: 0.5rem;
+    }
 }

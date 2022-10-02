@@ -12,12 +12,14 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/back.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    {{-- font-awesome --}}
+    <script src="https://kit.fontawesome.com/23673491d4.js" crossorigin="anonymous"></script>
 </head>
 <body>
     @yield('body_content')

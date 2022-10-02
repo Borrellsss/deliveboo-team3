@@ -1,10 +1,31 @@
 // RESETS
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+}
+img {
+    width: 100%;
+    display: block;
+}
+ul {
+    list-style-type: none;
+}
 a {
     color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
 }
 .ms_link {
     color: $primary-color;
 }
+
 
 // inputs
 label:not(.ms_visible-label){
@@ -13,9 +34,10 @@ label:not(.ms_visible-label){
     color: transparent;
     display: block;
 }
-input {
+input,
+textarea {
     
-    &:not([type="checkbox"]) {
+    &:not([type="checkbox"], .ms_btn) {
         padding-block: 0.5rem;
         padding-inline: 0.5rem;
         width: 100%;
@@ -48,9 +70,45 @@ input {
 .ms_asterisk {
     color: $primary-color;
 }
+
+// header
+header {
+    padding-inline: 1rem;
+    height: 70px;
+    background-color: white;
+    color: $secondary-color;
+    border-bottom: 2px solid $primary-color;
+
+    > nav {
+        height: 100%;
+    }
+    .ms_profile-pic {
+        width: 30px;
+        aspect-ratio: 1 / 1;
+        border: 2px solid $primary-color;
+        border-radius: 50%;
+    }
+}
+
+// aside
 aside {
-    padding: 4rem;
-    background-color: $primary-color;
+    width: 150px;
+    height: calc(100vh - 70px);
+    background-color: $secondary-color;
+    color: $primary-color;
+
+    li {
+        padding-left: 1rem;
+    }
+}
+
+// main
+main {
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+}
+section {
+    padding: 2rem;
 }
 
 // buttons
@@ -61,6 +119,11 @@ aside {
     border-radius: 10rem;
     background-color: $secondary-color;
     color: $primary-color;
+
+    &:hover {
+        text-decoration: none;
+        color: $primary-color;
+    }
 }
 
 

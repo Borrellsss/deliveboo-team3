@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('admin.components.content')
+
 @section('main_content')
     <section>
         @if (isset($product_created_confirm) && $product_created_confirm === 'y')
