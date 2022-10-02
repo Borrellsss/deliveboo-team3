@@ -67,8 +67,8 @@ textarea {
 }
 
 // COMMONS
-:is(h1, h2, h3, h4, h5, h6) {
-    margin-bottom: 0.5em;
+main *:is(h1, h2, h3, h4, h5, h6) {
+    margin-bottom: 0.8em;
 }
 .ms_asterisk {
     color: $primary-color;
@@ -84,6 +84,7 @@ header {
     background-color: white;
     color: $secondary-color;
     border-bottom: 2px solid $primary-color;
+    box-shadow: 0 0.2rem 1rem rgb(0 0 0 / 12%);
 
     > nav {
         height: 100%;
@@ -99,10 +100,11 @@ header {
 // aside
 aside {
     padding-top: 2rem;
-    width: 150px;
+    width: 170px;
     height: calc(100vh - 70px);
     background-color: $secondary-color;
     color: $primary-color;
+    font-weight: 600;
 
     li {
         padding-bottom: 0.5rem;
@@ -112,6 +114,7 @@ aside {
 
 // main
 main {
+    width: calc(100% - 170px);
     height: calc(100vh - 70px);
     overflow-y: auto;
 }
@@ -128,6 +131,7 @@ section {
     border-radius: 10rem;
     background-color: $secondary-color;
     color: $primary-color;
+    font-weight: 600;
 
     &:hover {
         text-decoration: none;
@@ -143,12 +147,12 @@ section {
         }
     }
     &-tertiary {
-        background-color: #007bff;
-        color: #fff;
+        background-color: $tertiary-color;
+        color: $primary-color;
 
         &:hover {
             text-decoration: none;
-            color: #fff;
+            color: $primary-color;
         }
     }
 }
@@ -157,12 +161,12 @@ section {
 // product card 
 .ms_product-card {
     padding: 2rem;
-    border: 1px solid $secondary-color;
+    border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 1rem;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
 
-// start banner elimination confirm
+// start banner elimination card confirm
 #myModal {
     position: fixed;
     top: 50%;
@@ -238,4 +242,7 @@ section {
     display: inline-block;
     margin: 100px auto;
 }
-// end banner elimination confirm
+// end banner elimination card confirm
+
+
+// MEDIA QUERIES

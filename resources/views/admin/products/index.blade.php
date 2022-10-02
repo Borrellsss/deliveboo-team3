@@ -16,12 +16,12 @@
         @endif
         
         <div class="text-center mb-5">
-            <a class="ms_btn" href="{{route('admin.products.create')}}">aggiungi nuovo prodotto</a>
+            <a class="ms_btn" href="{{route('admin.products.create')}}">Aggiungi nuovo prodotto</a>
         </div>
 
         <div class="container">
             @if (isset($products) && count($products) > 0)
-                <div class="row row-cols-3">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                     @foreach ($products as $product)
                         <div class="col mb-4">
                             {{-- card singola --}}
@@ -32,7 +32,7 @@
                                     @csrf
                                     @method('DELETE')
 
-                                    <a href="{{route('admin.products.show', ['product' => $product->id])}}" class="ms_btn ms_btn-tertiary">mostra prodotto</a>
+                                    <a href="{{route('admin.products.show', ['product' => $product->id])}}" class="ms_btn ms_btn-tertiary">Mostra prodotto</a>
                                     <a href="{{route('admin.products.edit', ['product' => $product->id])}}" class="ms_btn ms_btn-secondary">Modifica prodotto</a>
                                     
                                     {{-- eliminazione prodotto con richiesta di conferma --}}
