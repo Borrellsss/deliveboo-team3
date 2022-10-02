@@ -1,0 +1,241 @@
+// RESETS
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+}
+img {
+    width: 100%;
+    display: block;
+}
+ul {
+    list-style-type: none;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+.ms_link {
+    color: $primary-color;
+}
+
+
+// inputs
+label:not(.ms_visible-label){
+    width: 0;
+    height: 0;
+    color: transparent;
+    display: block;
+}
+input,
+textarea {
+    
+    &:not([type="checkbox"], .ms_btn) {
+        padding-block: 0.5rem;
+        padding-inline: 0.5rem;
+        width: 100%;
+        border: none; 
+        border-bottom: 1px solid $secondary-color;
+
+        &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 4px $primary-color;
+            border-bottom: 1px solid $primary-color;
+            border-radius: 0.5rem;
+        }
+    }
+}
+.ms_checkbox-wrapper {
+    gap: 0.5rem 0.7rem;
+}
+.ms_checkbox-group {
+    padding-block: 1.5rem;
+
+    > div:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+.ms_checkbox-group-title {
+    font-size: 1rem;
+}
+
+// COMMONS
+:is(h1, h2, h3, h4, h5, h6) {
+    margin-bottom: 0.5em;
+}
+.ms_asterisk {
+    color: $primary-color;
+}
+.ms_txt-danger {
+    color: #f00;
+}
+
+// header
+header {
+    padding-inline: 1rem;
+    height: 70px;
+    background-color: white;
+    color: $secondary-color;
+    border-bottom: 2px solid $primary-color;
+
+    > nav {
+        height: 100%;
+    }
+    .ms_profile-pic {
+        width: 30px;
+        aspect-ratio: 1 / 1;
+        border: 2px solid $primary-color;
+        border-radius: 50%;
+    }
+}
+
+// aside
+aside {
+    padding-top: 2rem;
+    width: 150px;
+    height: calc(100vh - 70px);
+    background-color: $secondary-color;
+    color: $primary-color;
+
+    li {
+        padding-bottom: 0.5rem;
+        padding-left: 1rem;
+    }
+}
+
+// main
+main {
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+}
+section {
+    padding: 2rem;
+}
+
+// buttons
+.ms_btn {
+    margin-bottom: 0.5rem;
+    padding: 0.5em 1.5em;
+    display: inline-block;
+    border: none;
+    border-radius: 10rem;
+    background-color: $secondary-color;
+    color: $primary-color;
+
+    &:hover {
+        text-decoration: none;
+        color: $primary-color;
+    }
+    &-secondary {
+        background-color: $primary-color;
+        color: $secondary-color;
+
+        &:hover {
+            text-decoration: none;
+            color: $secondary-color;
+        }
+    }
+    &-tertiary {
+        background-color: #007bff;
+        color: #fff;
+
+        &:hover {
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+}
+
+// CARDS
+// product card 
+.ms_product-card {
+    padding: 2rem;
+    border: 1px solid $secondary-color;
+    border-radius: 1rem;
+    box-shadow: 0 0 4px $secondary-color;
+}
+
+// start banner elimination confirm
+#myModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: 2000;
+}
+.modal-confirm {		
+    color: $primary-color;
+    width: 400px;
+}
+.modal-confirm .modal-content {
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid $secondary-color;
+    text-align: center;
+    font-size: 14px;
+}
+.modal-confirm .modal-header {
+    padding: 0;
+    border-bottom: none;   
+    position: relative;
+}
+.modal-confirm h4 {
+    margin-inline: auto;
+    font-size: 2.2rem;
+}
+.modal-confirm .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: red;
+}
+.modal-confirm .modal-body {
+    padding: 0;
+    color: #999;
+}
+.modal-confirm .modal-footer {
+    padding: 0;
+    border: none;
+    text-align: center;		
+    font-size: 1rem;
+}
+.modal-confirm .modal-footer a {
+    color: #999;
+}		
+.modal-confirm .icon-box {
+    width: 80px;
+    height: 80px;
+    margin-inline: auto;
+    border-radius: 50%;
+    z-index: 1000;
+    border: 4px solid #f00;
+}
+.modal-confirm .icon-box i {
+    color: #f00;
+    font-size: 3rem;
+}
+.modal-confirm .btn, .modal-confirm .btn:active {
+    color: #fff;
+    border-radius: 4px;
+    background: #60c7c1;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    min-width: 120px;
+    border: none;
+    min-height: 40px;
+    border-radius: 3px;
+    margin: 0 5px;
+}
+.trigger-btn {
+    display: inline-block;
+    margin: 100px auto;
+}
+// end banner elimination confirm

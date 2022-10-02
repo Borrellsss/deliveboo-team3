@@ -32,11 +32,13 @@ class ProductController extends Controller
             
             $data = [
                 'products' => $products,
-                'product_deleted_confirm' => $product_deleted_confirm
+                'product_deleted_confirm' => $product_deleted_confirm,
+                'user' => $user
             ];
         } else {
             $data = [
                 'products' => $products,
+                'user' => $user
             ];
         }
 
@@ -49,8 +51,15 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.products.create');
+    {   
+        // salvo in una variabile l'utente al momento loggato
+        $user = Auth::user();
+
+        $data = [
+            'user' => $user
+        ];
+
+        return view('admin.products.create', $data);
     }
 
     /**
@@ -154,18 +163,21 @@ class ProductController extends Controller
                 
                 $data = [
                     'product' => $product,
-                    'product_created_confirm' => $product_created_confirm
+                    'product_created_confirm' => $product_created_confirm,
+                    'user' => $user
                 ];
             } else if($request['product_updated']) {
                 $product_updated_confirm = $request['product_updated'];
                 
                 $data = [
                     'product' => $product,
-                    'product_updated_confirm' => $product_updated_confirm
+                    'product_updated_confirm' => $product_updated_confirm,
+                    'user' => $user
                 ];
             } else {
                 $data = [
                     'product' => $product,
+                    'user' => $user
                 ];
             }
         } else {
@@ -191,7 +203,8 @@ class ProductController extends Controller
 
         // salvo nei $data il prodotto
         $data = [
-            'product' => $product
+            'product' => $product,
+            'user' => $user
         ];
 
         // se la foreign key/($product->user_id) di $product è uguale all'id
@@ -255,7 +268,7 @@ class ProductController extends Controller
             // e salvo nella key 'product_updated' la stringa 'y'
             $data = [
                 'product' => $product_to_update->id,
-                'product_updated' => 'y'
+                'product_updated' => 'y',
             ];
 
             // e torno la view della show del prodotto

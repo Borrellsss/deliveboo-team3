@@ -1,0 +1,282 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.ms_link {
+  color: #feaa02;
+}
+
+label:not(.ms_visible-label) {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: block;
+}
+
+input:not([type=checkbox], .ms_btn),
+textarea:not([type=checkbox], .ms_btn) {
+  padding-block: 0.5rem;
+  padding-inline: 0.5rem;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #5D1100;
+}
+input:not([type=checkbox], .ms_btn):focus-visible,
+textarea:not([type=checkbox], .ms_btn):focus-visible {
+  outline: none;
+  box-shadow: 0 0 4px #feaa02;
+  border-bottom: 1px solid #feaa02;
+  border-radius: 0.5rem;
+}
+
+.ms_checkbox-wrapper {
+  gap: 0.5rem 0.7rem;
+}
+
+.ms_checkbox-group {
+  padding-block: 1.5rem;
+}
+.ms_checkbox-group > div:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.ms_checkbox-group-title {
+  font-size: 1rem;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+  margin-bottom: 0.5em;
+}
+
+.ms_asterisk {
+  color: #feaa02;
+}
+
+.ms_txt-danger {
+  color: #f00;
+}
+
+header {
+  padding-inline: 1rem;
+  height: 70px;
+  background-color: white;
+  color: #5D1100;
+  border-bottom: 2px solid #feaa02;
+}
+header > nav {
+  height: 100%;
+}
+header .ms_profile-pic {
+  width: 30px;
+  aspect-ratio: 1/1;
+  border: 2px solid #feaa02;
+  border-radius: 50%;
+}
+
+aside {
+  padding-top: 2rem;
+  width: 150px;
+  height: calc(100vh - 70px);
+  background-color: #5D1100;
+  color: #feaa02;
+}
+aside li {
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+}
+
+main {
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+}
+
+section {
+  padding: 2rem;
+}
+
+.ms_btn {
+  margin-bottom: 0.5rem;
+  padding: 0.5em 1.5em;
+  display: inline-block;
+  border: none;
+  border-radius: 10rem;
+  background-color: #5D1100;
+  color: #feaa02;
+}
+.ms_btn:hover {
+  text-decoration: none;
+  color: #feaa02;
+}
+.ms_btn-secondary {
+  background-color: #feaa02;
+  color: #5D1100;
+}
+.ms_btn-secondary:hover {
+  text-decoration: none;
+  color: #5D1100;
+}
+.ms_btn-tertiary {
+  background-color: #007bff;
+  color: #fff;
+}
+.ms_btn-tertiary:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.ms_product-card {
+  padding: 2rem;
+  border: 1px solid #5D1100;
+  border-radius: 1rem;
+  box-shadow: 0 0 4px #5D1100;
+}
+
+#myModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: 2000;
+}
+
+.modal-confirm {
+  color: #feaa02;
+  width: 400px;
+}
+
+.modal-confirm .modal-content {
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid #5D1100;
+  text-align: center;
+  font-size: 14px;
+}
+
+.modal-confirm .modal-header {
+  padding: 0;
+  border-bottom: none;
+  position: relative;
+}
+
+.modal-confirm h4 {
+  margin-inline: auto;
+  font-size: 2.2rem;
+}
+
+.modal-confirm .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: red;
+}
+
+.modal-confirm .modal-body {
+  padding: 0;
+  color: #999;
+}
+
+.modal-confirm .modal-footer {
+  padding: 0;
+  border: none;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.modal-confirm .modal-footer a {
+  color: #999;
+}
+
+.modal-confirm .icon-box {
+  width: 80px;
+  height: 80px;
+  margin-inline: auto;
+  border-radius: 50%;
+  z-index: 1000;
+  border: 4px solid #f00;
+}
+
+.modal-confirm .icon-box i {
+  color: #f00;
+  font-size: 3rem;
+}
+
+.modal-confirm .btn, .modal-confirm .btn:active {
+  color: #fff;
+  border-radius: 4px;
+  background: #60c7c1;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  min-width: 120px;
+  border: none;
+  min-height: 40px;
+  border-radius: 3px;
+  margin: 0 5px;
+}
+
+.trigger-btn {
+  display: inline-block;
+  margin: 100px auto;
+}
+
+.ms_form-card-wrapper {
+  padding-block: 4rem;
+  width: 100vw;
+  background: center/cover url("../images/background-registerform.jpg");
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.5) inset;
+}
+.ms_form-card-wrapper-login {
+  height: 100vh;
+}
+
+.ms_form-card {
+  width: 50%;
+  background-color: white;
+  border: 1px solid #5D1100;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px black;
+}
+.ms_form-card.ms_login-card {
+  width: 40%;
+}
+
+.ms_form-card-header {
+  padding-block: 1rem;
+  text-align: center;
+  color: #feaa02;
+  border-bottom: 1px solid #5D1100;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.ms_form-card-body {
+  padding: 2rem 4rem;
+}
+.ms_form-card-body input:not([type=checkbox]),
+.ms_form-card-body textarea {
+  margin-bottom: 0.5rem;
+}
