@@ -1,6 +1,6 @@
 <template>
    <div>
-    sono L'header
+    <h1>header</h1>
    </div>
 </template>
 
@@ -11,3 +11,12 @@ export default {
 
 }
 </script>
+
+<style lang="scss" scoped>
+@import '../style/variables';
+@import '../style/common';
+
+h1 {
+    color: $primary-color;
+}
+</style>
