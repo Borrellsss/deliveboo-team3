@@ -97,6 +97,9 @@ header .ms_profile-pic {
   color: #feaa02;
   background-color: #264f36;
 }
+header .ms_profile-pic > img {
+  border-radius: 50%;
+}
 
 aside {
   padding-top: 2rem;

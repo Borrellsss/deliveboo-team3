@@ -96,6 +96,10 @@ header {
         border-radius: 50%;
         color: $primary-color;
         background-color: $tertiary-color;
+
+        > img {
+            border-radius: 50%;
+        }
     }
 }
 
