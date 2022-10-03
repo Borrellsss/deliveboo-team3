@@ -174,7 +174,12 @@ section {
   color: #feaa02;
 }
 .ms_btn[disabled] {
-  filter: grayscale(1);
+  background-color: #000;
+  color: #acabab;
+  outline: 2px solid #f44;
+}
+.ms_btn[disabled]:hover {
+  color: #acabab;
 }
 .ms_btn-secondary {
   background-color: #feaa02;
@@ -288,6 +293,14 @@ section {
   margin: 100px auto;
 }
 
+.ms_header-brand-logo {
+  width: 70px;
+  transition: all 150ms ease-in;
+}
+.ms_header-brand-logo:hover {
+  filter: invert(58%) sepia(100%) saturate(450%) hue-rotate(357deg) brightness(100%) contrast(105%);
+}
+
 .ms_form-card-wrapper {
   padding-block: 4rem;
   width: 100vw;
@@ -298,6 +311,7 @@ section {
 }
 .ms_form-card-wrapper-login {
   height: 100vh;
+  background: center/cover url("../images/wp1874155-restaurant-wallpapers.jpg");
 }
 
 .ms_form-card {

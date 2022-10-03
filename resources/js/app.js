@@ -138,7 +138,7 @@ registerPwd.addEventListener('input', function() {
         }
 
         // infine stampo in pagina, all'interno di "pwdErrorMessage" "/ Le password inserite devono essere uguali."
-        pwdErrorMessage.innerHTML = "/ Le password inserite devono essere uguali.";
+        pwdErrorMessage.innerHTML = "Le password inserite devono essere uguali.";
 
     // se "registerPwdValue" è uguale a "registerPwdConfirmValue" e la lunghezza di entrambi è maggiore o uguale a 8:
     } else if(registerPwdValue === registerPwdConfirmValue && registerPwdValue.length >= 8 && registerPwdConfirmValue.length >= 8) {
@@ -168,7 +168,7 @@ registerPwd.addEventListener('input', function() {
         }
 
         // infine stampo in pagina, all'interno di "pwdErrorMessage" "/ Le password inserite combaciano!"
-        pwdErrorMessage.innerHTML = "/ Le password inserite combaciano!";
+        pwdErrorMessage.innerHTML = "Le password inserite combaciano!";
 
     // altimenti:
     } else {
@@ -254,7 +254,7 @@ registerPwdConfirm.addEventListener('input', function() {
         }
 
         // infine stampo in pagina, all'interno di "pwdErrorMessage" "/ Le password inserite combaciano!"
-        pwdErrorMessage.innerHTML = "/ Le password inserite combaciano!";
+        pwdErrorMessage.innerHTML = "Le password inserite combaciano!";
 
     // altimenti:
     } else {

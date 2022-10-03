@@ -103,10 +103,10 @@ main *:is(h1, h2, h3, h4, h5, h6) {
     color: $primary-color;
 }
 .ms_txt-danger {
-    color: #f44;
+    color: $danger-color;
 }
 .ms_txt-success {
-    color: #00c851;
+    color: $success-color;
 }
 
 // header
@@ -178,7 +178,13 @@ section {
         color: $primary-color;
     }
     &[disabled] {
-        filter: grayscale(1);
+        background-color: #000;
+        color: #acabab;
+        outline: 2px solid $danger-color;
+
+        &:hover {
+            color: #acabab;
+        }
     }
     &-secondary {
         background-color: $primary-color;
@@ -287,5 +293,14 @@ section {
 }
 // end banner elimination card confirm
 
+// BRAND LOGOS
+.ms_header-brand-logo {
+    width: 70px;
+    transition: all 150ms ease-in;
+
+    &:hover {
+        filter: invert(58%) sepia(100%) saturate(450%) hue-rotate(357deg) brightness(100%) contrast(105%);
+    }
+}
 
 // MEDIA QUERIES

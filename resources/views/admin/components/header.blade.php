@@ -1,7 +1,7 @@
 <header>
     <nav class="d-flex justify-content-between align-items-center">
-        <a href="{{route('admin.products.index')}}">
-            Toast-Rider Logo
+        <a href="{{route('admin.home')}}">
+            <img class="ms_header-brand-logo" src="{{asset('images/logodone.svg')}}" alt="Toast-Rider Logo">
         </a>
 
         <ul class="mb-0">
