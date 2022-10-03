@@ -114,14 +114,14 @@
                     </div>
 
                     <div class="text-center mb-4">
-                        <button type="submit" class="ms_btn" style="margin: 0 auto">Registrati</button>
+                        <button type="submit" class="ms_btn">Registrati</button>
                     </div>
 
                     <div class="text-center">
                         <div class="mb-2">
                             Sei già registrato?
                         </div>
-                        <a href="{{route('login')}}" class="ms_btn" style="margin: 0 auto">Accedi</a>
+                        <a href="{{route('login')}}" class="ms_btn">Accedi</a>
                     </div>
 
                 </form>
