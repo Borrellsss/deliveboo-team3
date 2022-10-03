@@ -11,7 +11,7 @@
 </head>
 <body>
     <div id="root">
-        <h1>home page pubblica stampata con vue js</h1>
+        
     </div>
 
     {{-- iserisco lo script relativo alla porzione pubblica --}}

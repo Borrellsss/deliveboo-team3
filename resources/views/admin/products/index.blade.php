@@ -44,7 +44,7 @@
                                                 <div class="modal-header flex-column">
                                                     <div class="icon-box d-flex justify-content-center align-items-center mb-3">
                                                         <i class="fa-solid fa-exclamation"></i>
-                                                    </div>		
+                                                    </div>
                                                     <h4 class="modal-title mb-3">Sei sicurə?</h4>	
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                 </div>
