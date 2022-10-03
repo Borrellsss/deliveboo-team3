@@ -96,10 +96,10 @@ header {
         border-radius: 50%;
         color: $primary-color;
         background-color: $tertiary-color;
-        object-fit: cover;
 
         > img {
-            border-radius: 50%;
+            // border-radius: 50%;
+            object-fit: cover;
         }
     }
 }
