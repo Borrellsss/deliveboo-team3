@@ -49,9 +49,6 @@ const app = new Vue({
 const formInputs = document.querySelectorAll('.ms_js-get-input');
 const formLabels = document.querySelectorAll('.ms_js-get-label');
 
-// let input;
-// let label;
-
 for(let i = 0; i < formInputs.length; i++) {
     let input = formInputs[i];
 

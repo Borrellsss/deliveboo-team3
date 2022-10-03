@@ -50320,8 +50320,7 @@ var app = new Vue({
 }); // START FORM LABELS ANIMATION LOGIC
 
 var formInputs = document.querySelectorAll('.ms_js-get-input');
-var formLabels = document.querySelectorAll('.ms_js-get-label'); // let input;
-// let label;
+var formLabels = document.querySelectorAll('.ms_js-get-label');
 
 var _loop = function _loop(i) {
   var input = formInputs[i];
