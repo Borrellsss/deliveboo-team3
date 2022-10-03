@@ -1957,16 +1957,34 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("header", [_c("div", {
-    staticClass: "header-top"
+    staticClass: "ms_header-top"
   }, [_c("div", {
-    staticClass: "banner"
-  }, [_vm._v("\n             BANNER\n         ")])]), _vm._v(" "), _c("div", {
-    staticClass: "header-bottom"
+    staticClass: "ms_banner"
   }, [_c("div", {
-    staticClass: "logo"
-  }, [_vm._v("\n             LOGO\n         ")]), _vm._v(" "), _c("div", {
-    staticClass: "login"
-  }, [_vm._v("\n             LOGIN\n         ")])])]);
+    staticClass: "ms_text"
+  }, [_vm._v("\n                 Hai un ristorante? \n             ")]), _vm._v(" "), _c("a", {
+    staticClass: "ms_btn",
+    attrs: {
+      href: "/register"
+    }
+  }, [_vm._v("\n                 Registrati\n             ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "ms_header-bottom"
+  }, [_c("div", {
+    staticClass: "logo-container"
+  }, [_c("img", {
+    staticClass: "logo",
+    attrs: {
+      src: "images/toast-rider-logo.svg",
+      alt: "toast-rider-logo"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "ms_login"
+  }, [_c("a", {
+    staticClass: "ms_btn",
+    attrs: {
+      href: "/login"
+    }
+  }, [_vm._v("\n                 Accedi\n             ")])])])]);
 }];
 render._withStripped = true;
 
@@ -6379,7 +6397,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "*[data-v-153bfd55] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\nbody[data-v-153bfd55] {\n  margin: 0;\n}\nimg[data-v-153bfd55] {\n  width: 100%;\n  display: block;\n}\nul[data-v-153bfd55] {\n  list-style-type: none;\n}\na[data-v-153bfd55] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-153bfd55] {\n  color: #feaa02;\n}\nheader .header-top[data-v-153bfd55],\nheader .header-bottom[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n}\nheader .header-top[data-v-153bfd55] {\n  height: 5rem;\n  background-color: #feaa02;\n  color: #740602;\n  justify-content: center;\n}\nheader .header-bottom[data-v-153bfd55] {\n  height: 5rem;\n  background-color: #740602;\n  color: #feaa02;\n  justify-content: space-between;\n  padding: 1.2rem;\n}", ""]);
+exports.push([module.i, "*[data-v-153bfd55] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\nbody[data-v-153bfd55] {\n  margin: 0;\n}\nimg[data-v-153bfd55] {\n  width: 100%;\n  display: block;\n}\nul[data-v-153bfd55] {\n  list-style-type: none;\n}\na[data-v-153bfd55] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-153bfd55] {\n  color: #feaa02;\n}\n.ms_btn[data-v-153bfd55] {\n  margin-bottom: 0.5rem;\n  padding: 0.5em 1.5em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #feaa02;\n  font-weight: 600;\n}\n.ms_btn[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #feaa02;\n}\n.ms_btn-secondary[data-v-153bfd55] {\n  background-color: #feaa02;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-153bfd55] {\n  background-color: #264f36;\n  color: #feaa02;\n}\n.ms_btn-tertiary[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #feaa02;\n}\nheader .ms_header-top[data-v-153bfd55],\nheader .ms_header-bottom[data-v-153bfd55],\nheader .ms_banner[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n}\nheader .ms_header-top[data-v-153bfd55] {\n  height: 5rem;\n  background-color: #feaa02;\n  color: #740602;\n  justify-content: center;\n}\nheader .ms_header-top .ms_text[data-v-153bfd55] {\n  padding-inline: 0.5rem;\n}\nheader .ms_header-bottom[data-v-153bfd55] {\n  height: 5rem;\n  color: #feaa02;\n  justify-content: space-between;\n  padding: 1.2rem;\n  border-bottom: 1px solid lightgrey;\n}\nheader .ms_header-bottom .logo[data-v-153bfd55] {\n  width: 35%;\n}", ""]);
 
 // exports
 

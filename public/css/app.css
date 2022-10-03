@@ -9271,3 +9271,34 @@ a:hover {
 .ms_link {
   color: #feaa02;
 }
+
+.ms_btn {
+  margin-bottom: 0.5rem;
+  padding: 0.5em 1.5em;
+  display: inline-block;
+  border: none;
+  border-radius: 10rem;
+  background-color: #740602;
+  color: #feaa02;
+  font-weight: 600;
+}
+.ms_btn:hover {
+  text-decoration: none;
+  color: #feaa02;
+}
+.ms_btn-secondary {
+  background-color: #feaa02;
+  color: #740602;
+}
+.ms_btn-secondary:hover {
+  text-decoration: none;
+  color: #740602;
+}
+.ms_btn-tertiary {
+  background-color: #264f36;
+  color: #feaa02;
+}
+.ms_btn-tertiary:hover {
+  text-decoration: none;
+  color: #feaa02;
+}

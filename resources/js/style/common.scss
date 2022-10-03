@@ -28,3 +28,38 @@ a {
 .ms_link {
     color: $primary-color;
 }
+
+// buttons
+.ms_btn {
+    margin-bottom: 0.5rem;
+    padding: 0.5em 1.5em;
+    display: inline-block;
+    border: none;
+    border-radius: 10rem;
+    background-color: $secondary-color;
+    color: $primary-color;
+    font-weight: 600;
+
+    &:hover {
+        text-decoration: none;
+        color: $primary-color;
+    }
+    &-secondary {
+        background-color: $primary-color;
+        color: $secondary-color;
+
+        &:hover {
+            text-decoration: none;
+            color: $secondary-color;
+        }
+    }
+    &-tertiary {
+        background-color: $tertiary-color;
+        color: $primary-color;
+
+        &:hover {
+            text-decoration: none;
+            color: $primary-color;
+        }
+    }
+}
