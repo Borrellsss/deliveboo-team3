@@ -96,6 +96,8 @@ header .ms_profile-pic {
   border-radius: 50%;
   color: #feaa02;
   background-color: #264f36;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 header .ms_profile-pic > img {
   border-radius: 50%;
