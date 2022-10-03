@@ -13,7 +13,7 @@
                 {{-- form name --}}
                 <div>
                     <label for="name">Nome *</label>
-                    <input id="name" type="text" class="@error('name') is-invalid @enderror" name="name" value="{{ old('name', $product->name) }}" autocomplete="name" placeholder="Nome *">
+                    <input id="name" type="text" class="@error('name') is-invalid @enderror" name="name" value="{{ old('name', $product->name) }}" autocomplete="name" placeholder="Nome *" required>
                     @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -74,7 +74,7 @@
                 {{-- form price --}}
                 <div>
                     <label for="price">Prezzo *</label>
-                    <input id="price" type="number" class="@error('price') is-invalid @enderror" name="price" value="{{ old('price', $product->price) }}" placeholder="Prezzo * (€)" min="0.00" max="999.99" step="0.01">
+                    <input id="price" type="number" class="@error('price') is-invalid @enderror" name="price" value="{{ old('price', $product->price) }}" placeholder="Prezzo * (€)" min="0.00" max="999.99" step="0.01" required>
                     @error('price')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

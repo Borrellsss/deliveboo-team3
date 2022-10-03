@@ -14,7 +14,7 @@
         
     </div>
 
-    {{-- iserisco lo script relativo alla porzione pubblica --}}
+    {{-- inserisco lo script relativo alla porzione pubblica --}}
     <script src="{{asset('js/app.js')}}" defer></script>
 </body>
 </html>

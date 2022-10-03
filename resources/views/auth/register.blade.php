@@ -18,7 +18,7 @@
                     {{-- form email --}}
                     <div>
                         <label for="email">Email *</label>
-                        <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="Email *">
+                        <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="Email *" required>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -29,7 +29,7 @@
                     {{-- form password --}}
                     <div>
                         <label for="password">Password *</label>
-                        <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" autocomplete="new-password" placeholder="Password *">
+                        <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" autocomplete="new-password" placeholder="Password *" required>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -40,13 +40,13 @@
                     {{-- form confirm password --}}
                     <div>
                         <label for="password-confirm">Conferma Password *</label>
-                        <input id="password-confirm" type="password" name="password_confirmation" autocomplete="new-password" placeholder="Conferma Password *">
+                        <input id="password-confirm" type="password" name="password_confirmation" autocomplete="new-password" placeholder="Conferma Password *" required>
                     </div>
 
                     {{-- form business_name --}}
                     <div>
                         <label for="business_name">Nome Attività *</label>
-                        <input id="business_name" type="text" class="@error('business_name') is-invalid @enderror" name="business_name" value="{{ old('business_name') }}" placeholder="Nome Attività *">
+                        <input id="business_name" type="text" class="@error('business_name') is-invalid @enderror" name="business_name" value="{{ old('business_name') }}" placeholder="Nome Attività *" required>
                         @error('business_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -57,7 +57,7 @@
                     {{-- form address --}}
                     <div>
                         <label for="address">Indirizzo Attività *</label>
-                        <input id="address" type="text" class="@error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" placeholder="Indirizzo Attività *">
+                        <input id="address" type="text" class="@error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" placeholder="Indirizzo Attività *" required>
                         @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -68,7 +68,7 @@
                     {{-- form vat --}}
                     <div>
                         <label for="vat">Partita IVA *</label>
-                        <input id="vat" type="text" class="@error('vat') is-invalid @enderror" name="vat" value="{{ old('vat') }}" maxlength="11" placeholder="Partita IVA *">
+                        <input id="vat" type="text" class="@error('vat') is-invalid @enderror" name="vat" value="{{ old('vat') }}" maxlength="11" placeholder="Partita IVA *" required>
                         @error('vat')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

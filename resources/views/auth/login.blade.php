@@ -13,7 +13,7 @@
 
                     <div>
                         <label for="email">Email</label>
-                        <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
+                        <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email" required>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -23,7 +23,7 @@
 
                     <div>
                         <label for="password">Password</label>
-                        <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                        <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password" required>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -50,7 +50,7 @@
                         <div class="mb-2">
                             Non hai un account?
                         </div>
-                        <a href="{{route('register')}}" class="ms_btn" style="margin: 0 auto">Registrati</a>
+                        <a href="{{route('register')}}" class="ms_btn">Registrati</a>
                     </div>
                 </form>
             </div>
