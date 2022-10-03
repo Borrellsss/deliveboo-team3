@@ -41,7 +41,7 @@ textarea:not([type=checkbox], .ms_btn) {
   padding-inline: 0.5rem;
   width: 100%;
   border: none;
-  border-bottom: 1px solid #5D1100;
+  border-bottom: 1px solid #740602;
 }
 input:not([type=checkbox], .ms_btn):focus-visible,
 textarea:not([type=checkbox], .ms_btn):focus-visible {
@@ -66,8 +66,8 @@ textarea:not([type=checkbox], .ms_btn):focus-visible {
   font-size: 1rem;
 }
 
-:is(h1, h2, h3, h4, h5, h6) {
-  margin-bottom: 0.5em;
+main *:is(h1, h2, h3, h4, h5, h6) {
+  margin-bottom: 0.8em;
 }
 
 .ms_asterisk {
@@ -82,8 +82,9 @@ header {
   padding-inline: 1rem;
   height: 70px;
   background-color: white;
-  color: #5D1100;
+  color: #740602;
   border-bottom: 2px solid #feaa02;
+  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.12);
 }
 header > nav {
   height: 100%;
@@ -93,14 +94,17 @@ header .ms_profile-pic {
   aspect-ratio: 1/1;
   border: 2px solid #feaa02;
   border-radius: 50%;
+  color: #feaa02;
+  background-color: #264f36;
 }
 
 aside {
   padding-top: 2rem;
-  width: 150px;
+  width: 170px;
   height: calc(100vh - 70px);
-  background-color: #5D1100;
+  background-color: #740602;
   color: #feaa02;
+  font-weight: 600;
 }
 aside li {
   padding-bottom: 0.5rem;
@@ -108,6 +112,7 @@ aside li {
 }
 
 main {
+  width: calc(100% - 170px);
   height: calc(100vh - 70px);
   overflow-y: auto;
 }
@@ -122,8 +127,9 @@ section {
   display: inline-block;
   border: none;
   border-radius: 10rem;
-  background-color: #5D1100;
+  background-color: #740602;
   color: #feaa02;
+  font-weight: 600;
 }
 .ms_btn:hover {
   text-decoration: none;
@@ -131,26 +137,26 @@ section {
 }
 .ms_btn-secondary {
   background-color: #feaa02;
-  color: #5D1100;
+  color: #740602;
 }
 .ms_btn-secondary:hover {
   text-decoration: none;
-  color: #5D1100;
+  color: #740602;
 }
 .ms_btn-tertiary {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #264f36;
+  color: #feaa02;
 }
 .ms_btn-tertiary:hover {
   text-decoration: none;
-  color: #fff;
+  color: #feaa02;
 }
 
 .ms_product-card {
   padding: 2rem;
-  border: 1px solid #5D1100;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 1rem;
-  box-shadow: 0 0 4px #5D1100;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 #myModal {
@@ -169,7 +175,7 @@ section {
 .modal-confirm .modal-content {
   padding: 2rem;
   border-radius: 1rem;
-  border: 1px solid #5D1100;
+  border: 1px solid #740602;
   text-align: center;
   font-size: 14px;
 }
@@ -255,20 +261,24 @@ section {
 
 .ms_form-card {
   width: 50%;
-  background-color: white;
-  border: 1px solid #5D1100;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid #740602;
   border-radius: 1rem;
   box-shadow: 0 0 10px black;
 }
 .ms_form-card.ms_login-card {
   width: 40%;
 }
+.ms_form-card input,
+.ms_form-card textarea {
+  background-color: transparent;
+}
 
 .ms_form-card-header {
   padding-block: 1rem;
   text-align: center;
   color: #feaa02;
-  border-bottom: 1px solid #5D1100;
+  border-bottom: 1px solid #740602;
   font-size: 2rem;
   font-weight: 600;
 }
