@@ -94,6 +94,8 @@ header {
         aspect-ratio: 1 / 1;
         border: 2px solid $primary-color;
         border-radius: 50%;
+        color: $primary-color;
+        background-color: $tertiary-color;
     }
 }
 

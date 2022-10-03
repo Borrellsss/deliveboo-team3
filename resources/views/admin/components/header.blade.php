@@ -17,7 +17,15 @@
             @else
                 <li>
                     <a id="navbarDropdown" class="d-flex align-items-center" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <img class="ms_profile-pic mr-2" src="{{asset('storage/' . $user->cover)}}" alt="{{$user->business_name}}">
+                        @if ($user->cover)
+                            <div class="ms_profile-pic mr-2">
+                                <img src="{{asset('storage/' . $user->cover)}}" alt="{{$user->business_name}}">
+                            </div>
+                        @else
+                            <div class="d-flex align-items-center justify-content-center ms_profile-pic mr-2">
+                                {{substr($user->business_name, 0, 1)}}
+                            </div>
+                        @endif
                         <span class="mr-1">{{ Auth::user()->business_name }}</span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </a>
