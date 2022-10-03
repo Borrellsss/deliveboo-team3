@@ -25,14 +25,43 @@ a {
 .ms_link {
     color: $primary-color;
 }
+label:not([for="cover"], .form-check-label) {
+    position: relative;
+    top: 52px;
+    translate: 0.5rem -50%;
+    transition: all 150ms ease-in-out;
+    color: #acabab;
+}
+.ms_input-hover-wrapper {
 
+    &:hover {
+        label:not([for="cover"], .form-check-label) {
+            top: 0;
+            translate: 0.5rem 0;
+            color: #000
+        }
+        label.ms_label-active {
+            color: $primary-color;
+        }
+    }
+}
+label.ms_label-active {
+    position: relative;
+    top: 0;
+    translate: 0.5rem 0;
+    color: $primary-color;
+}
+.ms_js-pwd-check-msg-wrapper {
+    position: relative;
 
-// inputs
-label:not(.ms_visible-label){
-    width: 0;
-    height: 0;
-    color: transparent;
-    display: block;
+    > .ms_js-pwd-check-msg {
+        padding-left: 0.5rem;
+        display: none;
+        
+        &-active {
+            display: block;
+        }
+    }
 }
 input,
 textarea {
@@ -41,7 +70,7 @@ textarea {
         padding-block: 0.5rem;
         padding-inline: 0.5rem;
         width: 100%;
-        border: none; 
+        border: none;
         border-bottom: 1px solid $secondary-color;
 
         &:focus-visible {
@@ -74,7 +103,10 @@ main *:is(h1, h2, h3, h4, h5, h6) {
     color: $primary-color;
 }
 .ms_txt-danger {
-    color: #f00;
+    color: #f44;
+}
+.ms_txt-success {
+    color: #00c851;
 }
 
 // header
@@ -144,6 +176,9 @@ section {
     &:hover {
         text-decoration: none;
         color: $primary-color;
+    }
+    &[disabled] {
+        filter: grayscale(1);
     }
     &-secondary {
         background-color: $primary-color;

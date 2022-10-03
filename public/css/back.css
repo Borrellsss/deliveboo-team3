@@ -28,10 +28,38 @@ a:hover {
   color: #feaa02;
 }
 
-label:not(.ms_visible-label) {
-  width: 0;
-  height: 0;
-  color: transparent;
+label:not([for=cover], .form-check-label) {
+  position: relative;
+  top: 52px;
+  translate: 0.5rem -50%;
+  transition: all 150ms ease-in-out;
+  color: #acabab;
+}
+
+.ms_input-hover-wrapper:hover label:not([for=cover], .form-check-label) {
+  top: 0;
+  translate: 0.5rem 0;
+  color: #000;
+}
+.ms_input-hover-wrapper:hover label.ms_label-active {
+  color: #feaa02;
+}
+
+label.ms_label-active {
+  position: relative;
+  top: 0;
+  translate: 0.5rem 0;
+  color: #feaa02;
+}
+
+.ms_js-pwd-check-msg-wrapper {
+  position: relative;
+}
+.ms_js-pwd-check-msg-wrapper > .ms_js-pwd-check-msg {
+  padding-left: 0.5rem;
+  display: none;
+}
+.ms_js-pwd-check-msg-wrapper > .ms_js-pwd-check-msg-active {
   display: block;
 }
 
@@ -75,7 +103,11 @@ main *:is(h1, h2, h3, h4, h5, h6) {
 }
 
 .ms_txt-danger {
-  color: #f00;
+  color: #f44;
+}
+
+.ms_txt-success {
+  color: #00c851;
 }
 
 header {
@@ -140,6 +172,9 @@ section {
 .ms_btn:hover {
   text-decoration: none;
   color: #feaa02;
+}
+.ms_btn[disabled] {
+  filter: grayscale(1);
 }
 .ms_btn-secondary {
   background-color: #feaa02;

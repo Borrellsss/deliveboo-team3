@@ -11,9 +11,9 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
-                    <div>
-                        <label for="email">Email</label>
-                        <input id="email" type="email" class="@error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email" required>
+                    <div class="ms_input-hover-wrapper">
+                        <label for="email" class="ms_js-get-label">Email</label>
+                        <input id="email" type="email" class="@error('email') is-invalid @enderror ms_js-get-input" name="email" value="{{ old('email') }}" autocomplete="email" autofocus required>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -21,9 +21,9 @@
                         @enderror
                     </div>
 
-                    <div>
-                        <label for="password">Password</label>
-                        <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password" required>
+                    <div class="ms_input-hover-wrapper">
+                        <label for="password" class="ms_js-get-label">Password</label>
+                        <input id="password" type="password" class="@error('password') is-invalid @enderror ms_js-get-input" name="password"  autocomplete="current-password" required>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
 
                     <div class="text-center mb-4">
                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                        <label class="ms_visible-label" for="remember">Ricordami</label>
+                        <label class="form-check-label" for="remember">Ricordami</label>
                     </div>
 
                     <div class="text-center mb-4">
