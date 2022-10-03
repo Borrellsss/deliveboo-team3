@@ -9,11 +9,26 @@
             <!-- Banner -->
             <div class="ms_banner">
                 <div class="ms_text">
-                    Hai un ristorante? 
+                    Sei un ristoratore? 
                 </div>
+
+                <!-- Login -->
+                <div class="ms_login">
+                    <a href="/login" class="ms_btn">
+                        Accedi
+                    </a>
+                </div>
+
+                <div class="ms_text">
+                    oppure 
+                </div>
+                
+                <!-- Register -->
                 <a href="/register" class="ms_btn">
                     Registrati
                 </a>
+
+                
             </div>
         </div>
 
@@ -24,13 +39,6 @@
             <div class="logo-container">
                 
                 <img class="logo" src="images/toast-rider-logo.svg" alt="toast-rider-logo">
-            </div>
-
-            <!-- Login -->
-            <div class="ms_login">
-                <a href="/login" class="ms_btn">
-                    Accedi
-                </a>
             </div>
         </div>
    </header>
@@ -65,7 +73,12 @@ header {
         .ms_text {
             padding-inline: 0.5rem;
         }
+
+        .ms_login {
+            margin-right: 0.5rem;
+        }
     }
+
 
     .ms_header-bottom {
         height: 5rem ;
