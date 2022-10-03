@@ -1,11 +1,17 @@
 <template>
     <div>
-        <h1>ciao sono stampato con vue</h1>
+        <HeaderComponent />
     </div>
 </template>
 
 <script>
+
+import HeaderComponent from '../components/HeaderComponent.vue';
+
 export default {
-    name: 'App'
+    name: 'App',
+    components: {
+        HeaderComponent
+    }
 }
 </script>
