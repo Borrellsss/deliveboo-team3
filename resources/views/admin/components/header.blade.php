@@ -23,7 +23,7 @@
                             </div>
                         @else
                             <div class="d-flex align-items-center justify-content-center ms_profile-pic mr-2">
-                                U
+                                {{substr($user->business_name, 0, 1)}}
                             </div>
                         @endif
                         <span class="mr-1">{{ Auth::user()->business_name }}</span>
