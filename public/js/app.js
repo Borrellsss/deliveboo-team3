@@ -1956,7 +1956,17 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("h1", [_vm._v("header")])]);
+  return _c("header", [_c("div", {
+    staticClass: "header-top"
+  }, [_c("div", {
+    staticClass: "banner"
+  }, [_vm._v("\n             BANNER\n         ")])]), _vm._v(" "), _c("div", {
+    staticClass: "header-bottom"
+  }, [_c("div", {
+    staticClass: "logo"
+  }, [_vm._v("\n             LOGO\n         ")]), _vm._v(" "), _c("div", {
+    staticClass: "login"
+  }, [_vm._v("\n             LOGIN\n         ")])])]);
 }];
 render._withStripped = true;
 
@@ -1978,7 +1988,11 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("HeaderComponent")], 1);
+  return _c("div", {
+    attrs: {
+      id: "app"
+    }
+  }, [_c("HeaderComponent")], 1);
 };
 
 var staticRenderFns = [];
@@ -6365,7 +6379,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "*[data-v-153bfd55],\n*[data-v-153bfd55]::before,\n*[data-v-153bfd55]::after {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\nimg[data-v-153bfd55] {\n  width: 100%;\n  display: block;\n}\nul[data-v-153bfd55] {\n  list-style-type: none;\n}\na[data-v-153bfd55] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-153bfd55] {\n  color: #feaa02;\n}\nlabel[data-v-153bfd55]:not(.ms_visible-label) {\n  width: 0;\n  height: 0;\n  color: transparent;\n  display: block;\n}\ninput[data-v-153bfd55]:not([type=checkbox], .ms_btn),\ntextarea[data-v-153bfd55]:not([type=checkbox], .ms_btn) {\n  padding-block: 0.5rem;\n  padding-inline: 0.5rem;\n  width: 100%;\n  border: none;\n  border-bottom: 1px solid #740602;\n}\ninput[data-v-153bfd55]:not([type=checkbox], .ms_btn):focus-visible,\ntextarea[data-v-153bfd55]:not([type=checkbox], .ms_btn):focus-visible {\n  outline: none;\n  box-shadow: 0 0 4px #feaa02;\n  border-bottom: 1px solid #feaa02;\n  border-radius: 0.5rem;\n}\n.ms_checkbox-wrapper[data-v-153bfd55] {\n  gap: 0.5rem 0.7rem;\n}\n.ms_checkbox-group[data-v-153bfd55] {\n  padding-block: 1.5rem;\n}\n.ms_checkbox-group > div[data-v-153bfd55]:not(:last-child) {\n  margin-bottom: 1rem;\n}\n.ms_checkbox-group-title[data-v-153bfd55] {\n  font-size: 1rem;\n}\nmain *[data-v-153bfd55]:is(h1, h2, h3, h4, h5, h6) {\n  margin-bottom: 0.8em;\n}\n.ms_asterisk[data-v-153bfd55] {\n  color: #feaa02;\n}\n.ms_txt-danger[data-v-153bfd55] {\n  color: #f00;\n}\nheader[data-v-153bfd55] {\n  padding-inline: 1rem;\n  height: 70px;\n  background-color: white;\n  color: #740602;\n  border-bottom: 2px solid #feaa02;\n  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.12);\n}\nheader > nav[data-v-153bfd55] {\n  height: 100%;\n}\nheader .ms_profile-pic[data-v-153bfd55] {\n  width: 30px;\n  aspect-ratio: 1/1;\n  border: 2px solid #feaa02;\n  border-radius: 50%;\n  color: #feaa02;\n  background-color: #264f36;\n  overflow: hidden;\n}\nheader .ms_profile-pic > img[data-v-153bfd55] {\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\naside[data-v-153bfd55] {\n  padding-top: 2rem;\n  width: 170px;\n  height: calc(100vh - 70px);\n  background-color: #740602;\n  color: #feaa02;\n  font-weight: 600;\n}\naside li[data-v-153bfd55] {\n  padding-bottom: 0.5rem;\n  padding-left: 1rem;\n}\nmain[data-v-153bfd55] {\n  width: calc(100% - 170px);\n  height: calc(100vh - 70px);\n  overflow-y: auto;\n}\nsection[data-v-153bfd55] {\n  padding: 2rem;\n}\n.ms_btn[data-v-153bfd55] {\n  margin-bottom: 0.5rem;\n  padding: 0.5em 1.5em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #feaa02;\n  font-weight: 600;\n}\n.ms_btn[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #feaa02;\n}\n.ms_btn-secondary[data-v-153bfd55] {\n  background-color: #feaa02;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-153bfd55] {\n  background-color: #264f36;\n  color: #feaa02;\n}\n.ms_btn-tertiary[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #feaa02;\n}\n.ms_product-card[data-v-153bfd55] {\n  padding: 2rem;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  border-radius: 1rem;\n  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);\n}\n#myModal[data-v-153bfd55] {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  translate: -50% -50%;\n  z-index: 2000;\n}\n.modal-confirm[data-v-153bfd55] {\n  color: #feaa02;\n  width: 400px;\n}\n.modal-confirm .modal-content[data-v-153bfd55] {\n  padding: 2rem;\n  border-radius: 1rem;\n  border: 1px solid #740602;\n  text-align: center;\n  font-size: 14px;\n}\n.modal-confirm .modal-header[data-v-153bfd55] {\n  padding: 0;\n  border-bottom: none;\n  position: relative;\n}\n.modal-confirm h4[data-v-153bfd55] {\n  margin-inline: auto;\n  font-size: 2.2rem;\n}\n.modal-confirm .close[data-v-153bfd55] {\n  position: absolute;\n  top: 0;\n  right: 0;\n  color: red;\n}\n.modal-confirm .modal-body[data-v-153bfd55] {\n  padding: 0;\n  color: #999;\n}\n.modal-confirm .modal-footer[data-v-153bfd55] {\n  padding: 0;\n  border: none;\n  text-align: center;\n  font-size: 1rem;\n}\n.modal-confirm .modal-footer a[data-v-153bfd55] {\n  color: #999;\n}\n.modal-confirm .icon-box[data-v-153bfd55] {\n  width: 80px;\n  height: 80px;\n  margin-inline: auto;\n  border-radius: 50%;\n  z-index: 1000;\n  border: 4px solid #f00;\n}\n.modal-confirm .icon-box i[data-v-153bfd55] {\n  color: #f00;\n  font-size: 3rem;\n}\n.modal-confirm .btn[data-v-153bfd55], .modal-confirm .btn[data-v-153bfd55]:active {\n  color: #fff;\n  border-radius: 4px;\n  background: #60c7c1;\n  text-decoration: none;\n  transition: all 0.4s;\n  line-height: normal;\n  min-width: 120px;\n  border: none;\n  min-height: 40px;\n  border-radius: 3px;\n  margin: 0 5px;\n}\n.trigger-btn[data-v-153bfd55] {\n  display: inline-block;\n  margin: 100px auto;\n}\nh1[data-v-153bfd55] {\n  color: #feaa02;\n}", ""]);
+exports.push([module.i, "*[data-v-153bfd55] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\nbody[data-v-153bfd55] {\n  margin: 0;\n}\nimg[data-v-153bfd55] {\n  width: 100%;\n  display: block;\n}\nul[data-v-153bfd55] {\n  list-style-type: none;\n}\na[data-v-153bfd55] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-153bfd55] {\n  color: #feaa02;\n}\nheader .header-top[data-v-153bfd55],\nheader .header-bottom[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n}\nheader .header-top[data-v-153bfd55] {\n  height: 5rem;\n  background-color: #feaa02;\n  color: #740602;\n  justify-content: center;\n}\nheader .header-bottom[data-v-153bfd55] {\n  height: 5rem;\n  background-color: #740602;\n  color: #feaa02;\n  justify-content: space-between;\n  padding: 1.2rem;\n}", ""]);
 
 // exports
 
