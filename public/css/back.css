@@ -103,11 +103,13 @@ main *:is(h1, h2, h3, h4, h5, h6) {
 }
 
 .ms_txt-danger {
+  font-weight: 400;
   color: #f44;
 }
 
 .ms_txt-success {
   color: #00c851;
+  font-weight: 400;
 }
 
 header {
@@ -176,7 +178,6 @@ section {
 .ms_btn[disabled] {
   background-color: #000;
   color: #acabab;
-  outline: 2px solid #f44;
 }
 .ms_btn[disabled]:hover {
   color: #acabab;
@@ -304,25 +305,27 @@ section {
 .ms_form-card-wrapper {
   padding-block: 4rem;
   width: 100vw;
+  height: 100vh;
   background: center/cover url("../images/background-registerform.jpg");
   justify-content: center;
-  align-items: center;
   box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.5) inset;
+  overflow-y: auto;
 }
 .ms_form-card-wrapper-login {
-  height: 100vh;
   background: center/cover url("../images/wp1874155-restaurant-wallpapers.jpg");
 }
 
 .ms_form-card {
   width: 50%;
+  height: -moz-fit-content;
+  height: fit-content;
   background-color: rgba(255, 255, 255, 0.95);
   border: 1px solid #740602;
   border-radius: 1rem;
   box-shadow: 0 0 10px black;
 }
 .ms_form-card.ms_login-card {
-  width: 40%;
+  width: 50%;
 }
 .ms_form-card input,
 .ms_form-card textarea {

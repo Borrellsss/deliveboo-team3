@@ -50278,7 +50278,9 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _views_App_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/App.vue */ "./resources/js/views/App.vue");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _views_App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/App.vue */ "./resources/js/views/App.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -50287,6 +50289,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -50315,7 +50318,7 @@ var app = new Vue({
   el: '#root',
   // avvia come primo componente vue 
   render: function render(h) {
-    return h(_views_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+    return h(_views_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
   }
 }); // START FORM LABELS ANIMATION LOGIC
 
@@ -50373,137 +50376,139 @@ var pwdErrorMessage = document.querySelector('.ms_js-pwd-check-msg'); // dichiar
 
 var registerPwdValue = ""; // dichiaro una variabile "registerPwdConfirmValue" in cui salvare successivamente la value di "registerPwdConfirm"
 
-var registerPwdConfirmValue = ""; // START EVENT LISTENERS
-// attribuisco a "registerPwd" un "addEventListener" all' "input"
+var registerPwdConfirmValue = "";
 
-registerPwd.addEventListener('input', function () {
-  // all' "input" salvo in "registerPwdValue" la value di "registerPwd"
-  registerPwdValue = registerPwd.value; // se "registerPwdValue" è diverso da "registerPwdConfirmValue" e la lunghezza di entrambi è maggiore o uguale a 8:
+if (registerPwd !== null && registerPwdConfirm !== null) {
+  // START EVENT LISTENERS
+  // attribuisco a "registerPwd" un "addEventListener" all' "input"
+  registerPwd.addEventListener('input', function () {
+    // all' "input" salvo in "registerPwdValue" la value di "registerPwd"
+    registerPwdValue = registerPwd.value; // se "registerPwdValue" è diverso da "registerPwdConfirmValue" e la lunghezza di entrambi è maggiore o uguale a 8:
 
-  if (registerPwdValue !== registerPwdConfirmValue && registerPwdValue.length >= 8 && registerPwdConfirmValue.length >= 8) {
-    // disabilito il "registerBtn" aggiungendo con "setAttribute()" l'attributo disabled
-    registerBtn.setAttribute('disabled', ""); // se "pwdErrorMessage" non contiene la classe "ms_js-pwd-check-msg-active" l'aggiungo
+    if (registerPwdValue !== registerPwdConfirmValue && registerPwdValue.length >= 8 && registerPwdConfirmValue.length >= 8) {
+      // disabilito il "registerBtn" aggiungendo con "setAttribute()" l'attributo disabled
+      registerBtn.setAttribute('disabled', ""); // se "pwdErrorMessage" non contiene la classe "ms_js-pwd-check-msg-active" l'aggiungo
 
-    if (!pwdErrorMessage.classList.contains('ms_js-pwd-check-msg-active')) {
-      pwdErrorMessage.classList.add('ms_js-pwd-check-msg-active');
-    } // se "pwdErrorMessage" non contiene la classe "ms_txt-danger":
+      if (!pwdErrorMessage.classList.contains('ms_js-pwd-check-msg-active')) {
+        pwdErrorMessage.classList.add('ms_js-pwd-check-msg-active');
+      } // se "pwdErrorMessage" non contiene la classe "ms_txt-danger":
 
 
-    if (!pwdErrorMessage.classList.contains('ms_txt-danger')) {
-      // se contiene la classe "ms_txt-success":
-      if (pwdErrorMessage.classList.contains('ms_txt-success')) {
-        // la rimuovo e aggiungo la classe "ms_txt-danger"
-        pwdErrorMessage.classList.remove('ms_txt-success');
-        pwdErrorMessage.classList.add('ms_txt-danger'); // altrimenti aggiungo direttamente la classe "ms_txt-danger"
+      if (!pwdErrorMessage.classList.contains('ms_txt-danger')) {
+        // se contiene la classe "ms_txt-success":
+        if (pwdErrorMessage.classList.contains('ms_txt-success')) {
+          // la rimuovo e aggiungo la classe "ms_txt-danger"
+          pwdErrorMessage.classList.remove('ms_txt-success');
+          pwdErrorMessage.classList.add('ms_txt-danger'); // altrimenti aggiungo direttamente la classe "ms_txt-danger"
+        } else {
+          pwdErrorMessage.classList.add('ms_txt-danger');
+        }
+      } // infine stampo in pagina, all'interno di "pwdErrorMessage" "/ Le password inserite devono essere uguali."
+
+
+      pwdErrorMessage.innerHTML = "Le password inserite devono essere uguali."; // se "registerPwdValue" è uguale a "registerPwdConfirmValue" e la lunghezza di entrambi è maggiore o uguale a 8:
+    } else if (registerPwdValue === registerPwdConfirmValue && registerPwdValue.length >= 8 && registerPwdConfirmValue.length >= 8) {
+      // riabilito il "registerBtn" rimuovendo con "removeAttribute()" l'attributo disabled
+      registerBtn.removeAttribute('disabled', ""); // se "pwdErrorMessage" non contiene la classe "ms_js-pwd-check-msg-active" l'aggiungo
+
+      if (!pwdErrorMessage.classList.contains('ms_js-pwd-check-msg-active')) {
+        pwdErrorMessage.classList.add('ms_js-pwd-check-msg-active');
+      } // se "pwdErrorMessage" contiene la classe "ms_txt-danger":
+
+
+      if (pwdErrorMessage.classList.contains('ms_txt-danger')) {
+        // la rimuovo e aggiungo la classe "ms_txt-success"
+        pwdErrorMessage.classList.remove('ms_txt-danger');
+        pwdErrorMessage.classList.add('ms_txt-success'); // altrimenti:
       } else {
-        pwdErrorMessage.classList.add('ms_txt-danger');
-      }
-    } // infine stampo in pagina, all'interno di "pwdErrorMessage" "/ Le password inserite devono essere uguali."
+        // se "pwdErrorMessage" non contiene la classe "ms_txt-success" l'aggiungo
+        if (!pwdErrorMessage.classList.contains('ms_txt-success')) {
+          pwdErrorMessage.classList.add('ms_txt-success');
+        }
+      } // infine stampo in pagina, all'interno di "pwdErrorMessage" "/ Le password inserite combaciano!"
 
 
-    pwdErrorMessage.innerHTML = "Le password inserite devono essere uguali."; // se "registerPwdValue" è uguale a "registerPwdConfirmValue" e la lunghezza di entrambi è maggiore o uguale a 8:
-  } else if (registerPwdValue === registerPwdConfirmValue && registerPwdValue.length >= 8 && registerPwdConfirmValue.length >= 8) {
-    // riabilito il "registerBtn" rimuovendo con "removeAttribute()" l'attributo disabled
-    registerBtn.removeAttribute('disabled', ""); // se "pwdErrorMessage" non contiene la classe "ms_js-pwd-check-msg-active" l'aggiungo
-
-    if (!pwdErrorMessage.classList.contains('ms_js-pwd-check-msg-active')) {
-      pwdErrorMessage.classList.add('ms_js-pwd-check-msg-active');
-    } // se "pwdErrorMessage" contiene la classe "ms_txt-danger":
-
-
-    if (pwdErrorMessage.classList.contains('ms_txt-danger')) {
-      // la rimuovo e aggiungo la classe "ms_txt-success"
-      pwdErrorMessage.classList.remove('ms_txt-danger');
-      pwdErrorMessage.classList.add('ms_txt-success'); // altrimenti:
+      pwdErrorMessage.innerHTML = "Le password inserite combaciano!"; // altimenti:
     } else {
-      // se "pwdErrorMessage" non contiene la classe "ms_txt-success" l'aggiungo
-      if (!pwdErrorMessage.classList.contains('ms_txt-success')) {
-        pwdErrorMessage.classList.add('ms_txt-success');
-      }
-    } // infine stampo in pagina, all'interno di "pwdErrorMessage" "/ Le password inserite combaciano!"
+      // riabilito il "registerBtn" rimuovendo con "removeAttribute()" l'attributo disabled
+      registerBtn.removeAttribute('disabled', ""); // se "pwdErrorMessage" contiene la classe "ms_js-pwd-check-msg-active" la rimuovo
+
+      if (pwdErrorMessage.classList.contains('ms_js-pwd-check-msg-active')) {
+        pwdErrorMessage.classList.remove('ms_js-pwd-check-msg-active');
+      } // rimuovo entrambe le classi "ms_txt-danger" e "ms_txt-success" da "pwdErrorMessage"
 
 
-    pwdErrorMessage.innerHTML = "Le password inserite combaciano!"; // altimenti:
-  } else {
-    // riabilito il "registerBtn" rimuovendo con "removeAttribute()" l'attributo disabled
-    registerBtn.removeAttribute('disabled', ""); // se "pwdErrorMessage" contiene la classe "ms_js-pwd-check-msg-active" la rimuovo
+      pwdErrorMessage.classList.remove('ms_txt-danger');
+      pwdErrorMessage.classList.remove('ms_txt-success'); // infine svuoto pwdErrorMessage
 
-    if (pwdErrorMessage.classList.contains('ms_js-pwd-check-msg-active')) {
-      pwdErrorMessage.classList.remove('ms_js-pwd-check-msg-active');
-    } // rimuovo entrambe le classi "ms_txt-danger" e "ms_txt-success" da "pwdErrorMessage"
+      pwdErrorMessage.innerHTML = "";
+    }
+  }); // attribuisco a "registerPwdConfirm" un "addEventListener" all' "input"
 
+  registerPwdConfirm.addEventListener('input', function () {
+    // all' "input" salvo in "registerPwdConfirmValue" la value di "registerPwdConfirm"
+    registerPwdConfirmValue = registerPwdConfirm.value; // se "registerPwdValue" è diverso da "registerPwdConfirmValue" e la lunghezza di entrambi è maggiore o uguale a 8:
 
-    pwdErrorMessage.classList.remove('ms_txt-danger');
-    pwdErrorMessage.classList.remove('ms_txt-success'); // infine svuoto pwdErrorMessage
+    if (registerPwdValue !== registerPwdConfirmValue && registerPwdValue.length >= 8 && registerPwdConfirmValue.length >= 8) {
+      // disabilito il "registerBtn" aggiungendo con "setAttribute()" l'attributo disabled
+      registerBtn.setAttribute('disabled', ""); // se "pwdErrorMessage" non contiene la classe "ms_js-pwd-check-msg-active" l'aggiungo
 
-    pwdErrorMessage.innerHTML = "";
-  }
-}); // attribuisco a "registerPwdConfirm" un "addEventListener" all' "input"
-
-registerPwdConfirm.addEventListener('input', function () {
-  // all' "input" salvo in "registerPwdConfirmValue" la value di "registerPwdConfirm"
-  registerPwdConfirmValue = registerPwdConfirm.value; // se "registerPwdValue" è diverso da "registerPwdConfirmValue" e la lunghezza di entrambi è maggiore o uguale a 8:
-
-  if (registerPwdValue !== registerPwdConfirmValue && registerPwdValue.length >= 8 && registerPwdConfirmValue.length >= 8) {
-    // disabilito il "registerBtn" aggiungendo con "setAttribute()" l'attributo disabled
-    registerBtn.setAttribute('disabled', ""); // se "pwdErrorMessage" non contiene la classe "ms_js-pwd-check-msg-active" l'aggiungo
-
-    if (!pwdErrorMessage.classList.contains('ms_js-pwd-check-msg-active')) {
-      pwdErrorMessage.classList.add('ms_js-pwd-check-msg-active');
-    } // se "pwdErrorMessage" non contiene la classe "ms_txt-danger":
+      if (!pwdErrorMessage.classList.contains('ms_js-pwd-check-msg-active')) {
+        pwdErrorMessage.classList.add('ms_js-pwd-check-msg-active');
+      } // se "pwdErrorMessage" non contiene la classe "ms_txt-danger":
 
 
-    if (!pwdErrorMessage.classList.contains('ms_txt-danger')) {
-      // se contiene la classe "ms_txt-success":
-      if (pwdErrorMessage.classList.contains('ms_txt-success')) {
-        // la rimuovo e aggiungo la classe "ms_txt-danger"
-        pwdErrorMessage.classList.remove('ms_txt-success');
-        pwdErrorMessage.classList.add('ms_txt-danger'); // altrimenti aggiungo direttamente la classe "ms_txt-danger"
+      if (!pwdErrorMessage.classList.contains('ms_txt-danger')) {
+        // se contiene la classe "ms_txt-success":
+        if (pwdErrorMessage.classList.contains('ms_txt-success')) {
+          // la rimuovo e aggiungo la classe "ms_txt-danger"
+          pwdErrorMessage.classList.remove('ms_txt-success');
+          pwdErrorMessage.classList.add('ms_txt-danger'); // altrimenti aggiungo direttamente la classe "ms_txt-danger"
+        } else {
+          pwdErrorMessage.classList.add('ms_txt-danger');
+        }
+      } // infine stampo in pagina, all'interno di "pwdErrorMessage" "/ Le password inserite devono essere uguali."
+
+
+      pwdErrorMessage.innerHTML = "Le password inserite devono essere uguali."; // se "registerPwdValue" è uguale a "registerPwdConfirmValue" e la lunghezza di entrambi è maggiore o uguale a 8:
+    } else if (registerPwdValue === registerPwdConfirmValue && registerPwdValue.length >= 8 && registerPwdConfirmValue.length >= 8) {
+      // riabilito il "registerBtn" rimuovendo con "removeAttribute()" l'attributo disabled
+      registerBtn.removeAttribute('disabled', ""); // se "pwdErrorMessage" non contiene la classe "ms_js-pwd-check-msg-active" l'aggiungo
+
+      if (!pwdErrorMessage.classList.contains('ms_js-pwd-check-msg-active')) {
+        pwdErrorMessage.classList.add('ms_js-pwd-check-msg-active');
+      } // se "pwdErrorMessage" contiene la classe "ms_txt-danger":
+
+
+      if (pwdErrorMessage.classList.contains('ms_txt-danger')) {
+        // la rimuovo e aggiungo la classe "ms_txt-success"
+        pwdErrorMessage.classList.remove('ms_txt-danger');
+        pwdErrorMessage.classList.add('ms_txt-success'); // altrimenti:
       } else {
-        pwdErrorMessage.classList.add('ms_txt-danger');
-      }
-    } // infine stampo in pagina, all'interno di "pwdErrorMessage" "/ Le password inserite devono essere uguali."
+        // se "pwdErrorMessage" non contiene la classe "ms_txt-success" l'aggiungo
+        if (!pwdErrorMessage.classList.contains('ms_txt-success')) {
+          pwdErrorMessage.classList.add('ms_txt-success');
+        }
+      } // infine stampo in pagina, all'interno di "pwdErrorMessage" "/ Le password inserite combaciano!"
 
 
-    pwdErrorMessage.innerHTML = "Le password inserite devono essere uguali."; // se "registerPwdValue" è uguale a "registerPwdConfirmValue" e la lunghezza di entrambi è maggiore o uguale a 8:
-  } else if (registerPwdValue === registerPwdConfirmValue && registerPwdValue.length >= 8 && registerPwdConfirmValue.length >= 8) {
-    // riabilito il "registerBtn" rimuovendo con "removeAttribute()" l'attributo disabled
-    registerBtn.removeAttribute('disabled', ""); // se "pwdErrorMessage" non contiene la classe "ms_js-pwd-check-msg-active" l'aggiungo
-
-    if (!pwdErrorMessage.classList.contains('ms_js-pwd-check-msg-active')) {
-      pwdErrorMessage.classList.add('ms_js-pwd-check-msg-active');
-    } // se "pwdErrorMessage" contiene la classe "ms_txt-danger":
-
-
-    if (pwdErrorMessage.classList.contains('ms_txt-danger')) {
-      // la rimuovo e aggiungo la classe "ms_txt-success"
-      pwdErrorMessage.classList.remove('ms_txt-danger');
-      pwdErrorMessage.classList.add('ms_txt-success'); // altrimenti:
+      pwdErrorMessage.innerHTML = "Le password inserite combaciano!"; // altimenti:
     } else {
-      // se "pwdErrorMessage" non contiene la classe "ms_txt-success" l'aggiungo
-      if (!pwdErrorMessage.classList.contains('ms_txt-success')) {
-        pwdErrorMessage.classList.add('ms_txt-success');
-      }
-    } // infine stampo in pagina, all'interno di "pwdErrorMessage" "/ Le password inserite combaciano!"
+      // riabilito il "registerBtn" rimuovendo con "removeAttribute()" l'attributo disabled
+      registerBtn.removeAttribute('disabled', ""); // se "pwdErrorMessage" contiene la classe "ms_js-pwd-check-msg-active" la rimuovo
+
+      if (pwdErrorMessage.classList.contains('ms_js-pwd-check-msg-active')) {
+        pwdErrorMessage.classList.remove('ms_js-pwd-check-msg-active');
+      } // rimuovo entrambe le classi "ms_txt-danger" e "ms_txt-success" da "pwdErrorMessage"
 
 
-    pwdErrorMessage.innerHTML = "Le password inserite combaciano!"; // altimenti:
-  } else {
-    // riabilito il "registerBtn" rimuovendo con "removeAttribute()" l'attributo disabled
-    registerBtn.removeAttribute('disabled', ""); // se "pwdErrorMessage" contiene la classe "ms_js-pwd-check-msg-active" la rimuovo
+      pwdErrorMessage.classList.remove('ms_txt-danger');
+      pwdErrorMessage.classList.remove('ms_txt-success'); // infine svuoto pwdErrorMessage
 
-    if (pwdErrorMessage.classList.contains('ms_js-pwd-check-msg-active')) {
-      pwdErrorMessage.classList.remove('ms_js-pwd-check-msg-active');
-    } // rimuovo entrambe le classi "ms_txt-danger" e "ms_txt-success" da "pwdErrorMessage"
-
-
-    pwdErrorMessage.classList.remove('ms_txt-danger');
-    pwdErrorMessage.classList.remove('ms_txt-success'); // infine svuoto pwdErrorMessage
-
-    pwdErrorMessage.innerHTML = "";
-  }
-}); // END EVENT LISTENERS
-// END REGISTRATION FORM PASSWORD COMPARISON
+      pwdErrorMessage.innerHTML = "";
+    }
+  }); // END EVENT LISTENERS
+} // END REGISTRATION FORM PASSWORD COMPARISON
 
 /***/ }),
 
