@@ -104,7 +104,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/deliveboo-team3/resources/js/back.js */"./resources/js/back.js");
+module.exports = __webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/js/back.js */"./resources/js/back.js");
 
 
 /***/ })

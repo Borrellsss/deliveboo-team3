@@ -33,6 +33,10 @@ window.Vue = require('vue');
 //     el: '#app',
 // });
 
+// includo axios
+window.axios = require('axios')
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 // importiamo il componente principale di vue
 import App from './views/App.vue' ;
 

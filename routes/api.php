@@ -17,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// rotta per la visione di tutti i ristoranti
+Route::get('/user', 'Api\UserRestaurantController@allRestaurant');
+
+// creo la route per per la visione di tutti i post con vuejs
+Route::get('/{id}/product', 'Api\ProductController@restaurantMenu');
+
+
+
+
+
