@@ -62,7 +62,7 @@
                 {{-- form cooking_time --}}
                 <div class="ms_input-hover-wrapper">
                     <label for="cooking_time" class="ms_js-get-label">Tempo di cottura (minuti)</label>
-                    <input id="cooking_time" type="text" class="@error('cooking_time') is-invalid @enderror ms_js-get-input" name="cooking_time" value="{{ old('cooking_time', $product->cooking_time) }}" min="0" max="99">
+                    <input id="cooking_time" type="number" class="@error('cooking_time') is-invalid @enderror ms_js-get-input" name="cooking_time" value="{{ old('cooking_time', $product->cooking_time) }}" min="0" max="99">
                     @error('cooking_time')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -73,7 +73,7 @@
                 {{-- form price --}}
                 <div class="ms_input-hover-wrapper">
                     <label for="price" class="ms_js-get-label">Prezzo * (€)</label>
-                    <input id="price" type="text" class="@error('price') is-invalid @enderror ms_js-get-input" name="price" value="{{ old('price', $product->price) }}" min="0.00" max="999.99" step="0.01" required>
+                    <input id="price" type="number" class="@error('price') is-invalid @enderror ms_js-get-input" name="price" value="{{ old('price', $product->price) }}" min="0.00" max="999.99" step="0.01" required>
                     @error('price')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
