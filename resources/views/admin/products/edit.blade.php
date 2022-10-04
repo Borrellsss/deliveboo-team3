@@ -82,10 +82,18 @@
                 </div>
                 
                 {{-- form visible --}}
-                <div class="custom-control custom-switch mt-3 mb-3">
-                    <input class="custom-control-input" type="checkbox" id="visible" name="visible" {{ old('visible', $product->visible) ? "checked" : "" }}>
-                    <label class="custom-control-label form-check-label" for="visible">Disponibilità</label>
-                </div>
+                @if (old('visible'))
+                    <div class="custom-control custom-switch mt-3 mb-3">
+                        <input class="custom-control-input" type="checkbox" id="visible" name="visible" {{ old('visible') ? 'checked' : '' }}>
+                        <label class="custom-control-label form-check-label" for="visible">Disponibilità</label>
+                    </div>
+                @else
+                    <div class="custom-control custom-switch mt-3 mb-3">
+                        <input class="custom-control-input" type="checkbox" id="visible" name="visible" {{ $product->visible ? "checked" : "" }}>
+                        <label class="custom-control-label form-check-label" for="visible">Disponibilità</label>
+                    </div>
+                @endif
+                
                 {{-- END INPUTS --}}
 
                 <div class="text-center mb-4">
