@@ -15,7 +15,7 @@
                     <input id="name" type="text" class="@error('name') is-invalid @enderror ms_js-get-input" name="name" value="{{ old('name') }}" autocomplete="name" required>
                     @error('name')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            {{ $message }}
                         </span>
                     @enderror
                 </div>
@@ -26,7 +26,7 @@
                     <input id="cover" type="file" class="@error('cover') is-invalid @enderror" name="cover"> 
                     @error('cover')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            {{ $message }}
                         </span>
                     @enderror
                 </div>
@@ -37,7 +37,7 @@
                     <textarea id="description" class="@error('description') is-invalid @enderror  ms_js-get-input" rows="3" name="description"></textarea>
                     @error('description')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            {{ $message }}
                         </span>
                     @enderror
                 </div>
@@ -48,7 +48,7 @@
                     <textarea class="@error('ingredients') is-invalid @enderror  ms_js-get-input" id="ingredients" rows="2" name="ingredients"></textarea>
                     @error('ingredients')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            {{ $message }}
                         </span>
                     @enderror
                 </div>
@@ -59,7 +59,7 @@
                     <input id="cooking_time" type="text" class="@error('cooking_time') is-invalid @enderror ms_js-get-input" name="cooking_time" value="{{ old('cooking_time') }}" min="0" max="99">
                     @error('cooking_time')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            {{ $message }}
                         </span>
                     @enderror
                 </div>
@@ -70,7 +70,7 @@
                     <input id="price" type="text" class="@error('price') is-invalid @enderror ms_js-get-input" name="price" value="{{ old('price') }}" min="0.00" max="999.99" step="0.01" required>
                     @error('price')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            {{ $message }}
                         </span>
                     @enderror
                 </div>
