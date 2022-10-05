@@ -2,7 +2,7 @@
 
 @section('main_content')
     <section>
-        <h1 class="text-center">Aggiungi prodotto</h1>
+        <h1 class="text-center">Aggiungi prodotto - ciao sono jacopo</h1>
         <div class="ms_form-card-body">
             <form action="{{route('admin.products.update', ['product' =>  $product->id])}}" enctype="multipart/form-data" method="post">
                 @csrf
