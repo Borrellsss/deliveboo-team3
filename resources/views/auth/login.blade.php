@@ -16,7 +16,7 @@
                         <input id="email" type="email" class="@error('email') is-invalid @enderror ms_js-get-input" name="email" value="{{ old('email') }}" autocomplete="email" autofocus required>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                {{ $message }}
                             </span>
                         @enderror
                     </div>
@@ -26,7 +26,7 @@
                         <input id="password" type="password" class="@error('password') is-invalid @enderror ms_js-get-input" name="password"  autocomplete="current-password" required>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                {{ $message }}
                             </span>
                         @enderror
                     </div>

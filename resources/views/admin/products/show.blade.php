@@ -13,63 +13,82 @@
             </div>
         @endif
 
-        {{-- nome --}}
-        <h1>{{$product->name}}</h1>
+        <div class="ms_product-details d-flex">
+            <div class="ms_product-details-left">
+                <div class="ms_product-details-left-img">
+                    {{-- immagine --}}
+                    <img src="{{asset('storage/' . $product->cover)}}" alt="{{$product->name}}">
+                </div>
 
-        {{-- immagine --}}
-        <img src="{{asset('storage/' . $product->cover)}}" alt="{{$product->name}}" style="width: 250px">
+                {{-- disponibilità --}}
+                <div class="{{$product->visible == 0 ? 'ms_txt-danger' : 'ms_txt-success'}} text-center">{{$product->visible == 0 ? 'Non disponibile' : 'Disponibile'}}</div>
+            </div>
+            <div class="ms_product-details-info">
+                {{-- nome --}}
+                <h2>{{$product->name}}</h2>
 
-        {{-- ingredienti --}}
-        @if ($product->ingredients)
-            <p><span style="color: #0073ffff">Ingredienti:</span> {{$product->ingredients}}</p>
-        @endif
+                {{-- ingredienti --}}
+                @if ($product->ingredients)
+                    <div>
+                        <h6>Ingredienti: </h6>
+                        <p>{{$product->ingredients}}</p>
+                    </div>
+                @endif
 
-        {{-- descrizione --}}
-        @if ($product->description)
-            <p><span style="color: #0073ffff">Descrizione:</span> {{$product->description}}</p>
-        @endif
+                {{-- descrizione --}}
+                @if ($product->description)
+                    <div>
+                        <h6>Descrizione: </h6>
+                        <p>{{$product->description}}</p>
+                    </div>
+                @endif
 
-        {{-- tempo di cottura --}}
-        @if ($product->cooking_time)
-            <div><span style="color: #0073ffff">Tempo di cottura:</span> {{$product->cooking_time}} min.</div>
-        @endif
+                {{-- tempo di cottura --}}
+                @if ($product->cooking_time)
+                    <div>
+                        <h6>Tempo di cottura:</h6> 
+                        <div>{{$product->cooking_time}} minuti</div>
+                    </div>
+                @endif
 
-        {{-- prezzo --}}
-        <div><span style="color: #0073ffff">Prezzo:</span> {{$product->price}} €</div>
+                {{-- prezzo --}}
+                <div>
+                    <h6>Prezzo:</h6> 
+                    <div>{{str_replace('.', ',', $product->price)}} €</div>
+                </div>
+                
+                {{-- bottoni modifica ed elimina --}}
+                <form action="{{route('admin.products.destroy', ['product' => $product->id])}}" method="POST">
+                    @csrf
+                    @method('DELETE')
 
-        {{-- disponibilità --}}
-        <div style="color: {{$product->visible == 0 ? 'red' : 'green'}}">{{$product->visible == 0 ? 'Non disponibile' : 'Disponibile'}}</div>
-        
-        {{-- bottoni modifica ed elimina --}}
-        <form action="{{route('admin.products.destroy', ['product' => $product->id])}}" method="POST">
-            @csrf
-            @method('DELETE')
+                    <a href="{{route('admin.products.edit', ['product' => $product->id])}}" class="ms_btn ms_btn-secondary">Modifica prodotto</a>
+                    
+                    {{-- eliminazione prodotto con richiesta di conferma --}}
+                    <a href="#myModal" class="ms_btn ms_btn-primary" data-toggle="modal">Elimina prodotto</a>
 
-            <a href="{{route('admin.products.edit', ['product' => $product->id])}}" class="ms_btn ms_btn-secondary">Modifica prodotto</a>
-            
-            {{-- eliminazione prodotto con richiesta di conferma --}}
-            <a href="#myModal" class="ms_btn ms_btn-primary" data-toggle="modal">Elimina prodotto</a>
-
-            <div id="myModal" class="modal fade">
-                <div class="modal-dialog modal-confirm">
-                    <div class="modal-content">
-                        <div class="modal-header flex-column">
-                            <div class="icon-box d-flex justify-content-center align-items-center mb-3">
-                                <i class="fa-solid fa-exclamation"></i>
-                            </div>		
-                            <h4 class="modal-title mb-3">Sei sicurə?</h4>	
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <p class="pb-2">L'eliminazione del prodotto è <span class="ms_txt-danger">irreversibile</span></p>
-                        </div>
-                        <div class="modal-footer justify-content-center">
-                            <button type="button" class="ms_btn ms_btn-secondary" data-dismiss="modal">Annulla</button>
-                            <input class="ms_btn" type="submit" value="Conferma">
+                    <div id="myModal" class="modal fade">
+                        <div class="modal-dialog modal-confirm">
+                            <div class="modal-content">
+                                <div class="modal-header flex-column">
+                                    <div class="icon-box d-flex justify-content-center align-items-center mb-3">
+                                        <i class="fa-solid fa-exclamation"></i>
+                                    </div>		
+                                    <h4 class="modal-title mb-3">Sei sicurə?</h4>	
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="pb-2">L'eliminazione del prodotto è <span class="ms_txt-danger">irreversibile</span></p>
+                                </div>
+                                <div class="modal-footer justify-content-center">
+                                    <button type="button" class="ms_btn ms_btn-secondary" data-dismiss="modal">Annulla</button>
+                                    <input class="ms_btn" type="submit" value="Conferma">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-        </form>
+        </div>
     </section>
 @endsection
