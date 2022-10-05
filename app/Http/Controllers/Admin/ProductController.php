@@ -201,6 +201,7 @@ class ProductController extends Controller
         // salvo in $product il prodotto da modificare così da poter mostrare il form della edit precompilato con i dati necessari
         $product = Product::findOrFail($id);
 
+        // dd($product);
         // salvo nei $data il prodotto
         $data = [
             'product' => $product,

@@ -2,7 +2,7 @@
 
 @section('main_content')
     <section>
-        <h1 class="text-center">Aggiungi prodotto - ciao sono jacopo</h1>
+        <h1 class="text-center">Modifica prodotto</h1>
         <div class="ms_form-card-body">
             <form action="{{route('admin.products.update', ['product' =>  $product->id])}}" enctype="multipart/form-data" method="post">
                 @csrf
@@ -82,10 +82,17 @@
                 </div>
                 
                 {{-- form visible --}}
-                <div class="custom-control custom-switch mt-3 mb-3">
-                    <input class="custom-control-input" type="checkbox" id="visible" name="visible" {{ old('visible', $product->visible) ? "checked" : "" }}>
-                    <label class="custom-control-label form-check-label" for="visible">Disponibilità</label>
-                </div>
+                @if (old('visible'))
+                    <div class="custom-control custom-switch mt-3 mb-3">
+                        <input class="custom-control-input" type="checkbox" id="visible" name="visible" {{ old('visible') ? 'checked' : '' }}>
+                        <label class="custom-control-label form-check-label" for="visible">Disponibilità</label>
+                    </div>
+                @else
+                    <div class="custom-control custom-switch mt-3 mb-3">
+                        <input class="custom-control-input" type="checkbox" id="visible" name="visible" {{ $product->visible ? "checked" : "" }}>
+                        <label class="custom-control-label form-check-label" for="visible">Disponibilità</label>
+                    </div>
+                @endif
                 {{-- END INPUTS --}}
 
                 <div class="text-center mb-4">

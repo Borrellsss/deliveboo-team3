@@ -94,8 +94,11 @@ textarea:not([type=checkbox], .ms_btn):focus-visible {
   font-size: 1rem;
 }
 
-main *:is(h1, h2, h3, h4, h5, h6) {
+main h1 {
   margin-bottom: 0.8em;
+}
+main :is(h2, h3, h4, h5, h6) {
+  margin-bottom: 0.5em;
 }
 
 .ms_asterisk {
@@ -347,4 +350,51 @@ section {
 .ms_form-card-body input:not([type=checkbox]),
 .ms_form-card-body textarea {
   margin-bottom: 0.5rem;
+}
+
+section .ms_form-card-body {
+  padding: 0 0;
+}
+
+.ms_product-details {
+  justify-content: space-between;
+}
+.ms_product-details-left {
+  width: 35%;
+}
+.ms_product-details-left-img {
+  margin-bottom: 1rem;
+  aspect-ratio: 1/1;
+  align-self: flex-start;
+  border: 5px solid #feaa02;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+.ms_product-details-left-img > img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: all 200ms ease-in;
+}
+.ms_product-details-left-img > img:hover {
+  scale: 1.05;
+}
+.ms_product-details-left > div.text-center {
+  font-size: 1.5rem;
+}
+.ms_product-details-info {
+  width: 60%;
+}
+.ms_product-details-info > div {
+  margin-bottom: 1rem;
+}
+.ms_product-details-info > div:not(div:last-of-type) {
+  padding-bottom: 0.7rem;
+  border-bottom: 2px solid #feaa02;
+}
+.ms_product-details-info > div > p {
+  margin-bottom: 0;
+}
+.ms_product-details-info > h2, .ms_product-details-info h6 {
+  color: #740602;
 }

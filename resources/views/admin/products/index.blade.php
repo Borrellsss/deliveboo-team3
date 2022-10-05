@@ -19,7 +19,7 @@
             <a class="ms_btn" href="{{route('admin.products.create')}}">Aggiungi nuovo prodotto</a>
         </div>
 
-        <div class="container">
+        <div class="container-fluid">
             @if (isset($products) && count($products) > 0)
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                     @foreach ($products as $product)
