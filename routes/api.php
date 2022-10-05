@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/user', 'Api\UserRestaurantController@allRestaurant');
 
 // creo la route per per la visione di tutti i post con vuejs
-Route::get('/{id}/product', 'Api\ProductController@restaurantMenu');
+Route::get('/{id}/menu', 'Api\ProductController@restaurantMenu');
 
 
 

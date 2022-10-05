@@ -1,22 +1,20 @@
 <template>
-    <div id='app'>
-        <HeaderComponent />
-        <UserRestaurantComponent />
+    <div>
+            <HeaderComponent />
+       <main>
+			<router-view></router-view>
+	    </main>
     </div>
 </template>
 
 <script>
 
 import HeaderComponent from '../components/HeaderComponent.vue';
-import UserRestaurantComponent from '../components/UserRestaurantComponent.vue'
-
 
 export default {
     name: 'App',
     components: {
-        HeaderComponent,
-        UserRestaurantComponent
-       
+        HeaderComponent, 
     }
 }
 </script>
