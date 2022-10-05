@@ -33,14 +33,23 @@ import { isArray } from 'lodash';
 //     el: '#app',
 // });
 
+// includo axios
+window.axios = require('axios')
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 // importiamo il componente principale di vue
 import App from './views/App.vue' ;
+
+// importo il file router.js
+import router from './router.js'
 
 const app = new Vue({
     // sostituiamo public con root
     el: '#root', 
     // avvia come primo componente vue 
-    render: h=> h(App)
+    render: h=> h(App),
+    // passo come argomento router
+    router
 });
 
 
