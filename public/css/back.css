@@ -110,6 +110,11 @@ main :is(h2, h3, h4, h5, h6) {
   color: #f44;
 }
 
+.ms_txt-warning {
+  font-weight: 400;
+  color: #fb3;
+}
+
 .ms_txt-success {
   color: #00c851;
   font-weight: 400;
@@ -396,5 +401,15 @@ section .ms_form-card-body {
   margin-bottom: 0;
 }
 .ms_product-details-info > h2, .ms_product-details-info h6 {
+  color: #740602;
+}
+
+.ms_user-home-info {
+  font-size: 1.1rem;
+}
+.ms_user-home-info > h1 span {
+  color: #feaa02;
+}
+.ms_user-home-info > div span {
   color: #740602;
 }

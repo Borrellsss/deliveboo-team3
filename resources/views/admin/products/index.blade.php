@@ -64,9 +64,7 @@
                     @endforeach
                 </div>
             @else
-                <div class="text-center">
-                    Che cosa aspetti? Aggiungi un nuovo prodotto al tuo Menu!
-                </div>
+                <h2 class="text-center">Che cosa aspetti<span class="ms_txt-warning">?</span> Aggiungi un nuovo prodotto al tuo Menu<span class="ms_txt-danger">!</span></h2>
             @endif
         </div>
     </section>
