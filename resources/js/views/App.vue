@@ -1,15 +1,16 @@
 <template>
     <div>
             <HeaderComponent/>
+            <MainComponent/>
        <main>
 			<router-view></router-view>
 	    </main>
-        <MainComponent/>
         <FooterComponent/>
     </div>
 </template>
 
 <script>
+
 
 import HeaderComponent from '../components/HeaderComponent.vue';
 import MainComponent from '../components/MainComponent.vue';
@@ -23,6 +24,8 @@ export default {
         FooterComponent,
     }
 }
+
+
 </script>
 
 <style lang="scss">
