@@ -38,5 +38,5 @@ export default {
 @import '../style/variables';
 @import '../style/common';
    
-</style>>
+</style>
 
