@@ -9,23 +9,25 @@
                   <img class="logo" src="images/toast-rider-logo.svg" alt="toast-rider-logo">
                 </div>
             </div>
-            <div class="col">
+            <div class="col  d-flex align-items-center justify-content-end">
                 <div class="nav-container">
-                    <div class="ms_banner d-flex justify-content-end">
+                    <div class="ms_banner d-flex">
                         <div class="ms_text d-flex align-items-center">
                             Sei un ristoratore? 
                         </div>
-                        <div class="ms_login d-flex align-items-center">
+                        <div class="ms_login">
                             <a href="/login" class="js_btn">
                                 Accedi
                             </a>
                         </div>
-                        <div class="ms_text d-flex align-items-center">
+                        <div class="ms_text">
                             oppure 
+                        </div >
+                        <div class="ms_register">
+                            <a href="/login" class="js_btn">
+                                Registrati
+                            </a>
                         </div>
-                        <a href="/register" class="js_btn">
-                            Registrati
-                        </a>
                    </div>
                </div>
             </div>
@@ -61,10 +63,22 @@ header{
             width: 100%;
         }
 
+    }
+
+    .ms_banner{
+
         .js_btn{
-            color: red;
-            background-color: red;
+            margin: 0 0.3rem;
+            padding: 0.1em 0.8em;
+            display: inline-block;
+            border: none;
+            border-radius: 10rem;
+            background-color: $primary-color;
+            color:white;
+            font-weight: 600;
+
         }
+
     }
 }
 
