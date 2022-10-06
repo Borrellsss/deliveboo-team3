@@ -1,10 +1,11 @@
 <template>
     <div>
-            <HeaderComponent />
+            <HeaderComponent/>
        <main>
 			<router-view></router-view>
 	    </main>
-        <MainComponent />
+        <MainComponent/>
+        <FooterComponent/>
     </div>
 </template>
 
@@ -12,12 +13,14 @@
 
 import HeaderComponent from '../components/HeaderComponent.vue';
 import MainComponent from '../components/MainComponent.vue';
+import FooterComponent from '../components/FooterComponent.vue';
 
 export default {
     name: 'App',
     components: {
         HeaderComponent, 
-        MainComponent
+        MainComponent,
+        FooterComponent,
     }
 }
 </script>
