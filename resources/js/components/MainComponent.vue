@@ -1,16 +1,29 @@
 <template>
   <main>
     ciao sono il main component
+    <JumbotronComponent/>
   </main>
 </template>
 
 <script>
-export default {
-        name: 'MainComponent'
-   }
+
+  import JumbotronComponent from '../components/sections/JumbotronComponent.vue';
+  
+  export default {
+      name: 'MainComponent',
+      components: {
+          JumbotronComponent,
+      }
+  }
 
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+  main{
+    background-color: lightgray;
+  }
+
+  
 
 </style>
