@@ -1,106 +1,149 @@
 <template>
-    <footer>
-    <div class="ms_container d-flex flex-column align-items-center">
-        <div class="logo_container">
-          <!-- <img src="../assets/img/logo_seo_2x.png" alt="Seo logo"> -->
-         </div>
-          <ul class="footer_links d-flex justify-content-between">
-            <FooterList 
-                v-for="navLink, index in navLinks" :key="index" :item="navLink"
-              />
+    <!-- Footer -->
+<footer class="text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4">
+
+    <!-- Section: Links -->
+    <section class="links-container">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col">
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              Toast Rider
+            </li>
+            <li>
+              <a href="#!" class="text-white">Storia</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Assistenza</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Cerca locale</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Ami i toast?</a>
+            </li>
           </ul>
-          <ul class="site_info d-flex justify-content-center">
-              <li>
-                &copy; Copyright 2012-2020
-              </li>
-              <li>
-                Avada theme by <span>ThemeFusion</span>
-              </li>
-              <li>
-              All Rights Reserved
-              </li>
-              <li>
-                Powered by <span>WordPress</span>
-              </li> 
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col">
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              Dove siamo
+            </li>
+            <li>
+              <a href="#!" class="text-white">Italia</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">San Marino</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Isole Fær Øer</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Cina</a>
+            </li>
           </ul>
-          <ul class="social_links d-flex justify-content-center">
-              <FooterSocial
-                v-for="socialLink, index in socialLinks" :key="index" :symbol="socialLink"
-              />
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col">
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              Lavora con noi
+            </li>
+            <li>
+              <a href="#!" class="text-white">Entra nel Team</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Parti da zero</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Offerte studenti</a>
+            </li>
           </ul>
-     </div>
-  </footer>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col">
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Note Legali</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Condizioni</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Cookies</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Facci causa!</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </section>
+
+    <!-- Section: Social media -->
+    <section class="social-media-links mb-4">
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+
+    </section>
+    <!-- Section: Social media -->
+
+
+    <!-- Section: Links -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright | Toast Rider S.p.A. 
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
 </template>
 
 <script>
-  import FooterList from './sections/FooterList.vue'
-  import FooterSocial from './sections/FooterList.vue'
 
 export default {
   name: 'FooterComponent',
-  components: {
-        FooterList,
-        FooterSocial
- },
-  data() {
-     return {
-         navLinks: [
-             {
-                 text: 'Home',
-                 url: '#',
-                 current: true,
-             },
-             {
-                 text: 'Who We Are',
-                 url: '#',
-                 current: false,
-             },
-             {
-                 text: 'What We Do',
-                 url: '#',
-                 current: false,
-             },
-             {
-                 text: 'Where We Work',
-                 url: '#',
-                 current: false,
-             },
-             {
-                 text: 'Carrers',
-                 url: '#',
-                 current: false,
-             },
-             {
-                 text: 'News',
-                 url: '#',
-                 current: false,
-             },
-              {
-                 text: 'Get in Touch Now',
-                 url: '#',
-                 current: false,
-             },
-         ],
-         socialLinks: [
-             {
-                 name: 'facebook',
-                 url: '#',
-             },
-             {
-                 name: 'instagram',
-                 url: '#',
-             },
-             {
-                 name: 'twitter',
-                 url: '#',
-             }, 
-                  {
-                 name: 'youtube',
-                 url: '#',
-             }, 
-        ],
-     };
- }
 }
 
 </script>
@@ -113,46 +156,22 @@ export default {
   *{
     margin: 0 auto;
 }
-.ms_container{ 
-    width: 60%;
-    .logo_container{
-    
-          img{
-            width: 170px;
-            margin: 80px 0 50px 0;
-          }
-      }
-    ul{
-      width: 100%;
-     }
-      .footer_links{
-      margin-bottom: 50px ;  
-      color: red;    
-      }
 
-   .site_info{
-    margin-bottom: 40px;
-          li{
-            margin-right: 1rem;
-            color: red; 
-                  span{
-                    font-weight: 600;
-                    color: red;
-                  }
-             }
-          li:after{
-          content: "|";
-          margin-left: 10px;
-           }
-     }
-    .social_links{
-      margin-bottom: 40px;
-      color: red;
-          
-          li{
-          margin-right: 1rem;
-          font-size: 0.8rem;
-          }
-     }
+footer{
+
+  background-color: rgb(47, 47, 47);
+  .links-container{
+    margin-top: 3rem;
   }
+  .social-media-links{
+    margin-top: 3rem;
+  }
+
+  .btn{
+    padding: 13px 18px;
+    border-radius: 50%;
+  }
+
+}
+  
 </style>
