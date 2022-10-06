@@ -1,10 +1,10 @@
 <template>
     <div>
             <HeaderComponent/>
+            <MainComponent/>
        <main>
 			<router-view></router-view>
 	    </main>
-        <MainComponent/>
         <FooterComponent/>
     </div>
 </template>
