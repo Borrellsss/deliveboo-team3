@@ -16,8 +16,16 @@
         <div class="ms_product-details d-flex">
             <div class="ms_product-details-left">
                 <div class="ms_product-details-left-img">
-                    {{-- immagine --}}
-                    <img src="{{asset('storage/' . $product->cover)}}" alt="{{$product->name}}">
+                    
+                    @if ($product->cover)
+
+                        {{-- immagine --}}
+                        <img src="{{asset('storage/' . $product->cover)}}" alt="{{$product->name}}">
+                    @else
+
+                        {{-- immagine placeholder --}}
+                        <img class="ms_placeholder-img" src="{{asset('images/PinClipart.com_add-clip-art-download_1266771.png')}}" alt="{{$product->name}}">
+                    @endif
                 </div>
 
                 {{-- disponibilità --}}

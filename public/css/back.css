@@ -374,14 +374,26 @@ section .ms_form-card-body {
   border: 5px solid #feaa02;
   border-radius: 1.5rem;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #aeaeae;
 }
-.ms_product-details-left-img > img {
+.ms_product-details-left-img > img:not(.ms_placeholder-img) {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   transition: all 200ms ease-in;
 }
-.ms_product-details-left-img > img:hover {
+.ms_product-details-left-img > img:not(.ms_placeholder-img):hover {
+  scale: 1.05;
+}
+.ms_product-details-left-img > .ms_placeholder-img {
+  width: 80%;
+  aspect-ratio: 1/1;
+  transition: all 100ms ease-in;
+}
+.ms_product-details-left-img:hover .ms_placeholder-img {
   scale: 1.05;
 }
 .ms_product-details-left > div.text-center {

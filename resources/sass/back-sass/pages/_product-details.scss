@@ -11,8 +11,12 @@
             border: 5px solid $primary-color;
             border-radius: 1.5rem;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #aeaeae;
     
-            > img {
+            > img:not(.ms_placeholder-img) {
                 height: 100%;
                 object-fit: cover;
                 transition: all 200ms ease-in;
@@ -20,6 +24,15 @@
                 &:hover {
                     scale: 1.05;
                 }
+            }
+            > .ms_placeholder-img {
+                width: 80%;
+                aspect-ratio: 1 / 1;
+                transition: all 100ms ease-in;
+                
+            }
+            &:hover .ms_placeholder-img {
+                scale: 1.05;
             }
         }
         > div.text-center {
