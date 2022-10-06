@@ -17,7 +17,7 @@
                         </div>
                         <div class="ms_login">
                             <a href="/login" class="js_btn">
-                                Accedi
+                                <i class="fa-thin fa-user"></i>  Accedi
                             </a>
                         </div>
                         <div class="ms_text">

@@ -46,6 +46,7 @@ export default {
           margin: auto;
       }
  .js_container{
+       background-image: url(https://i.ibb.co/zXPr22D/jumbotron-img.jpg);
       //  background-image: url(../../../../public/images/jumbotron-img.jpg);
        background-size: cover;
        background-repeat: no-repeat;

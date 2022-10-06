@@ -15,6 +15,7 @@ import HeaderComponent from '../components/HeaderComponent.vue';
 import MainComponent from '../components/MainComponent.vue';
 import FooterComponent from '../components/FooterComponent.vue';
 
+
 export default {
     name: 'App',
     components: {
@@ -29,5 +30,7 @@ export default {
 @import '~bootstrap/scss/bootstrap';
 @import '../style/variables';
 @import '../style/common';
+
+
 
 </style>

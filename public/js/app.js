@@ -2120,7 +2120,9 @@ var staticRenderFns = [function () {
     attrs: {
       href: "/login"
     }
-  }, [_vm._v("\n                              Accedi\n                          ")])]), _vm._v(" "), _c("div", {
+  }, [_c("i", {
+    staticClass: "fa-thin fa-user"
+  }), _vm._v("  Accedi\n                          ")])]), _vm._v(" "), _c("div", {
     staticClass: "ms_text"
   }, [_vm._v("\n                          oppure \n                      ")]), _vm._v(" "), _c("div", {
     staticClass: "ms_register"
@@ -6747,7 +6749,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "*[data-v-3e39fe57] {\n  margin: auto;\n}\n.js_container[data-v-3e39fe57] {\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position-x: 50%;\n  background-position-y: 0;\n  height: 400px;\n  min-width: 100%;\n  color: red;\n}\n.js_container .top_header[data-v-3e39fe57] {\n  padding-top: 40px;\n}\n.js_container .top_header .logo img[data-v-3e39fe57] {\n  width: 130px;\n}\n.js_container .top_header nav ul li[data-v-3e39fe57] {\n  font-size: 1.2rem;\n  margin-right: 30px;\n}\n.js_container .top_header nav .js_button[data-v-3e39fe57] {\n  margin-left: 10px;\n}\n.js_container .js_jumbotron[data-v-3e39fe57] {\n  background-color: pink;\n}\n.js_container .js_jumbotron .jumbotron-text[data-v-3e39fe57] {\n  text-align: center;\n  padding: 0 40px;\n}\n.js_container .js_jumbotron .jumbotron-text p[data-v-3e39fe57] {\n  margin-top: 20px;\n  padding-right: 1.5rem;\n}", ""]);
+exports.push([module.i, "*[data-v-3e39fe57] {\n  margin: auto;\n}\n.js_container[data-v-3e39fe57] {\n  background-image: url(https://i.ibb.co/zXPr22D/jumbotron-img.jpg);\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position-x: 50%;\n  background-position-y: 0;\n  height: 400px;\n  min-width: 100%;\n  color: red;\n}\n.js_container .top_header[data-v-3e39fe57] {\n  padding-top: 40px;\n}\n.js_container .top_header .logo img[data-v-3e39fe57] {\n  width: 130px;\n}\n.js_container .top_header nav ul li[data-v-3e39fe57] {\n  font-size: 1.2rem;\n  margin-right: 30px;\n}\n.js_container .top_header nav .js_button[data-v-3e39fe57] {\n  margin-left: 10px;\n}\n.js_container .js_jumbotron[data-v-3e39fe57] {\n  background-color: pink;\n}\n.js_container .js_jumbotron .jumbotron-text[data-v-3e39fe57] {\n  text-align: center;\n  padding: 0 40px;\n}\n.js_container .js_jumbotron .jumbotron-text p[data-v-3e39fe57] {\n  margin-top: 20px;\n  padding-right: 1.5rem;\n}", ""]);
 
 // exports
 
