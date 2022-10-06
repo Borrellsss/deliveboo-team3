@@ -9,7 +9,7 @@
                                 <div class="card-image">
                                     <img :src="user.cover" :alt="user.business_name">
                                 </div>
-                                <a class="card-action" href="#">❤</a>
+                                <a class="card-action" href="#" style="">❤</a>
                                 <div class="card-heading">
                                     {{user.business_name}}
                                 </div>
@@ -87,11 +87,13 @@ export default {
         padding: 15px;
         font-size: 15px;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+        opacity: 0;
     }
 
     .card-action:hover {
         color: #fff;
         background: #E26D5C;
+        opacity: 0;
     }
 
     .card-heading {
