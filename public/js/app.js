@@ -1977,7 +1977,9 @@ __webpack_require__.r(__webpack_exports__);
   name: 'ProductComponent',
   data: function data() {
     return {
-      products: []
+      products: [],
+      // array vuoto per il carrello
+      cart: []
     };
   },
   mounted: function mounted() {
@@ -1986,7 +1988,91 @@ __webpack_require__.r(__webpack_exports__);
     // $this.route.paramas.id rappresenta il passaggio di informazioni eseguiro con il router link
     axios.get("http://127.0.0.1:8000/api/".concat(this.$route.params.id, "/menu")).then(function (response) {
       _this.products = response.data.results;
-    });
+    }); // se cart esiste in LocalStorage
+
+    if (localStorage.getItem('cart')) {
+      try {
+        // trasformalo in stringa
+        this.cart = JSON.parse(localStorage.getItem('cart'));
+      } catch (e) {
+        // altrimenti rimuovi cart da localStorage
+        localStorage.removeItem('cart');
+      }
+    }
+  },
+  methods: {
+    // funzione che aggiunge il prodotto al carrello
+    addItem: function addItem(product) {
+      try {
+        // se non esiste il carrello o la sua conversione in stringa è zero
+        if (localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0) {
+          // setta la quantità del prodotto a 1
+          product.quantity = 1; // pusha nell'array il prodotto
+
+          this.cart.push(product); // salva il carrello
+
+          this.saveCart();
+        } // altrimenti
+        else {
+          // salvo la stringa di LocalStorage in this.cart
+          this.cart = JSON.parse(localStorage.getItem('cart')); //nel caso in cui l'utente voglia ordinare da un altro ristorante:
+          // se lo user id dell'elemento con indice 0 (primo elemento del carrello che determina l'unico ristorante da cui poter ordinare) 
+          // è diverso dalla chiave user.id dentro product  (confronto delle FK)
+
+          if (this.cart[0].user_id !== product.user_id) {
+            // se conferma di cambiare ristorante 
+            if (confirm('Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello. Vuoi cambiare ristorante? ')) {
+              // svuota il carrello
+              this.cart = []; // setta la quantità del prodotto (del nuovo ristorante)
+
+              product.quantity = 1; // pusha nell'array il prodotto
+
+              this.cart.push(product); // salva il carrello
+
+              this.saveCart();
+            }
+
+            ;
+          } //altrimenti
+          else {
+            //se non cambia ristorante:
+            // salva l'id del prodotto selezionato
+            var check = this.cart.find(function (_ref) {
+              var id = _ref.id;
+              return id == product.id;
+            }); // se non esiste già
+
+            if (!check) //setta la quantità ad 1
+              product.quantity = 1; //altrimenti
+            else // incrementa di 1 la quantità
+              for (var i = 0; i < this.cart.length + 1; i++) {
+                if (this.cart[i].id == product.id) {
+                  this.cart[i].quantity = this.cart[i].quantity + 1;
+                  this.saveCart();
+                  return;
+                }
+              } // pusha nell'array il prodotto
+
+            this.cart.push(product); // salva il carrello
+
+            this.saveCart();
+          }
+        }
+      } // se c'è un errore rimuovi il carrello da localStorage
+      catch (e) {
+        localStorage.removeItem('cart');
+      }
+    },
+    // funzione per la rimozione del prodotto dal carrello
+    removeItem: function removeItem(x) {
+      this.cart.splice(x, 1);
+      this.saveCart();
+    },
+    // funzione salva carrello
+    saveCart: function saveCart() {
+      var parsed = JSON.stringify(this.cart);
+      localStorage.setItem('cart', parsed);
+    }
   }
 });
 
@@ -2210,7 +2296,14 @@ var render = function render() {
       }
     }), _vm._v(" "), _c("p", {
       staticClass: "card-text"
-    }, [_vm._v("Prezzo: " + _vm._s(product.price))])])]);
+    }, [_vm._v("Prezzo: " + _vm._s(product.price))]), _vm._v(" "), _c("a", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.addItem(product);
+        }
+      }
+    }, [_vm._v("Add to cart")])])]);
   }), 0)]);
 };
 
@@ -54674,9 +54767,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\back-sass\back.scss */"./resources/sass/back-sass/back.scss");
+__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })
