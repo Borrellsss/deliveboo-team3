@@ -377,7 +377,7 @@ section .ms_form-card-body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #aeaeae;
+  background-color: #d4d4d4;
 }
 .ms_product-details-left-img > img:not(.ms_placeholder-img) {
   height: 100%;
