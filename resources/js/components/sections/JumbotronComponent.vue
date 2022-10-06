@@ -42,10 +42,15 @@ export default {
 
 <style lang="scss" scoped>
 
+@import '../../style/variables';
+@import '../../style/common';
+
+
   *{
           margin: auto;
       }
  .js_container{
+      margin-top: 5.5rem;
        background-image: url(https://i.ibb.co/zXPr22D/jumbotron-img.jpg);
       //  background-image: url(../../../../public/images/jumbotron-img.jpg);
        background-size: cover;
@@ -54,7 +59,7 @@ export default {
        background-position-y: 0;
        height: 500px;
        min-width: 100%;
-       color: red;
+       color: $secondary-color;
            .top_header{
              padding-top: 40px;
                  .logo{
@@ -78,7 +83,6 @@ export default {
                   }
                }
            .js_jumbotron{
-              background-color: pink;
               
                
             
@@ -93,22 +97,7 @@ export default {
            }
                
           }
-            
-          // SCHERMO LARGE 
-          @media only screen and (max-width: 992px) {
-                  .js_container{
-                    background-color: black;
-                  }
-                       background-image: none;
-                  }
-                
-           // SCHERMO PICCOLO 
-           @media only screen and (max-width: 768px) {
-                  .js_container{
-                    background-color: black;
-                  }
-                       background-image: none;
-                  }
+       
                 }
  </style>
  

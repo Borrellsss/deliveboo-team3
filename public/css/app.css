@@ -9244,6 +9244,7 @@ h3 {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 body {
@@ -9345,8 +9346,8 @@ dl, ol, ul {
 }
 
 h2 {
-  font-weight: 700;
-  font-size: 2.8rem;
+  font-weight: 900;
+  font-size: 3rem;
 }
 
 h3 {
@@ -9365,9 +9366,9 @@ h5 {
 }
 
 p {
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-align: center;
-  font-weight: 400;
+  font-weight: 900;
 }
 
 /*!

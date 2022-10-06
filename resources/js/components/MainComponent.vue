@@ -19,6 +19,9 @@
 
 <style lang="scss" scoped>
 
+@import '../style/variables';
+@import '../style/common';
+
   main{
     background-color: lightgray;
   }
