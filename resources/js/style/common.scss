@@ -32,14 +32,13 @@ a {
 
 // buttons
 .ms_btn {
-    margin-bottom: 0.5rem;
-    padding: 0.5em 1.5em;
+    padding: 0.2em 1em;
     display: inline-block;
     border: none;
     border-radius: 10rem;
     background-color: $secondary-color;
     color: $primary-color;
-    font-weight: 600;
+    // font-weight: 600;
 
     &:hover {
         text-decoration: none;
@@ -76,9 +75,6 @@ dl, ol, ul {
     margin-bottom: 0rem;
 }
 
-.svg-inline--fa{
-    height: 2em;
-}
 
 .row{
     --bs-gutter-x: 0px;
@@ -93,7 +89,7 @@ dl, ol, ul {
 .js_container {
     width: 65%;
     margin: 0 auto;
-    min-width: 800px;
+    // min-width: 800px;
     position: relative;
 }
 

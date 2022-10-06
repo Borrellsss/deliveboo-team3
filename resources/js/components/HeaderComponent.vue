@@ -2,45 +2,35 @@
 
     <!-- HEADER -->
    <header>
-
-        <!-- Header Top -->
-        <div class="ms_header-top">
-
-            <!-- Banner -->
-            <div class="ms_banner">
-                <div class="ms_text">
-                    Sei un ristoratore? 
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="logo-container">
+                  <img class="logo" src="images/toast-rider-logo.svg" alt="toast-rider-logo">
                 </div>
-
-                <!-- Login -->
-                <div class="ms_login">
-                    <a href="/login" class="ms_btn">
-                        Accedi
-                    </a>
-                </div>
-
-                <div class="ms_text">
-                    oppure 
-                </div>
-                
-                <!-- Register -->
-                <a href="/register" class="ms_btn">
-                    Registrati
-                </a>
-
-                
             </div>
-        </div>
-
-        <!-- Header Bottom -->
-        <div class="ms_header-bottom">
-
-            <!-- Logo -->
-            <div class="logo-container">
-                
-                <img class="logo" src="images/toast-rider-logo.svg" alt="toast-rider-logo">
+            <div class="col">
+                <div class="nav-container">
+                    <div class="ms_banner d-flex justify-content-end">
+                        <div class="ms_text d-flex align-items-center">
+                            Sei un ristoratore? 
+                        </div>
+                        <div class="ms_login d-flex align-items-center">
+                            <a href="/login" class="js_btn">
+                                Accedi
+                            </a>
+                        </div>
+                        <div class="ms_text d-flex align-items-center">
+                            oppure 
+                        </div>
+                        <a href="/register" class="js_btn">
+                            Registrati
+                        </a>
+                   </div>
+               </div>
             </div>
-        </div>
+    </div>
+  </div>
    </header>
 </template>
 
@@ -56,40 +46,27 @@ export default {
 @import '../style/variables';
 @import '../style/common';
 
-header {
+// *{
+//     margin: 0 auto;
+// }
 
-    .ms_header-top,
-    .ms_header-bottom,
-    .ms_banner {
-        display: flex;
-        align-items: center;
-    }
-    .ms_header-top {
-        height: 5rem ;
-        background-color: $primary-color; 
-        color: $secondary-color;
-        justify-content: center;
+header{
+    display: flex;
+    align-items: center;
+    height: 6rem;
 
-        .ms_text {
-            padding-inline: 0.5rem;
-        }
-
-        .ms_login {
-            margin-right: 0.5rem;
-        }
-    }
-
-
-    .ms_header-bottom {
-        height: 5rem ;
-        color: $primary-color;
-        justify-content: space-between;
-        padding: 1.2rem;
-        border-bottom: 1px solid lightgrey;
-
+    .logo-container{
+        width: 5rem;
         .logo {
-            width: 35%;
+            width: 100%;
+        }
+
+        .js_btn{
+            color: red;
+            background-color: red;
         }
     }
 }
+
+
 </style>
