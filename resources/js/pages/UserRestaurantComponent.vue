@@ -3,8 +3,8 @@
         <!-- <ProductComponent :users = user /> -->
         <div class="container" style="margin-top:50px;">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-                    <div v-for="user in users" :key="user.id" class="col">
-                        <router-link  :to="{name: 'products-page',params: {id: user.id}}" class="d-flex">
+                    <div v-for="user in users" :key="user.id" class="col d-flex">
+                        <!-- <router-link  :to="{name: 'products-page',params: {id: user.id}}" class="d-flex"> -->
                             <div  class="card-sl">
                                 <div class="card-image">
                                     <img :src="user.cover" :alt="user.business_name">
@@ -16,9 +16,10 @@
                                 <div class="card-text">
                                     {{user.address}}
                                 </div>
-                                <a href="#" class="card-button">Esplora</a>
+                                <router-link  :to="{name: 'products-page',params: {id: user.id}}" class="card-button"> Esplora</router-link>
+                                <!-- <a href="#" class="card-button">Esplora</a> -->
                             </div>
-                      </router-link>
+                      <!-- </router-link> -->
                     </div>
                 </div>  
             </div> 
