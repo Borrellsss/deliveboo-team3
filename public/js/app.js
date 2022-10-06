@@ -2092,11 +2092,27 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("header", [_c("div", {
-    staticClass: "container"
+    staticClass: "ms_header-top"
   }, [_c("div", {
-    staticClass: "row"
+    staticClass: "ms_banner"
   }, [_c("div", {
-    staticClass: "col"
+    staticClass: "ms_text"
+  }, [_vm._v("\n                 Sei un ristoratore? \n             ")]), _vm._v(" "), _c("div", {
+    staticClass: "ms_login"
+  }, [_c("a", {
+    staticClass: "ms_btn",
+    attrs: {
+      href: "/login"
+    }
+  }, [_vm._v("\n                     Accedi\n                 ")])]), _vm._v(" "), _c("div", {
+    staticClass: "ms_text"
+  }, [_vm._v("\n                 oppure \n             ")]), _vm._v(" "), _c("a", {
+    staticClass: "ms_btn",
+    attrs: {
+      href: "/register"
+    }
+  }, [_vm._v("\n                 Registrati\n             ")])])]), _vm._v(" "), _c("div", {
+    staticClass: "ms_header-bottom"
   }, [_c("div", {
     staticClass: "logo-container"
   }, [_c("img", {
@@ -2105,29 +2121,7 @@ var staticRenderFns = [function () {
       src: "images/toast-rider-logo.svg",
       alt: "toast-rider-logo"
     }
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "col"
-  }, [_c("div", {
-    staticClass: "nav-container"
-  }, [_c("div", {
-    staticClass: "ms_banner d-flex justify-content-end"
-  }, [_c("div", {
-    staticClass: "ms_text d-flex align-items-center"
-  }, [_vm._v("\n                          Sei un ristoratore? \n                      ")]), _vm._v(" "), _c("div", {
-    staticClass: "ms_login d-flex align-items-center"
-  }, [_c("a", {
-    staticClass: "js_btn",
-    attrs: {
-      href: "/login"
-    }
-  }, [_vm._v("\n                              Accedi\n                          ")])]), _vm._v(" "), _c("div", {
-    staticClass: "ms_text d-flex align-items-center"
-  }, [_vm._v("\n                          oppure \n                      ")]), _vm._v(" "), _c("a", {
-    staticClass: "js_btn",
-    attrs: {
-      href: "/register"
-    }
-  }, [_vm._v("\n                          Registrati\n                      ")])])])])])])]);
+  })])])]);
 }];
 render._withStripped = true;
 
@@ -6707,7 +6701,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "*[data-v-153bfd55] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\nbody[data-v-153bfd55] {\n  margin: 0;\n}\nimg[data-v-153bfd55] {\n  width: 100%;\n  display: block;\n}\nul[data-v-153bfd55] {\n  list-style-type: none;\n}\na[data-v-153bfd55] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-153bfd55] {\n  color: #feaa02;\n}\n.ms_btn[data-v-153bfd55] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #feaa02;\n}\n.ms_btn[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #feaa02;\n}\n.ms_btn-secondary[data-v-153bfd55] {\n  background-color: #feaa02;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-153bfd55] {\n  background-color: #264f36;\n  color: #feaa02;\n}\n.ms_btn-tertiary[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #feaa02;\n}\nul[data-v-153bfd55] {\n  padding-left: 0;\n}\ndl[data-v-153bfd55], ol[data-v-153bfd55], ul[data-v-153bfd55] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.row[data-v-153bfd55] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\n.js_container[data-v-153bfd55] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-153bfd55] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-153bfd55] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-153bfd55] {\n  padding: 0.5rem 2rem;\n}\nh2[data-v-153bfd55] {\n  font-weight: 700;\n  font-size: 2.8rem;\n}\nh3[data-v-153bfd55] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4[data-v-153bfd55] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5[data-v-153bfd55] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np[data-v-153bfd55] {\n  font-size: 1rem;\n  text-align: center;\n  font-weight: 400;\n}\nheader[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  height: 6rem;\n}\nheader .logo-container[data-v-153bfd55] {\n  width: 5rem;\n}\nheader .logo-container .logo[data-v-153bfd55] {\n  width: 100%;\n}\nheader .logo-container .js_btn[data-v-153bfd55] {\n  color: red;\n  background-color: red;\n}", ""]);
+exports.push([module.i, "*[data-v-153bfd55] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\nbody[data-v-153bfd55] {\n  margin: 0;\n}\nimg[data-v-153bfd55] {\n  width: 100%;\n  display: block;\n}\nul[data-v-153bfd55] {\n  list-style-type: none;\n}\na[data-v-153bfd55] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-153bfd55] {\n  color: #feaa02;\n}\n.ms_btn[data-v-153bfd55] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #feaa02;\n}\n.ms_btn[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #feaa02;\n}\n.ms_btn-secondary[data-v-153bfd55] {\n  background-color: #feaa02;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-153bfd55] {\n  background-color: #264f36;\n  color: #feaa02;\n}\n.ms_btn-tertiary[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #feaa02;\n}\nul[data-v-153bfd55] {\n  padding-left: 0;\n}\ndl[data-v-153bfd55], ol[data-v-153bfd55], ul[data-v-153bfd55] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.row[data-v-153bfd55] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\n.js_container[data-v-153bfd55] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-153bfd55] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-153bfd55] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-153bfd55] {\n  padding: 0.5rem 2rem;\n}\nh2[data-v-153bfd55] {\n  font-weight: 700;\n  font-size: 2.8rem;\n}\nh3[data-v-153bfd55] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4[data-v-153bfd55] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5[data-v-153bfd55] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np[data-v-153bfd55] {\n  font-size: 1rem;\n  text-align: center;\n  font-weight: 400;\n}\nheader .ms_header-top[data-v-153bfd55],\nheader .ms_header-bottom[data-v-153bfd55],\nheader .ms_banner[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n}\nheader .ms_header-top[data-v-153bfd55] {\n  height: 5rem;\n  background-color: #feaa02;\n  color: #740602;\n  justify-content: center;\n}\nheader .ms_header-top .ms_text[data-v-153bfd55] {\n  padding-inline: 0.5rem;\n}\nheader .ms_header-top .ms_login[data-v-153bfd55] {\n  margin-right: 0.5rem;\n}\nheader .ms_header-bottom[data-v-153bfd55] {\n  height: 5rem;\n  color: #feaa02;\n  justify-content: space-between;\n  padding: 1.2rem;\n  border-bottom: 1px solid lightgrey;\n}\nheader .ms_header-bottom .logo[data-v-153bfd55] {\n  width: 35%;\n}", ""]);
 
 // exports
 
