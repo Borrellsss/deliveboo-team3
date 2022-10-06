@@ -20,7 +20,7 @@
                                 <i class="fa-thin fa-user"></i>  Accedi
                             </a>
                         </div>
-                        <div class="ms_text">
+                        <div class="ms_text d-flex align-items-center">
                             oppure 
                         </div >
                         <div class="ms_register">
@@ -52,6 +52,12 @@ export default {
 //     margin: 0 auto;
 // }
 
+.col {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 70%;
+}
+
 header{
     display: flex;
     align-items: center;
@@ -67,6 +73,10 @@ header{
 
     .ms_banner{
 
+        .ms_text{
+                    display: none;
+                  }
+
         .js_btn{
             margin: 0 0.3rem;
             padding: 0.1em 0.8em;
@@ -81,6 +91,13 @@ header{
 
     }
 }
+
+ // SCHERMO LARGE 
+ @media only screen and (max-width: 992px) {
+                  .ms_text{
+                    display: none;
+                  }
+                }      
 
 
 </style>

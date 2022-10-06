@@ -1,6 +1,5 @@
 <template>
   <main>
-    ciao sono il main component
     <JumbotronComponent/>
   </main>
 </template>

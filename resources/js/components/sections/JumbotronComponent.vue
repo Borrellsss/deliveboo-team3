@@ -17,7 +17,7 @@
                   <div class="jumbotron-text">
                   <h2>TOAST RIDER</h2>
                   <p>L'unico servizio di delivery che porta i migliori ristoranti a casa tua <br>
-                      rapidapente, senza spese spedizione! 
+                      rapidaente, senza spese spedizione! 
                       Affidati al potere del toast!
                   </p>
               </div>
@@ -52,7 +52,7 @@ export default {
        background-repeat: no-repeat;
        background-position-x: 50%;
        background-position-y: 0;
-       height: 400px;
+       height: 500px;
        min-width: 100%;
        color: red;
            .top_header{
@@ -92,18 +92,23 @@ export default {
                }
            }
                
-              //    .buttons{
-              //        .js_button{
-              //            margin-right: 1.3rem;
-              //            letter-spacing: 2px;
-              //            padding: 0.8rem 2.3rem;
-              //            border-radius: 30px;
-              //        }
-              //        .js_button.blue{
-              //          background-color: red($color: #000000);
-              //        }
-              //      }
-               }
-      }
+          }
+            
+          // SCHERMO LARGE 
+          @media only screen and (max-width: 992px) {
+                  .js_container{
+                    background-color: black;
+                  }
+                       background-image: none;
+                  }
+                
+           // SCHERMO PICCOLO 
+           @media only screen and (max-width: 768px) {
+                  .js_container{
+                    background-color: black;
+                  }
+                       background-image: none;
+                  }
+                }
  </style>
  
