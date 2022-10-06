@@ -81,8 +81,12 @@ dl, ol, ul {
 }
 
 .row{
-    --bs-gutter-x: 0;
+    --bs-gutter-x: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+
 }
+
 
 // jack commons 
 
@@ -118,4 +122,30 @@ dl, ol, ul {
 
 .js_card{
     padding: 0.5rem 2rem;
+}
+
+h2{
+    font-weight: 700;
+    font-size: 2.8rem;
+}
+
+h3{
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+h4{
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+h5{
+    font-weight: 900;
+    font-size: 1.4rem;
+}
+
+p{
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 400;
 }

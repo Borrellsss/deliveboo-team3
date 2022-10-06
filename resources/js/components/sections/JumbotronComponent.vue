@@ -1,31 +1,33 @@
 <template>
     <section>
-        <div class="js_container">
-            <div class="top_header d-flex justify-content-between d-flex align-items-center">
+        <div class="js_container d-flex justify-content-center align-items-center">
+            <!-- <div class="top_header d-flex justify-content-between d-flex align-items-center">
                 <div class="logo">
                     <img class="logo" src="images/toast-rider-logo.svg" alt="toast-rider-logo">
                 </div>
                 <nav class="d-flex align-items-center">
-                    <ul class="d-flex">
-                       ciao
-                    </ul>
                     <div class="js_button">
                       <a href="#">get in touch now</a>
                     </div>
                 </nav>
-            </div>
+            </div> -->
             <div class="js_jumbotron">
-              <div class="row row-cols-2">
-                <div class="col">
-                  <h2>SEM Campaign Made simple With Avada</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, sunt vero! Delectus est aspernatur magnam illum! </p>
-                  <div class="buttons">
-                    <span class="ms_button">buy avada now</span>
-                    <span class="ms_button blue">contact us</span>
-                  </div>
+              <div class="row">
+                <div class="col ">
+                    <div class="jumbotron-text">
+                    <h2>TOAST RIDER</h2>
+                    <p>L'unico servizio di delivery che porta i migliori ristoranti a casa tua <br>
+                        rapidapente, senza spese spedizione! 
+                        Affidati al potere del toast!
+                    </p>
                 </div>
-              </div>
-
+                <!-- <div class="buttons">
+                    <span class="js_button">buy avada now</span>
+                    <span class="js_button blue">contact us</span>
+                </div> -->
+            </div>
+        </div>
+        
             </div>
         </div>       
     </section>
@@ -49,6 +51,7 @@
          background-repeat: no-repeat;
          background-position-x: 50%;
          background-position-y: 0;
+         height: 400px;
          min-width: 100%;
          color: red;
              .top_header{
@@ -74,24 +77,31 @@
                     }
                  }
              .js_jumbotron{
-             padding: 240px 0;
-                   p{
-                     margin: 20px 0 40px 0;
-                     padding-right: 1.5rem;
-                     text-align: start;
-                   }
+                background-color: pink;
+                
                  
-                   .buttons{
-                       .js_button{
-                           margin-right: 1.3rem;
-                           letter-spacing: 2px;
-                           padding: 0.8rem 2.3rem;
-                           border-radius: 30px;
-                       }
-                       .js_button.blue{
-                         background-color: red($color: #000000);
-                       }
-                     }
+              
+             .jumbotron-text{
+                 text-align: center;
+                 padding:0 40px;
+
+                 p{
+                   margin-top: 20px;
+                   padding-right: 1.5rem;
+                 }
+             }
+                 
+                //    .buttons{
+                //        .js_button{
+                //            margin-right: 1.3rem;
+                //            letter-spacing: 2px;
+                //            padding: 0.8rem 2.3rem;
+                //            border-radius: 30px;
+                //        }
+                //        .js_button.blue{
+                //          background-color: red($color: #000000);
+                //        }
+                //      }
                  }
         }
    </style>
