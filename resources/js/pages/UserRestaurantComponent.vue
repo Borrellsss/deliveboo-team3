@@ -9,7 +9,7 @@
                                 <div class="card-image">
                                     <img :src="user.cover" :alt="user.business_name">
                                 </div>
-                                <a class="card-action" href="#">❤</a>
+                                <!-- <a class="card-action" href="#">❤</a> -->
                                 <div class="card-heading">
                                     {{user.business_name}}
                                 </div>
