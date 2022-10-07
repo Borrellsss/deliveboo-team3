@@ -43,6 +43,10 @@ import App from './views/App.vue' ;
 // importo il file router.js
 import router from './router.js'
 
+import Vue from 'vue';
+import vueBraintree from "vue-braintree";
+Vue.use(vueBraintree)
+
 const app = new Vue({
     // sostituiamo public con root
     el: '#root', 
