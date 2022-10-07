@@ -28,7 +28,7 @@ class OrderController extends Controller
         // invierà in risposta alla chiamata API makePayment
         $result = $gateway->transaction()->sale([
             'amount' => $request->amount,
-            'paymentMethodNonce' => $request->token,
+            'paymentMethodNonce' => 'fake-valid-nonce',
             'options' => [
                 'submitForSettlement' => true
             ]
