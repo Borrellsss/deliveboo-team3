@@ -1977,18 +1977,31 @@ __webpack_require__.r(__webpack_exports__);
   name: 'ProductComponent',
   data: function data() {
     return {
+      // array dei prodotti
       products: [],
       // array vuoto per il carrello
-      cart: []
+      cart: [],
+      // numero prodotti presenti nel carrello
+      products_in_cart: 0,
+      // totale da pagare
+      total_amount: 0
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     // $this.route.paramas.id rappresenta il passaggio di informazioni eseguiro con il router link
     axios.get("http://127.0.0.1:8000/api/".concat(this.$route.params.id, "/menu")).then(function (response) {
       _this.products = response.data.results;
-    }); // se cart esiste in LocalStorage
+    }); // se il carrello non è null
+
+    if (localStorage.cart) {
+      // i prodotti presenti nel carrello vengono convertiti in un file json
+      this.products_in_cart = JSON.parse(localStorage.cart);
+    } // richiamo la funzione del totale
+
+
+    this.totalAmount(); // se cart esiste in LocalStorage
 
     if (localStorage.getItem('cart')) {
       try {
@@ -2000,9 +2013,15 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
+  mounted: function mounted() {},
   methods: {
     // funzione che aggiunge il prodotto al carrello
     addItem: function addItem(product) {
+      // this.cart.push(product)
+      if (!product) {
+        return;
+      }
+
       try {
         // se non esiste il carrello o la sua conversione in stringa è zero
         if (localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0) {
@@ -2042,16 +2061,20 @@ __webpack_require__.r(__webpack_exports__);
               return id == product.id;
             }); // se non esiste già
 
-            if (!check) //setta la quantità ad 1
+            if (!check) {
+              //setta la quantità ad 1
               product.quantity = 1; //altrimenti
-            else // incrementa di 1 la quantità
+            } else {
+              // incrementa di 1 la quantità
               for (var i = 0; i < this.cart.length + 1; i++) {
                 if (this.cart[i].id == product.id) {
                   this.cart[i].quantity = this.cart[i].quantity + 1;
                   this.saveCart();
                   return;
                 }
-              } // pusha nell'array il prodotto
+              }
+            } // pusha nell'array il prodotto
+
 
             this.cart.push(product); // salva il carrello
 
@@ -2064,14 +2087,66 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     // funzione per la rimozione del prodotto dal carrello
-    removeItem: function removeItem(x) {
-      this.cart.splice(x, 1);
-      this.saveCart();
-    },
     // funzione salva carrello
     saveCart: function saveCart() {
       var parsed = JSON.stringify(this.cart);
       localStorage.setItem('cart', parsed);
+    },
+    removeItem: function removeItem(product, index) {
+      if (product.quantity > 1) for (var i = 0; i < this.products_in_cart.length; i++) {
+        if (this.products_in_cart[i].id == product.id) {
+          this.products_in_cart[i].quantity = this.products_in_cart[i].quantity - 1;
+          this.saveCart();
+          this.totalAmount();
+        }
+      } else this.deleteItem(index);
+      this.totalAmount();
+    },
+    ////////////////////////////////////////
+    // funzione che incrementa la quantità del prodotto all'interno del carrello
+    increaseQuantity: function increaseQuantity(product) {
+      for (var i = 0; i < this.products_in_cart.length; i++) {
+        // console.log(this.products_in_cart[i]);
+        if (this.products_in_cart[i].id == product.id) {
+          this.products_in_cart[i].quantity = this.products_in_cart[i].quantity + 1;
+          this.saveProductInCart();
+          this.totalAmount();
+        }
+      }
+    },
+    // funzione che riduce la quantità del prodotto nel carrello
+    decreaseQuantity: function decreaseQuantity(product, index) {
+      if (product.quantity > 1) for (var i = 0; i < this.products_in_cart.length; i++) {
+        if (this.products_in_cart[i].id == product.id) {
+          this.products_in_cart[i].quantity = this.products_in_cart[i].quantity - 1;
+          this.cart = [];
+          this.saveProductInCart();
+          this.totalAmount();
+        }
+      } else // richiamo la funzione che cancella il prodotto
+        this.deleteItem(index);
+      this.totalAmount();
+    },
+    // funzione che cancella il prodotto dal carrello
+    deleteItem: function deleteItem(index) {
+      this.products_in_cart.splice(index, 1); // console.log(index);
+
+      this.saveProductInCart();
+      this.totalAmount();
+    },
+    // salva nel carrello i prodotti
+    saveProductInCart: function saveProductInCart() {
+      var parsed = JSON.stringify(this.products_in_cart);
+      localStorage.setItem('cart', parsed);
+      this.products_in_cart = JSON.parse(localStorage.cart);
+    },
+    // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
+    totalAmount: function totalAmount() {
+      this.total_amount = 0;
+
+      for (var index = 0; index < this.products_in_cart.length; index++) {
+        this.total_amount += parseFloat(this.products_in_cart[index].price) * this.products_in_cart[index].quantity;
+      }
     }
   }
 });
@@ -2277,7 +2352,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
+  return _c("section", [_c("div", {
     staticClass: "container"
   }, [_c("div", {
     staticClass: "row row-cols-1 row-cols-md-2 row-cols-lg-3"
@@ -2304,10 +2379,70 @@ var render = function render() {
         }
       }
     }, [_vm._v("Add to cart")])])]);
-  }), 0)]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "cart-comp"
+  }, [_c("div", {
+    staticClass: "cart-container"
+  }, [_vm._m(0), _vm._v(" "), _vm.total_amount > 0 ? _c("div", {
+    staticClass: "cart-container-content row"
+  }, [_c("ul", {
+    staticClass: "products-container col-sm-7 col-12"
+  }, _vm._l(_vm.cart, function (product, index) {
+    return _c("li", {
+      key: index
+    }, [_c("div", {
+      staticClass: "right-side row"
+    }, [_c("div", {
+      staticClass: "info col-lg-8 col-12"
+    }, [_c("h5", [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("p", {
+      staticClass: "description"
+    }, [_c("span", [_vm._v(_vm._s(product.description))])]), _vm._v(" "), _c("span", {
+      staticClass: "price"
+    }, [_vm._v("€ " + _vm._s(product.price))])]), _vm._v(" "), _c("div", {
+      staticClass: "quantity-inputs col-lg-4 col-12"
+    }, [_c("a", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.increaseQuantity(product);
+        }
+      }
+    }, [_vm._v("+")]), _vm._v(" "), _c("div", {
+      staticClass: "quantity"
+    }, [_vm._v(_vm._s(product.quantity))]), _vm._v(" "), _c("a", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.decreaseQuantity(product, index);
+        }
+      }
+    }, [_vm._v("-")]), _vm._v(" "), _c("a", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.deleteItem(index);
+        }
+      }
+    })])])]);
+  }), 0), _vm._v(" "), _c("h2", [_vm._v("Totale: "), _c("span", {
+    staticClass: "price"
+  }, [_vm._v("€ " + _vm._s(_vm.total_amount))])])]) : _c("h1", [_c("i", {
+    staticClass: "fa-solid fa-triangle-exclamation"
+  }), _vm._v(" Il carrello è vuoto.")])])])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "top-links"
+  }, [_c("h4", {
+    staticClass: "static active"
+  }, [_vm._v("Carrello "), _c("i", {
+    staticClass: "fa-solid fa-cart-arrow-down"
+  })])]);
+}];
 render._withStripped = true;
 
 
