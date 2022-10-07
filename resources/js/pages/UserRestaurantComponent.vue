@@ -3,7 +3,7 @@
         <div class="container">
             <div class="d-flex flex-wrap">
                 <div v-for="category in categories" :key="category.id">
-                    <input type="checkbox" :value="category.id" :id="'category-' + category.id" v-model="selectedCategories" @click="getSelectedCategories()">
+                    <input type="checkbox" :value="category.id" :id="'category-' + category.id" v-model="selectedCategories" @change="getSelectedCategories()">
                     <label class="form-check-label" :for="'category-' + category.id">
                         {{category.name}}
                     </label>
@@ -50,27 +50,16 @@ export default {
     methods: {
         getSelectedCategories() {
             
-            // selectedCategories.forEach(category => {
-                
-            // });
-            // let 
-            axios.post('http://127.0.0.1:8000/api/restaurants', {
-                categories: this.selectedCategories
-            })
+            axios.get(`http://127.0.0.1:8000/api/restaurants?categories=${this.selectedCategories}`)
             .then((response) => {
             this.users = response.data.results;
-                // console.log(this.users)
+                console.log(response.data)
             });
         }
     },
     mounted(){
-        // axios.get('http://127.0.0.1:8000/api/user')
-        // .then((response) => {
-        //    this.users = response.data.results;
-        //     // console.log(this.users)
-        // });
 
-        axios.get('http://127.0.0.1:8000/api/restautants-categories')
+        axios.get('http://127.0.0.1:8000/api/restaurants-categories')
         .then((response) => {
             this.categories = response.data.results;
             // console.log(this.categories);

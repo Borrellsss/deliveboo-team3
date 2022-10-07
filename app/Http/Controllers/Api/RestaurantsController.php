@@ -48,7 +48,7 @@ class RestaurantsController extends Controller
 
         } else {
             $data = [
-                'success' => true,
+                'success' => 'nothing clicked',
                 'results' => [],
             ];
         }

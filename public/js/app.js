@@ -2014,25 +2014,16 @@ __webpack_require__.r(__webpack_exports__);
     getSelectedCategories: function getSelectedCategories() {
       var _this = this;
 
-      // selectedCategories.forEach(category => {
-      // });
-      // let 
-      axios.post('http://127.0.0.1:8000/api/restaurants', {
-        categories: this.selectedCategories
-      }).then(function (response) {
-        _this.users = response.data.results; // console.log(this.users)
+      axios.get("http://127.0.0.1:8000/api/restaurants?categories=".concat(this.selectedCategories)).then(function (response) {
+        _this.users = response.data.results;
+        console.log(response.data);
       });
     }
   },
   mounted: function mounted() {
     var _this2 = this;
 
-    // axios.get('http://127.0.0.1:8000/api/user')
-    // .then((response) => {
-    //    this.users = response.data.results;
-    //     // console.log(this.users)
-    // });
-    axios.get('http://127.0.0.1:8000/api/restautants-categories').then(function (response) {
+    axios.get('http://127.0.0.1:8000/api/restaurants-categories').then(function (response) {
       _this2.categories = response.data.results; // console.log(this.categories);
     });
   }
@@ -2279,10 +2270,7 @@ var render = function render() {
         checked: Array.isArray(_vm.selectedCategories) ? _vm._i(_vm.selectedCategories, category.id) > -1 : _vm.selectedCategories
       },
       on: {
-        click: function click($event) {
-          return _vm.getSelectedCategories();
-        },
-        change: function change($event) {
+        change: [function ($event) {
           var $$a = _vm.selectedCategories,
               $$el = $event.target,
               $$c = $$el.checked ? true : false;
@@ -2299,7 +2287,9 @@ var render = function render() {
           } else {
             _vm.selectedCategories = $$c;
           }
-        }
+        }, function ($event) {
+          return _vm.getSelectedCategories();
+        }]
       }
     }), _vm._v(" "), _c("label", {
       staticClass: "form-check-label",

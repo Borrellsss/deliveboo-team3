@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/{id}/menu', 'Api\ProductController@restaurantMenu');
 
 // creo l'api per ottenere tutte le categorie
-Route::get('/restautants-categories', 'Api\CategoryController@getAllCategories');
+Route::get('/restaurants-categories', 'Api\CategoryController@getAllCategories');
 
 // creo l'api per ottenere tutti i ristoranti filtrati per categoria
 Route::get('/restaurants', 'Api\RestaurantsController@getRestaurantsByCategory');
