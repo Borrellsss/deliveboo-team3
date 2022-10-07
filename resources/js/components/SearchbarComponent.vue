@@ -292,4 +292,10 @@ h4{
                         }
             }
 
+            @media only screen and (max-width: 530px) {
+                    .checkbox-container {
+                        margin-bottom: 11rem;
+                        }
+            }
+
 </style>

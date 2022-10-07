@@ -17,8 +17,8 @@
                   <div class="jumbotron-text">
                   <h2>TOAST RIDER</h2>
                   <p>L'unico servizio di delivery che porta i migliori ristoranti a casa tua <br>
-                      rapidaente, senza spese spedizione! 
-                      Affidati al potere del toaddst!
+                      rapidamente, senza spese di spedizione.
+                      Affidati al potere del toast!
                   </p>
                  <div>
                   
@@ -93,9 +93,11 @@ export default {
                text-align: center;
                padding:0 40px;
 
+
                p{
                  margin-top: 20px;
                  padding-right: 1.5rem;
+                 text-shadow: 2px 2px 0 #ffc509, 2px -2px 0 #ffc509, -2px 2px 0 #ffc509, -2px -2px 0 #ffc509, 2px 0px 0 #ffc509, 0px 2px 0 #ffc509, -2px 0px 0 #ffc509, 0px -2px 0 #ffc509;
                }
            }
                

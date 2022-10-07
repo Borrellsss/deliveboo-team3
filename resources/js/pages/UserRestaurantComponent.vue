@@ -11,15 +11,16 @@
                             <div  class="card-sl">
                                 <div class="card-image">
                                     <img v-if="user.cover"  :src="user.cover" :alt="user.business_name">
-                                    <img v-else src="https://i.ibb.co/pbgzq1p/no-restaurante-image.jpg" :alt="user.business_name">
+                                    <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="user.business_name">
                                 </div>
-                                <a class="card-action" href="#" style="">❤</a>
+                                <!-- <a class="card-action" href="#" style="">❤</a> -->
                                 <div class="card-heading">
-                                    {{user.business_name}}
+                                    <span>{{user.business_name.slice(0, 35) }}</span><span v-if="user.business_name.length > 35">...</span>
+                                    <div v-if="user.business_name.length < 30" class="space_line"></div>
                                 </div>
                                 <div class="card-text">
                                     <i class="fa-solid fa-location-dot"></i>
-                                    <span class="address">{{user.address}}</span>
+                                    <span class="address">{{user.address.slice(0, 45)}}</span><span v-if="user.address.length > 45">...</span>
                                 </div>
                                 <!-- <router-link  :to="{name: 'products-page',params: {id: user.id}}" class="card-button"> Esplora</router-link> -->
                                 <!-- <a href="#" class="card-button">Esplora</a> -->
@@ -61,6 +62,10 @@ export default {
 
      *{
         margin: auto;
+     }
+
+     .space_line{
+        margin-top: 1rem;
      }
 
       .card-sl {
@@ -114,28 +119,28 @@ export default {
     .card-heading {
         font-size: 1rem;
         font-weight: bold;
-        padding: 8px 15px;
-        margin-top: -1.5rem;
+        padding: 0px 15px;
+        margin-top: 0.5rem;
         // overflow: hidden;
-        // text-overflow: ellipsis;
-        overflow: hidden;
         text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2; /* number of lines to show */
-                line-clamp: 2; 
-        -webkit-box-orient: vertical;
+        overflow: hidden;
+        // text-overflow: ellipsis;
+        // display: -webkit-box;
+        // -webkit-line-clamp: 2; /* number of lines to show */
+        //         line-clamp: 2; 
+        // -webkit-box-orient: vertical;
     }
 
     .card-text {
-        padding: 0px 15px 10px;
+        padding: 0px 15px;
         font-size: 0.8rem;
         color: #636262;
         overflow: hidden;
         text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2; /* number of lines to show */
-                line-clamp: 2; 
-        -webkit-box-orient: vertical;
+        // display: -webkit-box;
+        // -webkit-line-clamp: 2; /* number of lines to show */
+        //         line-clamp: 2; 
+        // -webkit-box-orient: vertical;
 
         .address{
            margin-left: 0.3rem;
