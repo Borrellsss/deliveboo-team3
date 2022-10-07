@@ -21,33 +21,37 @@ class RestaurantsController extends Controller
             for($i = 0; $i < count($categories); $i++) {
                 $categories[$i] = intval($categories[$i]);
             }
-        }
 
-        $restaurants = User::with('categories')->get()->toArray();
+            $restaurants = User::with('categories')->get()->toArray();
 
-        $filtered_restaurants = [];
+            $filtered_restaurants = [];
 
-        foreach($restaurants as $restaurant) {
+            foreach($restaurants as $restaurant) {
 
-            $category_matched = 0;
-            foreach($restaurant['categories'] as $category) {
-                
-                if(in_array($category['id'], $categories)) {
-                    ++$category_matched;
+                $category_matched = 0;
+
+                foreach($restaurant['categories'] as $category) {
+                    
+                    if(in_array($category['id'], $categories)) {
+                        ++$category_matched;
+                    }
+                }
+                if(count($categories) === $category_matched) {
+                    $filtered_restaurants[] = $restaurant;
                 }
             }
-            if(count($categories) === $category_matched) {
-                $filtered_restaurants[] = $restaurant;
-                $category_matched = 0;
-            } else {
-                $category_matched = 0;
-            }
+
+            $data = [
+                'success' => true,
+                'results' => $filtered_restaurants,
+            ];
+
+        } else {
+            $data = [
+                'success' => true,
+                'results' => [],
+            ];
         }
-        
-        $data = [
-            'success' => true,
-            'results' => $filtered_restaurants,
-        ];
 
         return response()->json($data);
     }   
