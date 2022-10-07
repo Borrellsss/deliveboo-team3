@@ -1,39 +1,26 @@
 <template>
+
   <section>
       <div class="js_container d-flex justify-content-center align-items-center">
-          <!-- <div class="top_header d-flex justify-content-between d-flex align-items-center">
-              <div class="logo">
-                  <img class="logo" src="images/toast-rider-logo.svg" alt="toast-rider-logo">
-              </div>
-              <nav class="d-flex align-items-center">
-                  <div class="js_button">
-                    <a href="#">get in touch now</a>
-                  </div>
-              </nav>
-          </div> -->
           <div class="js_jumbotron">
             <div class="row">
               <div class="col ">
                   <div class="jumbotron-text">
-                  <h2 class="jack">TOAST RIDER</h2>
-                  <p class="jack">L'unico servizio di delivery che porta i migliori ristoranti a casa tua, <br>
-                      rapidamente e senza spese di spedizione. <br>
-                      Affidati al potere del toast!
-                  </p>
-                 <div>
-                  
-                 </div>
+                      <h2 class="jack">TOAST RIDER</h2>
+                      <p class="jack">L'unico servizio di delivery che porta i migliori ristoranti a casa tua, <br>
+                          rapidamente e senza spese di spedizione. <br>
+                          Affidati al potere del toast!
+                      </p>
+                  <div>
               </div>
-              <!-- <div class="buttons">
-                  <span class="js_button">buy avada now</span>
-                  <span class="js_button blue">contact us</span>
-              </div> -->
-          </div>
-      </div>
+           </div>
+        </div>
+     </div>
       
           </div>
-      </div>       
-  </section>
+     </div>       
+ </section>
+
 </template>
 
 <script>

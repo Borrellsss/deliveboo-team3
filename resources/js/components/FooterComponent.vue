@@ -79,7 +79,7 @@
 
           <ul class="list-unstyled mb-0">
             <li>
-              <a href="#!" class="text-white">Note Legali</a>
+              Note Legali
             </li>
             <li>
               <a href="#!" class="text-white">Condizioni</a>
@@ -155,23 +155,22 @@ export default {
 
   *{
     margin: 0 auto;
-}
 
-footer{
+  footer{
+    background-color: rgb(47, 47, 47);
+        
+        .links-container{
+          margin-top: 3rem;
+        }
+        .social-media-links{
+          margin-top: 3rem;
+        }
 
-  background-color: rgb(47, 47, 47);
-  .links-container{
-    margin-top: 3rem;
+        .btn{
+          padding: 13px 18px;
+          border-radius: 50%;
+        }
+    }
   }
-  .social-media-links{
-    margin-top: 3rem;
-  }
-
-  .btn{
-    padding: 13px 18px;
-    border-radius: 50%;
-  }
-
-}
   
 </style>

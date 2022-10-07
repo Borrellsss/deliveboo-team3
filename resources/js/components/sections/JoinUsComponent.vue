@@ -7,9 +7,13 @@
                   <div class="text-container">
                     <h3 class="jack">Hai un ristorante?</h3>
                     <h4 class="jack">
-                        Diventa Partner! <br> Per te subito grandi vantaggi.
+                        Diventa Partner! <br>
+                        Per te subito grandi vantaggi.
                     </h4>
-                    <a class="js_btn" href="/register">Registrati <i class="cell-symbol  fa-solid fa-right-to-bracket"></i></a>
+                    <a
+                      class="js_btn" href="/register">Registrati
+                      <i class="cell-symbol  fa-solid fa-right-to-bracket"></i>
+                    </a>
                   </div>
                 </div>
             </div>
@@ -34,7 +38,6 @@ export default {
         margin-bottom: 3rem;
        margin-top: 5.5rem;
        background-image: url(https://i.ibb.co/vDdrPkr/mockup-background.jpg);
-      //  background-image: url(../../../../public/images/jumbotron-img.jpg);
        background-size: cover;
        background-repeat: no-repeat;
        background-position-x: 10%;
@@ -42,39 +45,35 @@ export default {
        height: 500px;
        min-width: 100%;
        border-radius: 20px;
-    }
-
-    .text-container{
-        color: white;
-        text-align: left;
-        padding-left: 5rem;
-        padding-right: 5rem;
-
-            h3{
-                font-size: 2.5rem;
-                color: $primary-color;
-            }
-
-            h4{
-                font-size: 1.5rem;
-                margin: 0.5rem 0;
-            }
-
-            .js_btn{
-                font-size: 1.2rem;
-                margin: 0.5rem 0.3rem;
-                padding: 0.1em 0.8em;
-                display: inline-block;
-                border: none;
-                border-radius: 10rem;
-                background-color: $primary-color;
-                color: $tertiary-color;
-                font-weight: 600;
-
-            }
-
-
-    }
-
-
-</style>
+        
+                .text-container{
+                    color: white;
+                    text-align: left;
+                    padding-left: 5rem;
+                    padding-right: 5rem;
+            
+                        h3{
+                            font-size: 2.5rem;
+                            color: $primary-color;
+                        }
+            
+                        h4{
+                            font-size: 1.5rem;
+                            margin: 0.5rem 0;
+                        }
+            
+                        .js_btn{
+                            font-size: 1.2rem;
+                            margin: 0.5rem 0.3rem;
+                            padding: 0.1em 0.8em;
+                            display: inline-block;
+                            border: none;
+                            border-radius: 10rem;
+                            background-color: $primary-color;
+                            color: $tertiary-color;
+                            font-weight: 600;
+            
+                        }
+                    }
+           }
+ </style>
