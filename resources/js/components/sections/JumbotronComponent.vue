@@ -15,8 +15,8 @@
             <div class="row">
               <div class="col ">
                   <div class="jumbotron-text">
-                  <h2>TOAST RIDER</h2>
-                  <p>L'unico servizio di delivery che porta i migliori ristoranti a casa tua, <br>
+                  <h2 class="jack">TOAST RIDER</h2>
+                  <p class="jack">L'unico servizio di delivery che porta i migliori ristoranti a casa tua, <br>
                       rapidamente e senza spese di spedizione. <br>
                       Affidati al potere del toast!
                   </p>

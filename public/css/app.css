@@ -9345,28 +9345,28 @@ dl, ol, ul {
   padding: 0.5rem 2rem;
 }
 
-h2 {
+h2.jack {
   font-weight: 900;
   font-size: 5rem;
   text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;
 }
 
-h3 {
+h3.jack {
   font-weight: 700;
   font-size: 2rem;
 }
 
-h4 {
+h4.jack {
   font-weight: 700;
   font-size: 1.4rem;
 }
 
-h5 {
+h5.jack {
   font-weight: 900;
   font-size: 1.4rem;
 }
 
-p {
+p.jack {
   font-size: 1.2rem;
   text-align: center;
   font-weight: 900;

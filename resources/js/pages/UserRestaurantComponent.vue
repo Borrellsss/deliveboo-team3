@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="searchbar-container">
-            <h4>Scegli la tua categoria</h4>
+            <h4 class="jack">Scegli la tua categoria</h4>
             <div class="categories-bar">
                 <svg class="checkbox-symbol">
                     <symbol id="check" viewbox="0 0 12 10">
@@ -30,13 +30,13 @@
             </div>
         </div>
         <!-- <ProductComponent :users = user /> -->
-        <div class="container" style="margin-top:50px;">
+        <div class="ms_container" style="margin-top:50px;">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-                    <div v-for="user in users" :key="user.id" class="col">
+                    <div v-for="user in users" :key="user.id" class="col d-flex justify-content-center">
                         <router-link  :to="{name: 'products-page',params: {id: user.id}}" class="d-flex">
                             <div  class="card-sl">
                                 <div class="card-image">
-                                    <img v-if="user.cover"  :src="user.cover" :alt="user.business_name">
+                                    <img v-if="user.cover" :src="user.cover" :alt="user.business_name">
                                     <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="user.business_name">
                                 </div>
                                 <!-- <a class="card-action" href="#" style="">❤</a> -->
@@ -99,12 +99,13 @@ export default {
     @import '../style/variables';
      @import '../style/common';
 
-     *{
-        margin: auto;
-     }
-
      .space_line{
         margin-top: 1rem;
+     }
+
+     .ms_container{
+        width: 90%;
+        margin: 0 auto;
      }
 
       .card-sl {
@@ -138,7 +139,7 @@ export default {
         left: 190px;
         bottom: 180px;
         margin-top: -25px;
-        margin-right: 20px;
+        // margin-right: 20px;
         z-index: 2;
         color: $secondary-color;
         background: #fff;
@@ -203,6 +204,10 @@ export default {
     }
 
     @media only screen and (max-width: 992px) {
+
+        *{
+            margin: 0 auto;
+        }
         .card-sl {
             width: 260px;
             height: 350px;
@@ -254,9 +259,6 @@ export default {
                     font-size: 1.2rem;
                 }
             }
-* {
-    margin: 0 auto;
-}
 
 h4{
     text-align: center;
@@ -283,8 +285,9 @@ h4{
   margin-bottom: 6rem;
 }
 
-.checkbox-container * {
+.checkbox-container{
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .checkbox-input {
@@ -362,6 +365,14 @@ h4{
     transform: scale(0.9);
   }
 }
+
+@media only screen and (max-width: 768px) {
+        .checkbox-container {
+            margin-bottom: 7rem;
+            }
+}
+
+
 @media only screen and (max-width: 768px) {
         .checkbox-container {
             margin-bottom: 7rem;
