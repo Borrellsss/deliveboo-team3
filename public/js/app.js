@@ -8395,14 +8395,29 @@ var render = function render() {
   }, _vm._l(_vm.users, function (user) {
     return _c("div", {
       key: user.id,
-      staticClass: "col d-flex"
+      staticClass: "col"
+    }, [_c("router-link", {
+      staticClass: "d-flex",
+      attrs: {
+        to: {
+          name: "products-page",
+          params: {
+            id: user.id
+          }
+        }
+      }
     }, [_c("div", {
       staticClass: "card-sl"
     }, [_c("div", {
       staticClass: "card-image"
-    }, [_c("img", {
+    }, [user.cover ? _c("img", {
       attrs: {
         src: user.cover,
+        alt: user.business_name
+      }
+    }) : _c("img", {
+      attrs: {
+        src: "https://i.ibb.co/pbgzq1p/no-restaurante-image.jpg",
         alt: user.business_name
       }
     })]), _vm._v(" "), _c("a", {
@@ -8414,17 +8429,11 @@ var render = function render() {
       staticClass: "card-heading"
     }, [_vm._v("\n                                " + _vm._s(user.business_name) + "\n                            ")]), _vm._v(" "), _c("div", {
       staticClass: "card-text"
-    }, [_vm._v("\n                                " + _vm._s(user.address) + "\n                            ")]), _vm._v(" "), _c("router-link", {
-      staticClass: "card-button",
-      attrs: {
-        to: {
-          name: "products-page",
-          params: {
-            id: user.id
-          }
-        }
-      }
-    }, [_vm._v(" Esplora")])], 1)]);
+    }, [_c("i", {
+      staticClass: "fa-solid fa-location-dot"
+    }), _vm._v(" "), _c("span", {
+      staticClass: "address"
+    }, [_vm._v(_vm._s(user.address))])])])])], 1);
   }), 0)])]);
 };
 
@@ -12931,7 +12940,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "*[data-v-6f42587c] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Gill Sans\", \"Gill Sans MT\", Calibri, \"Trebuchet MS\", sans-serif;\n}\nbody[data-v-6f42587c] {\n  margin: 0;\n}\nimg[data-v-6f42587c] {\n  width: 100%;\n  display: block;\n}\nul[data-v-6f42587c] {\n  list-style-type: none;\n}\na[data-v-6f42587c] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-6f42587c] {\n  color: #feaa02;\n}\n.ms_btn[data-v-6f42587c] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #feaa02;\n}\n.ms_btn[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: #feaa02;\n}\n.ms_btn-secondary[data-v-6f42587c] {\n  background-color: #feaa02;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-6f42587c] {\n  background-color: #264f36;\n  color: #feaa02;\n}\n.ms_btn-tertiary[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: #feaa02;\n}\nul[data-v-6f42587c] {\n  padding-left: 0;\n}\ndl[data-v-6f42587c], ol[data-v-6f42587c], ul[data-v-6f42587c] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.row[data-v-6f42587c] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\n.js_container[data-v-6f42587c] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-6f42587c] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-6f42587c] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-6f42587c] {\n  padding: 0.5rem 2rem;\n}\nh2[data-v-6f42587c] {\n  font-weight: 900;\n  font-size: 3rem;\n}\nh3[data-v-6f42587c] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4[data-v-6f42587c] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5[data-v-6f42587c] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np[data-v-6f42587c] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\n*[data-v-6f42587c] {\n  margin: auto;\n}\n.card-sl[data-v-6f42587c] {\n  border-radius: 8px;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n  margin-bottom: 3rem;\n  position: relative;\n}\n.card-image[data-v-6f42587c] {\n  height: 200px;\n  width: 250px;\n  max-width: 100%;\n}\n.card-image img[data-v-6f42587c] {\n  border-radius: 8px 8px 0px 0;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.card-action[data-v-6f42587c] {\n  position: relative;\n  left: 190px;\n  bottom: 180px;\n  margin-top: -25px;\n  margin-right: 20px;\n  z-index: 2;\n  color: #740602;\n  background: #fff;\n  border-radius: 100%;\n  padding: 15px;\n  font-size: 15px;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);\n  opacity: 0;\n}\n.card-action[data-v-6f42587c]:hover {\n  color: #fff;\n  background: #E26D5C;\n  opacity: 0;\n}\n.card-heading[data-v-6f42587c] {\n  font-size: 18px;\n  font-weight: bold;\n  padding: 10px 15px;\n  margin-top: -1.5rem;\n}\n.card-text[data-v-6f42587c] {\n  padding: 0px 15px 10px;\n  font-size: 14px;\n  color: #636262;\n}\n.card-button[data-v-6f42587c] {\n  display: flex;\n  justify-content: center;\n  padding: 10px 0;\n  width: 100%;\n  background-color: #740602;\n  color: #fff;\n  border-radius: 0 0 8px 8px;\n}\n.card-button[data-v-6f42587c]:hover {\n  text-decoration: none;\n  background-color: rgb(157, 4, 4);\n  color: #fff;\n}", ""]);
+exports.push([module.i, "*[data-v-6f42587c] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Gill Sans\", \"Gill Sans MT\", Calibri, \"Trebuchet MS\", sans-serif;\n}\nbody[data-v-6f42587c] {\n  margin: 0;\n}\nimg[data-v-6f42587c] {\n  width: 100%;\n  display: block;\n}\nul[data-v-6f42587c] {\n  list-style-type: none;\n}\na[data-v-6f42587c] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-6f42587c] {\n  color: #feaa02;\n}\n.ms_btn[data-v-6f42587c] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #feaa02;\n}\n.ms_btn[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: #feaa02;\n}\n.ms_btn-secondary[data-v-6f42587c] {\n  background-color: #feaa02;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-6f42587c] {\n  background-color: #264f36;\n  color: #feaa02;\n}\n.ms_btn-tertiary[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: #feaa02;\n}\nul[data-v-6f42587c] {\n  padding-left: 0;\n}\ndl[data-v-6f42587c], ol[data-v-6f42587c], ul[data-v-6f42587c] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.row[data-v-6f42587c] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\n.js_container[data-v-6f42587c] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-6f42587c] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-6f42587c] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-6f42587c] {\n  padding: 0.5rem 2rem;\n}\nh2[data-v-6f42587c] {\n  font-weight: 900;\n  font-size: 3rem;\n}\nh3[data-v-6f42587c] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4[data-v-6f42587c] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5[data-v-6f42587c] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np[data-v-6f42587c] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\n*[data-v-6f42587c] {\n  margin: auto;\n}\n.card-sl[data-v-6f42587c] {\n  width: 250px;\n  height: 300px;\n  border-radius: 8px;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n  margin-bottom: 3rem;\n  position: relative;\n}\n.card-sl[data-v-6f42587c]:hover {\n  transform: translateY(5px);\n}\n.card-image[data-v-6f42587c] {\n  height: 200px;\n  width: 250px;\n  max-width: 100%;\n}\n.card-image img[data-v-6f42587c] {\n  border-radius: 8px 8px 0px 0;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.card-action[data-v-6f42587c] {\n  position: relative;\n  left: 190px;\n  bottom: 180px;\n  margin-top: -25px;\n  margin-right: 20px;\n  z-index: 2;\n  color: #740602;\n  background: #fff;\n  border-radius: 100%;\n  padding: 15px;\n  font-size: 15px;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);\n  opacity: 0;\n}\n.card-action[data-v-6f42587c]:hover {\n  color: #fff;\n  background: #E26D5C;\n  opacity: 0;\n}\n.card-heading[data-v-6f42587c] {\n  font-size: 1rem;\n  font-weight: bold;\n  padding: 8px 15px;\n  margin-top: -1.5rem;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: -webkit-box;\n  -webkit-line-clamp: 2; /* number of lines to show */\n  line-clamp: 2;\n  -webkit-box-orient: vertical;\n}\n.card-text[data-v-6f42587c] {\n  padding: 0px 15px 10px;\n  font-size: 0.8rem;\n  color: #636262;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  display: -webkit-box;\n  -webkit-line-clamp: 2; /* number of lines to show */\n  line-clamp: 2;\n  -webkit-box-orient: vertical;\n}\n.card-text .address[data-v-6f42587c] {\n  margin-left: 0.3rem;\n}\n.card-button[data-v-6f42587c] {\n  display: flex;\n  justify-content: center;\n  padding: 10px 0;\n  width: 100%;\n  background-color: #740602;\n  color: #fff;\n  border-radius: 0 0 8px 8px;\n}\n.card-button[data-v-6f42587c]:hover {\n  text-decoration: none;\n  background-color: rgb(157, 4, 4);\n  color: #fff;\n}\n@media only screen and (max-width: 992px) {\n.card-sl[data-v-6f42587c] {\n    width: 260px;\n    height: 350px;\n}\n.card-image[data-v-6f42587c] {\n    width: 260px;\n    height: 250px;\n}\n}\n@media only screen and (max-width: 768px) {\n.card-sl[data-v-6f42587c] {\n    width: 500px;\n    height: 700px;\n}\n.card-image[data-v-6f42587c] {\n    width: 500px;\n    height: 500px;\n}\n.card-heading[data-v-6f42587c] {\n    font-size: 1.6rem;\n}\n.card-text[data-v-6f42587c] {\n    font-size: 1.6rem;\n}\n}", ""]);
 
 // exports
 
