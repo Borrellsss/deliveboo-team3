@@ -1,5 +1,15 @@
 <template>
     <section>
+        <div class="container">
+            <div class="d-flex flex-wrap">
+                <div v-for="category in categories" :key="category.id">
+                    <input type="checkbox" :value="category.id" :id="'category-' + category.id" v-model="selectedCategories" @click="getSelectedCategories()">
+                    <label class="form-check-label" :for="'category-' + category.id">
+                        {{category.name}}
+                    </label>
+                </div>
+            </div>
+        </div>
         <!-- <ProductComponent :users = user /> -->
         <div class="container" style="margin-top:50px;">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
@@ -33,13 +43,37 @@ export default {
     data(){
         return{
             users : [],
+            categories: [],
+            selectedCategories: []
+        }
+    },
+    methods: {
+        getSelectedCategories() {
+            
+            // selectedCategories.forEach(category => {
+                
+            // });
+            // let 
+            axios.post('http://127.0.0.1:8000/api/restaurants', {
+                categories: this.selectedCategories
+            })
+            .then((response) => {
+            this.users = response.data.results;
+                // console.log(this.users)
+            });
         }
     },
     mounted(){
-        axios.get('http://127.0.0.1:8000/api/user')
+        // axios.get('http://127.0.0.1:8000/api/user')
+        // .then((response) => {
+        //    this.users = response.data.results;
+        //     // console.log(this.users)
+        // });
+
+        axios.get('http://127.0.0.1:8000/api/restautants-categories')
         .then((response) => {
-           this.users = response.data.results
-            // console.log(this.users)
+            this.categories = response.data.results;
+            // console.log(this.categories);
         });
     }
 }

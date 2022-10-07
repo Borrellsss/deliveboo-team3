@@ -2005,14 +2005,35 @@ __webpack_require__.r(__webpack_exports__);
   name: 'UserRestaurantComponent',
   data: function data() {
     return {
-      users: []
+      users: [],
+      categories: [],
+      selectedCategories: []
     };
   },
-  mounted: function mounted() {
-    var _this = this;
+  methods: {
+    getSelectedCategories: function getSelectedCategories() {
+      var _this = this;
 
-    axios.get('http://127.0.0.1:8000/api/user').then(function (response) {
-      _this.users = response.data.results; // console.log(this.users)
+      // selectedCategories.forEach(category => {
+      // });
+      // let 
+      axios.post('http://127.0.0.1:8000/api/restaurants', {
+        categories: this.selectedCategories
+      }).then(function (response) {
+        _this.users = response.data.results; // console.log(this.users)
+      });
+    }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    // axios.get('http://127.0.0.1:8000/api/user')
+    // .then((response) => {
+    //    this.users = response.data.results;
+    //     // console.log(this.users)
+    // });
+    axios.get('http://127.0.0.1:8000/api/restautants-categories').then(function (response) {
+      _this2.categories = response.data.results; // console.log(this.categories);
     });
   }
 });
@@ -2236,6 +2257,57 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("section", [_c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "d-flex flex-wrap"
+  }, _vm._l(_vm.categories, function (category) {
+    return _c("div", {
+      key: category.id
+    }, [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: _vm.selectedCategories,
+        expression: "selectedCategories"
+      }],
+      attrs: {
+        type: "checkbox",
+        id: "category-" + category.id
+      },
+      domProps: {
+        value: category.id,
+        checked: Array.isArray(_vm.selectedCategories) ? _vm._i(_vm.selectedCategories, category.id) > -1 : _vm.selectedCategories
+      },
+      on: {
+        click: function click($event) {
+          return _vm.getSelectedCategories();
+        },
+        change: function change($event) {
+          var $$a = _vm.selectedCategories,
+              $$el = $event.target,
+              $$c = $$el.checked ? true : false;
+
+          if (Array.isArray($$a)) {
+            var $$v = category.id,
+                $$i = _vm._i($$a, $$v);
+
+            if ($$el.checked) {
+              $$i < 0 && (_vm.selectedCategories = $$a.concat([$$v]));
+            } else {
+              $$i > -1 && (_vm.selectedCategories = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+            }
+          } else {
+            _vm.selectedCategories = $$c;
+          }
+        }
+      }
+    }), _vm._v(" "), _c("label", {
+      staticClass: "form-check-label",
+      attrs: {
+        "for": "category-" + category.id
+      }
+    }, [_vm._v("\n                    " + _vm._s(category.name) + "\n                ")])]);
+  }), 0)]), _vm._v(" "), _c("div", {
     staticClass: "container",
     staticStyle: {
       "margin-top": "50px"
