@@ -1,10 +1,11 @@
 <template>
     <div>
             <HeaderComponent/>
+            <MainComponent/>
        <main>
 			<router-view></router-view>
 	    </main>
-        <MainComponent/>
+        <JoinUsComponent/>
         <FooterComponent/>
     </div>
 </template>
@@ -14,6 +15,9 @@
 import HeaderComponent from '../components/HeaderComponent.vue';
 import MainComponent from '../components/MainComponent.vue';
 import FooterComponent from '../components/FooterComponent.vue';
+import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
+import '@fortawesome/fontawesome-free/js/all.js';
+
 
 export default {
     name: 'App',
@@ -21,6 +25,7 @@ export default {
         HeaderComponent, 
         MainComponent,
         FooterComponent,
+        JoinUsComponent
     }
 }
 </script>
@@ -29,5 +34,11 @@ export default {
 @import '~bootstrap/scss/bootstrap';
 @import '../style/variables';
 @import '../style/common';
+
+*{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;;
+}
+
+
 
 </style>

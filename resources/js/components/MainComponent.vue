@@ -1,6 +1,5 @@
 <template>
   <main>
-    ciao sono il main component
     <JumbotronComponent/>
   </main>
 </template>
@@ -19,6 +18,9 @@
 </script>
 
 <style lang="scss" scoped>
+
+@import '../style/variables';
+@import '../style/common';
 
   main{
     background-color: lightgray;
