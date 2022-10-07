@@ -155,9 +155,7 @@ header{
                         max-width: 643px;
                 }
             }
-        
-                
-              
 
+            
 
 </style>

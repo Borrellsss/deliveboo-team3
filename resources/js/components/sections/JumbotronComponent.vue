@@ -18,8 +18,11 @@
                   <h2>TOAST RIDER</h2>
                   <p>L'unico servizio di delivery che porta i migliori ristoranti a casa tua <br>
                       rapidaente, senza spese spedizione! 
-                      Affidati al potere del toast!
+                      Affidati al potere del toaddst!
                   </p>
+                 <div>
+                  
+                 </div>
               </div>
               <!-- <div class="buttons">
                   <span class="js_button">buy avada now</span>

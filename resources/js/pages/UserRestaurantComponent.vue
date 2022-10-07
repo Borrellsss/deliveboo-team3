@@ -1,5 +1,8 @@
 <template>
     <section>
+        <div class="searchbar-container">
+            <SearchbarComponent/>
+        </div>
         <!-- <ProductComponent :users = user /> -->
         <div class="container" style="margin-top:50px;">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
@@ -29,9 +32,13 @@
 </template>
 
 <script>
+ import SearchbarComponent from '../../js/components/SearchbarComponent.vue';
 
 export default {
     name:'UserRestaurantComponent',
+    components: {
+        SearchbarComponent,
+      },
     data(){
         return{
             users : [],
@@ -181,6 +188,26 @@ export default {
                 
                 .card-text {
                     font-size: 1.6rem;
+                }
+            }
+
+            @media only screen and (max-width: 576px) {
+                    .card-sl {
+                width: 350px;
+                height: 430px;
+            }
+
+            .card-image {
+                width: 350px;
+                height: 300px;
+                }
+                
+                .card-heading {
+                    font-size: 1.2rem;
+                }
+                
+                .card-text {
+                    font-size: 1.2rem;
                 }
             }
 
