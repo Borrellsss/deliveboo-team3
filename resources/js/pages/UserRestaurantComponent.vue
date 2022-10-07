@@ -43,13 +43,26 @@ export default {
     data(){
         return{
             users : [],
+            categories: [],
+            selectedCategories: []
+        }
+    },
+    methods: {
+        getSelectedCategories() {
+            
+            axios.get(`http://127.0.0.1:8000/api/restaurants?categories=${this.selectedCategories}`)
+            .then((response) => {
+            this.users = response.data.results;
+                console.log(response.data)
+            });
         }
     },
     mounted(){
-        axios.get('http://127.0.0.1:8000/api/user')
+
+        axios.get('http://127.0.0.1:8000/api/restaurants-categories')
         .then((response) => {
-           this.users = response.data.results
-            // console.log(this.users)
+            this.categories = response.data.results;
+            // console.log(this.categories);
         });
     }
 }
