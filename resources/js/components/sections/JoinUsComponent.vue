@@ -41,18 +41,18 @@ export default {
        background-position-y: 0;
        height: 500px;
        min-width: 100%;
-       color: $secondary-color;
        border-radius: 20px;
     }
 
     .text-container{
-        color: $primary-color;
+        color: white;
         text-align: left;
         padding-left: 5rem;
         padding-right: 5rem;
 
             h3{
                 font-size: 2.5rem;
+                color: $primary-color;
             }
 
             h4{
