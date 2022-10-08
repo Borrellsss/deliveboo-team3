@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="card-testing">
+        <div class="restaurant-cards">
           <div class="fo-container">
             <div class="row gx-5 row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
 
@@ -39,7 +39,7 @@
                     <router-link  :to="{name: 'products-page',params: {id: user.id}}" class="d-flex">
                         <div class="card" style="margin-top:50px;" >
                             <div class="img-container">
-                                <img v-if="user.cover"  :src="user.cover" :alt="user.business_name">
+                                <img v-if="user.cover" :src="user.cover" :alt="user.business_name">
                                 <!-- <img v-if="user.cover" src="https://images.adsttc.com/media/images/5e4c/1025/6ee6/7e0b/9d00/0877/slideshow/feature_-_Main_hall_1.jpg?1582043123" :alt="user.business_name"> -->
                                 <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="user.business_name">
                             </div>
@@ -117,7 +117,6 @@
             margin: 2rem 0;
         }
         .categories-bar{
-
             margin-bottom: 50px;
                 .checkbox-symbol {
                         position: absolute;
@@ -154,8 +153,8 @@
                             display: flex;
                             }
                        }
-             }
-    }     
+              }
+         }     
 
     //  Checkbox animation 
     .checkbox:not(:last-child) {
