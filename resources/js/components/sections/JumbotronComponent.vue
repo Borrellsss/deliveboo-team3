@@ -82,12 +82,10 @@ export default {
 
 
                p{
-                font-family: 'Noto Sans JP', sans-serif;
-
-                 margin-top: 20px;
-                 text-shadow: 2px 2px 0 #ffc509, 2px -2px 0 #ffc509,
-                  -2px 2px 0 #ffc509, -2px -2px 0 #ffc509, 2px 0px 0 #ffc509,
-                   0px 2px 0 #ffc509, -2px 0px 0 #ffc509, 0px -2px 0 #ffc509;
+                    margin-top: 20px;
+                //  text-shadow: 2px 2px 0 #ffc509, 2px -2px 0 #ffc509,
+                //   -2px 2px 0 #ffc509, -2px -2px 0 #ffc509, 2px 0px 0 #ffc509,
+                //    0px 2px 0 #ffc509, -2px 0px 0 #ffc509, 0px -2px 0 #ffc509;
                }
            }
                

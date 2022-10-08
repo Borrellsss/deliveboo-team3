@@ -45,8 +45,8 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-heading">
+                                   <div v-if="user.business_name.length < 33" class="space_line"></div>
                                    <span>{{user.business_name.slice(0, 33) }}</span><span v-if="user.business_name.length > 33">...</span>
-                                    <!-- <div v-if="user.business_name.length < 30" class="space_line"></div> -->
                                 </div>
                                 <div class="card-text">
                                     <i class="fa-solid fa-location-dot"></i>
@@ -103,9 +103,10 @@
     @import '../style/variables';
     @import '../style/common';
 
-    //  .space_line{
-    //     margin-top: 1rem;
-    //  }
+     .space_line{
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+     }
 
             //////// FILTER CATEGORIES ////////  
          
@@ -260,9 +261,6 @@
                         padding: 0px 15px;
                         margin-top: 0.4rem;
                 
-                                .space_line{
-                                margin-top: 3rem;
-                                }
                         }
             
                         .card-text {
@@ -301,9 +299,6 @@
                                 padding: 0px 10px;
                                 margin-top: 0.4rem;
                         
-                                        .space_line{
-                                        margin-top: 1rem;
-                                        }
                                 }
                                         
                     .card-text {
@@ -341,9 +336,6 @@
                                             padding: 0px 6px;
                                             margin-top: 0.2rem;
                                             
-                                            .space_line{
-                                                margin-top: 1rem;
-                                            }
                                         }
                                         
                                         .card-text {
