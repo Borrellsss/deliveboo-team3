@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Product;
+use Faker\Generator as Faker;
 
 class ProductsTableSeeder extends Seeder
 {
@@ -10,8 +11,18 @@ class ProductsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        
+        for($i = 0; $i < 150; $i++) {
+            // $product = new Product();
+            // $product->name = 
+            // $product->cover = 
+            // $product->description = 
+            // $product->ingredients = 
+            // $product->cooking_time = 
+            // $product->price = 
+            // $product->visible = 
+            // $product->user_id = 
+        }
     }
 }
