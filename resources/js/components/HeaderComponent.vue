@@ -55,7 +55,7 @@
                                 oppure 
                             </div >
                             <div class="ms_register">
-                                <a href="/login" class="js_btn">
+                                <a href="/register" class="js_btn">
                                     Registrati <i class="cell-symbol  fa-solid fa-right-to-bracket"></i>
                                 </a>
                             </div>

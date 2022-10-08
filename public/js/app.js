@@ -8280,7 +8280,7 @@ var staticRenderFns = [function () {
   }, [_c("a", {
     staticClass: "js_btn",
     attrs: {
-      href: "/login"
+      href: "/register"
     }
   }, [_vm._v("\n                                 Registrati "), _c("i", {
     staticClass: "cell-symbol fa-solid fa-right-to-bracket"
