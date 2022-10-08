@@ -16,6 +16,11 @@
                         <i class="fa-solid fa-utensils"></i>
                         <a href="{{route('admin.products.index')}}">Il mio Menu</a>
                     </li>
+
+                    <li>
+                        <i class="fa-solid fa-utensils"></i>
+                        <a href="{{route('admin.orders')}}">I miei Ordini</a>
+                    </li>
                 </ul>
             </nav>
         </aside>

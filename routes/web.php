@@ -20,6 +20,8 @@ Route::middleware('auth')
 ->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('/products', 'ProductController');
+    Route::get('/orders', 'OrdersController@index')->name('orders');
+    Route::get('/statistics', 'StatisticsController@index')->name('statistics');
 });
 
 

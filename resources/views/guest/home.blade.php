@@ -8,6 +8,7 @@
     <link rel=“stylesheet” href="{{asset ('css/app.css')}}">
 
     <title>Document</title>
+    
 </head>
 <body>
     <div id="root">
