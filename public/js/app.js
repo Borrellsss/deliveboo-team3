@@ -7933,16 +7933,189 @@ __webpack_require__.r(__webpack_exports__);
   name: 'ProductComponent',
   data: function data() {
     return {
-      products: []
+      // array dei prodotti
+      products: [],
+      // array vuoto per il carrello
+      cart: [],
+      // numero prodotti presenti nel carrello
+      products_in_cart: 0,
+      // totale da pagare
+      total_amount: 0
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     // $this.route.paramas.id rappresenta il passaggio di informazioni eseguiro con il router link
     axios.get("http://127.0.0.1:8000/api/".concat(this.$route.params.id, "/menu")).then(function (response) {
       _this.products = response.data.results;
-    });
+    }); // se il carrello non è null
+
+    if (localStorage.cart) {
+      // i prodotti presenti nel carrello vengono convertiti in un file json
+      this.products_in_cart = JSON.parse(localStorage.cart);
+    } // richiamo la funzione del totale
+    // this.totalAmount();
+    // se cart esiste in LocalStorage
+
+
+    if (localStorage.getItem('cart')) {
+      try {
+        // trasformalo in stringa
+        this.cart = JSON.parse(localStorage.getItem('cart'));
+      } catch (e) {
+        // altrimenti rimuovi cart da localStorage
+        localStorage.removeItem('cart');
+      }
+    }
+  },
+  methods: {
+    // funzione che aggiunge il prodotto al carrello
+    addItem: function addItem(product) {
+      if (!product) {
+        return;
+      }
+
+      if (localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0) {
+        product.quantity = 1; // pusha nell'array il prodotto
+
+        this.cart.push(product); // salva il carrello
+
+        this.saveCart();
+      } else {
+        // salvo la stringa di LocalStorage in this.cart
+        this.cart = JSON.parse(localStorage.getItem('cart'));
+
+        if (this.cart[0].user_id !== product.user_id) {
+          // se conferma di cambiare ristorante 
+          if (confirm('Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello. Vuoi cambiare ristorante? ')) {
+            // svuota il carrello
+            this.cart = []; // setta la quantità del prodotto (del nuovo ristorante)
+
+            product.quantity = 1; // pusha nell'array il prodotto
+
+            this.cart.push(product); // salva il carrello
+
+            this.saveCart();
+          }
+        } else {
+          //se non cambia ristorante:
+          // salva l'id del prodotto selezionato
+          var check = this.cart.find(function (_ref) {
+            var id = _ref.id;
+            return id == product.id;
+          });
+          console.log(this.cart.find(function (_ref2) {
+            var id = _ref2.id;
+            return id == product.id;
+          })); //    console.log('adesso')
+          // se non esiste già
+
+          if (!check) {
+            //setta la quantità ad 1
+            product.quantity = 1; //altrimenti
+          } else {
+            // incrementa di 1 la quantità
+            for (var i = 0; i < this.cart.length + 1; i++) {
+              if (this.cart[i].id == product.id) {
+                this.cart[i].quantity = this.cart[i].quantity + 1;
+                this.saveCart();
+              }
+            }
+          } // pusha nell'array il prodotto
+
+
+          this.cart.push(product); // salva il carrello
+
+          this.saveCart();
+        }
+      }
+    },
+    // funzione per la rimozione del prodotto dal carrello
+    // funzione salva carrello
+    saveCart: function saveCart() {
+      var parsed = JSON.stringify(this.cart);
+      localStorage.setItem('cart', parsed);
+    },
+    //  removeItem(product , index){
+    //     if(product.quantity > 1)
+    //     for(let i = 0; i < this.cart.length + 1; i++){
+    //         if(this.cart[i].id == product.id){
+    //         this.cart[i].quantity = this.cart[i].quantity -  1;
+    //         this.saveCart();
+    //         }else  {
+    //         }
+    //     }
+    //     else
+    //         this.deleteItem(index);
+    // //         this.totalAmount();
+    // },
+    ////////////////////////////////////////
+    // funzione che incrementa la quantità del prodotto all'interno del carrello
+    // increaseQuantity(product, index) {
+    //     let check = this.cart.find(({id}) => id == product.id);
+    //     if(check.id){
+    //          for(let i = 0; i < this.cart.length + 1; i++){
+    //             if(this.cart[i].id == product.id){
+    //             this.cart[i].quantity = this.cart[i].quantity + 1
+    //             this.saveCart();
+    //             }
+    //         }
+    //     }
+    // },
+    // funzione che riduce la quantità del prodotto nel carrello
+    decreaseQuantity: function decreaseQuantity(product, index) {
+      var check = this.cart.find(function (_ref3) {
+        var id = _ref3.id;
+        return id == product.id;
+      });
+
+      if (check.id) {
+        for (var i = 0; i < this.cart.length + 1; i++) {
+          if (this.cart[i].id == product.id && this.cart[i].quantity > 1) {
+            this.cart[i].quantity = this.cart[i].quantity - 1;
+            this.saveCart();
+          }
+        }
+      }
+    },
+    // funzione che cancella il prodotto dal carrello
+    deleteItem: function deleteItem(product, index) {
+      if (this.cart.length > 1) {
+        this.cart.splice(index, 1); // this.testFunction(index)
+        // localStorage.removeItem();
+
+        console.log('ciao sono', Storage.key(index));
+      } else {
+        this.cart.splice(index, 1); // this.testFunction(index)
+        // this.saveProductInCart();
+
+        localStorage.clear();
+      }
+    } // testFunction(index){
+    //     const testCart = JSON.parse(localStorage.getItem("cart"))
+    //     for (let i =0; i< testCart.length; i++) {
+    //         let items = JSON.parse(testCart[i]);
+    //         if (items.id == index) {
+    //         testCart.splice(index, 1);
+    //         }
+    //     }
+    // }
+    // salva nel carrello i prodotti
+    // saveProductInCart(){
+    //     const parsed = JSON.stringify(this.products_in_cart);
+    //     localStorage.setItem('cart', parsed);
+    //     this.products_in_cart = JSON.parse(localStorage.cart);
+    // },
+    // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
+    // totalAmount(){
+    //     this.total_amount = 0;
+    //     for (let i = 0; i < this.cart.length; i++) {
+    //         this.total_amount += parseFloat(this.cart[i].price)*this.product.quantity
+    //         console.log(this.cart[i])
+    //     }
+    //  },
+
   }
 });
 
@@ -8423,7 +8596,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
+  return _c("section", [_c("div", {
     staticClass: "container"
   }, [_c("div", {
     staticClass: "row row-cols-1 row-cols-md-2 row-cols-lg-3"
@@ -8442,11 +8615,78 @@ var render = function render() {
       }
     }), _vm._v(" "), _c("p", {
       staticClass: "card-text"
-    }, [_vm._v("Prezzo: " + _vm._s(product.price))])])]);
-  }), 0)]);
+    }, [_vm._v("Prezzo: " + _vm._s(product.price))]), _vm._v(" "), _c("a", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.addItem(product);
+        }
+      }
+    }, [_vm._v("Add to cart")])])]);
+  }), 0)]), _vm._v(" "), _c("div", {
+    staticClass: "cart-comp"
+  }, [_c("div", {
+    staticClass: "cart-container"
+  }, [_vm._m(0), _vm._v(" "), _vm.cart.length > 0 ? _c("div", {
+    staticClass: "cart-container-content row"
+  }, [_c("ul", {
+    staticClass: "products-container col-sm-7 col-12"
+  }, _vm._l(_vm.cart, function (product, index) {
+    return _c("li", {
+      key: index
+    }, [_c("div", {
+      staticClass: "right-side row"
+    }, [_c("div", {
+      staticClass: "info col-lg-8 col-12"
+    }, [_c("h5", [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("p", {
+      staticClass: "description"
+    }, [_c("span", [_vm._v(_vm._s(product.description))])]), _vm._v(" "), _c("span", {
+      staticClass: "price"
+    }, [_vm._v("€ " + _vm._s(product.price))])]), _vm._v(" "), _c("div", {
+      staticClass: "quantity-inputs col-lg-4 col-12"
+    }, [_c("a", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.addItem(product);
+        }
+      }
+    }, [_vm._v("+")]), _vm._v(" "), _c("div", {
+      staticClass: "quantity"
+    }, [_vm._v(_vm._s(product.quantity))]), _vm._v(" "), _c("a", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.decreaseQuantity(product, index);
+        }
+      }
+    }, [_vm._v("-")]), _vm._v(" "), _c("a", {
+      staticClass: "btn btn-primary",
+      on: {
+        click: function click($event) {
+          return _vm.deleteItem(index);
+        }
+      }
+    }, [_vm._v("Delete")])])])]);
+  }), 0), _vm._v(" "), _c("h2", [_vm._v("Totale: "), _c("span", {
+    staticClass: "price"
+  }, [_vm._v("€ " + _vm._s(_vm.total_amount))])])]) : _c("h1", [_c("i", {
+    staticClass: "fa-solid fa-triangle-exclamation"
+  }), _vm._v(" Il carrello è vuoto.")])])])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "top-links"
+  }, [_c("h4", {
+    staticClass: "static active"
+  }, [_vm._v("Carrello "), _c("i", {
+    staticClass: "fa-solid fa-cart-arrow-down"
+  })])]);
+}];
 render._withStripped = true;
 
 
@@ -61264,9 +61504,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\back-sass\back.scss */"./resources/sass/back-sass/back.scss");
+__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })
