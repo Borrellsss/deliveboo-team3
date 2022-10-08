@@ -12,7 +12,6 @@ class RestaurantsController extends Controller
 {
     public function getRestaurantsByCategory(Request $request) {
         $user_data = $request->all();
-        // dd($user_data)
 
         if(isset($user_data['categories'])) {
             

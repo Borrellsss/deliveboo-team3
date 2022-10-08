@@ -60,7 +60,6 @@
 
 <script>
 
-
 export default {
     name:'UserRestaurantComponent',
     components: {
