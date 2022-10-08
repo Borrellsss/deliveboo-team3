@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Product;
 
-class OrdersTableSeeder extends Seeder
+class ProductsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
