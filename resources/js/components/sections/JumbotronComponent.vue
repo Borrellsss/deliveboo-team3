@@ -6,8 +6,8 @@
             <div class="row">
               <div class="col ">
                   <div class="jumbotron-text">
-                      <h2 class="jack">TOAST RIDER</h2>
-                      <p class="jack">L'unico servizio di delivery che porta i migliori ristoranti a casa tua, <br>
+                      <h2 class="fo-style">TOAST RIDER</h2>
+                      <p class="fo-style">L'unico servizio di delivery che porta i migliori ristoranti a casa tua, <br>
                           rapidamente e senza spese di spedizione. <br>
                           Affidati al potere del toast!
                       </p>
@@ -82,6 +82,8 @@ export default {
 
 
                p{
+                font-family: 'Noto Sans JP', sans-serif;
+
                  margin-top: 20px;
                  text-shadow: 2px 2px 0 #ffc509, 2px -2px 0 #ffc509,
                   -2px 2px 0 #ffc509, -2px -2px 0 #ffc509, 2px 0px 0 #ffc509,

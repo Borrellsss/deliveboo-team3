@@ -5,8 +5,8 @@
             <div class="row">
                 <div class="col">
                   <div class="text-container">
-                    <h3 class="jack">Hai un ristorante?</h3>
-                    <h4 class="jack">
+                    <h3 class="fo-style">Hai un ristorante?</h3>
+                    <h4 class="fo-style">
                         Diventa Partner! <br>
                         Per te subito grandi vantaggi.
                     </h4>

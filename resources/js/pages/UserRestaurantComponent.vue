@@ -2,7 +2,7 @@
 
     <section>
         <div class="category-filter-container">
-            <h4 class="jack">Scegli la tua categoria</h4>
+            <h4 class="fo-style">Scegli la tua categoria</h4>
             <div class="categories-bar">
                 <svg class="checkbox-symbol">
                     <symbol id="check" viewbox="0 0 12 10">
@@ -292,6 +292,10 @@
 
 
   @media only screen and (max-width: 768px) {
+
+    .row{
+            margin-top: 100px;
+        }
         .checkbox-container {
                 margin-bottom: 7rem;
           }
@@ -314,6 +318,10 @@
       }
 
        @media only screen and (max-width: 576px) {
+
+        .row{
+            margin-top: 100px;
+        }
                 .card-sl {
                     width: 350px;
                     height: 430px;
@@ -333,6 +341,11 @@
 
 
         @media only screen and (max-width: 530px) {
+
+            .row{
+            margin-top: 100px;
+        }
+
                 .checkbox-container {
                     margin-bottom: 11rem;
                     }
