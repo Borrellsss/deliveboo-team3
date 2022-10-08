@@ -200,6 +200,7 @@ export default {
 
 
         ////////////////////////////////////////
+        //////////////////////////////////////
         // funzione che incrementa la quantità del prodotto all'interno del carrello
         // increaseQuantity(product, index) {
 
