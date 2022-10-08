@@ -1,5 +1,5 @@
 <template>
-    <section id="card-testing">
+    <div class="card-testing">
           <div class="fo-container">
             <div class="row gx-5 row row-cols-4 row-cols-md-4 row-cols-lg-4 row-cols-xl-4">
 
@@ -45,7 +45,7 @@
 
             </div>
           </div>
-        </section>
+    </div>
 </template>
 
 <script>
@@ -60,7 +60,7 @@ export default {
 @import '../style/common';
 
 
-#card-testing{
+.card-testing{
     margin-top: 300px;
 }
 

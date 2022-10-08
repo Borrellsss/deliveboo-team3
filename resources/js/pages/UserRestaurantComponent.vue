@@ -30,19 +30,21 @@
                 </div>
             </div>
         </div>
-        <!-- <ProductComponent :users = user /> -->
-        <div class="ms_container" style="margin-top:50px;">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
 
-                    <div v-for="user in users" :key="user.id" class="col d-flex justify-content-center">
-                        <router-link  :to="{name: 'products-page',params: {id: user.id}}" class="d-flex">
-                            <div  class="card-sl">
-                                <div class="card-image">
-                                    <img v-if="user.cover" :src="user.cover" :alt="user.business_name">
-                                    <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="user.business_name">
-                                </div>
+        <div class="card-testing">
+          <div class="fo-container">
+            <div class="row gx-5 row row-cols-4 row-cols-md-4 row-cols-lg-4 row-cols-xl-4">
+
+                <div v-for="user in users" :key="user.id" class="col">
+                    <router-link  :to="{name: 'products-page',params: {id: user.id}}" class="d-flex">
+                        <div class="card">
+                            <div class="img-container">
+                                <img v-if="user.cover" src="https://images.adsttc.com/media/images/5e4c/1025/6ee6/7e0b/9d00/0877/slideshow/feature_-_Main_hall_1.jpg?1582043123" :alt="user.business_name">
+                                <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="user.business_name">
+                            </div>
+                            <div class="card-body">
                                 <div class="card-heading">
-                                    <span>{{user.business_name.slice(0, 35) }}</span><span v-if="user.business_name.length > 35">...</span>
+                                   <span>{{user.business_name.slice(0, 35) }}</span><span v-if="user.business_name.length > 35">...</span>
                                     <div v-if="user.business_name.length < 30" class="space_line"></div>
                                 </div>
                                 <div class="card-text">
@@ -50,11 +52,12 @@
                                     <span class="address">{{user.address.slice(0, 45)}}</span><span v-if="user.address.length > 45">...</span>
                                 </div>
                             </div>
-                      </router-link>
-                    </div>
-
-                </div>  
-            </div> 
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+         </div>
+      </div>
     </section>   
 
 </template>
@@ -193,12 +196,12 @@
     }
 
     .checkbox:hover span:first-child {
-    border-color: #0077ff;
+    border-color: $secondary-color;
     }
 
     .checkbox-input:checked + .checkbox span:first-child {
-    background: #0077ff;
-    border-color: #0077ff;
+    background: $secondary-color;
+    border-color: $secondary-color;
     animation: zoom-in-out 0.3s ease;
     }
 
@@ -214,34 +217,39 @@
 
   //////// RESTAURANT CARDS ////////  
 
-     .ms_container{
-        width: 90%;
+    .fo-container{
+        width: 75%;
         margin: 0 auto;
-     }
+    }
 
-      .card-sl {
-            width: 250px;
-            height: 300px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-             0 6px 20px 0 rgba(0, 0, 0, 0.19);
-             margin-bottom: 3rem;
-             position: relative;
+    .col{
+        padding: 0 0.3rem;
+    }
 
+        .card{
+                width: 100%;
+                height: 250px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+             
              &:hover{
                      transform: translateY(5px)
                     }
-             .card-image {
-                    height: 200px;
-                    width: 250px;
-                    max-width: 100%;
-                 
-                            img{
-                                border-radius: 8px 8px 0px 0;
-                                height: 100%;
-                                object-fit: cover;
-                                }
+
+                .img-container {
+                        width: 100%;
+                        height: 170px;
+                    
+                        img{
+                            border-radius: 8px 8px 0px 0;
+                            height: 100%;
+                            object-fit: cover;
+                            height: 170px
                             }
+                        }
+                    }
+                    
             .card-heading {
                 font-size: 1rem;
                 font-weight: bold;
@@ -251,7 +259,7 @@
                 overflow: hidden;
         
                         .space_line{
-                        margin-top: 1rem;
+                        margin-top: 3rem;
                         }
                 }
                         
@@ -266,89 +274,148 @@
                         margin-left: 0.3rem;
                         }
                     }
-         }
+         
+         @media only screen and (max-width: 1200px) {
 
- 
-
-
-     //////// MEDIA QUERIES ////////
-     
-     @media only screen and (max-width: 992px) {
-
-           *{
-            margin: 0 auto;
-
-            .card-sl {
-                width: 260px;
-                height: 350px;
-                
-                    .card-image {
-                    width: 260px;
-                    height: 250px;
-                    }
+            .col{
+                    padding: 0rem 0rem;
                 }
-           }
-        }
 
-
-  @media only screen and (max-width: 768px) {
-
-    .row{
-            margin-top: 100px;
-        }
-        .checkbox-container {
-                margin-bottom: 7rem;
-          }
-
-          .card-sl {
-                width: 500px;
-                height: 700px;
-                .card-image {
-                    width: 500px;
-                    height: 500px;
-                    }
-                .card-heading {
-                    font-size: 1.6rem;
-                }
-                
-                .card-text {
-                    font-size: 1.6rem;
-                }
-             }
-      }
-
-       @media only screen and (max-width: 576px) {
-
-        .row{
-            margin-top: 100px;
-        }
-                .card-sl {
-                    width: 350px;
-                    height: 430px;
-                    .card-image {
-                        width: 350px;
-                        height: 300px;
+            .fo-container{
+                            width: 80%;
+                            margin: 0 auto;
                         }
-                        .card-heading {
-                            font-size: 1.2rem;
+
+                        .col{
+                            padding: 5px;
                         }
+                    }
+
+                    .card-heading {
+                                font-size: 0.9rem;
+                                font-weight: bold;
+                                padding: 0px 10px;
+                                margin-top: 0.5rem;
                         
-                        .card-text {
-                            font-size: 1.2rem;
-                        }
-                }
-           }
+                                        .space_line{
+                                        margin-top: 1rem;
+                                        }
+                                }
+                                        
+                                .card-text {
+                                    padding: 0px 15px;
+                                    font-size: 0.7rem;
+                                        .address{
+                                        margin-left: 0.3rem;
+                                        }
+                                    }
+                        @media only screen and (max-width: 992px) {
+
+                        .fo-container{
+                            width: 80%;
+                            margin: 0 auto;
+
+                            .card{
+                                height: 200px;
+                                    .img-container {
+                                            height: 136px;
+                                        
+                                            img{
+                                                height: 136px
+                                                }
+                                            }
+                                            }
+
+                                                .col{
+                                                    padding: 5px;
+                                                }
+                                            }
+
+                                            .card-heading {
+                                                    font-size: 0.8rem;
+                                                    font-weight: bold;
+                                                    padding: 0px 6px;
+                                                    margin-top: 0.2rem;
+                                            
+                                                            .space_line{
+                                                            margin-top: 1rem;
+                                                            }
+                                                    }
+                                                            
+                                                    .card-text {
+                                                        padding: 0px 15px;
+                                                        font-size: 0.6rem;
+                                                            .address{
+                                                            margin-left: 0.3rem;
+                                                            }
+                                                 }
 
 
-        @media only screen and (max-width: 530px) {
+                        @media only screen and (max-width: 768px) {
 
-            .row{
-            margin-top: 100px;
-        }
+                            .fo-container{
+                            width: 80%;
+                            margin: 0 auto;
 
-                .checkbox-container {
-                    margin-bottom: 11rem;
-                    }
-        }
-    
+                            .card{
+                                height: 150px;
+                                    .img-container {
+                                            height: 102px;
+                                        
+                                            img{
+                                                height: 102px
+                                                }
+                                            }
+                                            }
+
+                                                .col{
+                                                    padding: 5px;
+                                                }
+                                            }
+
+                                            .card-heading {
+                                                    font-size: 0.6rem;
+                                                    font-weight: bold;
+                                                    padding: 0px 5px;
+                                                    margin-top: 0.2rem;
+                                            
+                                                            .space_line{
+                                                            margin-top: 1rem;
+                                                            }
+                                                    }
+                                                            
+                                                    .card-text {
+                                                        padding: 0px 15px;
+                                                        font-size: 0.4rem;
+                                                            .address{
+                                                            margin-left: 0.2rem;
+                                                            }
+                                                 }
+
+                                        }
+                @media only screen and (max-width: 576px) {
+
+                    .fo-container{
+                            width: 80%;
+                            margin: 0 auto;
+
+                            .card{
+                                height: 120px;
+                                    .img-container {
+                                            height: 82px;
+                                        
+                                            img{
+                                                height: 82px
+                                                }
+                                            }
+                                            }
+
+                                                .col{
+                                                    padding: 3px;
+                                                }
+                                            }
+
+                                        }
+                                    }
+
 </style>
