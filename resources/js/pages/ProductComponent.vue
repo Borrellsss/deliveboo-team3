@@ -7,7 +7,7 @@
                         <h5 class="card-title">{{product.name}}</h5>
                         <img :src="product.cover" :alt="product.name">
                         <p class="card-text">Prezzo: {{product.price}}</p>  
-                        <a class="btn btn-primary" @click='addItem(product)'>Add to cart</a> 
+                        <a class="btn btn-primary" @click='addItem(product),totalAmount()'>Add to cart</a> 
                     </div>
                 </div>
             </div>   
@@ -17,16 +17,12 @@
             <div class="cart-container">
                 <div class="top-links">
                         <h4 class="static active">Carrello <i class="fa-solid fa-cart-arrow-down"></i></h4>
-                        <!-- <h4 v-if="total_amount > 0">
-                        <router-link :to="{name: 'checkout'}" class="link">Checkout <i class="fa-regular fa-credit-card"></i></router-link>
-                        </h4> -->
                 </div>
-                <!-- <div class="mid-bar"><go-back-btn/></div> -->
-                <div v-if="total_amount > 0" class="cart-container-content row">
+          
+                <div v-if="cart.length > 0" class="cart-container-content row">
                     <ul class="products-container col-sm-7 col-12">
                         <li v-for="(product, index) in cart" :key="index">
-                            <!-- <img v-if="item.image" :src="`/images/foods/${item.image}`":alt="item.name">
-                            <img v-else src="/images/foods/dishFoodPlaceholder.jpg" :alt="`item.name`"> -->
+                           
                             <div class="right-side row">
                                 <div class="info col-lg-8 col-12">
                                     <h5>{{product.name}}</h5>
@@ -50,7 +46,6 @@
                 </div>
                 <h1 v-else><i class="fa-solid fa-triangle-exclamation"></i> Il carrello è vuoto.</h1>
             </div>
-           
 
         </div>   
 
@@ -59,11 +54,7 @@
             
         </div> -->
     </section>
-        
-        
 
-    
-   
 </template>
 
 <script>
@@ -96,7 +87,7 @@ export default {
             this.products_in_cart = JSON.parse(localStorage.cart);
         }
         // richiamo la funzione del totale
-        this.totalAmount();
+        // this.totalAmount();
 
         // se cart esiste in LocalStorage
         if (localStorage.getItem('cart')) {             
@@ -109,80 +100,74 @@ export default {
             }
         }
     },
-    mounted(){
-      
-                                            
-    },
+    
     methods:{
 
         // funzione che aggiunge il prodotto al carrello
         addItem(product){
             // this.cart.push(product)
-              if (!product){
+           
+            if (!product){
                 return;
             }
-            try{
-                // se non esiste il carrello o la sua conversione in stringa è zero
-                if(localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0){
-                   
-                    // setta la quantità del prodotto a 1
-                    product.quantity = 1;
-                    // pusha nell'array il prodotto
-                    this.cart.push(product);
-                    // salva il carrello
-                    this.saveCart();
-                }
-                // altrimenti
-                else{
-                    // salvo la stringa di LocalStorage in this.cart
-                    this.cart = JSON.parse(localStorage.getItem('cart'));
-                    //nel caso in cui l'utente voglia ordinare da un altro ristorante:
-                    // se lo user id dell'elemento con indice 0 (primo elemento del carrello che determina l'unico ristorante da cui poter ordinare) 
-                    // è diverso dalla chiave user.id dentro product  (confronto delle FK)
-                    if(this.cart[0].user_id !== product.user_id){
-                        // se conferma di cambiare ristorante 
-                        if(confirm('Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello. Vuoi cambiare ristorante? ')){
-                            // svuota il carrello
-                            this.cart = [];
-                             // setta la quantità del prodotto (del nuovo ristorante)
-                            product.quantity = 1;
-                            // pusha nell'array il prodotto
-                            this.cart.push(product);
-                            // salva il carrello
-                            this.saveCart();
-                        };
-                    }
-                    //altrimenti
-                    else{
-                        //se non cambia ristorante:
-                        // salva l'id del prodotto selezionato
-                        let check = this.cart.find(({ id }) => id == product.id);
-                        // se non esiste già
-                        if(!check){
-                            //setta la quantità ad 1
-                            product.quantity = 1;
-                            //altrimenti
-                        }else{
-                                // incrementa di 1 la quantità
-                            for(let i = 0; i < this.cart.length + 1; i++){
-                                if(this.cart[i].id == product.id){
-                                    this.cart[i].quantity = this.cart[i].quantity + 1
-                                    this.saveCart();
-                                    return 
-                                }
-                            }
-                        }
+
+            
+            if(localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0){
+                product.quantity = 1;
+
+                // pusha nell'array il prodotto
+                this.cart.push(product);
+            
+                // salva il carrello
+                this.saveCart();
+
+                
+            }else{
+                // salvo la stringa di LocalStorage in this.cart
+                this.cart = JSON.parse(localStorage.getItem('cart'));
+              
+                if(this.cart[0].user_id !== product.user_id){
+                    // se conferma di cambiare ristorante 
+                    if(confirm('Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello. Vuoi cambiare ristorante? ')){
+                        // svuota il carrello
+                        this.cart = [];
+                         // setta la quantità del prodotto (del nuovo ristorante)
+                        product.quantity = 1;
                         // pusha nell'array il prodotto
                         this.cart.push(product);
                         // salva il carrello
                         this.saveCart();
+                       
                     }
-                }
+                    
+                }  else{
+                    //se non cambia ristorante:
+                    // salva l'id del prodotto selezionato
+                    let check = this.cart.find(({id}) => id == product.id);
+                    // se non esiste già
+                    if(!check){
+                        //setta la quantità ad 1
+                        product.quantity = 1;
+                        //altrimenti
+                    }
+                    else{
+                        // incrementa di 1 la quantità
+                        for(let i = 0; i < this.cart.length + 1; i++){
+                            if(this.cart[i].id == product.id){
+                                this.cart[i].quantity = this.cart[i].quantity + 1
+                                this.saveCart();
+                            }
+                        }
+                    }
+                    // pusha nell'array il prodotto
+                    this.cart.push(product);
+                    // salva il carrello
+                    this.saveCart();
+                   
+                }      
             }
-            // se c'è un errore rimuovi il carrello da localStorage
-            catch(e){
-                localStorage.removeItem('cart');
-            }
+                
+          
         },
         // funzione per la rimozione del prodotto dal carrello
        
@@ -194,46 +179,53 @@ export default {
         
          removeItem(product , index){
             if(product.quantity > 1)
-            for(let i = 0; i < this.products_in_cart.length; i++){
+            for(let i = 0; i < this.products_in_cart; i++){
                 if(this.products_in_cart[i].id == product.id){
                     this.products_in_cart[i].quantity = this.products_in_cart[i].quantity - 1;
                     this.saveCart();
-                    this.totalAmount();
+                    // this.totalAmount();
                 }
             }
             else
                 this.deleteItem(index);
-                this.totalAmount();
+        //         this.totalAmount();
         },
 
 
         ////////////////////////////////////////
         // funzione che incrementa la quantità del prodotto all'interno del carrello
-        increaseQuantity(product) {
-            for(let i = 0; i < this.products_in_cart.length; i++){
-                // console.log(this.products_in_cart[i]);
-                if(this.products_in_cart[i].id == product.id){
-                    this.products_in_cart[i].quantity = this.products_in_cart[i].quantity + 1;
-                    this.saveProductInCart()
-                    this.totalAmount();
-                }
+        increaseQuantity(product, index) {
+
+            let check = this.cart.find(({id}) => id == product.id);
+            if(check){
+                product.quantity = product.quantity + 1;
             }
+            console.log(check)
+
+            // for(let i = 0; i < this.products_in_cart; i++){
+              
+            //     if(this.products_in_cart[i].id == product.id){
+            //         this.products_in_cart[i].quantity = this.products_in_cart[i].quantity + 1;
+            //         this.saveProductInCart()
+                      
+            //     }
+            // }
         },
         // funzione che riduce la quantità del prodotto nel carrello
         decreaseQuantity(product , index){
             if(product.quantity > 1)
-            for(let i = 0; i < this.products_in_cart.length; i++){
+            for(let i = 0; i < this.products_in_cart; i++){
                 if(this.products_in_cart[i].id == product.id){
                     this.products_in_cart[i].quantity = this.products_in_cart[i].quantity - 1;
                     this.cart = [];
                     this.saveProductInCart();
-                    this.totalAmount();
+                    // this.totalAmount();
                 }
             }
             else
             // richiamo la funzione che cancella il prodotto
                 this.deleteItem(index);
-            this.totalAmount();
+            // this.totalAmount();
         },
 
         // funzione che cancella il prodotto dal carrello
@@ -241,7 +233,7 @@ export default {
             this.products_in_cart.splice(index, 1);
             // console.log(index);
             this.saveProductInCart();
-            this.totalAmount();
+            // this.totalAmount();
         },
 
         // salva nel carrello i prodotti
@@ -250,15 +242,22 @@ export default {
             localStorage.setItem('cart', parsed);
             this.products_in_cart = JSON.parse(localStorage.cart);
         },
-        // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
-         totalAmount(){
-            this.total_amount = 0;
-            for (let index = 0; index < this.products_in_cart.length; index++) {
-                this.total_amount += parseFloat(this.products_in_cart[index].price)*this.products_in_cart[index].quantity;
-            }
-        },
 
-    }
+      
+         // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
+        // totalAmount(){
+        //     this.total_amount = 0;
+        //     for (let i = 0; i < this.cart.length; i++) {
+        //         this.total_amount += parseFloat(this.cart[i].price)*this.product.quantity
+        //         console.log(this.cart[i])
+        //     }
+      
+                                            
+        //  },
+       
+
+    },
+    
 }
 
 
