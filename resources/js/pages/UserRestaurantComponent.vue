@@ -365,9 +365,16 @@
                     }
 
         @media only screen and (max-width: 576px) {
-
-            .card-text {
-                            display: none;
-                        }
-                    }
+  
+                      .fo-container{
+                                    .card{
+                                        height: 210px;
+                                    }
+                                    width: 80%;
+                                                
+                                .card-text {
+                                                display: none;
+                                            }
+                                        }
+                      }      
 </style>
