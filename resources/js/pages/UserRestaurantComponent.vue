@@ -1,6 +1,8 @@
 <template>
 
     <section>
+       <JumbotronComponent/>
+
         <div class="category-filter-container">
             <h4 class="fo-style">Scegli la tua categoria</h4>
             <div class="categories-bar">
@@ -59,16 +61,20 @@
             </div>
          </div>
       </div>
+          <JoinUsComponent/>
     </section>   
 
 </template>
 
 <script>
+import JumbotronComponent from '../components/sections/JumbotronComponent.vue';
+import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
 
     export default {
         name:'UserRestaurantComponent',
         components: {
-            
+            JumbotronComponent,
+            JoinUsComponent
         },
         data(){
             return{
