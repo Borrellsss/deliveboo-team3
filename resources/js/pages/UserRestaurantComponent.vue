@@ -45,7 +45,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="card-heading">
-                                   <span>{{user.business_name.slice(0, 25) }}</span><span v-if="user.business_name.length > 25">...</span>
+                                   <span>{{user.business_name.slice(0, 33) }}</span><span v-if="user.business_name.length > 33">...</span>
                                     <!-- <div v-if="user.business_name.length < 30" class="space_line"></div> -->
                                 </div>
                                 <div class="card-text">
@@ -221,7 +221,7 @@
   //////// RESTAURANT CARDS ////////  
 
     .fo-container{
-        width: 75%;
+        width: 80%;
         margin: 0 auto;
     }
 
@@ -251,38 +251,34 @@
                             height: 170px
                             }
                         }
-                    }
-
-            .card-body{
+                .card-body{
                 overflow: hidden;
                 text-overflow: ellipsis;
-            }        
-                    
-            .card-heading {
-                font-size: 1rem;
-                font-weight: bold;
-                padding: 0px 15px;
-                margin-top: 0.4rem;
-                // text-overflow: ellipsis;
-                // overflow: hidden;
-        
-                        .space_line{
-                        margin-top: 3rem;
+                    .card-heading {
+                        font-size: 0.8rem;
+                        font-weight: bold;
+                        padding: 0px 15px;
+                        margin-top: 0.4rem;
+                
+                                .space_line{
+                                margin-top: 3rem;
+                                }
                         }
-                }
-                        
-                .card-text {
-                    padding: 0px 15px;
-                    font-size: 0.8rem;
-                    color: #636262;
-                    // overflow: hidden;
-                    // text-overflow: ellipsis;
             
-                        .address{
-                        margin-left: 0.3rem;
-                        }
-                    }
-         
+                        .card-text {
+                            padding: 0px 15px;
+                            font-size: 0.7rem;
+                            color: #636262;
+                    
+                                .address{
+                                margin-left: 0.3rem;
+                                }
+                          }
+                     }        
+              }
+
+              ///////// MEDIA QUERIES ////////////
+                        
          @media only screen and (max-width: 1200px) {
 
             .col{
@@ -300,7 +296,7 @@
                     }
 
                     .card-heading {
-                                font-size: 0.9rem;
+                                font-size: 0.6rem;
                                 font-weight: bold;
                                 padding: 0px 10px;
                                 margin-top: 0.4rem;
@@ -310,106 +306,68 @@
                                         }
                                 }
                                         
-                                .card-text {
-                                    padding: 0px 15px;
-                                    font-size: 0.8rem;
-                                        .address{
-                                        margin-left: 0.3rem;
-                                        }
-                                    }
-                        @media only screen and (max-width: 992px) {
+                    .card-text {
+                        padding: 0px 15px;
+                        font-size: 0.4rem;
+                            .address{
+                            margin-left: 0.3rem;
+                            }
+
+                        }
+          @media only screen and (max-width: 992px) {
 
                         .fo-container{
                             width: 70%;
                             margin: 0 auto;
 
                             .card{
-                                height: 200px;
+                                height: 220px;
                                     .img-container {
-                                            height: 136px;
+                                            height: 150px;
                                         
                                             img{
-                                                height: 136px
+                                                height: 150px;
                                                 }
                                             }
-                                            }
+                                    }
 
-                                                .col{
-                                                    padding: 5px;
-                                                }
-                                            }
-
-                                            .card-heading {
-                                                    font-size: 0.8rem;
-                                                    font-weight: bold;
-                                                    padding: 0px 6px;
-                                                    margin-top: 0.2rem;
-                                            
-                                                            .space_line{
-                                                            margin-top: 1rem;
-                                                            }
-                                                    }
-                                                            
-                                                    .card-text {
-                                                        padding: 0px 15px;
-                                                        font-size: 0.6rem;
-                                                            .address{
-                                                            margin-left: 0.3rem;
-                                                            }
-                                                 }
-                                                }
-
-                        @media only screen and (max-width: 768px) {
-
-                            .fo-container{
-                            width: 60%;
-                            margin: 0 auto;
-                            }
-                        }
-                //             .card{
-                //                 height: 150px;
-                //                     .img-container {
-                //                             height: 102px;
+                                        .col{
+                                            padding: 5px;
+                                        }
                                         
-                //                             img{
-                //                                 height: 102px
-                //                                 }
-                //                             }
-                //                             }
-
-                //                                 .col{
-                //                                     padding: 5px;
-                //                                 }
-                //                             }
-
-                //                             .card-heading {
-                //                                     font-size: 0.7rem;
-                //                                     font-weight: bold;
-                //                                     padding: 0px 5px;
-                //                                     margin-top: 0.1rem;
+                                        .card-heading {
+                                            font-size: 0.5rem;
+                                            font-weight: bold;
+                                            padding: 0px 6px;
+                                            margin-top: 0.2rem;
                                             
-                //                                             .space_line{
-                //                                             margin-top: 1rem;
-                //                                             }
-                //                                     }
-                                                            
-                //                                     .card-text {
-                //                                         padding: 0px 15px;
-                //                                         font-size: 0.4rem;
-                //                                             .address{
-                //                                             margin-left: 0.2rem;
-                //                                             }
-                //                                  }
-
-                //                         }
-                @media only screen and (max-width: 576px) {
-
-                    .card-text {
-                                  display: none;
+                                            .space_line{
+                                                margin-top: 1rem;
+                                            }
+                                        }
+                                        
+                                        .card-text {
+                                            padding: 0px 15px;
+                                            font-size: 0.4rem;
+                                            .address{
+                                                margin-left: 0.3rem;
+                                            }
+                                        }
+                                    }
                                 }
+                        
+            @media only screen and (max-width: 768px) {
 
-                         }
+                .fo-container{
+                        width: 70%;
+                        margin: 0 auto;
+                        }
+                    }
 
+        @media only screen and (max-width: 576px) {
 
-
+            .card-text {
+                            display: none;
+                        }
+                    }
 </style>

@@ -1,7 +1,6 @@
 <template>
     <div>
             <HeaderComponent/>
-            <CardTesting/>
             <MainComponent/>
        <main>
 			<router-view></router-view>
@@ -18,7 +17,6 @@ import HeaderComponent from '../components/HeaderComponent.vue';
 import MainComponent from '../components/MainComponent.vue';
 import FooterComponent from '../components/FooterComponent.vue';
 import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
-import CardTesting from '../components/CardTesting.vue';
 import '@fortawesome/fontawesome-free/js/all.js';
 
 
@@ -29,7 +27,6 @@ export default {
         MainComponent,
         FooterComponent,
         JoinUsComponent,
-        CardTesting
     }
 }
 </script>
