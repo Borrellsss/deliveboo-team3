@@ -7,6 +7,7 @@
 	    </main>
         <JoinUsComponent/>
         <FooterComponent/>
+        
     </div>
 </template>
 
@@ -25,7 +26,7 @@ export default {
         HeaderComponent, 
         MainComponent,
         FooterComponent,
-        JoinUsComponent
+        JoinUsComponent,
     }
 }
 </script>

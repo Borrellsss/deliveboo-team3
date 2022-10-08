@@ -1,7 +1,9 @@
 <template>
+
   <main>
     <JumbotronComponent/>
   </main>
+  
 </template>
 
 <script>

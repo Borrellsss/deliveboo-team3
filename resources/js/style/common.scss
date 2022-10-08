@@ -39,7 +39,6 @@ a {
     border-radius: 10rem;
     background-color: $secondary-color;
     color: $primary-color;
-    // font-weight: 600;
 
     &:hover {
         text-decoration: none;
@@ -85,12 +84,11 @@ dl, ol, ul {
 }
 
 
-// jack commons 
+// front office style commons 
 
 .js_container {
     width: 65%;
     margin: 0 auto;
-    // min-width: 800px;
     position: relative;
 }
 
@@ -100,14 +98,9 @@ dl, ol, ul {
     width: 40%;
 }
 
-// .main_title p{
-//     color: $subtext-color;
-// }
-
 .js_button{
     display: inline-block;
     text-align: center;
-    // background-color: red;
     padding: 0.7rem 2rem;
     text-transform: uppercase;
     color: white;
@@ -121,28 +114,30 @@ dl, ol, ul {
     padding: 0.5rem 2rem;
 }
 
-h2{
+h2.fo-style{
+    // font-family:
     font-weight: 900;
     font-size: 5rem;
-    text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;
+    text-shadow: #FFFCA8 2px 2px 0px,
+     #9C9C9C 4px 4px 0px;
 }
 
-h3{
+h3.fo-style{
     font-weight: 700;
     font-size: 2rem;
 }
 
-h4{
+h4.fo-style{
     font-weight: 700;
     font-size: 1.4rem;
 }
 
-h5{
+h5.fo-style{
     font-weight: 900;
     font-size: 1.4rem;
 }
 
-p{
+p.fo-style{
     font-size: 1.2rem;
     text-align: center;
     font-weight: 900;

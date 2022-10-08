@@ -48,7 +48,7 @@
               <a href="#!" class="text-white">Isole Fær Øer</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Cina</a>
+              <a href="#!" class="text-white">Ascoli</a>
             </li>
           </ul>
         </div>
@@ -79,7 +79,7 @@
 
           <ul class="list-unstyled mb-0">
             <li>
-              <a href="#!" class="text-white">Note Legali</a>
+              Note Legali
             </li>
             <li>
               <a href="#!" class="text-white">Condizioni</a>
@@ -91,7 +91,7 @@
               <a href="#!" class="text-white">Cookies</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Facci causa!</a>
+              <a href="https://www.youtube.com/watch?v=Fq0HUIWLo5o" class="text-white">Facci causa!</a>
             </li>
           </ul>
         </div>
@@ -152,26 +152,26 @@ export default {
 
 @import '../style/variables';
 @import '../style/common';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;500;700;900&display=swap');
 
   *{
     margin: 0 auto;
-}
 
-footer{
+  footer{
+    background-color: rgb(47, 47, 47);
+        
+        .links-container{
+          margin-top: 3rem;
+        }
+        .social-media-links{
+          margin-top: 3rem;
+        }
 
-  background-color: rgb(47, 47, 47);
-  .links-container{
-    margin-top: 3rem;
+        .btn{
+          padding: 13px 18px;
+          border-radius: 50%;
+        }
+    }
   }
-  .social-media-links{
-    margin-top: 3rem;
-  }
-
-  .btn{
-    padding: 13px 18px;
-    border-radius: 50%;
-  }
-
-}
   
 </style>

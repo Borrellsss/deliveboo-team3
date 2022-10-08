@@ -104,7 +104,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\js\back.js */"./resources/js/back.js");
+module.exports = __webpack_require__(/*! C:\Users\Jack\boolean progetti\laravel-projects\deliveboo-team3\resources\js\back.js */"./resources/js/back.js");
 
 
 /***/ })

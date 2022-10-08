@@ -1,13 +1,12 @@
 <template>
 
-    <!-- HEADER -->
    <header>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="logo-container">
-                    <a href="/">
-                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="logo-container">
+                        <a href="/">
+                            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                                 width="184.000000pt" height="137.000000pt" viewBox="0 0 184.000000 137.000000"
                                 preserveAspectRatio="xMidYMid meet">
 
@@ -37,61 +36,50 @@
                                 <path d="M168 629 c-32 -12 -43 -40 -29 -68 15 -26 39 -33 81 -21 53 15 64 46
                                 30 80 -22 22 -40 24 -82 9z"/>
                                 </g>
-                    </svg>
-                    </a>
-                  <!-- <img class="logo" src="images/toast-rider-logo.svg " alt="toast-rider-logo" > -->
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="col d-flex align-items-center justify-content-end">
+                    <div class="nav-container">
+                        <div class="ms_banner d-flex">
+                            <div class="ms_text d-flex align-items-center">
+                                Sei un ristoratore? 
+                            </div>
+                            <div class="ms_login">
+                                <a href="/login" class="js_btn">
+                                    Accedi <i class="cell-symbol  fa-solid fa-house"></i>
+                                </a>
+                            </div>
+                            <div class="ms_text d-flex align-items-center">
+                                oppure 
+                            </div >
+                            <div class="ms_register">
+                                <a href="/login" class="js_btn">
+                                    Registrati <i class="cell-symbol  fa-solid fa-right-to-bracket"></i>
+                                </a>
+                            </div>
+                       </div>
+                   </div>
                 </div>
             </div>
-            <div class="col  d-flex align-items-center justify-content-end">
-                <div class="nav-container">
-                    <div class="ms_banner d-flex">
-                        <div class="ms_text d-flex align-items-center">
-                            Sei un ristoratore? 
-                        </div>
-                        <div class="ms_login">
-                            <a href="/login" class="js_btn">
-                                <i class="fa-thin fa-user"></i>  Accedi <i class="cell-symbol  fa-solid fa-house"></i>
-                            </a>
-                        </div>
-                        <div class="ms_text d-flex align-items-center">
-                            oppure 
-                        </div >
-                        <div class="ms_register">
-                            <a href="/login" class="js_btn">
-                                Registrati <i class="cell-symbol  fa-solid fa-right-to-bracket"></i>
-                            </a>
-                        </div>
-                   </div>
-               </div>
-            </div>
-    </div>
-  </div>
+        </div>
    </header>
+   
 </template>
-
 
 <script>
 export default {
     name: 'HeaderComponent',
 
-}
+       }
 </script>
 
 <style lang="scss" scoped>
 @import '../style/variables';
 @import '../style/common';
 
-// *{
-//     margin: 0 auto;
-// }
 
-
-
-.col {
-    flex-basis: 0;
-    flex-grow: 1;
-    max-width: 70%;
-}
 
 header{
     display: flex;
@@ -114,15 +102,13 @@ header{
         color: $secondary-color;
         width: 100%;
         transition: transform 60s;
+
+                &:hover{
+                    color: $primary-color;
+                    width: 100%;
+                    transform: rotate(-1080deg);
+                }
          }
-
-         svg:hover{
-        color: $primary-color;
-        width: 100%;
-        transform: rotate(-1080deg);
-         }
-
-
     }
 
     .ms_banner{
@@ -141,27 +127,30 @@ header{
     }
 }
 
- // SCHERMO LARGE 
+// bootstrap col reset 
+
+    .col {
+        flex-basis: 0;
+        flex-grow: 1;
+        max-width: 70%;
+    }
+
+    //////// MEDIA QUERIES ////////
+    
  @media only screen and (max-width: 992px) {
-                  .ms_text{
-                    display: none !important;
-                  }
-
-                  .cell-symbol{
-                    display: none;
-                  }
-
-                  .container-sm, .container {
-                        max-width: 643px;
-                }
-              }      
-
-                @media only screen and (max-width: 768px) {
-                    .container-sm, .container {
-                        max-width: 643px;
-                }
+            .ms_text{
+            display: none !important;
             }
 
-            
+            .cell-symbol{
+            display: none;
+            }
+    }      
+
+    @media only screen and (max-width: 768px) {
+        .container-sm, .container {
+                    max-width: 643px;
+             }
+    }
 
 </style>
