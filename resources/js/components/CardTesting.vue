@@ -74,6 +74,15 @@ export default {
 
 .card{
     width: 100%;
+
+    h4{
+        width: 100%;
+    }
+
+   p{
+        width: 100%;
+    
+    }
 }
 
 @media only screen and (max-width: 1200px) {
