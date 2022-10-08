@@ -1,7 +1,11 @@
 <template>
-  <div>
+  <div class="drop-in">
+    <div>
     <div id="dropin-container"></div>
-    <button id="submit-button" @click="payment()" class="button button--small button--green">Purchase</button>
+    <div class="btn-container">
+    <button id="submit-button" @click="payment()" class="ms_btn">Paga Adesso</button>
+    </div>
+    </div>
   </div>
 </template>
 
@@ -36,7 +40,8 @@ export default {
             amount: "20.00"
           })
           .then((result) => {
-            console.log(result);
+            alert(result.data.message);
+            
         })
       }
     }
@@ -44,6 +49,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.drop-in,
+.btn-container {
+  display: flex;
+  justify-content: center;
+} 
 
 </style>
