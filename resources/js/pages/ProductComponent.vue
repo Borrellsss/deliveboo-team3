@@ -1,6 +1,6 @@
 <template>
     <section>
-         <div class="container">
+        <div class="container">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                 <div v-for="product in products" :key="product.id" class="col mb-4">
                     <div class="ms_product-card text-center">
@@ -35,7 +35,7 @@
                                     <a class="btn btn-primary" @click='increaseQuantity(product)'>+</a> 
                                     <div class="quantity">{{product.quantity}}</div>
                                     <a class="btn btn-primary" @click='decreaseQuantity(product, index)'>-</a> 
-                                    <a class="btn btn-primary" @click='deleteItem(index)'></a>
+                                    <a class="btn btn-primary" @click='deleteItem(index)'>Delete</a>
                                 </div>
 
                             </div>
@@ -46,6 +46,7 @@
                 </div>
                 <h1 v-else><i class="fa-solid fa-triangle-exclamation"></i> Il carrello è vuoto.</h1>
             </div>
+           
 
         </div>   
 
@@ -105,7 +106,6 @@ export default {
 
         // funzione che aggiunge il prodotto al carrello
         addItem(product){
-            // this.cart.push(product)
            
             if (!product){
                 return;
@@ -177,19 +177,23 @@ export default {
             localStorage.setItem('cart', parsed);
         },
         
-         removeItem(product , index){
-            if(product.quantity > 1)
-            for(let i = 0; i < this.products_in_cart; i++){
-                if(this.products_in_cart[i].id == product.id){
-                    this.products_in_cart[i].quantity = this.products_in_cart[i].quantity - 1;
-                    this.saveCart();
-                    // this.totalAmount();
-                }
-            }
-            else
-                this.deleteItem(index);
-        //         this.totalAmount();
-        },
+        //  removeItem(product , index){
+        //     if(product.quantity > 1)
+        //     for(let i = 0; i < this.cart.length + 1; i++){
+        //         if(this.cart[i].id == product.id){
+        //         this.cart[i].quantity = this.cart[i].quantity -  1;
+        //         this.saveCart();
+        //         }else  {
+                    
+        //         }
+        //     }
+        //     else
+        //         this.deleteItem(index);
+
+        // //         this.totalAmount();
+        // },
+
+        
 
 
         ////////////////////////////////////////
@@ -197,43 +201,40 @@ export default {
         increaseQuantity(product, index) {
 
             let check = this.cart.find(({id}) => id == product.id);
-            if(check){
-                product.quantity = product.quantity + 1;
+            if(check.id){
+                 for(let i = 0; i < this.cart.length + 1; i++){
+                    if(this.cart[i].id == product.id){
+                    this.cart[i].quantity = this.cart[i].quantity + 1
+                    this.saveCart();
+                    }
+                }
             }
-            console.log(check)
-
-            // for(let i = 0; i < this.products_in_cart; i++){
-              
-            //     if(this.products_in_cart[i].id == product.id){
-            //         this.products_in_cart[i].quantity = this.products_in_cart[i].quantity + 1;
-            //         this.saveProductInCart()
-                      
-            //     }
-            // }
+           
         },
         // funzione che riduce la quantità del prodotto nel carrello
         decreaseQuantity(product , index){
-            if(product.quantity > 1)
-            for(let i = 0; i < this.products_in_cart; i++){
-                if(this.products_in_cart[i].id == product.id){
-                    this.products_in_cart[i].quantity = this.products_in_cart[i].quantity - 1;
-                    this.cart = [];
-                    this.saveProductInCart();
-                    // this.totalAmount();
+            let check = this.cart.find(({id}) => id == product.id);
+            if(check.id){
+                for(let i = 0; i < this.cart.length + 1; i++){
+                    if(this.cart[i].id == product.id){
+                    this.cart[i].quantity = this.cart[i].quantity -  1;
+                    this.saveCart();
+                    }else  {
+                        
+                    }
                 }
             }
-            else
-            // richiamo la funzione che cancella il prodotto
-                this.deleteItem(index);
-            // this.totalAmount();
         },
 
         // funzione che cancella il prodotto dal carrello
         deleteItem(index) {
-            this.products_in_cart.splice(index, 1);
+            this.cart.splice(index, 1);
             // console.log(index);
+             this.cart = [];
             this.saveProductInCart();
             // this.totalAmount();
+           
+            
         },
 
         // salva nel carrello i prodotti
