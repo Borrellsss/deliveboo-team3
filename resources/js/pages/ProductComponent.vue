@@ -7,7 +7,7 @@
                         <h5 class="card-title">{{product.name}}</h5>
                         <img :src="product.cover" :alt="product.name">
                         <p class="card-text">Prezzo: {{product.price}}</p>  
-                        <a class="btn btn-primary" @click='addItem(product),totalAmount()'>Add to cart</a> 
+                        <a class="btn btn-primary" @click='addItem(product)'>Add to cart</a> 
                     </div>
                 </div>
             </div>   
@@ -32,7 +32,7 @@
                                     <span class="price">&euro; {{product.price}}</span>
                                 </div>
                                 <div class="quantity-inputs col-lg-4 col-12">
-                                    <a class="btn btn-primary" @click='increaseQuantity(product)'>+</a> 
+                                    <a class="btn btn-primary" @click='addItem(product)'>+</a> 
                                     <div class="quantity">{{product.quantity}}</div>
                                     <a class="btn btn-primary" @click='decreaseQuantity(product, index)'>-</a> 
                                     <a class="btn btn-primary" @click='deleteItem(index)'>Delete</a>
@@ -143,7 +143,10 @@ export default {
                 }  else{
                     //se non cambia ristorante:
                     // salva l'id del prodotto selezionato
+                 
                     let check = this.cart.find(({id}) => id == product.id);
+                    console.log(this.cart.find(({id}) => id == product.id))
+                    //    console.log('adesso')
                     // se non esiste già
                     if(!check){
                         //setta la quantità ad 1
@@ -198,51 +201,65 @@ export default {
 
         ////////////////////////////////////////
         // funzione che incrementa la quantità del prodotto all'interno del carrello
-        increaseQuantity(product, index) {
+        // increaseQuantity(product, index) {
 
-            let check = this.cart.find(({id}) => id == product.id);
-            if(check.id){
-                 for(let i = 0; i < this.cart.length + 1; i++){
-                    if(this.cart[i].id == product.id){
-                    this.cart[i].quantity = this.cart[i].quantity + 1
-                    this.saveCart();
-                    }
-                }
-            }
+        //     let check = this.cart.find(({id}) => id == product.id);
+        //     if(check.id){
+        //          for(let i = 0; i < this.cart.length + 1; i++){
+        //             if(this.cart[i].id == product.id){
+        //             this.cart[i].quantity = this.cart[i].quantity + 1
+        //             this.saveCart();
+        //             }
+        //         }
+        //     }
            
-        },
+        // },
         // funzione che riduce la quantità del prodotto nel carrello
         decreaseQuantity(product , index){
             let check = this.cart.find(({id}) => id == product.id);
             if(check.id){
                 for(let i = 0; i < this.cart.length + 1; i++){
-                    if(this.cart[i].id == product.id){
+                    if(this.cart[i].id == product.id && this.cart[i].quantity > 1){
                     this.cart[i].quantity = this.cart[i].quantity -  1;
                     this.saveCart();
-                    }else  {
-                        
                     }
                 }
             }
         },
 
         // funzione che cancella il prodotto dal carrello
-        deleteItem(index) {
-            this.cart.splice(index, 1);
-            // console.log(index);
-             this.cart = [];
-            this.saveProductInCart();
-            // this.totalAmount();
-           
-            
+        deleteItem(product,index) {
+
+            if(this.cart.length > 1){
+                this.cart.splice(index, 1);
+                // this.testFunction(index)
+                // localStorage.removeItem();
+                console.log('ciao sono', Storage.key(index))
+            }else{
+                this.cart.splice(index, 1);
+                // this.testFunction(index)
+                // this.saveProductInCart();
+                localStorage.clear(); 
+            } 
         },
 
+        // testFunction(index){
+            
+        //     const testCart = JSON.parse(localStorage.getItem("cart"))
+        //     for (let i =0; i< testCart.length; i++) {
+        //         let items = JSON.parse(testCart[i]);
+        //         if (items.id == index) {
+        //         testCart.splice(index, 1);
+        //         }
+        //     }
+        // }
+
         // salva nel carrello i prodotti
-         saveProductInCart(){
-            const parsed = JSON.stringify(this.products_in_cart);
-            localStorage.setItem('cart', parsed);
-            this.products_in_cart = JSON.parse(localStorage.cart);
-        },
+        // saveProductInCart(){
+        //     const parsed = JSON.stringify(this.products_in_cart);
+        //     localStorage.setItem('cart', parsed);
+        //     this.products_in_cart = JSON.parse(localStorage.cart);
+        // },
 
       
          // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
