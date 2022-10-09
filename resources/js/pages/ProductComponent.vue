@@ -1,3 +1,4 @@
+<!-- lorenzo fix -->
 <template>
     <section>
         <div class="container">
@@ -146,12 +147,13 @@ export default {
                         }
                         else{
                             // incrementa di 1 la quantità
-                            for(let i = 0; i < this.cart.length + 1; i++){
-                                if(this.cart[i].id == product.id){
-                                    this.cart[i].quantity = this.cart[i].quantity + 1
-                                    this.saveCart();
-                                }
-                            }
+                            // for(let i = 0; i < this.cart.length + 1; i++){
+                            //     if(this.cart[i].id == product.id){
+                            //         this.cart[i].quantity = this.cart[i].quantity + 1
+                            //         this.saveCart();
+                            //     }
+                            // }
+                            console.log("bububaba");
                         }
                     // pusha nell'array il prodotto
                     this.cart.push(product);
@@ -169,20 +171,27 @@ export default {
         
         // funzione che riduce la quantità del prodotto nel carrello
         decreaseQuantity(product , index){
-            let check = this.cart.find(({id}) => id == product.id);
-            if(check.id){
-                for(let i = 0; i < this.cart.length + 1; i++){
-                    if(this.cart[i].id == product.id && this.cart[i].quantity >= 1){
-                    this.cart[i].quantity = this.cart[i].quantity -  1;
-                    this.saveCart();
-
-                        if(this.cart[i].id == product.id && this.cart[i].quantity == 0){
-                            this.cart.splice(i, 1);
-                    }
-                    this.saveCart();
-                    }
-                }
+            if(product.quantity > 1){
+                product.quantity = product.quantity - 1;
+            } 
+            else {
+                this.deleteItem(index)
             }
+            this.saveCart();
+            // let check = this.cart.find(({id}) => id == product.id);
+            // if(check.id){
+            //     for(let i = 0; i < this.cart.length + 1; i++){
+            //         if(this.cart[i].id == product.id && this.cart[i].quantity >= 1){
+            //         this.cart[i].quantity = this.cart[i].quantity -  1;
+            //         // this.saveCart();
+
+                       
+            //         }  else{
+            //                 this.cart.splice(i, 1);
+            //             }
+            //         this.saveCart();
+            //     }
+            // }
         },
 
         // totalAmount(product, index){
@@ -194,12 +203,12 @@ export default {
 
         
         // funzione che cancella il prodotto dal carrello
-        deleteItem(product,index) {
+        deleteItem(index) {
 
             if(this.cart.length > 1){
                 this.cart.splice(index, 1);
                 // this.testFunction(index)
-                // localStorage.removeItem();
+                localStorage.removeItem(index);
                 console.log('ciao sono', Storage.key(index))
             }else{
                 this.cart.splice(index, 1);
