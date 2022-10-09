@@ -55,7 +55,7 @@
             <h2>Il tuo carrello</h2>
             
         </div> -->
-    </section>
+    <!-- </section> -->
     <!-- <section id="cart-section"> -->
             <!-- <div class="CartContainer">
         <div class="Header">
@@ -91,9 +91,71 @@
     </div> -->
     <!-- </section> -->
     <section>
-        <div class="container" style="margin-top:300px">
+        <div class="pr_container" style="margin-top:300px">
             <div class="row">
-                <div class="col col-8 products-col">tabella prodotti</div>
+                <div class="col col-8 products-col">
+                    <div class="products-side">
+                        <div class="row row row-cols-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 d-flex justify-content-start">
+
+                            <div class="col p-2">
+                                <div class="card">
+                                   <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Barbieri_-_ViaSophia25668.jpg/290px-Barbieri_-_ViaSophia25668.jpg" alt="Card image cap">
+                                   <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="add-to-cart">Aggiungi al carrello</a>
+                                    </div>
+                                 </div>
+                             </div>
+
+                             <div class="col p-2">
+                                <div class="card">
+                                   <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Barbieri_-_ViaSophia25668.jpg/290px-Barbieri_-_ViaSophia25668.jpg" alt="Card image cap">
+                                   <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="add-to-cart">Aggiungi al carrello</a>
+                                    </div>
+                                 </div>
+                             </div>
+
+                             <div class="col p-2">
+                                <div class="card">
+                                   <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Barbieri_-_ViaSophia25668.jpg/290px-Barbieri_-_ViaSophia25668.jpg" alt="Card image cap">
+                                   <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="add-to-cart">Aggiungi al carrello</a>
+                                    </div>
+                                 </div>
+                             </div>
+
+                             <div class="col p-2">
+                                <div class="card">
+                                   <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Barbieri_-_ViaSophia25668.jpg/290px-Barbieri_-_ViaSophia25668.jpg" alt="Card image cap">
+                                   <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="add-to-cart">Aggiungi al carrello</a>
+                                    </div>
+                                 </div>
+                             </div>
+
+                             <div class="col p-2">
+                                <div class="card">
+                                   <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Barbieri_-_ViaSophia25668.jpg/290px-Barbieri_-_ViaSophia25668.jpg" alt="Card image cap">
+                                   <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <a href="#" class="add-to-cart">Aggiungi al carrello</a>
+                                    </div>
+                                 </div>
+                             </div>
+
+
+                        </div>
+                    </div>
+                </div>
                 <div class="col col-4 cart-col">
                     <div class="cart-container">
                         <div class="row">
@@ -115,8 +177,20 @@
                             <div class="col col-3">
                                 <div class="product-price d-flex flex-column justify-content-center align-items-center">
                                         2,99$
-                                    <a class="remove-btn" href="#">Rimuovi</a>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-end">
+                            <div class="col col-12">
+                                <div class="checkout">
+                                    <div class="total">
+                                        <div>
+                                            <div class="Subtotal">Sub-Totale</div>
+                                            <div class="items">2 prodotti</div>
+                                        </div>
+                                        <div class="total-amount">$6.18</div>
+                                    </div>
+                                <button class="button">Checkout</button></div>
                             </div>
                         </div>
                     </div>
@@ -355,18 +429,45 @@ export default {
 @import '../style/variables';
 @import '../style/common';
 
-*{
-    margin: 0 auto;
-}
-
-span, a{
-    margin: 0;
-}
 .col{
     background-color: red;
     border: 1px solid black;
 }
 
+.pr_container{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.products-side{
+    .my-circle {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      vertical-align: middle;
+  }
+
+      .card{
+        border-radius: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+        img{
+            border-radius: 15px 15px 0 0;
+        }
+
+        .card-body{
+            padding: 0.5rem;
+        }
+
+        .add-to-cart{
+            color: white;
+            padding: 0.3rem 0.8rem;
+            background-color: $secondary-color;
+            border-radius: 0.5rem;
+        }
+      }
+}
 .cart-container{
     // text-align: center;
 
@@ -374,40 +475,85 @@ span, a{
         height: 100%;
     }
 
+  .product-quantity-remove{
+
+   
     .product-quantity{
         height: 100%;
+        padding-top: 0.5rem;
 
-        .quantity-number{
-            padding: 0 3px;
-        }
-
-        .quantity-btn{
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            padding: 0.3rem;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            .decrease{
-                padding-bottom: 3px;
+            .quantity-number{
+                padding: 0 3px;
             }
-        }
-    }
 
-    .product-price-remove{
+            .quantity-btn{
+                width: 20px;
+                height: 20px;
+                background-color: white;
+                padding: 0.3rem;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 3px;
+
+                    .decrease{
+                        padding-bottom: 3px;
+                    }
+
+                 }
+                }
+                .remove-btn{
+                    font-size: 0.8rem;
+                    padding-top: 0.3rem;
+                    padding-bottom: 0.5rem;
+                }
+       } 
+    .product-price{
         height: 100%;
+        font-size: 1.2rem;
 
-        .product-price{
-            font-size: 1.2rem;
-        }
-        .remove-btn{
-            font-size: 0.6rem
-
-        }
     }
+
+    .checkout{
+        margin: 3% 5%;
+     }
+.total{
+	display: flex;
+	justify-content: space-between;
+}
+.Subtotal{
+	font-size: 1.2rem;
+	font-family: 'Open Sans';
+	font-weight: 700;
+	color: #202020;
+}
+.items{
+	font-size: 16px;
+	font-family: 'Open Sans';
+	font-weight: 500;
+	color: #909090;
+	line-height: 10px;
+}
+.total-amount{
+	font-size: 2rem;
+	font-family: 'Open Sans';
+	font-weight: 900;
+	color: #202020;
+}
+.button{
+	margin-top: 10px;
+	width: 100%;
+	height: 40px;
+	border: none;
+	background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: 16px;
+	font-family: 'Open Sans';
+	font-weight: 600;
+	color: #202020;
+}
 }
 
 
