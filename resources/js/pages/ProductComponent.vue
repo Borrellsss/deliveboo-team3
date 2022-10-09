@@ -1,6 +1,6 @@
 <template>
 <div>
-    <section>
+    <!-- <section>
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                 <div v-for="product in products" :key="product.id" class="col mb-4">
@@ -12,9 +12,9 @@
                     </div>
                 </div>
             </div>   
-        </div>
+        </div> -->
         <!-- /////////////////////////////////////////////////// -->
-        <div class="cart-comp">
+        <!-- <div class="cart-comp">
             <div class="cart-container">
                 <div class="top-links">
                         <h4 class="static active">Carrello <i class="fa-solid fa-cart-arrow-down"></i></h4>
@@ -49,7 +49,7 @@
             </div>
            
 
-        </div>   
+        </div>    -->
 
         <!-- <div class="cart-container">
             <h2>Il tuo carrello</h2>
@@ -91,20 +91,32 @@
     </div> -->
     <!-- </section> -->
     <section>
-        <div class="container" style="margin-top:50px">
+        <div class="container" style="margin-top:300px">
             <div class="row">
-                <div class="col col-8 products-col">col-8</div>
+                <div class="col col-8 products-col">tabella prodotti</div>
                 <div class="col col-4 cart-col">
                     <div class="cart-container">
                         <div class="row">
-                            <div class="col col-7">
-                                nome prodotto
-                            </div>
-                            <div class="col col-2">
-                                quantity
+                            <div class="col col-6">
+                                <div class="product-name d-flex justify-content-center align-items-center">
+                                    nome prodotto
+                                </div>
                             </div>
                             <div class="col col-3">
-                                prezzo
+                                <div class="product-quantity-remove d-flex flex-column justify-content-center align-items-center">
+                                    <div class="product-quantity d-flex justify-content-center align-items-center">
+                                        <a class="quantity-btn" href="#"><span class="increase">+</span></a>
+                                        <span class="quantity-number">22</span>
+                                        <a class="quantity-btn" href="#"><span class="decrease">-</span></a>
+                                    </div>
+                                    <a class="remove-btn" href="#">Rimuovi</a>
+                                </div>
+                            </div>
+                            <div class="col col-3">
+                                <div class="product-price d-flex flex-column justify-content-center align-items-center">
+                                        2,99$
+                                    <a class="remove-btn" href="#">Rimuovi</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -346,9 +358,56 @@ export default {
 *{
     margin: 0 auto;
 }
+
+span, a{
+    margin: 0;
+}
 .col{
     background-color: red;
-    margin: 1px solid black;
+    border: 1px solid black;
+}
+
+.cart-container{
+    // text-align: center;
+
+    .product-name{
+        height: 100%;
+    }
+
+    .product-quantity{
+        height: 100%;
+
+        .quantity-number{
+            padding: 0 3px;
+        }
+
+        .quantity-btn{
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            padding: 0.3rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .decrease{
+                padding-bottom: 3px;
+            }
+        }
+    }
+
+    .product-price-remove{
+        height: 100%;
+
+        .product-price{
+            font-size: 1.2rem;
+        }
+        .remove-btn{
+            font-size: 0.6rem
+
+        }
+    }
 }
 
 

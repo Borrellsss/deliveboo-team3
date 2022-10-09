@@ -8555,122 +8555,69 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("section", [_c("div", {
-    staticClass: "container"
-  }, [_c("div", {
-    staticClass: "row row-cols-1 row-cols-md-2 row-cols-lg-3"
-  }, _vm._l(_vm.products, function (product) {
-    return _c("div", {
-      key: product.id,
-      staticClass: "col mb-4"
-    }, [_c("div", {
-      staticClass: "ms_product-card text-center"
-    }, [_c("h5", {
-      staticClass: "card-title"
-    }, [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("img", {
-      attrs: {
-        src: product.cover,
-        alt: product.name
-      }
-    }), _vm._v(" "), _c("p", {
-      staticClass: "card-text"
-    }, [_vm._v("Prezzo: " + _vm._s(product.price))]), _vm._v(" "), _c("a", {
-      staticClass: "btn btn-primary",
-      on: {
-        click: function click($event) {
-          return _vm.addItem(product);
-        }
-      }
-    }, [_vm._v("Add to cart")])])]);
-  }), 0)]), _vm._v(" "), _c("div", {
-    staticClass: "cart-comp"
-  }, [_c("div", {
-    staticClass: "cart-container"
-  }, [_vm._m(0), _vm._v(" "), _vm.cart.length > 0 ? _c("div", {
-    staticClass: "cart-container-content row"
-  }, [_c("ul", {
-    staticClass: "products-container col-sm-7 col-12"
-  }, _vm._l(_vm.cart, function (product, index) {
-    return _c("li", {
-      key: index
-    }, [_c("div", {
-      staticClass: "right-side row"
-    }, [_c("div", {
-      staticClass: "info col-lg-8 col-12"
-    }, [_c("h5", [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("p", {
-      staticClass: "description"
-    }, [_c("span", [_vm._v(_vm._s(product.description))])]), _vm._v(" "), _c("span", {
-      staticClass: "price"
-    }, [_vm._v("€ " + _vm._s(product.price))])]), _vm._v(" "), _c("div", {
-      staticClass: "quantity-inputs col-lg-4 col-12"
-    }, [_c("a", {
-      staticClass: "btn btn-primary",
-      on: {
-        click: function click($event) {
-          return _vm.addItem(product);
-        }
-      }
-    }, [_vm._v("+")]), _vm._v(" "), _c("div", {
-      staticClass: "quantity"
-    }, [_vm._v(_vm._s(product.quantity))]), _vm._v(" "), _c("a", {
-      staticClass: "btn btn-primary",
-      on: {
-        click: function click($event) {
-          return _vm.decreaseQuantity(product, index);
-        }
-      }
-    }, [_vm._v("-")]), _vm._v(" "), _c("a", {
-      staticClass: "btn btn-primary",
-      on: {
-        click: function click($event) {
-          return _vm.deleteItem(index);
-        }
-      }
-    }, [_vm._v("Delete")])])])]);
-  }), 0), _vm._v(" "), _c("h2", [_vm._v("Totale: "), _c("span", {
-    staticClass: "price"
-  }, [_vm._v("€ " + _vm._s(_vm.total_amount))])])]) : _c("h1", [_c("i", {
-    staticClass: "fa-solid fa-triangle-exclamation"
-  }), _vm._v(" Il carrello è vuoto.")])])])]), _vm._v(" "), _vm._m(1)]);
+  return _vm._m(0);
 };
 
 var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
-    staticClass: "top-links"
-  }, [_c("h4", {
-    staticClass: "static active"
-  }, [_vm._v("Carrello "), _c("i", {
-    staticClass: "fa-solid fa-cart-arrow-down"
-  })])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("section", [_c("div", {
+  return _c("div", [_c("section", [_c("div", {
     staticClass: "container",
     staticStyle: {
-      "margin-top": "50px"
+      "margin-top": "300px"
     }
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col col-8 products-col"
-  }, [_vm._v("col-8")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("tabella prodotti")]), _vm._v(" "), _c("div", {
     staticClass: "col col-4 cart-col"
   }, [_c("div", {
     staticClass: "cart-container"
   }, [_c("div", {
     staticClass: "row"
   }, [_c("div", {
-    staticClass: "col col-7"
-  }, [_vm._v("\r\n                                nome prodotto\r\n                            ")]), _vm._v(" "), _c("div", {
-    staticClass: "col col-2"
-  }, [_vm._v("\r\n                                quantity\r\n                            ")]), _vm._v(" "), _c("div", {
+    staticClass: "col col-6"
+  }, [_c("div", {
+    staticClass: "product-name d-flex justify-content-center align-items-center"
+  }, [_vm._v("\r\n                                    nome prodotto\r\n                                ")])]), _vm._v(" "), _c("div", {
     staticClass: "col col-3"
-  }, [_vm._v("\r\n                                prezzo\r\n                            ")])])])])])])]);
+  }, [_c("div", {
+    staticClass: "product-quantity-remove d-flex flex-column justify-content-center align-items-center"
+  }, [_c("div", {
+    staticClass: "product-quantity d-flex justify-content-center align-items-center"
+  }, [_c("a", {
+    staticClass: "quantity-btn",
+    attrs: {
+      href: "#"
+    }
+  }, [_c("span", {
+    staticClass: "increase"
+  }, [_vm._v("+")])]), _vm._v(" "), _c("span", {
+    staticClass: "quantity-number"
+  }, [_vm._v("22")]), _vm._v(" "), _c("a", {
+    staticClass: "quantity-btn",
+    attrs: {
+      href: "#"
+    }
+  }, [_c("span", {
+    staticClass: "decrease"
+  }, [_vm._v("-")])])]), _vm._v(" "), _c("a", {
+    staticClass: "remove-btn",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Rimuovi")])])]), _vm._v(" "), _c("div", {
+    staticClass: "col col-3"
+  }, [_c("div", {
+    staticClass: "product-price d-flex flex-column justify-content-center align-items-center"
+  }, [_vm._v("\r\n                                        2,99$\r\n                                    "), _c("a", {
+    staticClass: "remove-btn",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Rimuovi")])])])])])])])])])]);
 }];
 render._withStripped = true;
 
@@ -13307,7 +13254,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "*[data-v-26480152] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\nbody[data-v-26480152] {\n  margin: 0;\n}\nimg[data-v-26480152] {\n  width: 100%;\n  display: block;\n}\nul[data-v-26480152] {\n  list-style-type: none;\n}\na[data-v-26480152] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-26480152]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-26480152] {\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-26480152] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-26480152] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-26480152] {\n  padding-left: 0;\n}\ndl[data-v-26480152], ol[data-v-26480152], ul[data-v-26480152] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.row[data-v-26480152] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\n.js_container[data-v-26480152] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-26480152] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-26480152] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-26480152] {\n  padding: 0.5rem 2rem;\n}\nh2.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 5rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.fo-style[data-v-26480152] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\n*[data-v-26480152] {\n  margin: 0 auto;\n}\n.col[data-v-26480152] {\n  background-color: red;\n  margin: 1px solid black;\n}", ""]);
+exports.push([module.i, "*[data-v-26480152] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\nbody[data-v-26480152] {\n  margin: 0;\n}\nimg[data-v-26480152] {\n  width: 100%;\n  display: block;\n}\nul[data-v-26480152] {\n  list-style-type: none;\n}\na[data-v-26480152] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-26480152]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-26480152] {\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-26480152] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-26480152] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-26480152] {\n  padding-left: 0;\n}\ndl[data-v-26480152], ol[data-v-26480152], ul[data-v-26480152] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.row[data-v-26480152] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\n.js_container[data-v-26480152] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-26480152] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-26480152] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-26480152] {\n  padding: 0.5rem 2rem;\n}\nh2.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 5rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.fo-style[data-v-26480152] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\n*[data-v-26480152] {\n  margin: 0 auto;\n}\nspan[data-v-26480152], a[data-v-26480152] {\n  margin: 0;\n}\n.col[data-v-26480152] {\n  background-color: red;\n  border: 1px solid black;\n}\n.cart-container .product-name[data-v-26480152] {\n  height: 100%;\n}\n.cart-container .product-quantity[data-v-26480152] {\n  height: 100%;\n}\n.cart-container .product-quantity .quantity-number[data-v-26480152] {\n  padding: 0 3px;\n}\n.cart-container .product-quantity .quantity-btn[data-v-26480152] {\n  width: 20px;\n  height: 20px;\n  background-color: white;\n  padding: 0.3rem;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.cart-container .product-quantity .quantity-btn .decrease[data-v-26480152] {\n  padding-bottom: 3px;\n}\n.cart-container .product-price-remove[data-v-26480152] {\n  height: 100%;\n}\n.cart-container .product-price-remove .product-price[data-v-26480152] {\n  font-size: 1.2rem;\n}\n.cart-container .product-price-remove .remove-btn[data-v-26480152] {\n  font-size: 0.6rem;\n}", ""]);
 
 // exports
 
