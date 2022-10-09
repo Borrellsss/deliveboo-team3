@@ -51,132 +51,67 @@
 
         </div>    -->
 
-        <!-- <div class="cart-container">
-            <h2>Il tuo carrello</h2>
-            
-        </div> -->
-    <!-- </section> -->
-    <!-- <section id="cart-section"> -->
-            <!-- <div class="CartContainer">
-        <div class="Header">
-            <h3 class="Heading">Shopping Cart</h3>
-            <h5 class="Action">Remove all</h5>
-        </div>
-
-        <div class="Cart-Items">
-            <div class="about">
-                <h4 class="title">Apple Juice</h4>
-            </div>
-            <div class="counter">
-                <div class="btn">+</div>
-                <div class="count">2</div>
-                <div class="btn">-</div>
-            </div>
-            <div class="prices">
-                <div class="amount">$2.99</div>
-                <div class="remove"><u>Remove</u></div>
-            </div>
-        </div>
-
-        <hr> 
-        <div class="checkout">
-        <div class="total">
-            <div>
-                <div class="Subtotal">Sub-Total</div>
-                <div class="items">2 items</div>
-            </div>
-            <div class="total-amount">$6.18</div>
-        </div>
-        <button class="button">Checkout</button></div>
-    </div> -->
-    <!-- </section> -->
     <section>
-        <div class="pr_container" style="margin-top:300px">
+        <div class="jumbotron jumbotron-fluid" style="margin-top:90px">
+        <div class="container d-flex justify-content-around">
+            <div>
+                <h2>Nome Ristorante</h2>
+                <p class="lead"><i class="fa-solid fa-location-dot mr-2"></i>Via dei girasoli, 15</p>
+            </div>
+            <img src="https://citynews-romatoday.stgy.ovh/~media/horizontal-mid/52295577773865/unnamed-2020-07-27t134402-606-2.jpg" alt="ristorante">
+        </div>
+        </div>
+        <div class="pr_container" style="margin-top:100px">
+            
+            <a v-if="cart.length > 0" class="floating-cart">
+                <div class="count-float">
+                    <span>{{cart.length}}</span>
+                </div>
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
             <div class="row">
-                <div class="col col-8 products-col">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 products-col px-3">
                     <div class="products-side">
-                        <div class="row row row-cols-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 d-flex justify-content-start">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 d-flex justify-content-start">
 
-                            <div class="col p-2">
+                            <div v-for="product in products" :key="product.id" class="col p-2">
                                 <div class="card">
-                                   <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Barbieri_-_ViaSophia25668.jpg/290px-Barbieri_-_ViaSophia25668.jpg" alt="Card image cap">
+                                   <img class="card-img" :src="product.cover" alt="product.name">
                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="add-to-cart">Aggiungi al carrello</a>
+                                        <h5 class="card-title">{{product.name}}</h5>
+                                        <p class="card-text">{{product.description}}</p>
+                                        <h6 class="product-card-price">{{product.price}}&euro;</h6>
+                                        <a @click='addItem(product)' class="add-to-cart">Aggiungi al carrello</a>
                                     </div>
                                  </div>
                              </div>
-
-                             <div class="col p-2">
-                                <div class="card">
-                                   <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Barbieri_-_ViaSophia25668.jpg/290px-Barbieri_-_ViaSophia25668.jpg" alt="Card image cap">
-                                   <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="add-to-cart">Aggiungi al carrello</a>
-                                    </div>
-                                 </div>
-                             </div>
-
-                             <div class="col p-2">
-                                <div class="card">
-                                   <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Barbieri_-_ViaSophia25668.jpg/290px-Barbieri_-_ViaSophia25668.jpg" alt="Card image cap">
-                                   <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="add-to-cart">Aggiungi al carrello</a>
-                                    </div>
-                                 </div>
-                             </div>
-
-                             <div class="col p-2">
-                                <div class="card">
-                                   <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Barbieri_-_ViaSophia25668.jpg/290px-Barbieri_-_ViaSophia25668.jpg" alt="Card image cap">
-                                   <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="add-to-cart">Aggiungi al carrello</a>
-                                    </div>
-                                 </div>
-                             </div>
-
-                             <div class="col p-2">
-                                <div class="card">
-                                   <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Barbieri_-_ViaSophia25668.jpg/290px-Barbieri_-_ViaSophia25668.jpg" alt="Card image cap">
-                                   <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a href="#" class="add-to-cart">Aggiungi al carrello</a>
-                                    </div>
-                                 </div>
-                             </div>
-
 
                         </div>
                     </div>
                 </div>
-                <div class="col col-4 cart-col">
-                    <div class="cart-container">
-                        <div class="row">
+                <div class="col-12 col-sm-9 col-md-8 col-lg-4 col-xl-4 cart-col">
+                    <div v-if="cart.length > 0" class="cart-container">
+                        <!-- v-if="cart.length > 0" -->
+                        <h3>Carrello</h3>
+                        <div v-for="(product, index) in cart" :key="index" class="row">
                             <div class="col col-6">
                                 <div class="product-name d-flex justify-content-center align-items-center">
-                                    nome prodotto
+                                    {{product.name}}
                                 </div>
                             </div>
                             <div class="col col-3">
                                 <div class="product-quantity-remove d-flex flex-column justify-content-center align-items-center">
                                     <div class="product-quantity d-flex justify-content-center align-items-center">
-                                        <a class="quantity-btn" href="#"><span class="increase">+</span></a>
-                                        <span class="quantity-number">22</span>
-                                        <a class="quantity-btn" href="#"><span class="decrease">-</span></a>
+                                        <a class="quantity-btn" @click='decreaseQuantity(product, index)'><span class="decrease">-</span></a>
+                                        <span class="quantity-number">{{product.quantity}}</span>
+                                        <a class="quantity-btn" @click='addItem(product)'><span class="increase">+</span></a>
                                     </div>
-                                    <a class="remove-btn" href="#">Rimuovi</a>
+                                    <a class="remove-btn" @click='deleteItem(index)'>Rimuovi</a>
                                 </div>
                             </div>
                             <div class="col col-3">
                                 <div class="product-price d-flex flex-column justify-content-center align-items-center">
-                                        2,99$
+                                    {{product.price}}&euro;
                                 </div>
                             </div>
                         </div>
@@ -186,13 +121,58 @@
                                     <div class="total">
                                         <div>
                                             <div class="Subtotal">Sub-Totale</div>
-                                            <div class="items">2 prodotti</div>
+                                            <div class="items">Svuota carrello</div>
                                         </div>
-                                        <div class="total-amount">$6.18</div>
+                                        <div class="total-amount">&euro;{{total_amount}}</div>
                                     </div>
                                 <button class="button">Checkout</button></div>
                             </div>
                         </div>
+                    </div>
+                    <div v-else class="cart-blank">
+                        <h4>Il carrello è vuoto</h4>
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                            width="406.000000pt" height="361.000000pt" viewBox="0 0 406.000000 361.000000"
+                            preserveAspectRatio="xMidYMid meet">
+                            <metadata>
+                            Created by potrace 1.16, written by Peter Selinger 2001-2019
+                            </metadata>
+                            <g transform="translate(0.000000,361.000000) scale(0.100000,-0.100000)"
+                            fill="#000000" stroke="none">
+                            <path d="M2560 3585 c-167 -26 -554 -141 -713 -213 -144 -66 -388 -215 -515
+                            -315 -147 -115 -198 -270 -157 -468 9 -40 14 -73 12 -75 -1 -1 -77 -39 -169
+                            -83 -92 -45 -181 -93 -198 -107 -17 -15 -32 -25 -34 -23 -2 2 -38 141 -82 309
+                            -60 234 -84 310 -101 328 -22 22 -26 22 -282 22 -258 0 -260 0 -287 -23 -20
+                            -17 -27 -33 -27 -57 0 -24 7 -40 27 -57 27 -23 31 -23 239 -23 l212 0 204
+                            -782 c345 -1321 336 -1290 361 -1310 21 -17 83 -18 1327 -18 1149 0 1307 2
+                            1333 15 17 9 30 18 30 20 0 3 9 47 20 98 24 113 90 428 169 812 33 160 76 366
+                            96 458 30 145 34 172 23 195 -23 47 -40 50 -351 51 -215 2 -293 5 -299 14 -4
+                            7 -8 26 -8 43 0 56 -41 187 -118 379 l-76 190 -1 115 c0 145 5 165 53 189 l37
+                            19 -30 7 c-59 13 -75 25 -118 92 -59 91 -98 127 -186 171 -71 35 -80 37 -185
+                            39 -61 1 -154 -5 -206 -12z m337 -169 c52 -28 111 -81 101 -91 -2 -3 -54 -16
+                            -114 -29 -308 -69 -633 -246 -1073 -586 -69 -53 -141 -105 -160 -114 -33 -17
+                            -33 -17 -61 9 -63 61 -92 179 -65 271 21 73 84 135 250 247 184 123 354 196
+                            625 269 173 46 246 58 350 55 83 -2 102 -6 147 -31z m135 -326 c-5 -76 17
+                            -155 122 -439 47 -124 86 -244 88 -266 l3 -40 -733 0 -734 0 -50 98 c-28 54
+                            -48 100 -45 103 13 13 1147 534 1272 585 38 15 72 25 75 23 3 -3 3 -32 2 -64z
+                            m-1972 -855 c0 -8 9 -24 20 -35 20 -20 33 -20 1411 -20 1319 0 1390 -1 1385
+                            -17 -3 -10 -37 -169 -75 -353 -39 -184 -100 -474 -136 -644 -36 -170 -65 -310
+                            -65 -312 0 -2 -549 -4 -1220 -4 l-1219 0 -10 38 c-63 239 -147 565 -226 872
+                            -53 206 -100 390 -105 408 l-8 32 61 0 c45 0 76 7 112 24 59 29 75 31 75 11z"/>
+                            <path d="M2816 2913 c-10 -10 -7 -63 5 -86 31 -60 83 -91 115 -69 28 19 43 86
+                            28 126 -5 12 -15 15 -44 10 -24 -4 -47 -1 -67 10 -17 8 -33 12 -37 9z"/>
+                            <path d="M2240 2688 c0 -6 -10 -32 -22 -56 -20 -43 -21 -46 -4 -77 22 -40 59
+                            -59 87 -45 56 31 63 109 13 162 -28 28 -74 38 -74 16z"/>
+                            <path d="M2664 2650 c-47 -11 -103 -48 -118 -78 -29 -59 11 -68 101 -24 84 41
+                            103 55 103 74 0 10 -9 22 -19 28 -22 11 -23 11 -67 0z"/>
+                            <path d="M1537 593 c-57 -20 -128 -80 -161 -136 -63 -109 -48 -256 35 -351 89
+                            -101 241 -132 361 -73 102 50 160 138 166 254 7 129 -47 226 -159 287 -67 37
+                            -169 45 -242 19z"/>
+                            <path d="M3047 593 c-27 -9 -71 -36 -97 -60 -163 -146 -127 -404 68 -500 47
+                            -23 70 -28 132 -28 127 1 223 62 275 176 23 53 27 71 23 138 -6 121 -61 206
+                            -170 262 -57 30 -165 35 -231 12z"/>
+                            </g>
+                          </svg>
                     </div>
                 </div>
             </div>
@@ -429,17 +409,97 @@ export default {
 @import '../style/variables';
 @import '../style/common';
 
-.col{
-    background-color: red;
-    border: 1px solid black;
+
+.jumbotron{
+    height: 250px;
+    background: rgb(116,6,2);
+    background: radial-gradient(circle, rgba(116,6,2,1) 0%, rgba(116,6,2,1) 23%, rgba(64,4,2,1) 100%);
+    // background-color: $secondary-color;
+    color: white;
+   
+
+    .container{
+        width: 90%;
+        height: 100%;
+
+        h2{
+            font-size: 2.5rem;
+            padding-top: 50px;
+            font-family: Geneva, Tahoma, sans-serif;
+        }
+
+        P{
+            font-family: Geneva, Tahoma, sans-serif;
+        }
+
+        img{
+            width: 40%;
+           height: 100%;
+           object-fit: cover;
+           padding: 15px 0;
+           margin-left: 30px;
+        }
+    }
+
 }
+
+.floating-cart{
+    position: fixed;
+    top: 0;
+    right: 30px;
+    margin-top: 120px;
+    color: white;
+    background-color: $primary-color;
+    width: 70px;
+    height: 70px;
+    display: block;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+
+        .fa-cart-shopping{
+            font-size: 2.3rem;
+            z-index: 20;
+            }
+
+            &:hover{
+                color: rgb(249, 246, 246);
+            }
+        }
+
+        .count-float{
+            width: 1rem;
+            height: 1rem;
+            font-size: 0.7rem;
+            border-radius: 50%;
+            background-color: $primary-color ;
+            // border: 3px solid  $primary-color;
+            color: white;
+            display: flex;
+             align-items: center;
+             justify-content: center;
+            position: absolute;
+            bottom: 34px;
+            right: 25px;
+            z-index: 30;
+            
+            &:hover ~ .fa-cart-shopping{
+               color: rgb(249, 246, 246);
+            }
+        }
+
 
 .pr_container{
     width: 90%;
     margin: 0 auto;
+    position: relative;
 }
 
 .products-side{
+
+    margin-bottom: 70px;
     .my-circle {
       width: 50px;
       height: 50px;
@@ -450,29 +510,61 @@ export default {
       .card{
         border-radius: 15px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                
+                .card-img{
+                    object-fit: cover;
+                    border-radius: 15px 15px 0 0;
+                    height: 200px;
 
-        img{
-            border-radius: 15px 15px 0 0;
-        }
+                    // img{
+                    // }
+                }
+           
+             .card-title{
+                font-weight: 700;
+             }   
+
+            //  .card-text{
+            //  }   
+
 
         .card-body{
             padding: 0.5rem;
+
+            .product-card-price{
+                margin-bottom: 1rem;
+                font-weight: 700;
+            }
         }
 
         .add-to-cart{
+            // font-size: 0.9rem;
             color: white;
-            padding: 0.3rem 0.8rem;
-            background-color: $secondary-color;
-            border-radius: 0.5rem;
+            padding: 0.3rem 1rem;
+            background: linear-gradient(to top right, $secondary-color, #bf201b);
+            border-radius: 0.7rem;
+            margin-left: 0.2rem;
+            cursor: pointer;
+            }
         }
-      }
-}
+    }
 .cart-container{
-    // text-align: center;
+    border-radius: 15px;
+    // margin-bottom: 70px;
+
+    .col{
+    border: 1px solid rgb(106, 102, 102);
+}
+
+    h3{
+        padding-left: 2rem;
+        font-weight: 600;
+    }
 
     .product-name{
         height: 100%;
+        font-weight: 700;
     }
 
   .product-quantity-remove{
@@ -483,19 +575,22 @@ export default {
         padding-top: 0.5rem;
 
             .quantity-number{
-                padding: 0 3px;
+                padding: 0 5px;
+                font-weight: 700;
             }
 
             .quantity-btn{
                 width: 20px;
                 height: 20px;
-                background-color: white;
+                background-color: rgb(211, 205, 205);
                 padding: 0.3rem;
                 border-radius: 50%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 margin-bottom: 3px;
+                cursor: pointer;
+                font-weight: 500;
 
                     .decrease{
                         padding-bottom: 3px;
@@ -507,12 +602,15 @@ export default {
                     font-size: 0.8rem;
                     padding-top: 0.3rem;
                     padding-bottom: 0.5rem;
+                    font-weight: 700;
+	                color: #909090;
+                    cursor: pointer;
                 }
        } 
     .product-price{
         height: 100%;
         font-size: 1.2rem;
-
+        font-weight: 700;
     }
 
     .checkout{
@@ -527,13 +625,20 @@ export default {
 	font-family: 'Open Sans';
 	font-weight: 700;
 	color: #202020;
+    margin-bottom: 0.3rem;
 }
 .items{
-	font-size: 16px;
+	font-size: 1rem;
 	font-family: 'Open Sans';
 	font-weight: 500;
 	color: #909090;
 	line-height: 10px;
+    cursor: pointer;
+    padding: 0.5rem 0 0.7rem 0;
+
+       &:hover{
+        color: $secondary-color;;
+       }
 }
 .total-amount{
 	font-size: 2rem;
@@ -546,16 +651,45 @@ export default {
 	width: 100%;
 	height: 40px;
 	border: none;
-	background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
+	background: linear-gradient(to bottom right, $secondary-color, #bf201b);
 	border-radius: 20px;
 	cursor: pointer;
 	font-size: 16px;
 	font-family: 'Open Sans';
 	font-weight: 600;
-	color: #202020;
-}
+	color:white;
 }
 
+}
+.cart-blank{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 80px 0;
+
+    h4{
+        font-weight: 600;
+        margin-bottom: 15px;
+        opacity: 0.7;  
+    }
+
+   svg{
+    width: 50%;
+    height: 50%;
+    opacity: 0.5;
+   }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .jumbotron{
+
+            img{
+                display: none;
+            }
+        }
+    }
 
 // cart style
 // .cart-comp{

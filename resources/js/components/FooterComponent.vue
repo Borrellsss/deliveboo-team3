@@ -159,6 +159,7 @@ export default {
 
   footer{
     background-color: rgb(47, 47, 47);
+    margin-top: 70px;
         
         .links-container{
           margin-top: 3rem;

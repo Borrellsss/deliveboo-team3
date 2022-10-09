@@ -85,7 +85,6 @@ header{
     align-items: center;
     height: 5.5rem;
     position: fixed;
-    top: 0;
     width: 100%;
     position: fixed;
     top: 0;
