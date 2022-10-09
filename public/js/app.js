@@ -8649,51 +8649,28 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("section", {
-    attrs: {
-      id: "cart-section"
+  return _c("section", [_c("div", {
+    staticClass: "container",
+    staticStyle: {
+      "margin-top": "50px"
     }
   }, [_c("div", {
-    staticClass: "CartContainer"
+    staticClass: "row"
   }, [_c("div", {
-    staticClass: "Header"
-  }, [_c("h3", {
-    staticClass: "Heading"
-  }, [_vm._v("Shopping Cart")]), _vm._v(" "), _c("h5", {
-    staticClass: "Action"
-  }, [_vm._v("Remove all")])]), _vm._v(" "), _c("div", {
-    staticClass: "Cart-Items"
+    staticClass: "col col-8 products-col"
+  }, [_vm._v("col-8")]), _vm._v(" "), _c("div", {
+    staticClass: "col col-4 cart-col"
   }, [_c("div", {
-    staticClass: "about"
-  }, [_c("h4", {
-    staticClass: "title"
-  }, [_vm._v("Apple Juice")])]), _vm._v(" "), _c("div", {
-    staticClass: "counter"
+    staticClass: "cart-container"
   }, [_c("div", {
-    staticClass: "btn"
-  }, [_vm._v("+")]), _vm._v(" "), _c("div", {
-    staticClass: "count"
-  }, [_vm._v("2")]), _vm._v(" "), _c("div", {
-    staticClass: "btn"
-  }, [_vm._v("-")])]), _vm._v(" "), _c("div", {
-    staticClass: "prices"
+    staticClass: "row"
   }, [_c("div", {
-    staticClass: "amount"
-  }, [_vm._v("$2.99")]), _vm._v(" "), _c("div", {
-    staticClass: "remove"
-  }, [_c("u", [_vm._v("Remove")])])])]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
-    staticClass: "checkout"
-  }, [_c("div", {
-    staticClass: "total"
-  }, [_c("div", [_c("div", {
-    staticClass: "Subtotal"
-  }, [_vm._v("Sub-Total")]), _vm._v(" "), _c("div", {
-    staticClass: "items"
-  }, [_vm._v("2 items")])]), _vm._v(" "), _c("div", {
-    staticClass: "total-amount"
-  }, [_vm._v("$6.18")])]), _vm._v(" "), _c("button", {
-    staticClass: "button"
-  }, [_vm._v("Checkout")])])])]);
+    staticClass: "col col-7"
+  }, [_vm._v("\r\n                                nome prodotto\r\n                            ")]), _vm._v(" "), _c("div", {
+    staticClass: "col col-2"
+  }, [_vm._v("\r\n                                quantity\r\n                            ")]), _vm._v(" "), _c("div", {
+    staticClass: "col col-3"
+  }, [_vm._v("\r\n                                prezzo\r\n                            ")])])])])])])]);
 }];
 render._withStripped = true;
 
@@ -13330,7 +13307,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "*[data-v-26480152] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\nbody[data-v-26480152] {\n  margin: 0;\n}\nimg[data-v-26480152] {\n  width: 100%;\n  display: block;\n}\nul[data-v-26480152] {\n  list-style-type: none;\n}\na[data-v-26480152] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-26480152]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-26480152] {\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-26480152] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-26480152] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-26480152] {\n  padding-left: 0;\n}\ndl[data-v-26480152], ol[data-v-26480152], ul[data-v-26480152] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.row[data-v-26480152] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\n.js_container[data-v-26480152] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-26480152] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-26480152] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-26480152] {\n  padding: 0.5rem 2rem;\n}\nh2.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 5rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.fo-style[data-v-26480152] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\n#cart-section[data-v-26480152] {\n  margin: 0;\n  padding: 0;\n  background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.CartContainer[data-v-26480152] {\n  width: 70%;\n  height: 90%;\n  background-color: #ffffff;\n  border-radius: 20px;\n  box-shadow: 0px 10px 20px rgba(22, 135, 217, 0.2);\n}\n.Header[data-v-26480152] {\n  margin: auto;\n  width: 90%;\n  height: 15%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.Heading[data-v-26480152] {\n  font-size: 20px;\n  font-family: \"Open Sans\";\n  font-weight: 700;\n  color: #2F3841;\n}\n.Action[data-v-26480152] {\n  font-size: 14px;\n  font-family: \"Open Sans\";\n  font-weight: 600;\n  color: #E44C4C;\n  cursor: pointer;\n  border-bottom: 1px solid #E44C4C;\n}\n.Cart-Items[data-v-26480152] {\n  margin: auto;\n  width: 90%;\n  height: 30%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.image-box[data-v-26480152] {\n  width: 15%;\n  text-align: center;\n}\n.about[data-v-26480152] {\n  height: 100%;\n  width: 24%;\n}\n.title[data-v-26480152] {\n  padding-top: 10px;\n  line-height: 10px;\n  font-size: 32px;\n  font-family: \"Open Sans\";\n  font-weight: 800;\n  color: #202020;\n}\n.subtitle[data-v-26480152] {\n  line-height: 10px;\n  font-size: 18px;\n  font-family: \"Open Sans\";\n  font-weight: 600;\n  color: #909090;\n}\n.counter[data-v-26480152] {\n  width: 15%;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.btn[data-v-26480152] {\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  background-color: #d9d9d9;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-size: 20px;\n  font-family: \"Open Sans\";\n  font-weight: 900;\n  color: #202020;\n  cursor: pointer;\n}\n.count[data-v-26480152] {\n  font-size: 20px;\n  font-family: \"Open Sans\";\n  font-weight: 600;\n  color: #202020;\n}\n.prices[data-v-26480152] {\n  height: 100%;\n  text-align: right;\n}\n.amount[data-v-26480152] {\n  padding-top: 20px;\n  font-size: 26px;\n  font-family: \"Open Sans\";\n  font-weight: 800;\n  color: #202020;\n}\n.save[data-v-26480152] {\n  padding-top: 5px;\n  font-size: 14px;\n  font-family: \"Open Sans\";\n  font-weight: 600;\n  color: #1687d9;\n  cursor: pointer;\n}\n.remove[data-v-26480152] {\n  padding-top: 5px;\n  font-size: 14px;\n  font-family: \"Open Sans\";\n  font-weight: 600;\n  color: #E44C4C;\n  cursor: pointer;\n}\n.pad[data-v-26480152] {\n  margin-top: 5px;\n}\nhr[data-v-26480152] {\n  width: 66%;\n  float: right;\n  margin-right: 5%;\n}\n.checkout[data-v-26480152] {\n  float: right;\n  margin-right: 5%;\n  width: 28%;\n}\n.total[data-v-26480152] {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n}\n.Subtotal[data-v-26480152] {\n  font-size: 22px;\n  font-family: \"Open Sans\";\n  font-weight: 700;\n  color: #202020;\n}\n.items[data-v-26480152] {\n  font-size: 16px;\n  font-family: \"Open Sans\";\n  font-weight: 500;\n  color: #909090;\n  line-height: 10px;\n}\n.total-amount[data-v-26480152] {\n  font-size: 36px;\n  font-family: \"Open Sans\";\n  font-weight: 900;\n  color: #202020;\n}\n.button[data-v-26480152] {\n  margin-top: 10px;\n  width: 100%;\n  height: 40px;\n  border: none;\n  background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);\n  border-radius: 20px;\n  cursor: pointer;\n  font-size: 16px;\n  font-family: \"Open Sans\";\n  font-weight: 600;\n  color: #202020;\n}", ""]);
+exports.push([module.i, "*[data-v-26480152] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\nbody[data-v-26480152] {\n  margin: 0;\n}\nimg[data-v-26480152] {\n  width: 100%;\n  display: block;\n}\nul[data-v-26480152] {\n  list-style-type: none;\n}\na[data-v-26480152] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-26480152]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-26480152] {\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-26480152] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-26480152] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-26480152] {\n  padding-left: 0;\n}\ndl[data-v-26480152], ol[data-v-26480152], ul[data-v-26480152] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.row[data-v-26480152] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\n.js_container[data-v-26480152] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-26480152] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-26480152] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-26480152] {\n  padding: 0.5rem 2rem;\n}\nh2.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 5rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.fo-style[data-v-26480152] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\n*[data-v-26480152] {\n  margin: 0 auto;\n}\n.col[data-v-26480152] {\n  background-color: red;\n  margin: 1px solid black;\n}", ""]);
 
 // exports
 

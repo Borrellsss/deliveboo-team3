@@ -56,8 +56,8 @@
             
         </div> -->
     </section>
-    <section id="cart-section">
-            <div class="CartContainer">
+    <!-- <section id="cart-section"> -->
+            <!-- <div class="CartContainer">
         <div class="Header">
             <h3 class="Heading">Shopping Cart</h3>
             <h5 class="Action">Remove all</h5>
@@ -88,7 +88,29 @@
             <div class="total-amount">$6.18</div>
         </div>
         <button class="button">Checkout</button></div>
-    </div>
+    </div> -->
+    <!-- </section> -->
+    <section>
+        <div class="container" style="margin-top:50px">
+            <div class="row">
+                <div class="col col-8 products-col">col-8</div>
+                <div class="col col-4 cart-col">
+                    <div class="cart-container">
+                        <div class="row">
+                            <div class="col col-7">
+                                nome prodotto
+                            </div>
+                            <div class="col col-2">
+                                quantity
+                            </div>
+                            <div class="col col-3">
+                                prezzo
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </div>
 </template>
@@ -321,6 +343,15 @@ export default {
 @import '../style/variables';
 @import '../style/common';
 
+*{
+    margin: 0 auto;
+}
+.col{
+    background-color: red;
+    margin: 1px solid black;
+}
+
+
 // cart style
 // .cart-comp{
 //     .cart-container{
@@ -486,187 +517,187 @@ export default {
 
 
 
-#cart-section{
-	margin: 0;
-	padding: 0;
-	background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
+// #cart-section{
+// 	margin: 0;
+// 	padding: 0;
+// 	background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
+// 	height: 100vh;
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// }
 
-.CartContainer{
-	width: 70%;
-	height: 90%;
-	background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0px 10px 20px #1687d933;
-}
+// .CartContainer{
+// 	width: 70%;
+// 	height: 90%;
+// 	background-color: #ffffff;
+//     border-radius: 20px;
+//     box-shadow: 0px 10px 20px #1687d933;
+// }
 
-.Header{
-	margin: auto;
-	width: 90%;
-	height: 15%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
+// .Header{
+// 	margin: auto;
+// 	width: 90%;
+// 	height: 15%;
+// 	display: flex;
+// 	justify-content: space-between;
+// 	align-items: center;
+// }
 
-.Heading{
-	font-size: 20px;
-	font-family: 'Open Sans';
-	font-weight: 700;
-	color: #2F3841;
-}
+// .Heading{
+// 	font-size: 20px;
+// 	font-family: 'Open Sans';
+// 	font-weight: 700;
+// 	color: #2F3841;
+// }
 
-.Action{
-	font-size: 14px;
-	font-family: 'Open Sans';
-	font-weight: 600;
-	color: #E44C4C;
-	cursor: pointer;
-	border-bottom: 1px solid #E44C4C;
-}
+// .Action{
+// 	font-size: 14px;
+// 	font-family: 'Open Sans';
+// 	font-weight: 600;
+// 	color: #E44C4C;
+// 	cursor: pointer;
+// 	border-bottom: 1px solid #E44C4C;
+// }
 
-.Cart-Items{
-	margin: auto;
-	width: 90%;
-	height: 30%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.image-box{
-	width: 15%;
-	text-align: center;
-}
-.about{
-	height: 100%;
-	width: 24%;
-}
-.title{
-	padding-top: 10px;
-	line-height: 10px;
-	font-size: 32px;
-	font-family: 'Open Sans';
-	font-weight: 800;
-	color: #202020;
-}
-.subtitle{
-	line-height: 10px;
-	font-size: 18px;
-	font-family: 'Open Sans';
-	font-weight: 600;
-	color: #909090;
-}
+// .Cart-Items{
+// 	margin: auto;
+// 	width: 90%;
+// 	height: 30%;
+// 	display: flex;
+// 	justify-content: space-between;
+// 	align-items: center;
+// }
+// .image-box{
+// 	width: 15%;
+// 	text-align: center;
+// }
+// .about{
+// 	height: 100%;
+// 	width: 24%;
+// }
+// .title{
+// 	padding-top: 10px;
+// 	line-height: 10px;
+// 	font-size: 32px;
+// 	font-family: 'Open Sans';
+// 	font-weight: 800;
+// 	color: #202020;
+// }
+// .subtitle{
+// 	line-height: 10px;
+// 	font-size: 18px;
+// 	font-family: 'Open Sans';
+// 	font-weight: 600;
+// 	color: #909090;
+// }
 
-.counter{
-	width: 15%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.btn{
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	background-color: #d9d9d9;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 20px;
-	font-family: 'Open Sans';
-	font-weight: 900;
-	color: #202020;
-	cursor: pointer;
-}
-.count{
-	font-size: 20px;
-	font-family: 'Open Sans';
-	font-weight: 600;
-	color: #202020;
-}
+// .counter{
+// 	width: 15%;
+// 	display: flex;
+// 	justify-content: space-between;
+// 	align-items: center;
+// }
+// .btn{
+// 	width: 40px;
+// 	height: 40px;
+// 	border-radius: 50%;
+// 	background-color: #d9d9d9;
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	font-size: 20px;
+// 	font-family: 'Open Sans';
+// 	font-weight: 900;
+// 	color: #202020;
+// 	cursor: pointer;
+// }
+// .count{
+// 	font-size: 20px;
+// 	font-family: 'Open Sans';
+// 	font-weight: 600;
+// 	color: #202020;
+// }
 
-.prices{
-	height: 100%;
-	text-align: right;
-}
-.amount{
-	padding-top: 20px;
-	font-size: 26px;
-	font-family: 'Open Sans';
-	font-weight: 800;
-	color: #202020;
-}
-.save{
-	padding-top: 5px;
-	font-size: 14px;
-	font-family: 'Open Sans';
-	font-weight: 600;
-	color: #1687d9;
-	cursor: pointer;
-}
-.remove{
-	padding-top: 5px;
-	font-size: 14px;
-	font-family: 'Open Sans';
-	font-weight: 600;
-	color: #E44C4C;
-	cursor: pointer;
-}
+// .prices{
+// 	height: 100%;
+// 	text-align: right;
+// }
+// .amount{
+// 	padding-top: 20px;
+// 	font-size: 26px;
+// 	font-family: 'Open Sans';
+// 	font-weight: 800;
+// 	color: #202020;
+// }
+// .save{
+// 	padding-top: 5px;
+// 	font-size: 14px;
+// 	font-family: 'Open Sans';
+// 	font-weight: 600;
+// 	color: #1687d9;
+// 	cursor: pointer;
+// }
+// .remove{
+// 	padding-top: 5px;
+// 	font-size: 14px;
+// 	font-family: 'Open Sans';
+// 	font-weight: 600;
+// 	color: #E44C4C;
+// 	cursor: pointer;
+// }
 
-.pad{
-	margin-top: 5px;
-}
+// .pad{
+// 	margin-top: 5px;
+// }
 
-hr{
-	width: 66%;
-	float: right;
-	margin-right: 5%;
-}
-.checkout{
-	float: right;
-	margin-right: 5%;
-	width: 28%;
-}
-.total{
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-}
-.Subtotal{
-	font-size: 22px;
-	font-family: 'Open Sans';
-	font-weight: 700;
-	color: #202020;
-}
-.items{
-	font-size: 16px;
-	font-family: 'Open Sans';
-	font-weight: 500;
-	color: #909090;
-	line-height: 10px;
-}
-.total-amount{
-	font-size: 36px;
-	font-family: 'Open Sans';
-	font-weight: 900;
-	color: #202020;
-}
-.button{
-	margin-top: 10px;
-	width: 100%;
-	height: 40px;
-	border: none;
-	background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
-	border-radius: 20px;
-	cursor: pointer;
-	font-size: 16px;
-	font-family: 'Open Sans';
-	font-weight: 600;
-	color: #202020;
-}
+// hr{
+// 	width: 66%;
+// 	float: right;
+// 	margin-right: 5%;
+// }
+// .checkout{
+// 	float: right;
+// 	margin-right: 5%;
+// 	width: 28%;
+// }
+// .total{
+// 	width: 100%;
+// 	display: flex;
+// 	justify-content: space-between;
+// }
+// .Subtotal{
+// 	font-size: 22px;
+// 	font-family: 'Open Sans';
+// 	font-weight: 700;
+// 	color: #202020;
+// }
+// .items{
+// 	font-size: 16px;
+// 	font-family: 'Open Sans';
+// 	font-weight: 500;
+// 	color: #909090;
+// 	line-height: 10px;
+// }
+// .total-amount{
+// 	font-size: 36px;
+// 	font-family: 'Open Sans';
+// 	font-weight: 900;
+// 	color: #202020;
+// }
+// .button{
+// 	margin-top: 10px;
+// 	width: 100%;
+// 	height: 40px;
+// 	border: none;
+// 	background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
+// 	border-radius: 20px;
+// 	cursor: pointer;
+// 	font-size: 16px;
+// 	font-family: 'Open Sans';
+// 	font-weight: 600;
+// 	color: #202020;
+// }
    
 </style>
 
