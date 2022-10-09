@@ -6,6 +6,6 @@
         <div class="text-center mb-5">
             <a class="ms_btn" href="{{route('admin.statistics')}}">Visualizza statistiche</a>
         </div>
-        
+
     </section> 
 @endsection

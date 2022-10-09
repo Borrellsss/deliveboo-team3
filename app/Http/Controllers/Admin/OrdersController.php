@@ -14,7 +14,7 @@ class OrdersController extends Controller
         $user = Auth::user();
 
         $data = [
-            'user' => $user
+            'user' => $user,
         ];
 
         return view('admin.orders', $data);
