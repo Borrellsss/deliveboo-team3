@@ -69,7 +69,7 @@ export default {
             // array vuoto per il carrello
             cart:[],
             // numero prodotti presenti nel carrello
-            products_in_cart: 0,
+            products_in_cart: 1,
             // totale da pagare
             total_amount: 0,
         }
@@ -106,21 +106,16 @@ export default {
 
         // funzione che aggiunge il prodotto al carrello
         addItem(product){
-           
             if (!product){
                 return;
             }
 
-            
             if(localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0){
                 product.quantity = 1;
-
                 // pusha nell'array il prodotto
                 this.cart.push(product);
-            
                 // salva il carrello
                 this.saveCart();
-
                 
             }else{
                 // salvo la stringa di LocalStorage in this.cart
@@ -137,42 +132,34 @@ export default {
                         this.cart.push(product);
                         // salva il carrello
                         this.saveCart();
-                       
                     }
-                    
-                }  else{
+                }else{
                     //se non cambia ristorante:
                     // salva l'id del prodotto selezionato
-                 
                     let check = this.cart.find(({id}) => id == product.id);
-                    console.log(this.cart.find(({id}) => id == product.id))
-                    //    console.log('adesso')
+                    // console.log(this.cart.find(({id}) => id == product.id))
                     // se non esiste già
-                    if(!check){
-                        //setta la quantità ad 1
-                        product.quantity = 1;
-                        //altrimenti
-                    }
-                    else{
-                        // incrementa di 1 la quantità
-                        for(let i = 0; i < this.cart.length + 1; i++){
-                            if(this.cart[i].id == product.id){
-                                this.cart[i].quantity = this.cart[i].quantity + 1
-                                this.saveCart();
+                        if(!check){
+                            //setta la quantità ad 1
+                            product.quantity = 1;
+                            //altrimenti
+                        }
+                        else{
+                            // incrementa di 1 la quantità
+                            for(let i = 0; i < this.cart.length + 1; i++){
+                                if(this.cart[i].id == product.id){
+                                    this.cart[i].quantity = this.cart[i].quantity + 1
+                                    this.saveCart();
+                                }
                             }
                         }
-                    }
                     // pusha nell'array il prodotto
                     this.cart.push(product);
                     // salva il carrello
                     this.saveCart();
-                   
-                }      
+                }
             }
-                
-          
         },
-        // funzione per la rimozione del prodotto dal carrello
        
         // funzione salva carrello
         saveCart() {
@@ -180,54 +167,32 @@ export default {
             localStorage.setItem('cart', parsed);
         },
         
-        //  removeItem(product , index){
-        //     if(product.quantity > 1)
-        //     for(let i = 0; i < this.cart.length + 1; i++){
-        //         if(this.cart[i].id == product.id){
-        //         this.cart[i].quantity = this.cart[i].quantity -  1;
-        //         this.saveCart();
-        //         }else  {
-                    
-        //         }
-        //     }
-        //     else
-        //         this.deleteItem(index);
-
-        // //         this.totalAmount();
-        // },
-
-        
-
-
-        ////////////////////////////////////////
-        //////////////////////////////////////
-        // funzione che incrementa la quantità del prodotto all'interno del carrello
-        // increaseQuantity(product, index) {
-
-        //     let check = this.cart.find(({id}) => id == product.id);
-        //     if(check.id){
-        //          for(let i = 0; i < this.cart.length + 1; i++){
-        //             if(this.cart[i].id == product.id){
-        //             this.cart[i].quantity = this.cart[i].quantity + 1
-        //             this.saveCart();
-        //             }
-        //         }
-        //     }
-           
-        // },
         // funzione che riduce la quantità del prodotto nel carrello
         decreaseQuantity(product , index){
             let check = this.cart.find(({id}) => id == product.id);
             if(check.id){
                 for(let i = 0; i < this.cart.length + 1; i++){
-                    if(this.cart[i].id == product.id && this.cart[i].quantity > 1){
+                    if(this.cart[i].id == product.id && this.cart[i].quantity >= 1){
                     this.cart[i].quantity = this.cart[i].quantity -  1;
+                    this.saveCart();
+
+                        if(this.cart[i].id == product.id && this.cart[i].quantity == 0){
+                            this.cart.splice(i, 1);
+                    }
                     this.saveCart();
                     }
                 }
             }
         },
 
+        // totalAmount(product, index){
+        //     this.total_amount = 0;
+        //     for (let index = 0; index < this.cart.length; index++) {
+        //         this.total_amount += parseFloat(this.cart[index].price)*this.cart[index].quantity;
+        //     }
+        // },
+
+        
         // funzione che cancella il prodotto dal carrello
         deleteItem(product,index) {
 
@@ -243,37 +208,6 @@ export default {
                 localStorage.clear(); 
             } 
         },
-
-        // testFunction(index){
-            
-        //     const testCart = JSON.parse(localStorage.getItem("cart"))
-        //     for (let i =0; i< testCart.length; i++) {
-        //         let items = JSON.parse(testCart[i]);
-        //         if (items.id == index) {
-        //         testCart.splice(index, 1);
-        //         }
-        //     }
-        // }
-
-        // salva nel carrello i prodotti
-        // saveProductInCart(){
-        //     const parsed = JSON.stringify(this.products_in_cart);
-        //     localStorage.setItem('cart', parsed);
-        //     this.products_in_cart = JSON.parse(localStorage.cart);
-        // },
-
-      
-         // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
-        // totalAmount(){
-        //     this.total_amount = 0;
-        //     for (let i = 0; i < this.cart.length; i++) {
-        //         this.total_amount += parseFloat(this.cart[i].price)*this.product.quantity
-        //         console.log(this.cart[i])
-        //     }
-      
-                                            
-        //  },
-       
 
     },
     
