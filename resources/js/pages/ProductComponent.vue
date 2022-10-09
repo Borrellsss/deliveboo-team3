@@ -6,11 +6,11 @@
                     <div class="ms_product-card text-center">
                         <h5 class="card-title">{{product.name}}</h5>
                         <img :src="product.cover" :alt="product.name">
-                        <p class="card-text">Prezzo: {{product.price}}</p>  
-                        <a class="btn btn-primary" @click='addItem(product)'>Add to cart</a> 
+                        <p class="card-text">Prezzo: {{product.price}}</p>
+                        <a class="btn btn-primary" @click='addItem(product)'>Add to cart</a>
                     </div>
                 </div>
-            </div>   
+            </div>
         </div>
         <!-- /////////////////////////////////////////////////// -->
         <div class="cart-comp">
@@ -18,11 +18,11 @@
                 <div class="top-links">
                         <h4 class="static active">Carrello <i class="fa-solid fa-cart-arrow-down"></i></h4>
                 </div>
-          
+
                 <div v-if="cart.length > 0" class="cart-container-content row">
                     <ul class="products-container col-sm-7 col-12">
                         <li v-for="(product, index) in cart" :key="index">
-                           
+
                             <div class="right-side row">
                                 <div class="info col-lg-8 col-12">
                                     <h5>{{product.name}}</h5>
@@ -32,27 +32,28 @@
                                     <span class="price">&euro; {{product.price}}</span>
                                 </div>
                                 <div class="quantity-inputs col-lg-4 col-12">
-                                    <a class="btn btn-primary" @click='addItem(product)'>+</a> 
+                                    <a class="btn btn-primary" @click='addItem(product)'>+</a>
                                     <div class="quantity">{{product.quantity}}</div>
-                                    <a class="btn btn-primary" @click='decreaseQuantity(product, index)'>-</a> 
+                                    <a class="btn btn-primary" @click='decreaseQuantity(product, index)'>-</a>
                                     <a class="btn btn-primary" @click='deleteItem(index)'>Delete</a>
+                                    <h5>{{pricePerQuantity}}</h5>
                                 </div>
 
                             </div>
                         </li>
-                       
+
                     </ul>
                     <h2>Totale: <span class="price">€ {{total_amount}}</span></h2>
                 </div>
                 <h1 v-else><i class="fa-solid fa-triangle-exclamation"></i> Il carrello è vuoto.</h1>
             </div>
-           
 
-        </div>   
+
+        </div>
 
         <!-- <div class="cart-container">
             <h2>Il tuo carrello</h2>
-            
+
         </div> -->
     </section>
 
@@ -61,7 +62,7 @@
 <script>
 export default {
     name: 'ProductComponent',
-    
+
      data(){
         return{
             // array dei prodotti
@@ -69,9 +70,11 @@ export default {
             // array vuoto per il carrello
             cart:[],
             // numero prodotti presenti nel carrello
-            products_in_cart: 0,
+            products_in_cart: 1,
             // totale da pagare
             total_amount: 0,
+
+            pricePerQuantity : 0,
         }
     },
     created() {
@@ -91,7 +94,7 @@ export default {
         // this.totalAmount();
 
         // se cart esiste in LocalStorage
-        if (localStorage.getItem('cart')) {             
+        if (localStorage.getItem('cart')) {
             try {
                 // trasformalo in stringa
                 this.cart = JSON.parse(localStorage.getItem('cart'));
@@ -101,33 +104,31 @@ export default {
             }
         }
     },
-    
+
     methods:{
 
         // funzione che aggiunge il prodotto al carrello
         addItem(product){
-           
             if (!product){
                 return;
             }
 
-            
             if(localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0){
                 product.quantity = 1;
-
                 // pusha nell'array il prodotto
                 this.cart.push(product);
-            
+                this.partialAmount(product)
                 // salva il carrello
                 this.saveCart();
 
-                
             }else{
                 // salvo la stringa di LocalStorage in this.cart
                 this.cart = JSON.parse(localStorage.getItem('cart'));
-              
+                //  console.log('sono dentro la else di salvo la stringa')
+
                 if(this.cart[0].user_id !== product.user_id){
-                    // se conferma di cambiare ristorante 
+                    // console.log('sono dentro la if di user_id')
+                    // se conferma di cambiare ristorante
                     if(confirm('Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello. Vuoi cambiare ristorante? ')){
                         // svuota il carrello
                         this.cart = [];
@@ -135,147 +136,107 @@ export default {
                         product.quantity = 1;
                         // pusha nell'array il prodotto
                         this.cart.push(product);
+                        //  console.log('sono dentro la if di provo a cambiare r')
                         // salva il carrello
                         this.saveCart();
-                       
                     }
-                    
-                }  else{
+                }else{
                     //se non cambia ristorante:
                     // salva l'id del prodotto selezionato
-                 
                     let check = this.cart.find(({id}) => id == product.id);
-                    console.log(this.cart.find(({id}) => id == product.id))
-                    //    console.log('adesso')
+                    //  console.log('sono dentro la else di salvaid')
                     // se non esiste già
-                    if(!check){
-                        //setta la quantità ad 1
-                        product.quantity = 1;
-                        //altrimenti
-                    }
-                    else{
-                        // incrementa di 1 la quantità
-                        for(let i = 0; i < this.cart.length + 1; i++){
-                            if(this.cart[i].id == product.id){
-                                this.cart[i].quantity = this.cart[i].quantity + 1
-                                this.saveCart();
-                            }
+                        if(!check){
+                            //setta la quantità ad 1
+                            product.quantity = 1;
+                            // console.log('sono dentro la if di check')
+                            this.partialAmount(product)
+                            //altrimenti
                         }
-                    }
+                        else{
+                           
+                            // incrementa di 1 la quantità
+                            for(let i = 0; i < this.cart.length; i++){
+                                if(this.cart[i].id == product.id){
+                                    console.log(this.cart[i].id)
+                                    this.cart[i].quantity = this.cart[i].quantity + 1
+                                    this.saveCart();
+                                }
+                                // this.partialAmount(product)
+                            }  
+                        }
                     // pusha nell'array il prodotto
                     this.cart.push(product);
+                    // this.partialAmount(product)
                     // salva il carrello
                     this.saveCart();
-                   
-                }      
+                }
+
             }
-                
-          
         },
-        // funzione per la rimozione del prodotto dal carrello
-       
+
         // funzione salva carrello
         saveCart() {
             const parsed = JSON.stringify(this.cart);
             localStorage.setItem('cart', parsed);
         },
-        
-        //  removeItem(product , index){
-        //     if(product.quantity > 1)
-        //     for(let i = 0; i < this.cart.length + 1; i++){
-        //         if(this.cart[i].id == product.id){
-        //         this.cart[i].quantity = this.cart[i].quantity -  1;
-        //         this.saveCart();
-        //         }else  {
-                    
-        //         }
-        //     }
-        //     else
-        //         this.deleteItem(index);
 
-        // //         this.totalAmount();
-        // },
-
-        
-
-
-        ////////////////////////////////////////
-        // funzione che incrementa la quantità del prodotto all'interno del carrello
-        // increaseQuantity(product, index) {
-
-        //     let check = this.cart.find(({id}) => id == product.id);
-        //     if(check.id){
-        //          for(let i = 0; i < this.cart.length + 1; i++){
-        //             if(this.cart[i].id == product.id){
-        //             this.cart[i].quantity = this.cart[i].quantity + 1
-        //             this.saveCart();
-        //             }
-        //         }
-        //     }
-           
-        // },
         // funzione che riduce la quantità del prodotto nel carrello
         decreaseQuantity(product , index){
             let check = this.cart.find(({id}) => id == product.id);
             if(check.id){
                 for(let i = 0; i < this.cart.length + 1; i++){
-                    if(this.cart[i].id == product.id && this.cart[i].quantity > 1){
+                    if(this.cart[i].id == product.id && this.cart[i].quantity >= 1){
                     this.cart[i].quantity = this.cart[i].quantity -  1;
+                    this.saveCart();
+
+                        if(this.cart[i].id == product.id && this.cart[i].quantity == 0){
+                            this.cart.splice(i, 1);
+                    }
+                    this.partialAmount(product)
                     this.saveCart();
                     }
                 }
             }
         },
 
+        partialAmount(product){
+            this.pricePerQuantity = parseFloat(product.price * product.quantity).toFixed(2);
+        //    console.log(pricePerQuantity)
+        },
+
+        // totalAmount(product, index){
+        //     this.total_amount = 0;
+        //     for (let index = 0; index < this.cart.length; index++) {
+        //         this.total_amount += parseFloat(this.cart[index].price)*this.cart[index].quantity;
+        //     }
+        // },
+
+
         // funzione che cancella il prodotto dal carrello
-        deleteItem(product,index) {
+        deleteItem(index, product) {
 
             if(this.cart.length > 1){
+                // rimuovo l'elemento carrello in pagina
                 this.cart.splice(index, 1);
-                // this.testFunction(index)
-                // localStorage.removeItem();
-                console.log('ciao sono', Storage.key(index))
+
+                // filtro dell'array così da togliere l'id del prodotto eliminato
+                let filtered_cart = this.cart.filter(product => product.id !== index);
+                // console.log(filtered_cart)
+
+                // Sovrascrivo ('cart') localStorage con il nuovo array filtrato
+                localStorage.setItem('cart', JSON.stringify(filtered_cart));
+                // console.log('ciao sono', Storage.key(index))
             }else{
                 this.cart.splice(index, 1);
                 // this.testFunction(index)
                 // this.saveProductInCart();
-                localStorage.clear(); 
-            } 
+                localStorage.clear();
+            }
         },
 
-        // testFunction(index){
-            
-        //     const testCart = JSON.parse(localStorage.getItem("cart"))
-        //     for (let i =0; i< testCart.length; i++) {
-        //         let items = JSON.parse(testCart[i]);
-        //         if (items.id == index) {
-        //         testCart.splice(index, 1);
-        //         }
-        //     }
-        // }
-
-        // salva nel carrello i prodotti
-        // saveProductInCart(){
-        //     const parsed = JSON.stringify(this.products_in_cart);
-        //     localStorage.setItem('cart', parsed);
-        //     this.products_in_cart = JSON.parse(localStorage.cart);
-        // },
-
-      
-         // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
-        // totalAmount(){
-        //     this.total_amount = 0;
-        //     for (let i = 0; i < this.cart.length; i++) {
-        //         this.total_amount += parseFloat(this.cart[i].price)*this.product.quantity
-        //         console.log(this.cart[i])
-        //     }
-      
-                                            
-        //  },
-       
-
     },
-    
+
 }
 
 
@@ -284,172 +245,172 @@ export default {
 @import '../style/variables';
 @import '../style/common';
 
-//cart style
-// .cart-comp{
-//     .cart-container{
-//         width: 100%;
-//         margin: 50px 0;
-//         min-height: calc(100vh - 590px);
-//         background-color: white;
-//         color: black;
-//         box-shadow: 0px 0px 15px rgb(189, 189, 189);
-//         border-radius: 20px;
-//         overflow: hidden;
-//         .top-links{
-//             display: flex;
-//             width: 100%;
-//             height: 50px;
-//             color: #dd3546;
-//             h4{
-//                 width: 50%;
-//                 text-align: center;
-//                 margin: 0 auto;
-//                 &.active,
-//                 .active{
-//                     border-bottom: 3px solid #dd3546;
-//                     font-weight: bolder;
-//                 }
-//                 &.static,
-//                 .link{
-//                     padding-top: 10px;
-//                 }
-//                 .link{
-//                     cursor: pointer;
-//                     display: block;
-//                     width: 100%;
-//                     height: 100%;
-//                     color: #dd3546;
-//                     text-decoration: none;
-//                     transition: .2s all;
-//                     &:hover{
-//                         background-color: rgb(240, 240, 240);
-//                     }
-//                 }
-//             }
-//         }
-//         .mid-bar{
-//             width: 100%;
-//             padding: 15px 15px 0;
-//         }
-//         .cart-container-content{
-//             .products-container{
-//                 margin: 0;
-//                 list-style: none;
-//                 li{
-//                     display: flex;
-//                     align-items: center;
-//                     margin: 30px 15px 0 15px;
-//                     padding-bottom: 15px;
-//                     border-bottom: 2px solid lightgray;
-//                     img{
-//                         width: 100px;
-//                         border-radius: 10px;
-//                         margin-right: 15px;
-//                     }
-//                     .right-side{
-//                         display: flex;
-//                         flex-grow: 1;
-//                         align-items: center;
-//                         .info{
-//                             margin: 10px 0;
-//                             h5{
-//                                 font-weight: bolder;
-//                             }
-//                             .description{
-//                                 display: table;
-//                                 table-layout: fixed;
-//                                 max-width: 250px;
-//                                 width: 100%;
-//                                 font-size: 14px;
-//                                 color: gray;
-//                                 white-space: nowrap;
-//                             }
-//                             .description > *{
-//                                 display: table-cell;
-//                                 overflow: hidden;
-//                                 text-overflow: ellipsis;
-//                             }
-//                             .price{
-//                                 font-weight: bold;
-//                                 color: #4E54C8;
-//                             }
-//                         }
-//                         .quantity-inputs{
-//                             display: flex;
-//                             align-items: center;
-//                             .qt-btn,
-//                             .del-btn{
-//                                 cursor: pointer;
-//                             }
-//                             .qt-btn{
-//                                 font-size: 20px;
-//                                 color: gray;
-//                                 transition: .2s all;
-//                                 &:hover{
-//                                     color: rgb(95, 95, 95);
-//                                 }
-//                                 &:active{
-//                                     color: #dd3546;
-//                                 }
-//                             }
-//                             .quantity{
-//                                 margin: 0 8px;
-//                                 font-weight: bold;
-//                                 color: #dd3546;
-//                             }
-//                             .del-btn{
-//                                 margin-left: 30px;
-//                                 color: red;
-//                                 transition: .2s all;
-//                                 &:hover{
-//                                     color: darkred;
-//                                 }
-//                                 &:active{
-//                                     color: black;
-//                                 }
-//                             }
-//                         }
-//                     }
-//                     &:last-of-type{
-//                         border-bottom: none;
-//                     }
-//                 }
-//             }
-//             .checkout .ckt-container{
-//                 text-align: center;
-//                 padding-top: 60px;
-//                 margin: 0 auto;
-//                 width: 50%;
-//                 h2{
-//                     font-weight: bolder;
-//                     .price{
-//                         display: inline-block;
-//                         font-weight: bold;
-//                         color: #4E54C8;
-//                     }
-//                 }
-//                 button{
-//                     font-weight: bold;
-//                     i{
-//                         margin-right: 5px;
-//                     }
-//                 }
-//             }
-//         }
-//         h1{
-//             text-align: center;
-//             font-weight: bolder;
-//             margin: 70px 0;
-//             i{
-//                 color: #dd3546;
-//             }
-//         }
-//     }
-// }
+// cart style
+.cart-comp{
+    .cart-container{
+        width: 100%;
+        margin: 50px 0;
+        min-height: calc(100vh - 590px);
+        background-color: white;
+        color: black;
+        box-shadow: 0px 0px 15px rgb(189, 189, 189);
+        border-radius: 20px;
+        overflow: hidden;
+        .top-links{
+            display: flex;
+            width: 100%;
+            height: 50px;
+            color: #dd3546;
+            h4{
+                width: 50%;
+                text-align: center;
+                margin: 0 auto;
+                &.active,
+                .active{
+                    border-bottom: 3px solid #dd3546;
+                    font-weight: bolder;
+                }
+                &.static,
+                .link{
+                    padding-top: 10px;
+                }
+                .link{
+                    cursor: pointer;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    color: #dd3546;
+                    text-decoration: none;
+                    transition: .2s all;
+                    &:hover{
+                        background-color: rgb(240, 240, 240);
+                    }
+                }
+            }
+        }
+        .mid-bar{
+            width: 100%;
+            padding: 15px 15px 0;
+        }
+        .cart-container-content{
+            .products-container{
+                margin: 0;
+                list-style: none;
+                li{
+                    display: flex;
+                    align-items: center;
+                    margin: 30px 15px 0 15px;
+                    padding-bottom: 15px;
+                    border-bottom: 2px solid lightgray;
+                    img{
+                        width: 100px;
+                        border-radius: 10px;
+                        margin-right: 15px;
+                    }
+                    .right-side{
+                        display: flex;
+                        flex-grow: 1;
+                        align-items: center;
+                        .info{
+                            margin: 10px 0;
+                            h5{
+                                font-weight: bolder;
+                            }
+                            .description{
+                                display: table;
+                                table-layout: fixed;
+                                max-width: 250px;
+                                width: 100%;
+                                font-size: 14px;
+                                color: gray;
+                                white-space: nowrap;
+                            }
+                            .description > *{
+                                display: table-cell;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+                            .price{
+                                font-weight: bold;
+                                color: #4E54C8;
+                            }
+                        }
+                        .quantity-inputs{
+                            display: flex;
+                            align-items: center;
+                            .qt-btn,
+                            .del-btn{
+                                cursor: pointer;
+                            }
+                            .qt-btn{
+                                font-size: 20px;
+                                color: gray;
+                                transition: .2s all;
+                                &:hover{
+                                    color: rgb(95, 95, 95);
+                                }
+                                &:active{
+                                    color: #dd3546;
+                                }
+                            }
+                            .quantity{
+                                margin: 0 8px;
+                                font-weight: bold;
+                                color: #dd3546;
+                            }
+                            .del-btn{
+                                margin-left: 30px;
+                                color: red;
+                                transition: .2s all;
+                                &:hover{
+                                    color: darkred;
+                                }
+                                &:active{
+                                    color: black;
+                                }
+                            }
+                        }
+                    }
+                    &:last-of-type{
+                        border-bottom: none;
+                    }
+                }
+            }
+            .checkout .ckt-container{
+                text-align: center;
+                padding-top: 60px;
+                margin: 0 auto;
+                width: 50%;
+                h2{
+                    font-weight: bolder;
+                    .price{
+                        display: inline-block;
+                        font-weight: bold;
+                        color: #4E54C8;
+                    }
+                }
+                button{
+                    font-weight: bold;
+                    i{
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+        h1{
+            text-align: center;
+            font-weight: bolder;
+            margin: 70px 0;
+            i{
+                color: #dd3546;
+            }
+        }
+    }
+}
 
 
 
 
-   
+
 </style>
 

@@ -7938,9 +7938,10 @@ __webpack_require__.r(__webpack_exports__);
       // array vuoto per il carrello
       cart: [],
       // numero prodotti presenti nel carrello
-      products_in_cart: 0,
+      products_in_cart: 1,
       // totale da pagare
-      total_amount: 0
+      total_amount: 0,
+      pricePerQuantity: 0
     };
   },
   created: function created() {
@@ -7979,22 +7980,25 @@ __webpack_require__.r(__webpack_exports__);
       if (localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0) {
         product.quantity = 1; // pusha nell'array il prodotto
 
-        this.cart.push(product); // salva il carrello
+        this.cart.push(product);
+        this.partialAmount(product); // salva il carrello
 
         this.saveCart();
       } else {
         // salvo la stringa di LocalStorage in this.cart
-        this.cart = JSON.parse(localStorage.getItem('cart'));
+        this.cart = JSON.parse(localStorage.getItem('cart')); //  console.log('sono dentro la else di salvo la stringa')
 
         if (this.cart[0].user_id !== product.user_id) {
-          // se conferma di cambiare ristorante 
+          // console.log('sono dentro la if di user_id')
+          // se conferma di cambiare ristorante
           if (confirm('Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello. Vuoi cambiare ristorante? ')) {
             // svuota il carrello
             this.cart = []; // setta la quantità del prodotto (del nuovo ristorante)
 
             product.quantity = 1; // pusha nell'array il prodotto
 
-            this.cart.push(product); // salva il carrello
+            this.cart.push(product); //  console.log('sono dentro la if di provo a cambiare r')
+            // salva il carrello
 
             this.saveCart();
           }
@@ -8004,118 +8008,90 @@ __webpack_require__.r(__webpack_exports__);
           var check = this.cart.find(function (_ref) {
             var id = _ref.id;
             return id == product.id;
-          });
-          console.log(this.cart.find(function (_ref2) {
-            var id = _ref2.id;
-            return id == product.id;
-          })); //    console.log('adesso')
+          }); //  console.log('sono dentro la else di salvaid')
           // se non esiste già
 
           if (!check) {
             //setta la quantità ad 1
-            product.quantity = 1; //altrimenti
+            product.quantity = 1; // console.log('sono dentro la if di check')
+
+            this.partialAmount(product); //altrimenti
           } else {
             // incrementa di 1 la quantità
-            for (var i = 0; i < this.cart.length + 1; i++) {
+            for (var i = 0; i < this.cart.length; i++) {
               if (this.cart[i].id == product.id) {
+                console.log(this.cart[i].id);
                 this.cart[i].quantity = this.cart[i].quantity + 1;
                 this.saveCart();
-              }
+              } // this.partialAmount(product)
+
             }
           } // pusha nell'array il prodotto
 
 
-          this.cart.push(product); // salva il carrello
+          this.cart.push(product); // this.partialAmount(product)
+          // salva il carrello
 
           this.saveCart();
         }
       }
     },
-    // funzione per la rimozione del prodotto dal carrello
     // funzione salva carrello
     saveCart: function saveCart() {
       var parsed = JSON.stringify(this.cart);
       localStorage.setItem('cart', parsed);
     },
-    //  removeItem(product , index){
-    //     if(product.quantity > 1)
-    //     for(let i = 0; i < this.cart.length + 1; i++){
-    //         if(this.cart[i].id == product.id){
-    //         this.cart[i].quantity = this.cart[i].quantity -  1;
-    //         this.saveCart();
-    //         }else  {
-    //         }
-    //     }
-    //     else
-    //         this.deleteItem(index);
-    // //         this.totalAmount();
-    // },
-    ////////////////////////////////////////
-    // funzione che incrementa la quantità del prodotto all'interno del carrello
-    // increaseQuantity(product, index) {
-    //     let check = this.cart.find(({id}) => id == product.id);
-    //     if(check.id){
-    //          for(let i = 0; i < this.cart.length + 1; i++){
-    //             if(this.cart[i].id == product.id){
-    //             this.cart[i].quantity = this.cart[i].quantity + 1
-    //             this.saveCart();
-    //             }
-    //         }
-    //     }
-    // },
     // funzione che riduce la quantità del prodotto nel carrello
     decreaseQuantity: function decreaseQuantity(product, index) {
-      var check = this.cart.find(function (_ref3) {
-        var id = _ref3.id;
+      var check = this.cart.find(function (_ref2) {
+        var id = _ref2.id;
         return id == product.id;
       });
 
       if (check.id) {
         for (var i = 0; i < this.cart.length + 1; i++) {
-          if (this.cart[i].id == product.id && this.cart[i].quantity > 1) {
+          if (this.cart[i].id == product.id && this.cart[i].quantity >= 1) {
             this.cart[i].quantity = this.cart[i].quantity - 1;
+            this.saveCart();
+
+            if (this.cart[i].id == product.id && this.cart[i].quantity == 0) {
+              this.cart.splice(i, 1);
+            }
+
+            this.partialAmount(product);
             this.saveCart();
           }
         }
       }
     },
+    partialAmount: function partialAmount(product) {
+      this.pricePerQuantity = parseFloat(product.price * product.quantity).toFixed(2); //    console.log(pricePerQuantity)
+    },
+    // totalAmount(product, index){
+    //     this.total_amount = 0;
+    //     for (let index = 0; index < this.cart.length; index++) {
+    //         this.total_amount += parseFloat(this.cart[index].price)*this.cart[index].quantity;
+    //     }
+    // },
     // funzione che cancella il prodotto dal carrello
-    deleteItem: function deleteItem(product, index) {
+    deleteItem: function deleteItem(index, product) {
       if (this.cart.length > 1) {
-        this.cart.splice(index, 1); // this.testFunction(index)
-        // localStorage.removeItem();
+        // rimuovo l'elemento carrello in pagina
+        this.cart.splice(index, 1); // filtro dell'array così da togliere l'id del prodotto eliminato
 
-        console.log('ciao sono', Storage.key(index));
+        var filtered_cart = this.cart.filter(function (product) {
+          return product.id !== index;
+        }); // console.log(filtered_cart)
+        // Sovrascrivo ('cart') localStorage con il nuovo array filtrato
+
+        localStorage.setItem('cart', JSON.stringify(filtered_cart)); // console.log('ciao sono', Storage.key(index))
       } else {
         this.cart.splice(index, 1); // this.testFunction(index)
         // this.saveProductInCart();
 
         localStorage.clear();
       }
-    } // testFunction(index){
-    //     const testCart = JSON.parse(localStorage.getItem("cart"))
-    //     for (let i =0; i< testCart.length; i++) {
-    //         let items = JSON.parse(testCart[i]);
-    //         if (items.id == index) {
-    //         testCart.splice(index, 1);
-    //         }
-    //     }
-    // }
-    // salva nel carrello i prodotti
-    // saveProductInCart(){
-    //     const parsed = JSON.stringify(this.products_in_cart);
-    //     localStorage.setItem('cart', parsed);
-    //     this.products_in_cart = JSON.parse(localStorage.cart);
-    // },
-    // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
-    // totalAmount(){
-    //     this.total_amount = 0;
-    //     for (let i = 0; i < this.cart.length; i++) {
-    //         this.total_amount += parseFloat(this.cart[i].price)*this.product.quantity
-    //         console.log(this.cart[i])
-    //     }
-    //  },
-
+    }
   }
 });
 
@@ -8667,7 +8643,7 @@ var render = function render() {
           return _vm.deleteItem(index);
         }
       }
-    }, [_vm._v("Delete")])])])]);
+    }, [_vm._v("Delete")]), _vm._v(" "), _c("h5", [_vm._v(_vm._s(_vm.pricePerQuantity))])])])]);
   }), 0), _vm._v(" "), _c("h2", [_vm._v("Totale: "), _c("span", {
     staticClass: "price"
   }, [_vm._v("€ " + _vm._s(_vm.total_amount))])])]) : _c("h1", [_c("i", {
@@ -13341,7 +13317,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "*[data-v-26480152] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\nbody[data-v-26480152] {\n  margin: 0;\n}\nimg[data-v-26480152] {\n  width: 100%;\n  display: block;\n}\nul[data-v-26480152] {\n  list-style-type: none;\n}\na[data-v-26480152] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-26480152]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-26480152] {\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-26480152] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-26480152] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-26480152] {\n  padding-left: 0;\n}\ndl[data-v-26480152], ol[data-v-26480152], ul[data-v-26480152] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.row[data-v-26480152] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\n.js_container[data-v-26480152] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-26480152] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-26480152] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-26480152] {\n  padding: 0.5rem 2rem;\n}\nh2.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 5rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.fo-style[data-v-26480152] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}", ""]);
+exports.push([module.i, "*[data-v-26480152] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\nbody[data-v-26480152] {\n  margin: 0;\n}\nimg[data-v-26480152] {\n  width: 100%;\n  display: block;\n}\nul[data-v-26480152] {\n  list-style-type: none;\n}\na[data-v-26480152] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-26480152]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-26480152] {\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-26480152] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-26480152] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-26480152] {\n  padding-left: 0;\n}\ndl[data-v-26480152], ol[data-v-26480152], ul[data-v-26480152] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.row[data-v-26480152] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\n.js_container[data-v-26480152] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-26480152] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-26480152] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-26480152] {\n  padding: 0.5rem 2rem;\n}\nh2.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 5rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.fo-style[data-v-26480152] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\n.cart-comp .cart-container[data-v-26480152] {\n  width: 100%;\n  margin: 50px 0;\n  min-height: calc(100vh - 590px);\n  background-color: white;\n  color: black;\n  box-shadow: 0px 0px 15px rgb(189, 189, 189);\n  border-radius: 20px;\n  overflow: hidden;\n}\n.cart-comp .cart-container .top-links[data-v-26480152] {\n  display: flex;\n  width: 100%;\n  height: 50px;\n  color: #dd3546;\n}\n.cart-comp .cart-container .top-links h4[data-v-26480152] {\n  width: 50%;\n  text-align: center;\n  margin: 0 auto;\n}\n.cart-comp .cart-container .top-links h4.active[data-v-26480152],\n.cart-comp .cart-container .top-links h4 .active[data-v-26480152] {\n  border-bottom: 3px solid #dd3546;\n  font-weight: bolder;\n}\n.cart-comp .cart-container .top-links h4.static[data-v-26480152],\n.cart-comp .cart-container .top-links h4 .link[data-v-26480152] {\n  padding-top: 10px;\n}\n.cart-comp .cart-container .top-links h4 .link[data-v-26480152] {\n  cursor: pointer;\n  display: block;\n  width: 100%;\n  height: 100%;\n  color: #dd3546;\n  text-decoration: none;\n  transition: 0.2s all;\n}\n.cart-comp .cart-container .top-links h4 .link[data-v-26480152]:hover {\n  background-color: rgb(240, 240, 240);\n}\n.cart-comp .cart-container .mid-bar[data-v-26480152] {\n  width: 100%;\n  padding: 15px 15px 0;\n}\n.cart-comp .cart-container .cart-container-content .products-container[data-v-26480152] {\n  margin: 0;\n  list-style: none;\n}\n.cart-comp .cart-container .cart-container-content .products-container li[data-v-26480152] {\n  display: flex;\n  align-items: center;\n  margin: 30px 15px 0 15px;\n  padding-bottom: 15px;\n  border-bottom: 2px solid lightgray;\n}\n.cart-comp .cart-container .cart-container-content .products-container li img[data-v-26480152] {\n  width: 100px;\n  border-radius: 10px;\n  margin-right: 15px;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side[data-v-26480152] {\n  display: flex;\n  flex-grow: 1;\n  align-items: center;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .info[data-v-26480152] {\n  margin: 10px 0;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .info h5[data-v-26480152] {\n  font-weight: bolder;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .info .description[data-v-26480152] {\n  display: table;\n  table-layout: fixed;\n  max-width: 250px;\n  width: 100%;\n  font-size: 14px;\n  color: gray;\n  white-space: nowrap;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .info .description > *[data-v-26480152] {\n  display: table-cell;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .info .price[data-v-26480152] {\n  font-weight: bold;\n  color: #4E54C8;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs[data-v-26480152] {\n  display: flex;\n  align-items: center;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .qt-btn[data-v-26480152],\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .del-btn[data-v-26480152] {\n  cursor: pointer;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .qt-btn[data-v-26480152] {\n  font-size: 20px;\n  color: gray;\n  transition: 0.2s all;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .qt-btn[data-v-26480152]:hover {\n  color: rgb(95, 95, 95);\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .qt-btn[data-v-26480152]:active {\n  color: #dd3546;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .quantity[data-v-26480152] {\n  margin: 0 8px;\n  font-weight: bold;\n  color: #dd3546;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .del-btn[data-v-26480152] {\n  margin-left: 30px;\n  color: red;\n  transition: 0.2s all;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .del-btn[data-v-26480152]:hover {\n  color: darkred;\n}\n.cart-comp .cart-container .cart-container-content .products-container li .right-side .quantity-inputs .del-btn[data-v-26480152]:active {\n  color: black;\n}\n.cart-comp .cart-container .cart-container-content .products-container li[data-v-26480152]:last-of-type {\n  border-bottom: none;\n}\n.cart-comp .cart-container .cart-container-content .checkout .ckt-container[data-v-26480152] {\n  text-align: center;\n  padding-top: 60px;\n  margin: 0 auto;\n  width: 50%;\n}\n.cart-comp .cart-container .cart-container-content .checkout .ckt-container h2[data-v-26480152] {\n  font-weight: bolder;\n}\n.cart-comp .cart-container .cart-container-content .checkout .ckt-container h2 .price[data-v-26480152] {\n  display: inline-block;\n  font-weight: bold;\n  color: #4E54C8;\n}\n.cart-comp .cart-container .cart-container-content .checkout .ckt-container button[data-v-26480152] {\n  font-weight: bold;\n}\n.cart-comp .cart-container .cart-container-content .checkout .ckt-container button i[data-v-26480152] {\n  margin-right: 5px;\n}\n.cart-comp .cart-container h1[data-v-26480152] {\n  text-align: center;\n  font-weight: bolder;\n  margin: 70px 0;\n}\n.cart-comp .cart-container h1 i[data-v-26480152] {\n  color: #dd3546;\n}", ""]);
 
 // exports
 
