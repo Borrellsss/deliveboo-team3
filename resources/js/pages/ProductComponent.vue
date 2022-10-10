@@ -26,10 +26,19 @@
                                 <div v-for="product,index in products" :key="index" class="col p-2">
                                     <div class="card">
                                        <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
-                                       <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="product.name">
+                                       <img v-else class="card-img" src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="product.name">
                                        <div class="card-body">
                                             <h5 class="card-title">{{product.name}}</h5>
-                                            <p class="card-text">{{product.description}}</p><a href="#popup1" @click="selectProduct(product), showProductInfo()">Maggiori informazioni</a>
+                                            <p class="card-text">Ingredienti: {{product.ingredients.slice(0, 50)}}<span v-if="product.description.length > 70">...</span>
+                                                <!-- <span class="info-popup-inline"> </span> -->
+                                            </p>
+                                            <a href="#popup1" @click="selectProduct(product), showProductInfo()">Maggiori informazioni</a>
+                                       <!-- --------- vecchia card  con description -----------        -->
+                                            <!-- <p class="card-text">{{product.description.slice(0, 70)}}<span v-if="product.description.length > 70">...</span>
+                                                <span class="info-popup-inline"> <a href="#popup1" @click="selectProduct(product), showProductInfo()">Maggiori informazioni</a></span>
+                                            </p> -->
+                                            <!-- --------------- fine --------------   -->
+                                            <!-- <a href="#popup1" @click="selectProduct(product), showProductInfo()">Maggiori informazioni</a> -->
                                             <h6 class="product-card-price">{{product.price}}&euro;</h6>
                                             <a @click='addItem(product)' class="add-to-cart">Aggiungi al carrello</a>
                                         </div>
@@ -43,11 +52,11 @@
                                                    
                                                     <div class="content">
                                                         <p>{{element.description}}</p>
-                                                        <div>{{element.ingredient}}</div>
-                                                        <a @click='addItem(element)' class="add-to-cart">Aggiungi al carrello</a>
+                                                        <div>Ingredienti: {{element.ingredients}}</div>
+                                                        <a @click='addItem(element)' class="add-to-cart pop-btn">Aggiungi al carrello</a>
                                                     </div>
 
-                                                     <a class="close" href="#" @click="showProductInfo()">&times;</a>
+                                                     <a class="close" @click="showProductInfo()">&times;</a>
                                                 </div> 
                                             </div>
                                             
@@ -441,52 +450,62 @@
     left: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.7);
-    transition: opacity 500ms;
+    transition: opacity 200ms;
     visibility: hidden;
     // display: none;
-    opacity: 0.5;
+    opacity: 0.1;
     z-index: 60;
     }
  
 
     .popup {
-    margin: 70px auto;
+    margin: 30vh auto;
     padding: 20px;
     background: #fff;
-    border-radius: 5px;
-    width: 30%;
+    border-radius: 15px;
+    width: 40%;
     position: relative;
-    margin-top: 300px;
+    // margin-top: 300px;
+    
     }
 
     .popup h2 {
     margin-top: 0;
-    color: #333;
+    color: black;
     font-family: Tahoma, Arial, sans-serif;
     }
     .popup .close {
     position: absolute;
-    top: 20px;
-    right: 30px;
+    top: 5px;
+    right: 13px;
     font-size: 30px;
     font-weight: bold;
     text-decoration: none;
     color: #333;
+    cursor: pointer;
     }
     .popup .close:hover {
     color: #06D85F;
     }
-    .popup .content {
-    max-height: 30%;
-    overflow: auto;
+    // .popup .content {
+    // max-height: 70%;
+    // overflow: auto;
+    // }
+
+    .add-to-cart.pop-btn{
+        margin-top: 30px;
+        display: inline-block;
+          
     }
+
+
 
     &.ms_visible{
          
         .overlay {
             visibility: visible;
             // display: block;
-            opacity: 1;
+            opacity: 0.2;
         }
         
     }
@@ -605,23 +624,26 @@
             border-radius: 15px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
             0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            height: 500px;
+            height: 400px;
 
                     .card-img{
                         object-fit: cover;
                         border-radius: 15px 15px 0 0;
                         height: 200px;
-
-                        // img{
-                        // }
                     }
 
                  .card-title{
                     font-weight: 700;
                  }
 
-                //  .card-text{
-                //  }
+                 .card-text{
+
+                    .info-popup-inline{
+                        font-size: 0.9rem;
+                        color: $secondary-color;
+                         text-decoration: underline;
+                    }
+                 }
 
 
             .card-body{
@@ -634,11 +656,12 @@
             }
 
             .add-to-cart{
+                display: inline-block;
                 // font-size: 0.9rem;
                 color: white;
-                padding: 0.3rem 1rem;
+                padding: 0.2rem 0.8rem;
                 background: linear-gradient(to top right, $secondary-color, #bf201b);
-                border-radius: 0.7rem;
+                border-radius: 0.8rem;
                 margin-left: 0.2rem;
                 cursor: pointer;
                 }

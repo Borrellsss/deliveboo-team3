@@ -172,6 +172,11 @@ export default {
           padding: 13px 18px;
           border-radius: 50%;
         }
+
+        .btn:hover{
+          background-color: rgb(116, 111, 111);
+        }
+
     }
   }
   
