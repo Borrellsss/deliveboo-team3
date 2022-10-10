@@ -554,10 +554,11 @@ export default {
     // margin-bottom: 70px;
 
     .col{
-    border: 1px solid rgb(106, 102, 102);
+    border: 1px solid rgb(203, 197, 197);
 }
 
     h3{
+        margin-top: 1rem;
         padding-left: 2rem;
         font-weight: 600;
     }
