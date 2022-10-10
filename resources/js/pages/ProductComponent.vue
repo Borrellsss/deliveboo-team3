@@ -1,22 +1,29 @@
+Codice da ricopiare 
+
+
 <template>
     <div>
         <section>
             <div class="jumbotron jumbotron-fluid" style="margin-top:90px">
-            <div class="container d-flex justify-content-around">
-                <div>
-                    <h2>Nome Ristorante</h2>
-                    <p class="lead"><i class="fa-solid fa-location-dot mr-2"></i>Via dei girasoli, 15</p>
+                <div class="container d-flex justify-content-around">
+                    <div>
+                        <h2>Nome Ristorante</h2>
+                        <p class="lead"><i class="fa-solid fa-location-dot mr-2"></i>Via dei girasoli, 15</p>
+                    </div>
+                    <img src="https://citynews-romatoday.stgy.ovh/~media/horizontal-mid/52295577773865/unnamed-2020-07-27t134402-606-2.jpg" alt="ristorante">
                 </div>
-                <img src="https://citynews-romatoday.stgy.ovh/~media/horizontal-mid/52295577773865/unnamed-2020-07-27t134402-606-2.jpg" alt="ristorante">
             </div>
-            </div>
+            
+            <!-- div che richiama l'icona del carrello a questa altezza -->
+            <div id="my-cart"></div>
+
             <div class="pr_container" style="margin-top:100px">
 
-                <a v-if="cart.length > 0" class="floating-cart">
+                <a v-if="cart.length > 0"  class="floating-cart" @click="cartScroll()">
                     <div class="count-float">
                         <span>{{cart.length}}</span>
                     </div>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-solid fa-cart-shopping" ></i>
                 </a>
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 products-col px-3">
@@ -39,10 +46,11 @@
                             </div>
                         </div>
                     </div>
+                    <div></div>
                     <div class="col-12 col-sm-9 col-md-8 col-lg-4 col-xl-4 cart-col">
-                        <div v-if="cart.length > 0" class="cart-container">
+                        <div v-if="cart.length > 0" class="cart-container" >
                             <!-- v-if="cart.length > 0" -->
-                            <h3>Carrello</h3>
+                            <h3 >Carrello</h3>
                             <div v-for="(product, index) in cart" :key="index" class="row">
                                 <div class="col col-6">
                                     <div class="product-name d-flex justify-content-center align-items-center">
@@ -288,6 +296,12 @@
                 return total_amount;
             },
 
+            // funzione che scrolla l'icona del carrello
+            cartScroll(){
+                const element = document.getElementById('my-cart')
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+
 
         },
 
@@ -298,6 +312,13 @@
     <style lang="scss" scoped>
     @import '../style/variables';
     @import '../style/common';
+
+    #my-cart{
+        width: 0.2px;
+        height: 0.2px;
+        padding-bottom: 35px;
+        
+    }
 
     .jumbotron{
         height: 250px;
@@ -747,187 +768,189 @@
 
 
     // #cart-section{
-    // 	margin: 0;
-    // 	padding: 0;
-    // 	background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
-    // 	height: 100vh;
-    // 	display: flex;
-    // 	justify-content: center;
-    // 	align-items: center;
+    //  margin: 0;
+    //  padding: 0;
+    //  background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
+    //  height: 100vh;
+    //  display: flex;
+    //  justify-content: center;
+    //  align-items: center;
     // }
 
     // .CartContainer{
-    // 	width: 70%;
-    // 	height: 90%;
-    // 	background-color: #ffffff;
+    //  width: 70%;
+    //  height: 90%;
+    //  background-color: #ffffff;
     //     border-radius: 20px;
     //     box-shadow: 0px 10px 20px #1687d933;
     // }
 
     // .Header{
-    // 	margin: auto;
-    // 	width: 90%;
-    // 	height: 15%;
-    // 	display: flex;
-    // 	justify-content: space-between;
-    // 	align-items: center;
+    //  margin: auto;
+    //  width: 90%;
+    //  height: 15%;
+    //  display: flex;
+    //  justify-content: space-between;
+    //  align-items: center;
     // }
 
     // .Heading{
-    // 	font-size: 20px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 700;
-    // 	color: #2F3841;
+    //  font-size: 20px;
+    //  font-family: 'Open Sans';
+    //  font-weight: 700;
+    //  color: #2F3841;
     // }
 
     // .Action{
-    // 	font-size: 14px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #E44C4C;
-    // 	cursor: pointer;
-    // 	border-bottom: 1px solid #E44C4C;
+    //  font-size: 14px;
+    //  font-family: 'Open Sans';
+    //  font-weight: 600;
+    //  color: #E44C4C;
+    //  cursor: pointer;
+    //  border-bottom: 1px solid #E44C4C;
     // }
 
     // .Cart-Items{
-    // 	margin: auto;
-    // 	width: 90%;
-    // 	height: 30%;
-    // 	display: flex;
-    // 	justify-content: space-between;
-    // 	align-items: center;
+    //  margin: auto;
+    //  width: 90%;
+    //  height: 30%;
+    //  display: flex;
+    //  justify-content: space-between;
+    //  align-items: center;
     // }
     // .image-box{
-    // 	width: 15%;
-    // 	text-align: center;
+    //  width: 15%;
+    //  text-align: center;
     // }
     // .about{
-    // 	height: 100%;
-    // 	width: 24%;
+    //  height: 100%;
+    //  width: 24%;
     // }
     // .title{
-    // 	padding-top: 10px;
-    // 	line-height: 10px;
-    // 	font-size: 32px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 800;
-    // 	color: #202020;
+    //  padding-top: 10px;
+    //  line-height: 10px;
+    //  font-size: 32px;
+    //  font-family: 'Open Sans';
+    //  font-weight: 800;
+    //  color: #202020;
     // }
     // .subtitle{
-    // 	line-height: 10px;
-    // 	font-size: 18px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #909090;
+    //  line-height: 10px;
+    //  font-size: 18px;
+    //  font-family: 'Open Sans';
+    //  font-weight: 600;
+    //  color: #909090;
     // }
 
     // .counter{
-    // 	width: 15%;
-    // 	display: flex;
-    // 	justify-content: space-between;
-    // 	align-items: center;
+    //  width: 15%;
+    //  display: flex;
+    //  justify-content: space-between;
+    //  align-items: center;
     // }
     // .btn{
-    // 	width: 40px;
-    // 	height: 40px;
-    // 	border-radius: 50%;
-    // 	background-color: #d9d9d9;
-    // 	display: flex;
-    // 	justify-content: center;
-    // 	align-items: center;
-    // 	font-size: 20px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 900;
-    // 	color: #202020;
-    // 	cursor: pointer;
+    //  width: 40px;
+    //  height: 40px;
+    //  border-radius: 50%;
+    //  background-color: #d9d9d9;
+    //  display: flex;
+    //  justify-content: center;
+    //  align-items: center;
+    //  font-size: 20px;
+    //  font-family: 'Open Sans';
+    //  font-weight: 900;
+    //  color: #202020;
+    //  cursor: pointer;
     // }
     // .count{
-    // 	font-size: 20px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #202020;
+    //  font-size: 20px;
+    //  font-family: 'Open Sans';
+    //  font-weight: 600;
+    //  color: #202020;
     // }
 
     // .prices{
-    // 	height: 100%;
-    // 	text-align: right;
+    //  height: 100%;
+    //  text-align: right;
     // }
     // .amount{
-    // 	padding-top: 20px;
-    // 	font-size: 26px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 800;
-    // 	color: #202020;
+    //  padding-top: 20px;
+    //  font-size: 26px;
+    //  font-family: 'Open Sans';
+    //  font-weight: 800;
+    //  color: #202020;
     // }
     // .save{
-    // 	padding-top: 5px;
-    // 	font-size: 14px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #1687d9;
-    // 	cursor: pointer;
+    //  padding-top: 5px;
+    //  font-size: 14px;
+    //  font-family: 'Open Sans';
+    //  font-weight: 600;
+    //  color: #1687d9;
+    //  cursor: pointer;
     // }
     // .remove{
-    // 	padding-top: 5px;
-    // 	font-size: 14px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #E44C4C;
-    // 	cursor: pointer;
+    //  padding-top: 5px;
+    //  font-size: 14px;
+    //  font-family: 'Open Sans';
+    //  font-weight: 600;
+    //  color: #E44C4C;
+    //  cursor: pointer;
     // }
 
     // .pad{
-    // 	margin-top: 5px;
+    //  margin-top: 5px;
     // }
 
     // hr{
-    // 	width: 66%;
-    // 	float: right;
-    // 	margin-right: 5%;
+    //  width: 66%;
+    //  float: right;
+    //  margin-right: 5%;
     // }
     // .checkout{
-    // 	float: right;
-    // 	margin-right: 5%;
-    // 	width: 28%;
+    //  float: right;
+    //  margin-right: 5%;
+    //  width: 28%;
     // }
     // .total{
-    // 	width: 100%;
-    // 	display: flex;
-    // 	justify-content: space-between;
+    //  width: 100%;
+    //  display: flex;
+    //  justify-content: space-between;
     // }
     // .Subtotal{
-    // 	font-size: 22px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 700;
-    // 	color: #202020;
+    //  font-size: 22px;
+    //  font-family: 'Open Sans';
+    //  font-weight: 700;
+    //  color: #202020;
     // }
     // .items{
-    // 	font-size: 16px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 500;
-    // 	color: #909090;
-    // 	line-height: 10px;
+    //  font-size: 16px;
+    //  font-family: 'Open Sans';
+    //  font-weight: 500;
+    //  color: #909090;
+    //  line-height: 10px;
     // }
     // .total-amount{
-    // 	font-size: 36px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 900;
-    // 	color: #202020;
+    //  font-size: 36px;
+    //  font-family: 'Open Sans';
+    //  font-weight: 900;
+    //  color: #202020;
     // }
     // .button{
-    // 	margin-top: 10px;
-    // 	width: 100%;
-    // 	height: 40px;
-    // 	border: none;
-    // 	background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
-    // 	border-radius: 20px;
-    // 	cursor: pointer;
-    // 	font-size: 16px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #202020;
+    //  margin-top: 10px;
+    //  width: 100%;
+    //  height: 40px;
+    //  border: none;
+    //  background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
+    //  border-radius: 20px;
+    //  cursor: pointer;
+    //  font-size: 16px;
+    //  font-family: 'Open Sans';
+    //  font-weight: 600;
+    //  color: #202020;
     // }
 
     </style>
+
+
 
 
