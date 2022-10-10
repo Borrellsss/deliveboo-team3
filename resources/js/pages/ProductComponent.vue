@@ -138,7 +138,7 @@
     export default {
         name: 'ProductComponent',
 
-         data(){
+        data(){
             return{
                 // array dei prodotti
                 products: [],
@@ -151,9 +151,8 @@
             }
         },
         created() {
-
-              // $this.route.paramas.id rappresenta il passaggio di informazioni eseguiro con il router link
-             axios.get(`http://127.0.0.1:8000/api/${this.$route.params.id}/menu`)
+            // $this.route.paramas.id rappresenta il passaggio di informazioni eseguiro con il router link
+            axios.get(`http://127.0.0.1:8000/api/${this.$route.params.id}/menu`)
             .then((response) =>{
                 this.products = response.data.results
             });
@@ -164,8 +163,7 @@
                 this.products_in_cart = JSON.parse(localStorage.cart);
             }
             // richiamo la funzione del totale
-            // this.totalAmount();
-
+            
             // se cart esiste in LocalStorage
             if (localStorage.getItem('cart')) {
                 try {
@@ -173,7 +171,7 @@
                     this.cart = JSON.parse(localStorage.getItem('cart'));
                 } catch(e) {
                     // altrimenti rimuovi cart da localStorage
-                localStorage.removeItem('cart');
+                    localStorage.removeItem('cart');
                 }
             }
         },
@@ -187,7 +185,6 @@
                     return;
                 }
 
-
                 if(localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0){
                     product.quantity = 1;
 
@@ -196,7 +193,6 @@
 
                     // salva il carrello
                     this.saveCart();
-
 
                 }else{
                     // salvo la stringa di LocalStorage in this.cart
@@ -213,23 +209,20 @@
                             this.cart.push(product);
                             // salva il carrello
                             this.saveCart();
-
                         }
 
-                    }  else{
+                    }else{
                         //se non cambia ristorante:
                         // salva l'id del prodotto selezionato
 
                         let check = this.cart.find(({id}) => id == product.id);
                         console.log(this.cart.find(({id}) => id == product.id))
-                        //    console.log('adesso')
                         // se non esiste già
                         if(!check){
                             //setta la quantità ad 1
                             product.quantity = 1;
                             //altrimenti
-                        }
-                        else{
+                        }else{
                             // incrementa di 1 la quantità
                             for(let i = 0; i < this.cart.length + 1; i++){
                                 if(this.cart[i].id == product.id){
@@ -242,13 +235,9 @@
                         this.cart.push(product);
                         // salva il carrello
                         this.saveCart();
-
                     }
                 }
-
-
             },
-            // funzione per la rimozione del prodotto dal carrello
 
             // funzione salva carrello
             saveCart() {
@@ -256,42 +245,8 @@
                 localStorage.setItem('cart', parsed);
             },
 
-            //  removeItem(product , index){
-            //     if(product.quantity > 1)
-            //     for(let i = 0; i < this.cart.length + 1; i++){
-            //         if(this.cart[i].id == product.id){
-            //         this.cart[i].quantity = this.cart[i].quantity -  1;
-            //         this.saveCart();
-            //         }else  {
-
-            //         }
-            //     }
-            //     else
-            //         this.deleteItem(index);
-
-            // //         this.totalAmount();
-            // },
-
-
-
-
-            ////////////////////////////////////////
-            // funzione che incrementa la quantità del prodotto all'interno del carrello
-            // increaseQuantity(product, index) {
-
-            //     let check = this.cart.find(({id}) => id == product.id);
-            //     if(check.id){
-            //          for(let i = 0; i < this.cart.length + 1; i++){
-            //             if(this.cart[i].id == product.id){
-            //             this.cart[i].quantity = this.cart[i].quantity + 1
-            //             this.saveCart();
-            //             }
-            //         }
-            //     }
-
-            // },
             // funzione che riduce la quantità del prodotto nel carrello
-            decreaseQuantity(product , index){
+            decreaseQuantity(product){
                 let check = this.cart.find(({id}) => id == product.id);
                 if(check.id){
                     for(let i = 0; i < this.cart.length + 1; i++){
@@ -304,73 +259,49 @@
             },
 
             // funzione che cancella il prodotto dal carrello
-          deleteItem(index, product) {
-            if(this.cart.length > 1){
-                // rimuovo l'elemento carrello in pagina
-                this.cart.splice(index, 1);
-                // filtro dell'array così da togliere l'id del prodotto eliminato
-                let filtered_cart = this.cart.filter(product => product.id !== index);
-                // console.log(filtered_cart)
-                // Sovrascrivo ('cart') localStorage con il nuovo array filtrato
-                localStorage.setItem('cart', JSON.stringify(filtered_cart));
-                // console.log('ciao sono', Storage.key(index))
-            }else{
-                this.cart.splice(index, 1);
-                // this.testFunction(index)
-                // this.saveProductInCart();
-                localStorage.clear();
-            }
-        },
+            deleteItem(index, product) {
+                if(this.cart.length > 1){
+                    // rimuovo l'elemento carrello in pagina
+                    this.cart.splice(index, 1);
+                    // filtro dell'array così da togliere l'id del prodotto eliminato
+                    let filtered_cart = this.cart.filter(product => product.id !== index);
+                    // Sovrascrivo ('cart') localStorage con il nuovo array filtrato
+                    localStorage.setItem('cart', JSON.stringify(filtered_cart));
+                }else{
+                    this.cart.splice(index, 1);
+                    localStorage.clear();
+                }
+            },
 
-        clearCart(index){
-            this.cart.splice(index, this.cart.length)
-             localStorage.clear('cart');
-        }
+            clearCart(index){
+                this.cart.splice(index, this.cart.length)
+                localStorage.clear('cart');
+            },
 
 
-            // testFunction(index){
-
-            //     const testCart = JSON.parse(localStorage.getItem("cart"))
-            //     for (let i =0; i< testCart.length; i++) {
-            //         let items = JSON.parse(testCart[i]);
-            //         if (items.id == index) {
-            //         testCart.splice(index, 1);
-            //         }
-            //     }
-            // }
-
-            // salva nel carrello i prodotti
-            // saveProductInCart(){
-            //     const parsed = JSON.stringify(this.products_in_cart);
-            //     localStorage.setItem('cart', parsed);
-            //     this.products_in_cart = JSON.parse(localStorage.cart);
-            // },
+            
 
 
-             // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
+            // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
+
             // totalAmount(){
             //     this.total_amount = 0;
             //     for (let i = 0; i < this.cart.length; i++) {
             //         this.total_amount += parseFloat(this.cart[i].price)*this.product.quantity
             //         console.log(this.cart[i])
             //     }
-
-
-            //  },
+            //},
 
 
         },
 
     }
-
-
     </script>
 
 
     <style lang="scss" scoped>
     @import '../style/variables';
     @import '../style/common';
-
 
     .jumbotron{
         height: 250px;

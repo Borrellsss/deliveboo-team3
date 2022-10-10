@@ -7935,7 +7935,6 @@ __webpack_require__.r(__webpack_exports__);
       // i prodotti presenti nel carrello vengono convertiti in un file json
       this.products_in_cart = JSON.parse(localStorage.cart);
     } // richiamo la funzione del totale
-    // this.totalAmount();
     // se cart esiste in LocalStorage
 
 
@@ -7988,8 +7987,7 @@ __webpack_require__.r(__webpack_exports__);
           console.log(this.cart.find(function (_ref2) {
             var id = _ref2.id;
             return id == product.id;
-          })); //    console.log('adesso')
-          // se non esiste già
+          })); // se non esiste già
 
           if (!check) {
             //setta la quantità ad 1
@@ -8011,40 +8009,13 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
     },
-    // funzione per la rimozione del prodotto dal carrello
     // funzione salva carrello
     saveCart: function saveCart() {
       var parsed = JSON.stringify(this.cart);
       localStorage.setItem('cart', parsed);
     },
-    //  removeItem(product , index){
-    //     if(product.quantity > 1)
-    //     for(let i = 0; i < this.cart.length + 1; i++){
-    //         if(this.cart[i].id == product.id){
-    //         this.cart[i].quantity = this.cart[i].quantity -  1;
-    //         this.saveCart();
-    //         }else  {
-    //         }
-    //     }
-    //     else
-    //         this.deleteItem(index);
-    // //         this.totalAmount();
-    // },
-    ////////////////////////////////////////
-    // funzione che incrementa la quantità del prodotto all'interno del carrello
-    // increaseQuantity(product, index) {
-    //     let check = this.cart.find(({id}) => id == product.id);
-    //     if(check.id){
-    //          for(let i = 0; i < this.cart.length + 1; i++){
-    //             if(this.cart[i].id == product.id){
-    //             this.cart[i].quantity = this.cart[i].quantity + 1
-    //             this.saveCart();
-    //             }
-    //         }
-    //     }
-    // },
     // funzione che riduce la quantità del prodotto nel carrello
-    decreaseQuantity: function decreaseQuantity(product, index) {
+    decreaseQuantity: function decreaseQuantity(product) {
       var check = this.cart.find(function (_ref3) {
         var id = _ref3.id;
         return id == product.id;
@@ -8067,43 +8038,25 @@ __webpack_require__.r(__webpack_exports__);
 
         var filtered_cart = this.cart.filter(function (product) {
           return product.id !== index;
-        }); // console.log(filtered_cart)
-        // Sovrascrivo ('cart') localStorage con il nuovo array filtrato
+        }); // Sovrascrivo ('cart') localStorage con il nuovo array filtrato
 
-        localStorage.setItem('cart', JSON.stringify(filtered_cart)); // console.log('ciao sono', Storage.key(index))
+        localStorage.setItem('cart', JSON.stringify(filtered_cart));
       } else {
-        this.cart.splice(index, 1); // this.testFunction(index)
-        // this.saveProductInCart();
-
+        this.cart.splice(index, 1);
         localStorage.clear();
       }
     },
     clearCart: function clearCart(index) {
       this.cart.splice(index, this.cart.length);
       localStorage.clear('cart');
-    } // testFunction(index){
-    //     const testCart = JSON.parse(localStorage.getItem("cart"))
-    //     for (let i =0; i< testCart.length; i++) {
-    //         let items = JSON.parse(testCart[i]);
-    //         if (items.id == index) {
-    //         testCart.splice(index, 1);
-    //         }
-    //     }
-    // }
-    // salva nel carrello i prodotti
-    // saveProductInCart(){
-    //     const parsed = JSON.stringify(this.products_in_cart);
-    //     localStorage.setItem('cart', parsed);
-    //     this.products_in_cart = JSON.parse(localStorage.cart);
-    // },
-    // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
+    } // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
     // totalAmount(){
     //     this.total_amount = 0;
     //     for (let i = 0; i < this.cart.length; i++) {
     //         this.total_amount += parseFloat(this.cart[i].price)*this.product.quantity
     //         console.log(this.cart[i])
     //     }
-    //  },
+    //},
 
   }
 });
@@ -61434,9 +61387,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
+__webpack_require__(/*! C:\Users\Ilaria\bool\Esercizi\laravel_esercizi\deliveboo-team3\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\Ilaria\bool\Esercizi\laravel_esercizi\deliveboo-team3\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\Ilaria\bool\Esercizi\laravel_esercizi\deliveboo-team3\resources\sass\back-sass\back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })
