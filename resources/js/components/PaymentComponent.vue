@@ -1,10 +1,48 @@
 <template>
-  <div class="drop-in" v-if="Payed">
-    <div>
-    <div id="dropin-container"></div>
-    <div class="btn-container">
-    <button id="submit-button" @click="payment()" class="ms_btn">Paga Adesso</button>
+  <div>
+    
+    <!-- Braintree Drop-in -->
+    <div class="drop-in" v-if="Payed">
+      <div>
+        <div id="dropin-container"></div>
+        <div class="btn-container">
+          <button id="submit-button" @click="payment()" class="ms_btn">Paga Adesso</button>
+        </div>
+      </div>
     </div>
+
+    <!-- User Form -->
+    <div>
+      <form>
+        <!-- Name -->
+        <div class="mb-1">
+          <label for="customer_name" class="form-label"></label>
+          <input type="text" class="form-control" id="customer_name" placeholder="Cognome e Nome">
+        </div>
+
+        <!-- Email -->
+        <div class="mb-1">
+          <label for="customer_mail" class="form-label" ></label>
+          <input type="email" class="form-control" id="customer_mail" placeholder="Email">
+        </div>
+
+        <!-- Phone Number -->
+        <div class="mb-1">
+          <label for="customer_phone_number" class="form-label"></label>
+          <input type="text" class="form-control" id="customer_phone_number" placeholder="Telefono">
+        </div> 
+
+        <!-- Address -->
+        <div class="mb-2">
+            <label for="customer_address" class="form-label"></label>
+            <textarea class="form-control" id="customer_address" rows="2" placeholder="Indirizzo di consegna"></textarea>
+        </div> 
+
+        <!-- Button -->
+        <div class="mt-1 d-flex justify-content-center">
+          <button type="submit" class="ms_btn text-center">Invia dati</button>
+        </div>
+      </form>     
     </div>
   </div>
 </template>

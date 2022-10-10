@@ -8488,7 +8488,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm.Payed ? _c("div", {
+  return _c("div", [_vm.Payed ? _c("div", {
     staticClass: "drop-in"
   }, [_c("div", [_c("div", {
     attrs: {
@@ -8506,10 +8506,78 @@ var render = function render() {
         return _vm.payment();
       }
     }
-  }, [_vm._v("Paga Adesso")])])])]) : _vm._e();
+  }, [_vm._v("Paga Adesso")])])])]) : _vm._e(), _vm._v(" "), _vm._m(0)]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", [_c("form", [_c("div", {
+    staticClass: "mb-1"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "customer_name"
+    }
+  }), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "customer_name",
+      placeholder: "Cognome e Nome"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "mb-1"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "customer_mail"
+    }
+  }), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "email",
+      id: "customer_mail",
+      placeholder: "Email"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "mb-1"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "customer_phone_number"
+    }
+  }), _vm._v(" "), _c("input", {
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "customer_phone_number",
+      placeholder: "Telefono"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "mb-2"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "customer_address"
+    }
+  }), _vm._v(" "), _c("textarea", {
+    staticClass: "form-control",
+    attrs: {
+      id: "customer_address",
+      rows: "2",
+      placeholder: "Indirizzo di consegna"
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "mt-1 d-flex justify-content-center"
+  }, [_c("button", {
+    staticClass: "ms_btn text-center",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("Invia dati")])])])]);
+}];
 render._withStripped = true;
 
 
