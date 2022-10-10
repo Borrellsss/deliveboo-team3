@@ -1,56 +1,5 @@
 <template>
     <div>
-        <!-- <section>
-            <div class="container">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                    <div v-for="product in products" :key="product.id" class="col mb-4">
-                        <div class="ms_product-card text-center">
-                            <h5 class="card-title">{{product.name}}</h5>
-                            <img :src="product.cover" :alt="product.name">
-                            <p class="card-text">Prezzo: {{product.price}}</p>  
-                            <a class="btn btn-primary" @click='addItem(product)'>Add to cart</a> 
-                        </div>
-                    </div>
-                </div>   
-            </div> -->
-            <!-- /////////////////////////////////////////////////// -->
-            <!-- <div class="cart-comp">
-                <div class="cart-container">
-                    <div class="top-links">
-                            <h4 class="static active">Carrello <i class="fa-solid fa-cart-arrow-down"></i></h4>
-                    </div>
-              
-                    <div v-if="cart.length > 0" class="cart-container-content row">
-                        <ul class="products-container col-sm-7 col-12">
-                            <li v-for="(product, index) in cart" :key="index">
-                               
-                                <div class="right-side row">
-                                    <div class="info col-lg-8 col-12">
-                                        <h5>{{product.name}}</h5>
-                                        <p class="description">
-                                            <span>{{product.description}}</span>
-                                        </p>
-                                        <span class="price">&euro; {{product.price}}</span>
-                                    </div>
-                                    <div class="quantity-inputs col-lg-4 col-12">
-                                        <a class="btn btn-primary" @click='addItem(product)'>+</a> 
-                                        <div class="quantity">{{product.quantity}}</div>
-                                        <a class="btn btn-primary" @click='decreaseQuantity(product, index)'>-</a> 
-                                        <a class="btn btn-primary" @click='deleteItem(index)'>Delete</a>
-                                    </div>
-    
-                                </div>
-                            </li>
-                           
-                        </ul>
-                        <h2>Totale: <span class="price">€ {{total_amount}}</span></h2>
-                    </div>
-                    <h1 v-else><i class="fa-solid fa-triangle-exclamation"></i> Il carrello è vuoto.</h1>
-                </div>
-               
-    
-            </div>    -->
-    
         <section>
             <div class="jumbotron jumbotron-fluid" style="margin-top:90px">
             <div class="container d-flex justify-content-around">
@@ -180,7 +129,7 @@
             </div>
         </section>
     </div>
-    </template>
+</template>
     
     <script>
     export default {

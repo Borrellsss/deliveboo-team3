@@ -8580,11 +8580,16 @@ var render = function render() {
       staticClass: "col p-2"
     }, [_c("div", {
       staticClass: "card"
-    }, [_c("img", {
+    }, [product.cover ? _c("img", {
       staticClass: "card-img",
       attrs: {
         src: product.cover,
         alt: "product.name"
+      }
+    }) : _c("img", {
+      attrs: {
+        src: "https://i.ibb.co/JvkF0TR/tostino-no-image.jpg",
+        alt: product.name
       }
     }), _vm._v(" "), _c("div", {
       staticClass: "card-body"
