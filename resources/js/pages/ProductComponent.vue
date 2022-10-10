@@ -1,6 +1,19 @@
 <template>
     <div>
         <section>
+            <div class="info-popup" style="margin-top:90px">
+                <div id="popup1" class="overlay">
+                    <div class="popup">
+                        <h2>Nome prodotto</h2>
+                        <a class="close" href="#">&times;</a>
+                        <div class="content">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque laborum inventore quidem molestiae eius doloribus deserunt repudiandae unde esse hic saepe quis, cum voluptatum temporibus debitis expedita ratione vitae perferendis?</p>
+                            <div>Ingredienti: farina, aglio, olio lore </div>
+                            <a href="#" class="add-to-cart">Aggiungi al carrello</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="jumbotron jumbotron-fluid" style="margin-top:90px">
             <div class="container d-flex justify-content-around">
                 <div>
@@ -12,7 +25,7 @@
             </div>
             <div class="pr_container" style="margin-top:100px">
 
-                <a v-if="cart.length > 0" class="floating-cart">
+                <a v-if="cart.length" class="floating-cart">
                     <div class="count-float">
                         <span>{{cart.length}}</span>
                     </div>
@@ -29,7 +42,7 @@
                                        <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="product.name">
                                        <div class="card-body">
                                             <h5 class="card-title">{{product.name}}</h5>
-                                            <p class="card-text">{{product.description}}</p>
+                                            <p class="card-text">{{product.description}}</p><a href="#popup1">Maggiori informazioni</a>
                                             <h6 class="product-card-price">{{product.price}}&euro;</h6>
                                             <a @click='addItem(product)' class="add-to-cart">Aggiungi al carrello</a>
                                         </div>
@@ -142,6 +155,7 @@
             return{
                 // array dei prodotti
                 products: [],
+                
                 // array vuoto per il carrello
                 cart:[],
                 // numero prodotti presenti nel carrello
@@ -372,6 +386,90 @@
     @import '../style/common';
 
 
+    .add-to-cart{
+                // font-size: 0.9rem;
+                color: white;
+                padding: 0.3rem 1rem;
+                background: linear-gradient(to top right, $secondary-color, #bf201b);
+                border-radius: 0.7rem;
+                cursor: pointer;
+                }
+  .info-popup{
+    
+    .button {
+    font-size: 1em;
+    padding: 10px;
+    color: #fff;
+    border: 2px solid #06D85F;
+    border-radius: 20px/50px;
+    text-decoration: none;
+    cursor: pointer;
+    }
+    .button:hover {
+    background: #06D85F;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    // visibility: hidden;
+    display: none;
+    opacity: 0;
+    z-index: 60;
+    }
+    .overlay:target {
+    // visibility: visible;
+    display: block;
+    opacity: 1;
+    }
+
+    .popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    margin-top: 300px;
+    }
+
+    .popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+    }
+    .popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+    }
+    .popup .close:hover {
+    color: #06D85F;
+    }
+    .popup .content {
+    max-height: 30%;
+    overflow: auto;
+    }
+
+    @media screen and (max-width: 700px){
+    .box{
+        width: 70%;
+    }
+    .popup{
+        width: 70%;
+    }
+    }
+
+  }
     .jumbotron{
         height: 250px;
         background: rgb(116,6,2);
@@ -419,11 +517,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 20;
+        z-index: 10;
+        cursor: pointer;
 
             .fa-cart-shopping{
                 font-size: 2.3rem;
-                z-index: 20;
+                z-index: 10;
                 }
 
                 &:hover{
@@ -445,7 +544,7 @@
                 position: absolute;
                 bottom: 34px;
                 right: 25px;
-                z-index: 30;
+                z-index: 11;
 
                 &:hover ~ .fa-cart-shopping{
                    color: rgb(249, 246, 246);
