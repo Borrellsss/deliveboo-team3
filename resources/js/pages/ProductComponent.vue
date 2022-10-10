@@ -125,6 +125,8 @@
                               </svg>
                         </div>
                     </div>
+                    <!-- Braintree Component -->
+                    <PaymentComponent />
                 </div>
             </div>
         </section>
@@ -132,8 +134,12 @@
 </template>
 
     <script>
+    import PaymentComponent from '../components/PaymentComponent.vue';
     export default {
         name: 'ProductComponent',
+        components: {
+        PaymentComponent
+    },
 
         data(){
             return{

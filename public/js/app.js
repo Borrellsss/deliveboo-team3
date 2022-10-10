@@ -7951,8 +7951,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_PaymentComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/PaymentComponent.vue */ "./resources/js/components/PaymentComponent.vue");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ProductComponent',
+  components: {
+    PaymentComponent: _components_PaymentComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       // array dei prodotti
@@ -8165,11 +8170,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_HeaderComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/HeaderComponent.vue */ "./resources/js/components/HeaderComponent.vue");
-/* harmony import */ var _components_PaymentComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/PaymentComponent.vue */ "./resources/js/components/PaymentComponent.vue");
-/* harmony import */ var _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue");
-/* harmony import */ var _fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/fontawesome-free/js/all.js */ "./node_modules/@fortawesome/fontawesome-free/js/all.js");
-/* harmony import */ var _fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_3__);
-
+/* harmony import */ var _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue");
+/* harmony import */ var _fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/fontawesome-free/js/all.js */ "./node_modules/@fortawesome/fontawesome-free/js/all.js");
+/* harmony import */ var _fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
@@ -8177,8 +8180,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'App',
   components: {
     HeaderComponent: _components_HeaderComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    PaymentComponent: _components_PaymentComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    FooterComponent: _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    FooterComponent: _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
 
@@ -8771,7 +8773,7 @@ var render = function render() {
     attrs: {
       d: "M3047 593 c-27 -9 -71 -36 -97 -60 -163 -146 -127 -404 68 -500 47\n                            -23 70 -28 132 -28 127 1 223 62 275 176 23 53 27 71 23 138 -6 121 -61 206\n                            -170 262 -57 30 -165 35 -231 12z"
     }
-  })])], 1)])])])])])]);
+  })])], 1)])]), _vm._v(" "), _c("PaymentComponent")], 1)])])]);
 };
 
 var staticRenderFns = [function () {
@@ -8968,7 +8970,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("HeaderComponent"), _vm._v(" "), _c("PaymentComponent"), _vm._v(" "), _c("main", [_c("router-view")], 1), _vm._v(" "), _c("FooterComponent")], 1);
+  return _c("div", [_c("HeaderComponent"), _vm._v(" "), _c("main", [_c("router-view")], 1), _vm._v(" "), _c("FooterComponent")], 1);
 };
 
 var staticRenderFns = [];
