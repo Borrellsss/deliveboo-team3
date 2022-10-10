@@ -1,5 +1,5 @@
 <template>
-  <div class="drop-in">
+  <div class="drop-in" v-if="Payed">
     <div>
     <div id="dropin-container"></div>
     <div class="btn-container">
@@ -15,7 +15,11 @@ export default {
   data() {
     return {
       token: '',
+      Payed: true
     }
+  },
+  props: {
+    Amount: Number
   },
 
   mounted() {
@@ -36,10 +40,12 @@ export default {
       axios.post(
         'http://127.0.0.1:8000/api/orders/make/payment', {
           token: this.token,
-          amount: this.total_amount
+          amount: this.Amount
+          // amount: this.total_amount
         })
         .then((result) => {
           alert(result.data.message);
+          this.Payed = false
         })
     }
   }

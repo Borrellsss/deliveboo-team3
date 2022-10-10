@@ -1,27 +1,25 @@
 <template>
     <div>
-            <HeaderComponent />
+        <HeaderComponent />
 
-            <PaymentComponent />
-       <main>
+            
+        <main>
 			<router-view></router-view>
 	    </main>
+
         <FooterComponent/>
-        
     </div>
 </template>
 
 <script>
 
 import HeaderComponent from '../components/HeaderComponent.vue';
-import PaymentComponent from '../components/PaymentComponent.vue';
 import FooterComponent from '../components/FooterComponent.vue';
 import '@fortawesome/fontawesome-free/js/all.js';
 export default {
     name: 'App',
     components: {
         HeaderComponent, 
-        PaymentComponent,
         FooterComponent
     }
 }
