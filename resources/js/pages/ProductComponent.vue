@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="carrello-tutto-schermo" :class="{'ms_visible' : toggle_popup}">
+                        <div @click="showProductInfo()" class="cover-all"></div>
                         <div v-if="cart.length > 0" class="cart-container">
                             <!-- v-if="cart.length > 0" -->
                             <h3>Carrello</h3>
@@ -477,6 +478,14 @@
 
     &.ms_visible{
         display: block;
+    }
+
+    .cover-all{
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
     }
 
     .cart-container{
