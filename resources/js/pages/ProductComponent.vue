@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="col col-3">
                                     <div class="product-price d-flex flex-column justify-content-center align-items-center">
-                                        {{product.price}}&euro;
+                                        {{ product.price * product.quantity }}&euro;
                                     </div>
                                 </div>
                             </div>
@@ -73,6 +73,9 @@
                                                 <div class="Subtotal">Sub-Totale</div>
                                                 <div class="items">Svuota carrello</div>
                                             </div>
+                                            <!-- <div v-for="product, index in products" :key="product.id" class="total-amount">
+                                                {{ product.price * product.quantity + index-1}}&euro;
+                                            </div> -->
                                             <div class="total-amount">&euro;{{total_amount}}</div>
                                         </div>
                                     <button class="button">Checkout</button></div>

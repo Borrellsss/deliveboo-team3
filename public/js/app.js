@@ -8661,7 +8661,7 @@ var render = function render() {
       staticClass: "col col-3"
     }, [_c("div", {
       staticClass: "product-price d-flex flex-column justify-content-center align-items-center"
-    }, [_vm._v("\n                                    " + _vm._s(product.price) + "€\n                                ")])])]);
+    }, [_vm._v("\n                                    " + _vm._s(product.price * product.quantity) + "€\n                                ")])])]);
   }), _vm._v(" "), _c("div", {
     staticClass: "row d-flex justify-content-end"
   }, [_c("div", {
@@ -61430,9 +61430,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
+__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })
