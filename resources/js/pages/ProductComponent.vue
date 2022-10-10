@@ -23,33 +23,37 @@
                         <div class="products-side">
                             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 d-flex justify-content-start">
 
-                                <div v-for="product in products" :key="product.id" class="col p-2">
+                                <div v-for="product,index in products" :key="index" class="col p-2">
                                     <div class="card">
                                        <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
                                        <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="product.name">
                                        <div class="card-body">
                                             <h5 class="card-title">{{product.name}}</h5>
-                                            <p class="card-text">{{product.description}}</p><a href="#popup1" @click="showProductInfo()">Maggiori informazioni</a>
+                                            <p class="card-text">{{product.description}}</p><a href="#popup1" @click="selectProduct(product), showProductInfo()">Maggiori informazioni</a>
                                             <h6 class="product-card-price">{{product.price}}&euro;</h6>
                                             <a @click='addItem(product)' class="add-to-cart">Aggiungi al carrello</a>
                                         </div>
-                                     </div>
-                                     <!-- :class="{'ms_visible-'+product.id:toggle_popup}"   classe da inserire riga sotto forse  -->
-                                     <div class="info-popup"style="margin-top:90px">
+                                    </div>
+                                     
+                                    <div class="info-popup" style="margin-top:90px"  :class="{'ms_visible' : toggle_popup}">
                                         <div id="popup1" class="overlay">
-                                            <div class="popup">
-                                                
-                                                <h2>{{product.name}}</h2>
-                                                <a class="close" href="#" @click="showProductInfo()">&times;</a>
-                                                <div class="content">
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque laborum inventore quidem molestiae eius doloribus deserunt repudiandae unde esse hic saepe quis, cum voluptatum temporibus debitis expedita ratione vitae perferendis?</p>
-                                                    <div>Ingredienti: farina, aglio, olio lore </div>
-                                                    <a href="#" class="add-to-cart">Aggiungi al carrello</a>
-                                                </div>
+                                            <div v-for="element,index in myProduct" :key="index">
+                                                <div class="popup">
+                                                    <h2>{{element.name}}</h2>
+                                                   
+                                                    <div class="content">
+                                                        <p>{{element.description}}</p>
+                                                        <div>{{element.ingredient}}</div>
+                                                        <a @click='addItem(element)' class="add-to-cart">Aggiungi al carrello</a>
+                                                    </div>
+
+                                                     <a class="close" href="#" @click="showProductInfo()">&times;</a>
+                                                </div> 
                                             </div>
+                                            
                                         </div>
                                     </div>
-                                 </div>
+                                </div>
 
                             </div>
                         </div>
@@ -157,6 +161,8 @@
             return{
 
                 toggle_popup: false,
+
+                myProduct: [],
                 // array dei prodotti
                 products: [],
                 
@@ -197,14 +203,18 @@
         },
 
         methods:{
-
             showProductInfo(){
-                 
                 if (this.toggle_popup){
                     this.toggle_popup = false
+                      this.myProduct = []; 
                 }else{
                     this.toggle_popup = true
+                  
                 }
+            },
+
+            selectProduct(product){
+                this.myProduct.push(product); 
             },
 
             // funzione che aggiunge il prodotto al carrello
@@ -471,6 +481,16 @@
     overflow: auto;
     }
 
+    &.ms_visible{
+         
+        .overlay {
+            visibility: visible;
+            // display: block;
+            opacity: 1;
+        }
+        
+    }
+
     @media screen and (max-width: 700px){
     .box{
         width: 70%;
@@ -480,15 +500,7 @@
     }
     }
 
-    &.ms_visible{
-         
-        .overlay {
-            visibility: visible;
-            // display: block;
-            opacity: 1;
-            }
-        
-    }
+   
 
   }
     .jumbotron{
@@ -593,6 +605,7 @@
             border-radius: 15px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
             0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            height: 500px;
 
                     .card-img{
                         object-fit: cover;
@@ -764,6 +777,11 @@
        }
     }
 
+    .selected{
+        color: red;
+        background-color: red;
+    }
+
     @media only screen and (max-width: 768px) {
 
         .jumbotron{
@@ -774,352 +792,6 @@
             }
         }
 
-    // cart style
-    // .cart-comp{
-    //     .cart-container{
-    //         width: 100%;
-    //         margin: 50px 0;
-    //         min-height: calc(100vh - 590px);
-    //         background-color: white;
-    //         color: black;
-    //         box-shadow: 0px 0px 15px rgb(189, 189, 189);
-    //         border-radius: 20px;
-    //         overflow: hidden;
-    //         .top-links{
-    //             display: flex;
-    //             width: 100%;
-    //             height: 50px;
-    //             color: #dd3546;
-    //             h4{
-    //                 width: 50%;
-    //                 text-align: center;
-    //                 margin: 0 auto;
-    //                 &.active,
-    //                 .active{
-    //                     border-bottom: 3px solid #dd3546;
-    //                     font-weight: bolder;
-    //                 }
-    //                 &.static,
-    //                 .link{
-    //                     padding-top: 10px;
-    //                 }
-    //                 .link{
-    //                     cursor: pointer;
-    //                     display: block;
-    //                     width: 100%;
-    //                     height: 100%;
-    //                     color: #dd3546;
-    //                     text-decoration: none;
-    //                     transition: .2s all;
-    //                     &:hover{
-    //                         background-color: rgb(240, 240, 240);
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //         .mid-bar{
-    //             width: 100%;
-    //             padding: 15px 15px 0;
-    //         }
-    //         .cart-container-content{
-    //             .products-container{
-    //                 margin: 0;
-    //                 list-style: none;
-    //                 li{
-    //                     display: flex;
-    //                     align-items: center;
-    //                     margin: 30px 15px 0 15px;
-    //                     padding-bottom: 15px;
-    //                     border-bottom: 2px solid lightgray;
-    //                     img{
-    //                         width: 100px;
-    //                         border-radius: 10px;
-    //                         margin-right: 15px;
-    //                     }
-    //                     .right-side{
-    //                         display: flex;
-    //                         flex-grow: 1;
-    //                         align-items: center;
-    //                         .info{
-    //                             margin: 10px 0;
-    //                             h5{
-    //                                 font-weight: bolder;
-    //                             }
-    //                             .description{
-    //                                 display: table;
-    //                                 table-layout: fixed;
-    //                                 max-width: 250px;
-    //                                 width: 100%;
-    //                                 font-size: 14px;
-    //                                 color: gray;
-    //                                 white-space: nowrap;
-    //                             }
-    //                             .description > *{
-    //                                 display: table-cell;
-    //                                 overflow: hidden;
-    //                                 text-overflow: ellipsis;
-    //                             }
-    //                             .price{
-    //                                 font-weight: bold;
-    //                                 color: #4E54C8;
-    //                             }
-    //                         }
-    //                         .quantity-inputs{
-    //                             display: flex;
-    //                             align-items: center;
-    //                             .qt-btn,
-    //                             .del-btn{
-    //                                 cursor: pointer;
-    //                             }
-    //                             .qt-btn{
-    //                                 font-size: 20px;
-    //                                 color: gray;
-    //                                 transition: .2s all;
-    //                                 &:hover{
-    //                                     color: rgb(95, 95, 95);
-    //                                 }
-    //                                 &:active{
-    //                                     color: #dd3546;
-    //                                 }
-    //                             }
-    //                             .quantity{
-    //                                 margin: 0 8px;
-    //                                 font-weight: bold;
-    //                                 color: #dd3546;
-    //                             }
-    //                             .del-btn{
-    //                                 margin-left: 30px;
-    //                                 color: red;
-    //                                 transition: .2s all;
-    //                                 &:hover{
-    //                                     color: darkred;
-    //                                 }
-    //                                 &:active{
-    //                                     color: black;
-    //                                 }
-    //                             }
-    //                         }
-    //                     }
-    //                     &:last-of-type{
-    //                         border-bottom: none;
-    //                     }
-    //                 }
-    //             }
-    //             .checkout .ckt-container{
-    //                 text-align: center;
-    //                 padding-top: 60px;
-    //                 margin: 0 auto;
-    //                 width: 50%;
-    //                 h2{
-    //                     font-weight: bolder;
-    //                     .price{
-    //                         display: inline-block;
-    //                         font-weight: bold;
-    //                         color: #4E54C8;
-    //                     }
-    //                 }
-    //                 button{
-    //                     font-weight: bold;
-    //                     i{
-    //                         margin-right: 5px;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //         h1{
-    //             text-align: center;
-    //             font-weight: bolder;
-    //             margin: 70px 0;
-    //             i{
-    //                 color: #dd3546;
-    //             }
-    //         }
-    //     }
-    // }
-
-
-
-    // #cart-section{
-    // 	margin: 0;
-    // 	padding: 0;
-    // 	background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
-    // 	height: 100vh;
-    // 	display: flex;
-    // 	justify-content: center;
-    // 	align-items: center;
-    // }
-
-    // .CartContainer{
-    // 	width: 70%;
-    // 	height: 90%;
-    // 	background-color: #ffffff;
-    //     border-radius: 20px;
-    //     box-shadow: 0px 10px 20px #1687d933;
-    // }
-
-    // .Header{
-    // 	margin: auto;
-    // 	width: 90%;
-    // 	height: 15%;
-    // 	display: flex;
-    // 	justify-content: space-between;
-    // 	align-items: center;
-    // }
-
-    // .Heading{
-    // 	font-size: 20px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 700;
-    // 	color: #2F3841;
-    // }
-
-    // .Action{
-    // 	font-size: 14px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #E44C4C;
-    // 	cursor: pointer;
-    // 	border-bottom: 1px solid #E44C4C;
-    // }
-
-    // .Cart-Items{
-    // 	margin: auto;
-    // 	width: 90%;
-    // 	height: 30%;
-    // 	display: flex;
-    // 	justify-content: space-between;
-    // 	align-items: center;
-    // }
-    // .image-box{
-    // 	width: 15%;
-    // 	text-align: center;
-    // }
-    // .about{
-    // 	height: 100%;
-    // 	width: 24%;
-    // }
-    // .title{
-    // 	padding-top: 10px;
-    // 	line-height: 10px;
-    // 	font-size: 32px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 800;
-    // 	color: #202020;
-    // }
-    // .subtitle{
-    // 	line-height: 10px;
-    // 	font-size: 18px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #909090;
-    // }
-
-    // .counter{
-    // 	width: 15%;
-    // 	display: flex;
-    // 	justify-content: space-between;
-    // 	align-items: center;
-    // }
-    // .btn{
-    // 	width: 40px;
-    // 	height: 40px;
-    // 	border-radius: 50%;
-    // 	background-color: #d9d9d9;
-    // 	display: flex;
-    // 	justify-content: center;
-    // 	align-items: center;
-    // 	font-size: 20px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 900;
-    // 	color: #202020;
-    // 	cursor: pointer;
-    // }
-    // .count{
-    // 	font-size: 20px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #202020;
-    // }
-
-    // .prices{
-    // 	height: 100%;
-    // 	text-align: right;
-    // }
-    // .amount{
-    // 	padding-top: 20px;
-    // 	font-size: 26px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 800;
-    // 	color: #202020;
-    // }
-    // .save{
-    // 	padding-top: 5px;
-    // 	font-size: 14px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #1687d9;
-    // 	cursor: pointer;
-    // }
-    // .remove{
-    // 	padding-top: 5px;
-    // 	font-size: 14px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #E44C4C;
-    // 	cursor: pointer;
-    // }
-
-    // .pad{
-    // 	margin-top: 5px;
-    // }
-
-    // hr{
-    // 	width: 66%;
-    // 	float: right;
-    // 	margin-right: 5%;
-    // }
-    // .checkout{
-    // 	float: right;
-    // 	margin-right: 5%;
-    // 	width: 28%;
-    // }
-    // .total{
-    // 	width: 100%;
-    // 	display: flex;
-    // 	justify-content: space-between;
-    // }
-    // .Subtotal{
-    // 	font-size: 22px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 700;
-    // 	color: #202020;
-    // }
-    // .items{
-    // 	font-size: 16px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 500;
-    // 	color: #909090;
-    // 	line-height: 10px;
-    // }
-    // .total-amount{
-    // 	font-size: 36px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 900;
-    // 	color: #202020;
-    // }
-    // .button{
-    // 	margin-top: 10px;
-    // 	width: 100%;
-    // 	height: 40px;
-    // 	border: none;
-    // 	background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
-    // 	border-radius: 20px;
-    // 	cursor: pointer;
-    // 	font-size: 16px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #202020;
-    // }
 
     </style>
 
