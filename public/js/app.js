@@ -8928,12 +8928,14 @@ var staticRenderFns = [function () {
       "aria-hidden": "true"
     }
   }, [_vm._v("×")])])]), _vm._v(" "), _c("div", {
-    staticClass: "modal-body text-center"
-  }, [_c("p", {
-    staticClass: "yellow"
+    staticClass: "text-center"
+  }, [_c("span", {
+    staticClass: "yellow pb-4"
   }, [_c("i", {
     staticClass: "fas fa-credit-card fa-4x"
-  })]), _vm._v(" "), _c("p", [_vm._v("Stai per eseguire il pagamento dell'ordine...")]), _vm._v(" "), _c("p", [_vm._v("vuoi procedere?")])]), _vm._v(" "), _c("div", {
+  })]), _vm._v(" "), _c("p", {
+    staticClass: "pt-4"
+  }, [_vm._v("Stai per eseguire il pagamento dell'ordine...")]), _vm._v(" "), _c("p", [_vm._v("vuoi procedere?")])]), _vm._v(" "), _c("div", {
     staticClass: "text-center"
   }, [_c("a", {
     staticClass: "ms_btn",

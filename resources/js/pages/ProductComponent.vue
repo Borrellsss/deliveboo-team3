@@ -91,9 +91,9 @@
                                                 </div>
 
                                                 <!--Body-->
-                                                <div class="modal-body text-center">
-                                                    <p class="yellow"><i class="fas fa-credit-card fa-4x"></i></p>
-                                                    <p>Stai per eseguire il pagamento dell'ordine...</p>
+                                                <div class="text-center">
+                                                    <span class="yellow pb-4"><i class="fas fa-credit-card fa-4x"></i></span>
+                                                    <p class="pt-4">Stai per eseguire il pagamento dell'ordine...</p>
                                                     <p>vuoi procedere?</p>
                                                 </div>
 
