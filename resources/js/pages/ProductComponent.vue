@@ -146,7 +146,7 @@
             }
         },
         created() {
-            // $this.route.paramas.id rappresenta il passaggio di informazioni eseguiro con il router link
+            // $this.route.paramas.id rappresenta il passaggio di informazioni eseguito con il router link
             axios.get(`http://127.0.0.1:8000/api/${this.$route.params.id}/menu`)
             .then((response) =>{
                 this.products = response.data.results
@@ -154,11 +154,9 @@
 
             // se il carrello non è null
             if (localStorage.cart) {
-                // i prodotti presenti nel carrello vengono convertiti in un file json
+                // prima di leggere riconverto in oggetto
                 this.products_in_cart = JSON.parse(localStorage.cart);
             }
-            // richiamo la funzione del totale
-            
             // se cart esiste in LocalStorage
             if (localStorage.getItem('cart')) {
                 try {
@@ -179,7 +177,7 @@
                 if (!product){
                     return;
                 }
-
+                console.log(product.id);
                 if(localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0){
                     product.quantity = 1;
 
@@ -211,7 +209,6 @@
                         // salva l'id del prodotto selezionato
 
                         let check = this.cart.find(({id}) => id == product.id);
-                        console.log(this.cart.find(({id}) => id == product.id))
                         // se non esiste già
                         if(!check){
                             //setta la quantità ad 1
@@ -236,6 +233,7 @@
 
             // funzione salva carrello
             saveCart() {
+                // prima di salvare converto in stringa
                 const parsed = JSON.stringify(this.cart);
                 localStorage.setItem('cart', parsed);
             },
@@ -287,10 +285,7 @@
                 })
                 return total_amount;
             },
-
-
         },
-
     }
     </script>
 
