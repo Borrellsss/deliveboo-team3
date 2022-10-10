@@ -39,8 +39,8 @@
         </div> 
 
         <!-- Button -->
-        <div class="mt-1 d-flex justify-content-center">
-          <button type="submit" class="ms_btn text-center">Invia dati</button>
+        <div class="mt-3 d-flex justify-content-center">
+          <button type="submit" class="ms_btn text-center">Invia </button>
         </div>
       </form>     
     </div>

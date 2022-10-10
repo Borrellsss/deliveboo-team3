@@ -75,7 +75,38 @@
                                             </div>
                                             <div class="total-amount">{{totalAmount(cart)}}&euro;</div>
                                         </div>
-                                    <button class="button" @click="AlertPayment()">Checkout</button></div>
+                                        <button class="button" @click="AlertPayment()" data-toggle="modal" data-target="#modalAbandonedCart">Checkout</button>
+                                    </div>
+
+                                    <!-- Modal: modalAbandonedCart-->
+                                    <div class="modal fade right" id="modalAbandonedCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+                                        <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+                                            <!--Content-->
+                                            <div class="modal-content ms_modal_container">
+                                                <!--Header-->
+                                                <div>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true" class="white-text">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <!--Body-->
+                                                <div class="modal-body text-center">
+                                                    <p class="yellow"><i class="fas fa-credit-card fa-4x"></i></p>
+                                                    <p>Stai per eseguire il pagamento dell'ordine...</p>
+                                                    <p>vuoi procedere?</p>
+                                                </div>
+
+                                                <!--Footer-->
+                                                <div class="text-center">
+                                                    <!-- <a type="button" class="btn btn-dark p-2 rounded" data-dismiss="modal">Cancella</a> -->
+                                                    <a type="button" class="ms_btn">Si, ho FAME!</a>
+                                                </div>
+                                            </div>
+                                            <!--/.Content-->
+                                        </div>
+                                    </div>
+                                    <!-- Modal: modalAbandonedCart-->
                                 </div>
                             </div>
                         </div>
@@ -583,7 +614,18 @@
         opacity: 0.5;
        }
     }
+    .ms_modal_container {
+        background: linear-gradient(to bottom left, $secondary-color, $primary-color);
+        color: white;
+        font-size: 1.6rem;
+        padding: 1.7rem;
+        border-radius: 45px;
+        box-shadow: rgba(0, 0, 0, 0.76) 0px 22px 70px 4px;
 
+        .yellow {
+            color: $primary-color;
+        }
+    }
     @media only screen and (max-width: 768px) {
 
         .jumbotron{
