@@ -8,8 +8,19 @@
         </div>
         <div>
             @foreach ($user_orders as $order)
-                <div class="ms_order-row mb-3">
-                    data ordine: {{$order->created_at}}, totale :{{$order->total_amount}}, numero ordine: {{$order->order_number}}, nome cliente: {{$order->customer_name}}, prodotti ordinati: {{$order->order_number}},
+                <div class="ms_user-orders-info ms_order-row mb-3">
+                    <div>
+                        <span>Numero ordine:</span>
+                        {{$order->order_number}}
+                    </div>
+                    <div>
+                        <span>Totale:</span>
+                        {{$order->total_amount}} €
+                    </div>
+                    <div>
+                        <span>Data:</span>
+                        {{$order->new_date}}
+                    </div>
                 </div>
             @endforeach
         </div>

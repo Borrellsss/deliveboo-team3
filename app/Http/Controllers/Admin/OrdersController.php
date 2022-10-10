@@ -8,15 +8,20 @@ use App\User;
 use App\Order;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
-use Faker\Generator as Faker;
+use Carbon\Carbon;
 
 class OrdersController extends Controller
 {
-    public function index(Faker $faker) {
+    public function index() {
         
         $user = Auth::user();
 
         $user_orders = Order::with('products')->where('user_id', '=', $user->id)->orderBy('created_at', 'DESC')->get();
+
+        foreach($user_orders as $order) {
+            $order->created_at = Carbon::parse($order->created_at);
+            $order->new_date = $order->created_at->format('D d m Y | H:m');
+        }
 
         $data = [
             'user' => $user,

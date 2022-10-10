@@ -153,14 +153,15 @@ aside {
   background-color: #740602;
   color: #feaa02;
   font-weight: 600;
+  border-right: 2px solid #feaa02;
 }
 aside li {
-  padding-bottom: 0.7rem;
+  padding-bottom: 1rem;
   padding-left: 1rem;
 }
 
 main {
-  width: calc(100% - 200px);
+  width: calc(100% - 202px);
   height: calc(100vh - 70px);
   overflow-y: auto;
 }
@@ -416,13 +417,16 @@ section .ms_form-card-body {
   color: #740602;
 }
 
-.ms_user-home-info {
+.ms_user-home-info,
+.ms_user-orders-info {
   font-size: 1.1rem;
 }
-.ms_user-home-info > h1 span {
+.ms_user-home-info > h1 span,
+.ms_user-orders-info > h1 span {
   color: #feaa02;
 }
-.ms_user-home-info > div span {
+.ms_user-home-info > div span,
+.ms_user-orders-info > div span {
   color: #740602;
 }
 
