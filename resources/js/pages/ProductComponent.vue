@@ -100,7 +100,7 @@
                                                 <!--Footer-->
                                                 <div class="text-center">
                                                     <!-- <a type="button" class="btn btn-dark p-2 rounded" data-dismiss="modal">Cancella</a> -->
-                                                    <a type="button" class="ms_btn">Si, ho FAME!</a>
+                                                    <a type="button" class="ms_btn boxshadow">Si, ho FAME!</a>
                                                 </div>
                                             </div>
                                             <!--/.Content-->
@@ -617,13 +617,17 @@
     .ms_modal_container {
         background: linear-gradient(to left right, $secondary-color, white);
         color: black;
-        font-size: 1.6rem;
+        font-size: 1.35rem;
         padding: 1.7rem;
         border-radius: 45px;
-        box-shadow: rgba(0, 0, 0, 0.76) 0px 22px 70px 4px;
+        box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
         .yellow {
             color: $primary-color;
+        }
+
+        .boxshadow {
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         }
     }
     @media only screen and (max-width: 768px) {
