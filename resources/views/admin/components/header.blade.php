@@ -1,6 +1,6 @@
 <header>
     <nav class="d-flex justify-content-between align-items-center">
-        <a href="{{route('admin.home')}}">
+        <a href="http://127.0.0.1:8000/">
             <img class="ms_header-brand-logo" src="{{asset('images/logodone.svg')}}" alt="Toast-Rider Logo">
         </a>
 
