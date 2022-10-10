@@ -168,7 +168,6 @@
 
          data(){
             return{
-
                 toggle_popup: false,
 
                 myProduct: [],
@@ -212,6 +211,7 @@
         },
 
         methods:{
+
             showProductInfo(){
                 if (this.toggle_popup){
                     this.toggle_popup = false
@@ -417,7 +417,11 @@
     @import '../style/variables';
     @import '../style/common';
 
-
+.cart-col{
+      position:fixed;
+      top: 20;
+      right: 0;
+}
     .add-to-cart{
                 // font-size: 0.9rem;
                 color: white;
@@ -427,8 +431,6 @@
                 cursor: pointer;
                 }
   .info-popup{
-
-   
     
     .button {
     font-size: 1em;
