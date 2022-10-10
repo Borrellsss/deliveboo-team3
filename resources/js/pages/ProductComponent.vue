@@ -73,10 +73,7 @@
                                                 <div class="Subtotal">Sub-Totale</div>
                                                 <div class="items" @click="clearCart(index)">Svuota carrello</div>
                                             </div>
-                                            <!-- <div v-for="product, index in products" :key="product.id" class="total-amount">
-                                                {{ product.price * product.quantity + index-1}}&euro;
-                                            </div> -->
-                                            <div class="total-amount">&euro;{{total_amount}}</div>
+                                            <div class="total-amount">{{totalAmount(cart)}}&euro;</div>
                                         </div>
                                     <button class="button">Checkout</button></div>
                                 </div>
@@ -146,8 +143,6 @@
                 cart:[],
                 // numero prodotti presenti nel carrello
                 products_in_cart: 0,
-                // totale da pagare
-                total_amount: 0,
             }
         },
         created() {
@@ -246,14 +241,20 @@
             },
 
             // funzione che riduce la quantità del prodotto nel carrello
-            decreaseQuantity(product){
+            decreaseQuantity(product, index){
                 let check = this.cart.find(({id}) => id == product.id);
                 if(check.id){
                     for(let i = 0; i < this.cart.length + 1; i++){
-                        if(this.cart[i].id == product.id && this.cart[i].quantity > 1){
+                        if(this.cart[i].id == product.id && this.cart[i].quantity >= 1){
                         this.cart[i].quantity = this.cart[i].quantity -  1;
                         this.saveCart();
                         }
+
+                        if(this.cart[i].id == product.id && this.cart[i].quantity == 0){
+                            this.cart.splice(index, 1);
+                            this.saveCart();
+                        }
+
                     }
                 }
             },
@@ -278,19 +279,14 @@
                 localStorage.clear('cart');
             },
 
-
-            
-
-
             // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
-
-            // totalAmount(){
-            //     this.total_amount = 0;
-            //     for (let i = 0; i < this.cart.length; i++) {
-            //         this.total_amount += parseFloat(this.cart[i].price)*this.product.quantity
-            //         console.log(this.cart[i])
-            //     }
-            //},
+            totalAmount(cart){
+                let total_amount = 0;
+                cart.forEach ((product) => {
+                    total_amount += product.price * product.quantity;
+                })
+                return total_amount;
+            },
 
 
         },

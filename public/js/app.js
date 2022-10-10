@@ -7918,9 +7918,7 @@ __webpack_require__.r(__webpack_exports__);
       // array vuoto per il carrello
       cart: [],
       // numero prodotti presenti nel carrello
-      products_in_cart: 0,
-      // totale da pagare
-      total_amount: 0
+      products_in_cart: 0
     };
   },
   created: function created() {
@@ -8015,7 +8013,7 @@ __webpack_require__.r(__webpack_exports__);
       localStorage.setItem('cart', parsed);
     },
     // funzione che riduce la quantità del prodotto nel carrello
-    decreaseQuantity: function decreaseQuantity(product) {
+    decreaseQuantity: function decreaseQuantity(product, index) {
       var check = this.cart.find(function (_ref3) {
         var id = _ref3.id;
         return id == product.id;
@@ -8023,8 +8021,13 @@ __webpack_require__.r(__webpack_exports__);
 
       if (check.id) {
         for (var i = 0; i < this.cart.length + 1; i++) {
-          if (this.cart[i].id == product.id && this.cart[i].quantity > 1) {
+          if (this.cart[i].id == product.id && this.cart[i].quantity >= 1) {
             this.cart[i].quantity = this.cart[i].quantity - 1;
+            this.saveCart();
+          }
+
+          if (this.cart[i].id == product.id && this.cart[i].quantity == 0) {
+            this.cart.splice(index, 1);
             this.saveCart();
           }
         }
@@ -8049,15 +8052,15 @@ __webpack_require__.r(__webpack_exports__);
     clearCart: function clearCart(index) {
       this.cart.splice(index, this.cart.length);
       localStorage.clear('cart');
-    } // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
-    // totalAmount(){
-    //     this.total_amount = 0;
-    //     for (let i = 0; i < this.cart.length; i++) {
-    //         this.total_amount += parseFloat(this.cart[i].price)*this.product.quantity
-    //         console.log(this.cart[i])
-    //     }
-    //},
-
+    },
+    // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
+    totalAmount: function totalAmount(cart) {
+      var total_amount = 0;
+      cart.forEach(function (product) {
+        total_amount += product.price * product.quantity;
+      });
+      return total_amount;
+    }
   }
 });
 
@@ -8638,7 +8641,7 @@ var render = function render() {
     }
   }, [_vm._v("Svuota carrello")])]), _vm._v(" "), _c("div", {
     staticClass: "total-amount"
-  }, [_vm._v("€" + _vm._s(_vm.total_amount))])]), _vm._v(" "), _c("button", {
+  }, [_vm._v(_vm._s(_vm.totalAmount(_vm.cart)) + "€")])]), _vm._v(" "), _c("button", {
     staticClass: "button"
   }, [_vm._v("Checkout")])])])])], 2) : _c("div", {
     staticClass: "cart-blank"
