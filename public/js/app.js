@@ -8077,6 +8077,10 @@ __webpack_require__.r(__webpack_exports__);
 
         localStorage.clear();
       }
+    },
+    clearCart: function clearCart(index) {
+      this.cart.splice(index, this.cart.length);
+      localStorage.clear('cart');
     } // testFunction(index){
     //     const testCart = JSON.parse(localStorage.getItem("cart"))
     //     for (let i =0; i< testCart.length; i++) {
@@ -8670,7 +8674,16 @@ var render = function render() {
     staticClass: "checkout"
   }, [_c("div", {
     staticClass: "total"
-  }, [_vm._m(1), _vm._v(" "), _c("div", {
+  }, [_c("div", [_c("div", {
+    staticClass: "Subtotal"
+  }, [_vm._v("Sub-Totale")]), _vm._v(" "), _c("div", {
+    staticClass: "items",
+    on: {
+      click: function click($event) {
+        return _vm.clearCart(_vm.index);
+      }
+    }
+  }, [_vm._v("Svuota carrello")])]), _vm._v(" "), _c("div", {
     staticClass: "total-amount"
   }, [_vm._v("€" + _vm._s(_vm.total_amount))])]), _vm._v(" "), _c("button", {
     staticClass: "button"
@@ -8739,15 +8752,6 @@ var staticRenderFns = [function () {
       alt: "ristorante"
     }
   })])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", [_c("div", {
-    staticClass: "Subtotal"
-  }, [_vm._v("Sub-Totale")]), _vm._v(" "), _c("div", {
-    staticClass: "items"
-  }, [_vm._v("Svuota carrello")])]);
 }];
 render._withStripped = true;
 
@@ -61430,9 +61434,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
+__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })

@@ -71,7 +71,7 @@
                                         <div class="total">
                                             <div>
                                                 <div class="Subtotal">Sub-Totale</div>
-                                                <div class="items">Svuota carrello</div>
+                                                <div class="items" @click="clearCart(index)">Svuota carrello</div>
                                             </div>
                                             <!-- <div v-for="product, index in products" :key="product.id" class="total-amount">
                                                 {{ product.price * product.quantity + index-1}}&euro;
@@ -321,6 +321,12 @@
                 localStorage.clear();
             }
         },
+
+        clearCart(index){
+            this.cart.splice(index, this.cart.length)
+             localStorage.clear('cart');
+        }
+
 
             // testFunction(index){
 
