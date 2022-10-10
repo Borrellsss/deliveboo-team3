@@ -7883,8 +7883,12 @@ __webpack_require__.r(__webpack_exports__);
   name: 'PaymentComponent',
   data: function data() {
     return {
-      token: ''
+      token: '',
+      Payed: true
     };
+  },
+  props: {
+    Amount: Number
   },
   mounted: function mounted() {
     var _this = this;
@@ -7900,11 +7904,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     payment: function payment() {
+      var _this2 = this;
+
       axios.post('http://127.0.0.1:8000/api/orders/make/payment', {
         token: this.token,
-        amount: this.total_amount
+        amount: this.Amount // amount: this.total_amount
+
       }).then(function (result) {
         alert(result.data.message);
+        _this2.Payed = false;
       });
     }
   }
@@ -7965,7 +7973,8 @@ __webpack_require__.r(__webpack_exports__);
       // array vuoto per il carrello
       cart: [],
       // numero prodotti presenti nel carrello
-      products_in_cart: 0
+      products_in_cart: 0,
+      isVisible: false
     };
   },
   created: function created() {
@@ -8096,6 +8105,7 @@ __webpack_require__.r(__webpack_exports__);
         localStorage.clear();
       }
     },
+    // Funzione che svuota il carrello
     clearCart: function clearCart(index) {
       this.cart.splice(index, this.cart.length);
       localStorage.clear('cart');
@@ -8107,6 +8117,12 @@ __webpack_require__.r(__webpack_exports__);
         total_amount += product.price * product.quantity;
       });
       return total_amount;
+    },
+    // Funzione che comunica il processo del pagamento e rende visibile il banner del pagamento
+    AlertPayment: function AlertPayment() {
+      if (confirm("Stai per eseguire il pagamento dell\'ordine. Vuoi procedere?")) {
+        this.isVisible = true;
+      }
     }
   }
 });
@@ -8472,7 +8488,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
+  return _vm.Payed ? _c("div", {
     staticClass: "drop-in"
   }, [_c("div", [_c("div", {
     attrs: {
@@ -8490,7 +8506,7 @@ var render = function render() {
         return _vm.payment();
       }
     }
-  }, [_vm._v("Paga Adesso")])])])]);
+  }, [_vm._v("Paga Adesso")])])])]) : _vm._e();
 };
 
 var staticRenderFns = [];
@@ -8731,7 +8747,12 @@ var render = function render() {
   }, [_vm._v("Svuota carrello")])]), _vm._v(" "), _c("div", {
     staticClass: "total-amount"
   }, [_vm._v(_vm._s(_vm.totalAmount(_vm.cart)) + "€")])]), _vm._v(" "), _c("button", {
-    staticClass: "button"
+    staticClass: "button",
+    on: {
+      click: function click($event) {
+        return _vm.AlertPayment();
+      }
+    }
   }, [_vm._v("Checkout")])])])])], 2) : _c("div", {
     staticClass: "cart-blank"
   }, [_c("h4", [_vm._v("Il carrello è vuoto")]), _vm._v(" "), _c("svg", {
@@ -8773,7 +8794,11 @@ var render = function render() {
     attrs: {
       d: "M3047 593 c-27 -9 -71 -36 -97 -60 -163 -146 -127 -404 68 -500 47\n                            -23 70 -28 132 -28 127 1 223 62 275 176 23 53 27 71 23 138 -6 121 -61 206\n                            -170 262 -57 30 -165 35 -231 12z"
     }
-  })])], 1)])]), _vm._v(" "), _c("PaymentComponent")], 1)])])]);
+  })])], 1)]), _vm._v(" "), _vm.isVisible ? _c("PaymentComponent", {
+    attrs: {
+      Amount: _vm.totalAmount(_vm.cart)
+    }
+  }) : _vm._e()], 1)])])])]);
 };
 
 var staticRenderFns = [function () {

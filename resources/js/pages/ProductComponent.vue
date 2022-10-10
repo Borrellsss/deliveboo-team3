@@ -75,7 +75,7 @@
                                             </div>
                                             <div class="total-amount">{{totalAmount(cart)}}&euro;</div>
                                         </div>
-                                    <button class="button">Checkout</button></div>
+                                    <button class="button" @click="AlertPayment()">Checkout</button></div>
                                 </div>
                             </div>
                         </div>
@@ -124,9 +124,9 @@
                                 </g>
                               </svg>
                         </div>
-                    </div>
                     <!-- Braintree Component -->
-                    <PaymentComponent />
+                    <PaymentComponent :Amount="totalAmount(cart)" v-if="isVisible" />
+                    </div>
                 </div>
             </div>
         </section>
@@ -139,7 +139,7 @@
         name: 'ProductComponent',
         components: {
         PaymentComponent
-    },
+        },
 
         data(){
             return{
@@ -149,6 +149,7 @@
                 cart:[],
                 // numero prodotti presenti nel carrello
                 products_in_cart: 0,
+                isVisible: false
             }
         },
         created() {
@@ -280,6 +281,7 @@
                 }
             },
 
+            // Funzione che svuota il carrello
             clearCart(index){
                 this.cart.splice(index, this.cart.length)
                 localStorage.clear('cart');
@@ -294,7 +296,12 @@
                 return total_amount;
             },
 
-
+            // Funzione che comunica il processo del pagamento e rende visibile il banner del pagamento
+            AlertPayment() {
+                if(confirm("Stai per eseguire il pagamento dell\'ordine. Vuoi procedere?")){
+                    this.isVisible = true;
+                }
+            }
         },
 
     }
