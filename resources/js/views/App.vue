@@ -1,6 +1,8 @@
 <template>
     <div>
-            <HeaderComponent/>
+            <HeaderComponent />
+
+            <PaymentComponent />
        <main>
 			<router-view></router-view>
 	    </main>
@@ -12,15 +14,15 @@
 <script>
 
 import HeaderComponent from '../components/HeaderComponent.vue';
+import PaymentComponent from '../components/PaymentComponent.vue';
 import FooterComponent from '../components/FooterComponent.vue';
 import '@fortawesome/fontawesome-free/js/all.js';
-
-
 export default {
     name: 'App',
     components: {
         HeaderComponent, 
-        FooterComponent,
+        PaymentComponent,
+        FooterComponent
     }
 }
 </script>

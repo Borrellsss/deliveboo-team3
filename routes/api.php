@@ -27,7 +27,10 @@ Route::get('/restaurants-categories', 'Api\CategoryController@getAllCategories')
 // creo l'api per ottenere tutti i ristoranti filtrati per categoria
 Route::get('/restaurants', 'Api\RestaurantsController@getRestaurantsByCategory');
 
-
-
+// Rotte per la gestione dei pagamenti con braintree:
+// Rotta che genera il token
+Route::get('orders/generate', 'Api\Orders\OrderController@generate');
+// Rotta che effettua la transazione
+Route::post('orders/make/payment', 'Api\Orders\OrderController@makePayment');
 
 
