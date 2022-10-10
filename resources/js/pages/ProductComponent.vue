@@ -76,7 +76,8 @@
     
                                 <div v-for="product in products" :key="product.id" class="col p-2">
                                     <div class="card">
-                                       <img class="card-img" :src="product.cover" alt="product.name">
+                                       <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
+                                       <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="product.name">
                                        <div class="card-body">
                                             <h5 class="card-title">{{product.name}}</h5>
                                             <p class="card-text">{{product.description}}</p>
