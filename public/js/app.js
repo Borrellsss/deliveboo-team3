@@ -1937,7 +1937,7 @@ __webpack_require__.r(__webpack_exports__);
       authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
       selector: '#dropin-container'
     }), // <!-- BRAINTREE -->
-    // Faccio la chiama API che restituisce il token di autorizzazione nella risposta
+    // Chiamata API che restituisce il token di autorizzazione nella risposta
     axios.get("http://127.0.0.1:8000/api/orders/generate").then(function (response) {
       _this.token = response.data.token;
     });
@@ -1946,7 +1946,7 @@ __webpack_require__.r(__webpack_exports__);
     payment: function payment() {
       axios.post('http://127.0.0.1:8000/api/orders/make/payment', {
         token: this.token,
-        amount: "20.00"
+        amount: this.total_amount
       }).then(function (result) {
         alert(result.data.message);
       });
