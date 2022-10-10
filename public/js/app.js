@@ -7913,6 +7913,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'ProductComponent',
   data: function data() {
     return {
+      toggle_popup: false,
       // array dei prodotti
       products: [],
       // array vuoto per il carrello
@@ -7950,6 +7951,13 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    showProductInfo: function showProductInfo() {
+      if (this.toggle_popup) {
+        this.toggle_popup = false;
+      } else {
+        this.toggle_popup = true;
+      }
+    },
     // funzione che aggiunge il prodotto al carrello
     addItem: function addItem(product) {
       if (!product) {
@@ -8569,7 +8577,7 @@ var render = function render() {
     staticStyle: {
       "margin-top": "100px"
     }
-  }, [_vm.cart.length > 0 ? _c("a", {
+  }, [_vm.cart.length ? _c("a", {
     staticClass: "floating-cart"
   }, [_c("div", {
     staticClass: "count-float"
@@ -8606,7 +8614,16 @@ var render = function render() {
       staticClass: "card-title"
     }, [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("p", {
       staticClass: "card-text"
-    }, [_vm._v(_vm._s(product.description))]), _vm._v(" "), _c("h6", {
+    }, [_vm._v(_vm._s(product.description))]), _c("a", {
+      attrs: {
+        href: "#popup1"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.showProductInfo();
+        }
+      }
+    }, [_vm._v("Maggiori informazioni")]), _vm._v(" "), _c("h6", {
       staticClass: "product-card-price"
     }, [_vm._v(_vm._s(product.price) + "€")]), _vm._v(" "), _c("a", {
       staticClass: "add-to-cart",
@@ -8615,7 +8632,29 @@ var render = function render() {
           return _vm.addItem(product);
         }
       }
-    }, [_vm._v("Aggiungi al carrello")])])])]);
+    }, [_vm._v("Aggiungi al carrello")])])]), _vm._v(" "), _c("div", {
+      staticClass: "info-popup",
+      staticStyle: {
+        "margin-top": "90px"
+      }
+    }, [_c("div", {
+      staticClass: "overlay",
+      attrs: {
+        id: "popup1"
+      }
+    }, [_c("div", {
+      staticClass: "popup"
+    }, [_c("h2", [_vm._v(_vm._s(product.name))]), _vm._v(" "), _c("a", {
+      staticClass: "close",
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.showProductInfo();
+        }
+      }
+    }, [_vm._v("×")]), _vm._v(" "), _vm._m(1, true)])])])]);
   }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "col-12 col-sm-9 col-md-8 col-lg-4 col-xl-4 cart-col"
   }, [_vm.cart.length > 0 ? _c("div", {
@@ -8752,6 +8791,18 @@ var staticRenderFns = [function () {
       alt: "ristorante"
     }
   })])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "content"
+  }, [_c("p", [_vm._v("Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque laborum inventore quidem molestiae eius doloribus deserunt repudiandae unde esse hic saepe quis, cum voluptatum temporibus debitis expedita ratione vitae perferendis?")]), _vm._v(" "), _c("div", [_vm._v("Ingredienti: farina, aglio, olio lore ")]), _vm._v(" "), _c("a", {
+    staticClass: "add-to-cart",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Aggiungi al carrello")])]);
 }];
 render._withStripped = true;
 
@@ -13388,7 +13439,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "*[data-v-26480152] {\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\nbody[data-v-26480152] {\n  margin: 0;\n}\nimg[data-v-26480152] {\n  width: 100%;\n  display: block;\n}\nul[data-v-26480152] {\n  list-style-type: none;\n}\na[data-v-26480152] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-26480152]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-26480152] {\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-26480152] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-26480152] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-26480152] {\n  padding-left: 0;\n}\ndl[data-v-26480152], ol[data-v-26480152], ul[data-v-26480152] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.row[data-v-26480152] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\n.js_container[data-v-26480152] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-26480152] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-26480152] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-26480152] {\n  padding: 0.5rem 2rem;\n}\nh2.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 5rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.fo-style[data-v-26480152] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\n.jumbotron[data-v-26480152] {\n  height: 250px;\n  background: rgb(116, 6, 2);\n  background: radial-gradient(circle, rgb(116, 6, 2) 0%, rgb(116, 6, 2) 23%, rgb(64, 4, 2) 100%);\n  color: white;\n}\n.jumbotron .container[data-v-26480152] {\n  width: 90%;\n  height: 100%;\n}\n.jumbotron .container h2[data-v-26480152] {\n  font-size: 2.5rem;\n  padding-top: 50px;\n  font-family: Geneva, Tahoma, sans-serif;\n}\n.jumbotron .container P[data-v-26480152] {\n  font-family: Geneva, Tahoma, sans-serif;\n}\n.jumbotron .container img[data-v-26480152] {\n  width: 40%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  padding: 15px 0;\n  margin-left: 30px;\n}\n.floating-cart[data-v-26480152] {\n  position: fixed;\n  top: 0;\n  right: 30px;\n  margin-top: 120px;\n  color: white;\n  background-color: #ffc509;\n  width: 70px;\n  height: 70px;\n  display: block;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  z-index: 20;\n}\n.floating-cart .fa-cart-shopping[data-v-26480152] {\n  font-size: 2.3rem;\n  z-index: 20;\n}\n.floating-cart[data-v-26480152]:hover {\n  color: rgb(249, 246, 246);\n}\n.count-float[data-v-26480152] {\n  width: 1rem;\n  height: 1rem;\n  font-size: 0.7rem;\n  border-radius: 50%;\n  background-color: #ffc509;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: absolute;\n  bottom: 34px;\n  right: 25px;\n  z-index: 30;\n}\n.count-float:hover ~ .fa-cart-shopping[data-v-26480152] {\n  color: rgb(249, 246, 246);\n}\n.pr_container[data-v-26480152] {\n  width: 90%;\n  margin: 0 auto;\n  position: relative;\n}\n.products-side[data-v-26480152] {\n  margin-bottom: 70px;\n}\n.products-side .my-circle[data-v-26480152] {\n  width: 50px;\n  height: 50px;\n  text-align: center;\n  vertical-align: middle;\n}\n.products-side .card[data-v-26480152] {\n  border-radius: 15px;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n.products-side .card .card-img[data-v-26480152] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 15px 15px 0 0;\n  height: 200px;\n}\n.products-side .card .card-title[data-v-26480152] {\n  font-weight: 700;\n}\n.products-side .card .card-body[data-v-26480152] {\n  padding: 0.5rem;\n}\n.products-side .card .card-body .product-card-price[data-v-26480152] {\n  margin-bottom: 1rem;\n  font-weight: 700;\n}\n.products-side .card .add-to-cart[data-v-26480152] {\n  color: white;\n  padding: 0.3rem 1rem;\n  background: linear-gradient(to top right, #740602, #bf201b);\n  border-radius: 0.7rem;\n  margin-left: 0.2rem;\n  cursor: pointer;\n}\n.cart-container[data-v-26480152] {\n  border-radius: 15px;\n}\n.cart-container .col[data-v-26480152] {\n  border: 1px solid rgb(203, 197, 197);\n}\n.cart-container h3[data-v-26480152] {\n  margin-top: 1rem;\n  padding-left: 2rem;\n  font-weight: 600;\n}\n.cart-container .product-name[data-v-26480152] {\n  height: 100%;\n  font-weight: 700;\n}\n.cart-container .product-quantity-remove .product-quantity[data-v-26480152] {\n  height: 100%;\n  padding-top: 0.5rem;\n}\n.cart-container .product-quantity-remove .product-quantity .quantity-number[data-v-26480152] {\n  padding: 0 5px;\n  font-weight: 700;\n}\n.cart-container .product-quantity-remove .product-quantity .quantity-btn[data-v-26480152] {\n  width: 20px;\n  height: 20px;\n  background-color: rgb(211, 205, 205);\n  padding: 0.3rem;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 3px;\n  cursor: pointer;\n  font-weight: 500;\n}\n.cart-container .product-quantity-remove .product-quantity .quantity-btn .decrease[data-v-26480152] {\n  padding-bottom: 3px;\n}\n.cart-container .product-quantity-remove .remove-btn[data-v-26480152] {\n  font-size: 0.8rem;\n  padding-top: 0.3rem;\n  padding-bottom: 0.5rem;\n  font-weight: 700;\n  color: #909090;\n  cursor: pointer;\n}\n.cart-container .product-price[data-v-26480152] {\n  height: 100%;\n  font-size: 1.2rem;\n  font-weight: 700;\n}\n.cart-container .checkout[data-v-26480152] {\n  margin: 3% 5%;\n}\n.cart-container .total[data-v-26480152] {\n  display: flex;\n  justify-content: space-between;\n}\n.cart-container .Subtotal[data-v-26480152] {\n  font-size: 1.2rem;\n  font-family: \"Open Sans\";\n  font-weight: 700;\n  color: #202020;\n  margin-bottom: 0.3rem;\n}\n.cart-container .items[data-v-26480152] {\n  font-size: 1rem;\n  font-family: \"Open Sans\";\n  font-weight: 500;\n  color: #909090;\n  line-height: 10px;\n  cursor: pointer;\n  padding: 0.5rem 0 0.7rem 0;\n}\n.cart-container .items[data-v-26480152]:hover {\n  color: #740602;\n}\n.cart-container .total-amount[data-v-26480152] {\n  font-size: 2rem;\n  font-family: \"Open Sans\";\n  font-weight: 900;\n  color: #202020;\n}\n.cart-container .button[data-v-26480152] {\n  margin-top: 10px;\n  width: 100%;\n  height: 40px;\n  border: none;\n  background: linear-gradient(to bottom right, #740602, #bf201b);\n  border-radius: 20px;\n  cursor: pointer;\n  font-size: 16px;\n  font-family: \"Open Sans\";\n  font-weight: 600;\n  color: white;\n}\n.cart-blank[data-v-26480152] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  margin: 80px 0;\n}\n.cart-blank h4[data-v-26480152] {\n  font-weight: 600;\n  margin-bottom: 15px;\n  opacity: 0.7;\n}\n.cart-blank svg[data-v-26480152] {\n  width: 50%;\n  height: 50%;\n  opacity: 0.5;\n}\n@media only screen and (max-width: 768px) {\n.jumbotron img[data-v-26480152] {\n    display: none;\n}\n}", ""]);
+exports.push([module.i, "*[data-v-26480152] {\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\nbody[data-v-26480152] {\n  margin: 0;\n}\nimg[data-v-26480152] {\n  width: 100%;\n  display: block;\n}\nul[data-v-26480152] {\n  list-style-type: none;\n}\na[data-v-26480152] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-26480152]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-26480152] {\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-26480152] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-26480152] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-26480152]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-26480152] {\n  padding-left: 0;\n}\ndl[data-v-26480152], ol[data-v-26480152], ul[data-v-26480152] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.row[data-v-26480152] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\n.js_container[data-v-26480152] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-26480152] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-26480152] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-26480152] {\n  padding: 0.5rem 2rem;\n}\nh2.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 5rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.fo-style[data-v-26480152] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.fo-style[data-v-26480152] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.fo-style[data-v-26480152] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\n.add-to-cart[data-v-26480152] {\n  color: white;\n  padding: 0.3rem 1rem;\n  background: linear-gradient(to top right, #740602, #bf201b);\n  border-radius: 0.7rem;\n  cursor: pointer;\n}\n.info-popup .button[data-v-26480152] {\n  font-size: 1em;\n  padding: 10px;\n  color: #fff;\n  border: 2px solid #06D85F;\n  border-radius: 20px/50px;\n  text-decoration: none;\n  cursor: pointer;\n}\n.info-popup .button[data-v-26480152]:hover {\n  background: #06D85F;\n}\n.info-popup .overlay[data-v-26480152] {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background: rgba(0, 0, 0, 0.7);\n  transition: opacity 500ms;\n  visibility: hidden;\n  opacity: 0.5;\n  z-index: 60;\n}\n.info-popup .popup[data-v-26480152] {\n  margin: 70px auto;\n  padding: 20px;\n  background: #fff;\n  border-radius: 5px;\n  width: 30%;\n  position: relative;\n  margin-top: 300px;\n}\n.info-popup .popup h2[data-v-26480152] {\n  margin-top: 0;\n  color: #333;\n  font-family: Tahoma, Arial, sans-serif;\n}\n.info-popup .popup .close[data-v-26480152] {\n  position: absolute;\n  top: 20px;\n  right: 30px;\n  font-size: 30px;\n  font-weight: bold;\n  text-decoration: none;\n  color: #333;\n}\n.info-popup .popup .close[data-v-26480152]:hover {\n  color: #06D85F;\n}\n.info-popup .popup .content[data-v-26480152] {\n  max-height: 30%;\n  overflow: auto;\n}\n@media screen and (max-width: 700px) {\n.info-popup .box[data-v-26480152] {\n    width: 70%;\n}\n.info-popup .popup[data-v-26480152] {\n    width: 70%;\n}\n}\n.info-popup.ms_visible .overlay[data-v-26480152] {\n  visibility: visible;\n  opacity: 1;\n}\n.jumbotron[data-v-26480152] {\n  height: 250px;\n  background: rgb(116, 6, 2);\n  background: radial-gradient(circle, rgb(116, 6, 2) 0%, rgb(116, 6, 2) 23%, rgb(64, 4, 2) 100%);\n  color: white;\n}\n.jumbotron .container[data-v-26480152] {\n  width: 90%;\n  height: 100%;\n}\n.jumbotron .container h2[data-v-26480152] {\n  font-size: 2.5rem;\n  padding-top: 50px;\n  font-family: Geneva, Tahoma, sans-serif;\n}\n.jumbotron .container P[data-v-26480152] {\n  font-family: Geneva, Tahoma, sans-serif;\n}\n.jumbotron .container img[data-v-26480152] {\n  width: 40%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  padding: 15px 0;\n  margin-left: 30px;\n}\n.floating-cart[data-v-26480152] {\n  position: fixed;\n  top: 0;\n  right: 30px;\n  margin-top: 120px;\n  color: white;\n  background-color: #ffc509;\n  width: 70px;\n  height: 70px;\n  display: block;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  z-index: 10;\n  cursor: pointer;\n}\n.floating-cart .fa-cart-shopping[data-v-26480152] {\n  font-size: 2.3rem;\n  z-index: 10;\n}\n.floating-cart[data-v-26480152]:hover {\n  color: rgb(249, 246, 246);\n}\n.count-float[data-v-26480152] {\n  width: 1rem;\n  height: 1rem;\n  font-size: 0.7rem;\n  border-radius: 50%;\n  background-color: #ffc509;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: absolute;\n  bottom: 34px;\n  right: 25px;\n  z-index: 11;\n}\n.count-float:hover ~ .fa-cart-shopping[data-v-26480152] {\n  color: rgb(249, 246, 246);\n}\n.pr_container[data-v-26480152] {\n  width: 90%;\n  margin: 0 auto;\n  position: relative;\n}\n.products-side[data-v-26480152] {\n  margin-bottom: 70px;\n}\n.products-side .my-circle[data-v-26480152] {\n  width: 50px;\n  height: 50px;\n  text-align: center;\n  vertical-align: middle;\n}\n.products-side .card[data-v-26480152] {\n  border-radius: 15px;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n.products-side .card .card-img[data-v-26480152] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 15px 15px 0 0;\n  height: 200px;\n}\n.products-side .card .card-title[data-v-26480152] {\n  font-weight: 700;\n}\n.products-side .card .card-body[data-v-26480152] {\n  padding: 0.5rem;\n}\n.products-side .card .card-body .product-card-price[data-v-26480152] {\n  margin-bottom: 1rem;\n  font-weight: 700;\n}\n.products-side .card .add-to-cart[data-v-26480152] {\n  color: white;\n  padding: 0.3rem 1rem;\n  background: linear-gradient(to top right, #740602, #bf201b);\n  border-radius: 0.7rem;\n  margin-left: 0.2rem;\n  cursor: pointer;\n}\n.cart-container[data-v-26480152] {\n  border-radius: 15px;\n}\n.cart-container .col[data-v-26480152] {\n  border: 1px solid rgb(203, 197, 197);\n}\n.cart-container h3[data-v-26480152] {\n  margin-top: 1rem;\n  padding-left: 2rem;\n  font-weight: 600;\n}\n.cart-container .product-name[data-v-26480152] {\n  height: 100%;\n  font-weight: 700;\n}\n.cart-container .product-quantity-remove .product-quantity[data-v-26480152] {\n  height: 100%;\n  padding-top: 0.5rem;\n}\n.cart-container .product-quantity-remove .product-quantity .quantity-number[data-v-26480152] {\n  padding: 0 5px;\n  font-weight: 700;\n}\n.cart-container .product-quantity-remove .product-quantity .quantity-btn[data-v-26480152] {\n  width: 20px;\n  height: 20px;\n  background-color: rgb(211, 205, 205);\n  padding: 0.3rem;\n  border-radius: 50%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 3px;\n  cursor: pointer;\n  font-weight: 500;\n}\n.cart-container .product-quantity-remove .product-quantity .quantity-btn .decrease[data-v-26480152] {\n  padding-bottom: 3px;\n}\n.cart-container .product-quantity-remove .remove-btn[data-v-26480152] {\n  font-size: 0.8rem;\n  padding-top: 0.3rem;\n  padding-bottom: 0.5rem;\n  font-weight: 700;\n  color: #909090;\n  cursor: pointer;\n}\n.cart-container .product-price[data-v-26480152] {\n  height: 100%;\n  font-size: 1.2rem;\n  font-weight: 700;\n}\n.cart-container .checkout[data-v-26480152] {\n  margin: 3% 5%;\n}\n.cart-container .total[data-v-26480152] {\n  display: flex;\n  justify-content: space-between;\n}\n.cart-container .Subtotal[data-v-26480152] {\n  font-size: 1.2rem;\n  font-family: \"Open Sans\";\n  font-weight: 700;\n  color: #202020;\n  margin-bottom: 0.3rem;\n}\n.cart-container .items[data-v-26480152] {\n  font-size: 1rem;\n  font-family: \"Open Sans\";\n  font-weight: 500;\n  color: #909090;\n  line-height: 10px;\n  cursor: pointer;\n  padding: 0.5rem 0 0.7rem 0;\n}\n.cart-container .items[data-v-26480152]:hover {\n  color: #740602;\n}\n.cart-container .total-amount[data-v-26480152] {\n  font-size: 2rem;\n  font-family: \"Open Sans\";\n  font-weight: 900;\n  color: #202020;\n}\n.cart-container .button[data-v-26480152] {\n  margin-top: 10px;\n  width: 100%;\n  height: 40px;\n  border: none;\n  background: linear-gradient(to bottom right, #740602, #bf201b);\n  border-radius: 20px;\n  cursor: pointer;\n  font-size: 16px;\n  font-family: \"Open Sans\";\n  font-weight: 600;\n  color: white;\n}\n.cart-blank[data-v-26480152] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  margin: 80px 0;\n}\n.cart-blank h4[data-v-26480152] {\n  font-weight: 600;\n  margin-bottom: 15px;\n  opacity: 0.7;\n}\n.cart-blank svg[data-v-26480152] {\n  width: 50%;\n  height: 50%;\n  opacity: 0.5;\n}\n@media only screen and (max-width: 768px) {\n.jumbotron img[data-v-26480152] {\n    display: none;\n}\n}", ""]);
 
 // exports
 

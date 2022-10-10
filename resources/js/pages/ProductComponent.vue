@@ -1,19 +1,6 @@
 <template>
     <div>
         <section>
-            <div class="info-popup" style="margin-top:90px">
-                <div id="popup1" class="overlay">
-                    <div class="popup">
-                        <h2>Nome prodotto</h2>
-                        <a class="close" href="#">&times;</a>
-                        <div class="content">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque laborum inventore quidem molestiae eius doloribus deserunt repudiandae unde esse hic saepe quis, cum voluptatum temporibus debitis expedita ratione vitae perferendis?</p>
-                            <div>Ingredienti: farina, aglio, olio lore </div>
-                            <a href="#" class="add-to-cart">Aggiungi al carrello</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="jumbotron jumbotron-fluid" style="margin-top:90px">
             <div class="container d-flex justify-content-around">
                 <div>
@@ -42,11 +29,26 @@
                                        <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="product.name">
                                        <div class="card-body">
                                             <h5 class="card-title">{{product.name}}</h5>
-                                            <p class="card-text">{{product.description}}</p><a href="#popup1">Maggiori informazioni</a>
+                                            <p class="card-text">{{product.description}}</p><a href="#popup1" @click="showProductInfo()">Maggiori informazioni</a>
                                             <h6 class="product-card-price">{{product.price}}&euro;</h6>
                                             <a @click='addItem(product)' class="add-to-cart">Aggiungi al carrello</a>
                                         </div>
                                      </div>
+                                     <!-- :class="{'ms_visible-'+product.id:toggle_popup}"   classe da inserire riga sotto forse  -->
+                                     <div class="info-popup"style="margin-top:90px">
+                                        <div id="popup1" class="overlay">
+                                            <div class="popup">
+                                                
+                                                <h2>{{product.name}}</h2>
+                                                <a class="close" href="#" @click="showProductInfo()">&times;</a>
+                                                <div class="content">
+                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque laborum inventore quidem molestiae eius doloribus deserunt repudiandae unde esse hic saepe quis, cum voluptatum temporibus debitis expedita ratione vitae perferendis?</p>
+                                                    <div>Ingredienti: farina, aglio, olio lore </div>
+                                                    <a href="#" class="add-to-cart">Aggiungi al carrello</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                  </div>
 
                             </div>
@@ -153,6 +155,8 @@
 
          data(){
             return{
+
+                toggle_popup: false,
                 // array dei prodotti
                 products: [],
                 
@@ -193,6 +197,15 @@
         },
 
         methods:{
+
+            showProductInfo(){
+                 
+                if (this.toggle_popup){
+                    this.toggle_popup = false
+                }else{
+                    this.toggle_popup = true
+                }
+            },
 
             // funzione che aggiunge il prodotto al carrello
             addItem(product){
@@ -395,6 +408,8 @@
                 cursor: pointer;
                 }
   .info-popup{
+
+   
     
     .button {
     font-size: 1em;
@@ -417,16 +432,12 @@
     right: 0;
     background: rgba(0, 0, 0, 0.7);
     transition: opacity 500ms;
-    // visibility: hidden;
-    display: none;
-    opacity: 0;
+    visibility: hidden;
+    // display: none;
+    opacity: 0.5;
     z-index: 60;
     }
-    .overlay:target {
-    // visibility: visible;
-    display: block;
-    opacity: 1;
-    }
+ 
 
     .popup {
     margin: 70px auto;
@@ -467,6 +478,16 @@
     .popup{
         width: 70%;
     }
+    }
+
+    &.ms_visible{
+         
+        .overlay {
+            visibility: visible;
+            // display: block;
+            opacity: 1;
+            }
+        
     }
 
   }
