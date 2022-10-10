@@ -7,6 +7,8 @@
         <div>
             <canvas id="chart"></canvas>
         </div>
+
+        {{dd($user_orders)}}
     </section>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{asset('js/back.js')}}"></script>
