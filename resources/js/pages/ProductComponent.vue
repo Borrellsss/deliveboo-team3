@@ -11,7 +11,7 @@
             </div>
             </div>
             <div class="pr_container" style="margin-top:100px">
-                
+
                 <a v-if="cart.length > 0" class="floating-cart">
                     <div class="count-float">
                         <span>{{cart.length}}</span>
@@ -22,7 +22,7 @@
                     <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 products-col px-3">
                         <div class="products-side">
                             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 d-flex justify-content-start">
-    
+
                                 <div v-for="product in products" :key="product.id" class="col p-2">
                                     <div class="card">
                                        <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
@@ -35,7 +35,7 @@
                                         </div>
                                      </div>
                                  </div>
-    
+
                             </div>
                         </div>
                     </div>
@@ -130,11 +130,11 @@
         </section>
     </div>
 </template>
-    
+
     <script>
     export default {
         name: 'ProductComponent',
-        
+
          data(){
             return{
                 // array dei prodotti
@@ -148,13 +148,13 @@
             }
         },
         created() {
-    
+
               // $this.route.paramas.id rappresenta il passaggio di informazioni eseguiro con il router link
              axios.get(`http://127.0.0.1:8000/api/${this.$route.params.id}/menu`)
             .then((response) =>{
                 this.products = response.data.results
             });
-    
+
             // se il carrello non è null
             if (localStorage.cart) {
                 // i prodotti presenti nel carrello vengono convertiti in un file json
@@ -162,9 +162,9 @@
             }
             // richiamo la funzione del totale
             // this.totalAmount();
-    
+
             // se cart esiste in LocalStorage
-            if (localStorage.getItem('cart')) {             
+            if (localStorage.getItem('cart')) {
                 try {
                     // trasformalo in stringa
                     this.cart = JSON.parse(localStorage.getItem('cart'));
@@ -174,33 +174,33 @@
                 }
             }
         },
-        
+
         methods:{
-    
+
             // funzione che aggiunge il prodotto al carrello
             addItem(product){
-               
+
                 if (!product){
                     return;
                 }
-    
-                
+
+
                 if(localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0){
                     product.quantity = 1;
-    
+
                     // pusha nell'array il prodotto
                     this.cart.push(product);
-                
+
                     // salva il carrello
                     this.saveCart();
-    
-                    
+
+
                 }else{
                     // salvo la stringa di LocalStorage in this.cart
                     this.cart = JSON.parse(localStorage.getItem('cart'));
-                  
+
                     if(this.cart[0].user_id !== product.user_id){
-                        // se conferma di cambiare ristorante 
+                        // se conferma di cambiare ristorante
                         if(confirm('Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello. Vuoi cambiare ristorante? ')){
                             // svuota il carrello
                             this.cart = [];
@@ -210,13 +210,13 @@
                             this.cart.push(product);
                             // salva il carrello
                             this.saveCart();
-                           
+
                         }
-                        
+
                     }  else{
                         //se non cambia ristorante:
                         // salva l'id del prodotto selezionato
-                     
+
                         let check = this.cart.find(({id}) => id == product.id);
                         console.log(this.cart.find(({id}) => id == product.id))
                         //    console.log('adesso')
@@ -239,20 +239,20 @@
                         this.cart.push(product);
                         // salva il carrello
                         this.saveCart();
-                       
-                    }      
+
+                    }
                 }
-                    
-              
+
+
             },
             // funzione per la rimozione del prodotto dal carrello
-           
+
             // funzione salva carrello
             saveCart() {
                 const parsed = JSON.stringify(this.cart);
                 localStorage.setItem('cart', parsed);
             },
-            
+
             //  removeItem(product , index){
             //     if(product.quantity > 1)
             //     for(let i = 0; i < this.cart.length + 1; i++){
@@ -260,22 +260,22 @@
             //         this.cart[i].quantity = this.cart[i].quantity -  1;
             //         this.saveCart();
             //         }else  {
-                        
+
             //         }
             //     }
             //     else
             //         this.deleteItem(index);
-    
+
             // //         this.totalAmount();
             // },
-    
-            
-    
-    
+
+
+
+
             ////////////////////////////////////////
             // funzione che incrementa la quantità del prodotto all'interno del carrello
             // increaseQuantity(product, index) {
-    
+
             //     let check = this.cart.find(({id}) => id == product.id);
             //     if(check.id){
             //          for(let i = 0; i < this.cart.length + 1; i++){
@@ -285,7 +285,7 @@
             //             }
             //         }
             //     }
-               
+
             // },
             // funzione che riduce la quantità del prodotto nel carrello
             decreaseQuantity(product , index){
@@ -299,25 +299,28 @@
                     }
                 }
             },
-    
+
             // funzione che cancella il prodotto dal carrello
-            deleteItem(product,index) {
-    
-                if(this.cart.length > 1){
-                    this.cart.splice(index, 1);
-                    // this.testFunction(index)
-                    // localStorage.removeItem();
-                    console.log('ciao sono', Storage.key(index))
-                }else{
-                    this.cart.splice(index, 1);
-                    // this.testFunction(index)
-                    // this.saveProductInCart();
-                    localStorage.clear(); 
-                } 
-            },
-    
+          deleteItem(index, product) {
+            if(this.cart.length > 1){
+                // rimuovo l'elemento carrello in pagina
+                this.cart.splice(index, 1);
+                // filtro dell'array così da togliere l'id del prodotto eliminato
+                let filtered_cart = this.cart.filter(product => product.id !== index);
+                // console.log(filtered_cart)
+                // Sovrascrivo ('cart') localStorage con il nuovo array filtrato
+                localStorage.setItem('cart', JSON.stringify(filtered_cart));
+                // console.log('ciao sono', Storage.key(index))
+            }else{
+                this.cart.splice(index, 1);
+                // this.testFunction(index)
+                // this.saveProductInCart();
+                localStorage.clear();
+            }
+        },
+
             // testFunction(index){
-                
+
             //     const testCart = JSON.parse(localStorage.getItem("cart"))
             //     for (let i =0; i< testCart.length; i++) {
             //         let items = JSON.parse(testCart[i]);
@@ -326,15 +329,15 @@
             //         }
             //     }
             // }
-    
+
             // salva nel carrello i prodotti
             // saveProductInCart(){
             //     const parsed = JSON.stringify(this.products_in_cart);
             //     localStorage.setItem('cart', parsed);
             //     this.products_in_cart = JSON.parse(localStorage.cart);
             // },
-    
-          
+
+
              // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
             // totalAmount(){
             //     this.total_amount = 0;
@@ -342,46 +345,46 @@
             //         this.total_amount += parseFloat(this.cart[i].price)*this.product.quantity
             //         console.log(this.cart[i])
             //     }
-          
-                                                
+
+
             //  },
-           
-    
+
+
         },
-        
+
     }
-    
-    
+
+
     </script>
-    
-    
+
+
     <style lang="scss" scoped>
     @import '../style/variables';
     @import '../style/common';
-    
-    
+
+
     .jumbotron{
         height: 250px;
         background: rgb(116,6,2);
         background: radial-gradient(circle, rgba(116,6,2,1) 0%, rgba(116,6,2,1) 23%, rgba(64,4,2,1) 100%);
         // background-color: $secondary-color;
         color: white;
-       
-    
+
+
         .container{
             width: 90%;
             height: 100%;
-    
+
             h2{
                 font-size: 2.5rem;
                 padding-top: 50px;
                 font-family: Geneva, Tahoma, sans-serif;
             }
-    
+
             P{
                 font-family: Geneva, Tahoma, sans-serif;
             }
-    
+
             img{
                 width: 40%;
                height: 100%;
@@ -390,9 +393,9 @@
                margin-left: 30px;
             }
         }
-    
+
     }
-    
+
     .floating-cart{
         position: fixed;
         top: 0;
@@ -408,17 +411,17 @@
         align-items: center;
         justify-content: center;
         z-index: 20;
-    
+
             .fa-cart-shopping{
                 font-size: 2.3rem;
                 z-index: 20;
                 }
-    
+
                 &:hover{
                     color: rgb(249, 246, 246);
                 }
             }
-    
+
             .count-float{
                 width: 1rem;
                 height: 1rem;
@@ -434,21 +437,21 @@
                 bottom: 34px;
                 right: 25px;
                 z-index: 30;
-                
+
                 &:hover ~ .fa-cart-shopping{
                    color: rgb(249, 246, 246);
                 }
             }
-    
-    
+
+
     .pr_container{
         width: 90%;
         margin: 0 auto;
         position: relative;
     }
-    
+
     .products-side{
-    
+
         margin-bottom: 70px;
         .my-circle {
           width: 50px;
@@ -456,38 +459,38 @@
           text-align: center;
           vertical-align: middle;
       }
-    
+
           .card{
             border-radius: 15px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
             0 6px 20px 0 rgba(0, 0, 0, 0.19);
-                    
+
                     .card-img{
                         object-fit: cover;
                         border-radius: 15px 15px 0 0;
                         height: 200px;
-    
+
                         // img{
                         // }
                     }
-               
+
                  .card-title{
                     font-weight: 700;
-                 }   
-    
+                 }
+
                 //  .card-text{
-                //  }   
-    
-    
+                //  }
+
+
             .card-body{
                 padding: 0.5rem;
-    
+
                 .product-card-price{
                     margin-bottom: 1rem;
                     font-weight: 700;
                 }
             }
-    
+
             .add-to-cart{
                 // font-size: 0.9rem;
                 color: white;
@@ -502,34 +505,34 @@
     .cart-container{
         border-radius: 15px;
         // margin-bottom: 70px;
-    
+
         .col{
         border: 1px solid rgb(203, 197, 197);
     }
-    
+
         h3{
             margin-top: 1rem;
             padding-left: 2rem;
             font-weight: 600;
         }
-    
+
         .product-name{
             height: 100%;
             font-weight: 700;
         }
-    
+
       .product-quantity-remove{
-    
-       
+
+
         .product-quantity{
             height: 100%;
             padding-top: 0.5rem;
-    
+
                 .quantity-number{
                     padding: 0 5px;
                     font-weight: 700;
                 }
-    
+
                 .quantity-btn{
                     width: 20px;
                     height: 20px;
@@ -542,11 +545,11 @@
                     margin-bottom: 3px;
                     cursor: pointer;
                     font-weight: 500;
-    
+
                         .decrease{
                             padding-bottom: 3px;
                         }
-    
+
                      }
                     }
                     .remove-btn{
@@ -557,13 +560,13 @@
                         color: #909090;
                         cursor: pointer;
                     }
-           } 
+           }
         .product-price{
             height: 100%;
             font-size: 1.2rem;
             font-weight: 700;
         }
-    
+
         .checkout{
             margin: 3% 5%;
          }
@@ -586,7 +589,7 @@
         line-height: 10px;
         cursor: pointer;
         padding: 0.5rem 0 0.7rem 0;
-    
+
            &:hover{
             color: $secondary-color;;
            }
@@ -610,7 +613,7 @@
         font-weight: 600;
         color:white;
     }
-    
+
     }
     .cart-blank{
         display: flex;
@@ -618,30 +621,30 @@
         justify-content: center;
         align-items: center;
         margin: 80px 0;
-    
+
         h4{
             font-weight: 600;
             margin-bottom: 15px;
-            opacity: 0.7;  
+            opacity: 0.7;
         }
-    
+
        svg{
         width: 50%;
         height: 50%;
         opacity: 0.5;
        }
     }
-    
+
     @media only screen and (max-width: 768px) {
-    
+
         .jumbotron{
-    
+
                 img{
                     display: none;
                 }
             }
         }
-    
+
     // cart style
     // .cart-comp{
     //     .cart-container{
@@ -804,9 +807,9 @@
     //         }
     //     }
     // }
-    
-    
-    
+
+
+
     // #cart-section{
     // 	margin: 0;
     // 	padding: 0;
@@ -816,7 +819,7 @@
     // 	justify-content: center;
     // 	align-items: center;
     // }
-    
+
     // .CartContainer{
     // 	width: 70%;
     // 	height: 90%;
@@ -824,7 +827,7 @@
     //     border-radius: 20px;
     //     box-shadow: 0px 10px 20px #1687d933;
     // }
-    
+
     // .Header{
     // 	margin: auto;
     // 	width: 90%;
@@ -833,14 +836,14 @@
     // 	justify-content: space-between;
     // 	align-items: center;
     // }
-    
+
     // .Heading{
     // 	font-size: 20px;
     // 	font-family: 'Open Sans';
     // 	font-weight: 700;
     // 	color: #2F3841;
     // }
-    
+
     // .Action{
     // 	font-size: 14px;
     // 	font-family: 'Open Sans';
@@ -849,7 +852,7 @@
     // 	cursor: pointer;
     // 	border-bottom: 1px solid #E44C4C;
     // }
-    
+
     // .Cart-Items{
     // 	margin: auto;
     // 	width: 90%;
@@ -881,7 +884,7 @@
     // 	font-weight: 600;
     // 	color: #909090;
     // }
-    
+
     // .counter{
     // 	width: 15%;
     // 	display: flex;
@@ -908,7 +911,7 @@
     // 	font-weight: 600;
     // 	color: #202020;
     // }
-    
+
     // .prices{
     // 	height: 100%;
     // 	text-align: right;
@@ -936,11 +939,11 @@
     // 	color: #E44C4C;
     // 	cursor: pointer;
     // }
-    
+
     // .pad{
     // 	margin-top: 5px;
     // }
-    
+
     // hr{
     // 	width: 66%;
     // 	float: right;
@@ -988,7 +991,7 @@
     // 	font-weight: 600;
     // 	color: #202020;
     // }
-       
+
     </style>
-    
-    
+
+

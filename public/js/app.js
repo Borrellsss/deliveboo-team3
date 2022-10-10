@@ -7967,7 +7967,7 @@ __webpack_require__.r(__webpack_exports__);
         this.cart = JSON.parse(localStorage.getItem('cart'));
 
         if (this.cart[0].user_id !== product.user_id) {
-          // se conferma di cambiare ristorante 
+          // se conferma di cambiare ristorante
           if (confirm('Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello. Vuoi cambiare ristorante? ')) {
             // svuota il carrello
             this.cart = []; // setta la quantità del prodotto (del nuovo ristorante)
@@ -8060,12 +8060,17 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     // funzione che cancella il prodotto dal carrello
-    deleteItem: function deleteItem(product, index) {
+    deleteItem: function deleteItem(index, product) {
       if (this.cart.length > 1) {
-        this.cart.splice(index, 1); // this.testFunction(index)
-        // localStorage.removeItem();
+        // rimuovo l'elemento carrello in pagina
+        this.cart.splice(index, 1); // filtro dell'array così da togliere l'id del prodotto eliminato
 
-        console.log('ciao sono', Storage.key(index));
+        var filtered_cart = this.cart.filter(function (product) {
+          return product.id !== index;
+        }); // console.log(filtered_cart)
+        // Sovrascrivo ('cart') localStorage con il nuovo array filtrato
+
+        localStorage.setItem('cart', JSON.stringify(filtered_cart)); // console.log('ciao sono', Storage.key(index))
       } else {
         this.cart.splice(index, 1); // this.testFunction(index)
         // this.saveProductInCart();
