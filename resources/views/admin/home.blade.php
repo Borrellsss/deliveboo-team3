@@ -2,6 +2,12 @@
 
 @section('main_content')
     <section>
+        @if (isset($user_updated_confirm) && $user_updated_confirm === 'y')
+            <div class="alert alert-success text-center" role="alert">
+                profilo modificato con successo!
+            </div>
+        @endif
+
         <div class="ms_user-home-info">
             <h1>
                 Area privata di
