@@ -615,8 +615,8 @@
        }
     }
     .ms_modal_container {
-        background: linear-gradient(to bottom left, $secondary-color, $primary-color);
-        color: white;
+        background: linear-gradient(to left right, $secondary-color, white);
+        color: black;
         font-size: 1.6rem;
         padding: 1.7rem;
         border-radius: 45px;
