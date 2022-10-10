@@ -9,7 +9,6 @@
                             <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                                 width="184.000000pt" height="137.000000pt" viewBox="0 0 184.000000 137.000000"
                                 preserveAspectRatio="xMidYMid meet">
-
                                 <g transform="translate(0.000000,137.000000) scale(0.100000,-0.100000)"
                                 fill="currentcolor" stroke="none">
                                 <path d="M915 1223 c-138 -18 -315 -63 -386 -99 -37 -19 -89 -74 -107 -114 -8
@@ -86,7 +85,6 @@ header{
     align-items: center;
     height: 5.5rem;
     position: fixed;
-    top: 0;
     width: 100%;
     position: fixed;
     top: 0;

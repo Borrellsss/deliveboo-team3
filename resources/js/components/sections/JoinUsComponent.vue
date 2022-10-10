@@ -1,5 +1,5 @@
 <template>
-   <section>
+   <section class="d-flex justify-content-center">
        <div class="container d-flex">
         <div class="join-us-container d-flex align-items-center ">
             <div class="row">

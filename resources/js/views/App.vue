@@ -1,11 +1,9 @@
 <template>
     <div>
             <HeaderComponent/>
-            <MainComponent/>
        <main>
 			<router-view></router-view>
 	    </main>
-        <JoinUsComponent/>
         <FooterComponent/>
         
     </div>
@@ -14,9 +12,7 @@
 <script>
 
 import HeaderComponent from '../components/HeaderComponent.vue';
-import MainComponent from '../components/MainComponent.vue';
 import FooterComponent from '../components/FooterComponent.vue';
-import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
 import '@fortawesome/fontawesome-free/js/all.js';
 
 
@@ -24,9 +20,7 @@ export default {
     name: 'App',
     components: {
         HeaderComponent, 
-        MainComponent,
         FooterComponent,
-        JoinUsComponent,
     }
 }
 </script>
