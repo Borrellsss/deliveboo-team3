@@ -10,4 +10,8 @@ class Order extends Model
         return $this->belongsToMany('App\Product')
         ->withPivot(['quantity']);
     }
+
+    public function user_order() {
+        return $this->belongsTo('App\User');
+    }
 }

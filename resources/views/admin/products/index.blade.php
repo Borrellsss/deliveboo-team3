@@ -2,7 +2,7 @@
 
 @section('main_content')
     <section>
-        <h1 class="text-center">Il mio Menu</h1>
+        <h1 class="text-center">Menu</h1>
         @if (isset($product_deleted_confirm))
             @if ($product_deleted_confirm === 'y')
             <div class="alert alert-success text-center" role="alert">

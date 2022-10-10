@@ -152,21 +152,21 @@ header {
 // aside
 aside {
     padding-top: 2rem;
-    width: 170px;
+    width: 200px;
     height: calc(100vh - 70px);
     background-color: $secondary-color;
     color: $primary-color;
     font-weight: 600;
 
     li {
-        padding-bottom: 0.5rem;
+        padding-bottom: 0.7rem;
         padding-left: 1rem;
     }
 }
 
 // main
 main {
-    width: calc(100% - 170px);
+    width: calc(100% - 200px);
     height: calc(100vh - 70px);
     overflow-y: auto;
 }
