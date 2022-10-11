@@ -75,7 +75,7 @@
                                             </div>
                                             <div class="total-amount">{{totalAmount(cart)}}&euro;</div>
                                         </div>
-                                        <button class="button" @click="AlertPayment()" data-toggle="modal" data-target="#modalAbandonedCart">Checkout</button>
+                                        <button class="button"  data-toggle="modal" data-target="#modalAbandonedCart">Checkout</button>
                                     </div>
 
                                     <!-- Modal: modalAbandonedCart-->
@@ -100,7 +100,7 @@
                                                 <!--Footer-->
                                                 <div class="text-center">
                                                     <!-- <a type="button" class="btn btn-dark p-2 rounded" data-dismiss="modal">Cancella</a> -->
-                                                    <a type="button" class="ms_btn boxshadow">Si, ho FAME!</a>
+                                                    <a type="button" @click="AlertPayment()" class="ms_btn boxshadow">Si, ho FAME!</a>
                                                 </div>
                                             </div>
                                             <!--/.Content-->
@@ -329,9 +329,8 @@
 
             // Funzione che comunica il processo del pagamento e rende visibile il banner del pagamento
             AlertPayment() {
-                if(confirm("Stai per eseguire il pagamento dell\'ordine. Vuoi procedere?")){
                     this.isVisible = true;
-                }
+                
             }
         },
 

@@ -8120,9 +8120,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     // Funzione che comunica il processo del pagamento e rende visibile il banner del pagamento
     AlertPayment: function AlertPayment() {
-      if (confirm("Stai per eseguire il pagamento dell\'ordine. Vuoi procedere?")) {
-        this.isVisible = true;
-      }
+      this.isVisible = true;
     }
   }
 });
@@ -8819,13 +8817,37 @@ var render = function render() {
     attrs: {
       "data-toggle": "modal",
       "data-target": "#modalAbandonedCart"
+    }
+  }, [_vm._v("Checkout")])]), _vm._v(" "), _c("div", {
+    staticClass: "modal fade right",
+    attrs: {
+      id: "modalAbandonedCart",
+      tabindex: "-1",
+      role: "dialog",
+      "aria-labelledby": "myModalLabel",
+      "aria-hidden": "true",
+      "data-backdrop": "false"
+    }
+  }, [_c("div", {
+    staticClass: "modal-dialog modal-side modal-bottom-right modal-notify modal-info",
+    attrs: {
+      role: "document"
+    }
+  }, [_c("div", {
+    staticClass: "modal-content ms_modal_container"
+  }, [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("div", {
+    staticClass: "text-center"
+  }, [_c("a", {
+    staticClass: "ms_btn boxshadow",
+    attrs: {
+      type: "button"
     },
     on: {
       click: function click($event) {
         return _vm.AlertPayment();
       }
     }
-  }, [_vm._v("Checkout")])]), _vm._v(" "), _vm._m(1)])])], 2) : _c("div", {
+  }, [_vm._v("Si, ho FAME!")])])])])])])])], 2) : _c("div", {
     staticClass: "cart-blank"
   }, [_c("h4", [_vm._v("Il carrello è vuoto")]), _vm._v(" "), _c("svg", {
     attrs: {
@@ -8898,24 +8920,7 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
-    staticClass: "modal fade right",
-    attrs: {
-      id: "modalAbandonedCart",
-      tabindex: "-1",
-      role: "dialog",
-      "aria-labelledby": "myModalLabel",
-      "aria-hidden": "true",
-      "data-backdrop": "false"
-    }
-  }, [_c("div", {
-    staticClass: "modal-dialog modal-side modal-bottom-right modal-notify modal-info",
-    attrs: {
-      role: "document"
-    }
-  }, [_c("div", {
-    staticClass: "modal-content ms_modal_container"
-  }, [_c("div", [_c("button", {
+  return _c("div", [_c("button", {
     staticClass: "close",
     attrs: {
       type: "button",
@@ -8927,7 +8932,12 @@ var staticRenderFns = [function () {
     attrs: {
       "aria-hidden": "true"
     }
-  }, [_vm._v("×")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("×")])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
     staticClass: "text-center"
   }, [_c("span", {
     staticClass: "yellow pb-4"
@@ -8935,14 +8945,7 @@ var staticRenderFns = [function () {
     staticClass: "fas fa-credit-card fa-4x"
   })]), _vm._v(" "), _c("p", {
     staticClass: "pt-4"
-  }, [_vm._v("Stai per eseguire il pagamento dell'ordine...")]), _vm._v(" "), _c("p", [_vm._v("vuoi procedere?")])]), _vm._v(" "), _c("div", {
-    staticClass: "text-center"
-  }, [_c("a", {
-    staticClass: "ms_btn boxshadow",
-    attrs: {
-      type: "button"
-    }
-  }, [_vm._v("Si, ho FAME!")])])])])]);
+  }, [_vm._v("Stai per eseguire il pagamento dell'ordine...")]), _vm._v(" "), _c("p", [_vm._v("vuoi procedere?")])]);
 }];
 render._withStripped = true;
 
