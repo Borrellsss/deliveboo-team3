@@ -33,4 +33,5 @@ Route::get('orders/generate', 'Api\Orders\OrderController@generate');
 // Rotta che effettua la transazione
 Route::post('orders/make/payment', 'Api\Orders\OrderController@makePayment');
 
-
+// Rotta per la gestione degli ordini
+Route::post('orders', 'Api\Orders\OrderController@store');

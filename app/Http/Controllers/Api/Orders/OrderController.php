@@ -48,6 +48,27 @@ class OrderController extends Controller
             return response()->json($data,401);
         }
     }
+
+    public function store(Request $request) {
+
+        $data = $request->all();
+        
+        $order_cart = $data['order_cart'];
+        $order_amount = $data['order_amount'];
+        $order_formdata = [];
+        $order_formdata[] = $data['order_formdata'];
+
+
+
+        // $validator = Validator::make($data, [
+        //     'customer_name' => 'required|max:255',
+        //     'customer_email' => 'required|email|max:255',
+        //     'customer_phone_number' =>
+        //     'address' => 'required|max:60000',
+        // ]);
+
+        return response()->json();
+    }
 }
 
 

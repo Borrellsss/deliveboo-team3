@@ -155,7 +155,7 @@
                               </svg>
                         </div>
                     <!-- Braintree Component -->
-                    <PaymentComponent :Amount="totalAmount(cart)" v-if="isVisible" />
+                    <PaymentComponent :amount="totalAmount(cart)" v-if="isVisible" />
                     </div>
                 </div>
             </div>
