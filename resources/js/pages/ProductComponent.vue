@@ -1,13 +1,13 @@
 <template>
     <div>
         <section>
-            <div class="jumbotron jumbotron-fluid" style="margin-top:90px">
+            <div class="jumbotron jumbotron-fluid">
+            <div class="jumbotron-overlay"></div>
             <div class="container d-flex justify-content-around">
-                <div>
+                <div class="restaurant-heading">
                     <h2>Nome Ristorante</h2>
                     <p class="lead"><i class="fa-solid fa-location-dot mr-2"></i>Via dei girasoli, 15</p>
                 </div>
-                <img src="https://citynews-romatoday.stgy.ovh/~media/horizontal-mid/52295577773865/unnamed-2020-07-27t134402-606-2.jpg" alt="ristorante">
             </div>
             </div>
             <div class="pr_container" style="margin-top:100px">
@@ -26,7 +26,7 @@
                                 <div v-for="product,index in products" :key="index" class="col p-2">
                                     <div class="card">
                                        <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
-                                       <img v-else class="card-img" src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="product.name">
+                                       <img v-else class="card-img" src="https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg" :alt="product.name">
                                        <div class="card-body">
                                             <h5 class="card-title">{{product.name}}</h5>
                                             <p class="card-text">Ingredienti: {{product.ingredients.slice(0, 50)}}<span v-if="product.description.length > 70">...</span>
@@ -540,34 +540,55 @@
 
   }
     .jumbotron{
-        height: 250px;
-        background: rgb(116,6,2);
-        background: radial-gradient(circle, rgba(116,6,2,1) 0%, rgba(116,6,2,1) 23%, rgba(64,4,2,1) 100%);
-        // background-color: $secondary-color;
-        color: white;
+        height: 800px;
+        background-image: url(https://www.settimoristorante.it/wp-content/uploads/sites/106/2020/01/slide_home_sofitel_settimo_ristorante_terrazza2.jpg);
+      //  background-image: url(../../../../public/images/jumbotron-img.jpg);
+       background-size: cover;
+       background-repeat: no-repeat;
+       background-position-x: 50%;
+       background-position-y: 0;
+       position: relative;
+       z-index: -2;
+    //    border-bottom: 15px solid $secondary-color;
+
+       &:after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(20, 20, 20, .3);
+        z-index: -1;
+
+       }
 
 
         .container{
-            width: 90%;
+            // width: 50%;
             height: 100%;
+            text-align: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-direction: column;
 
-            h2{
-                font-size: 2.5rem;
-                padding-top: 50px;
-                font-family: Geneva, Tahoma, sans-serif;
-            }
+              .restaurant-heading{
+                margin-top: 3rem;
+                // background: rgba(20, 20, 20, .7);
+                padding: 2rem 0.3rem;
+                display: inline-block;
 
-            P{
-                font-family: Geneva, Tahoma, sans-serif;
-            }
+                  h2{
+                      font-size: 3rem;
+                  }
+      
+                  P{
+                    font-size: 1.5rem;
+                  }
+              }
 
-            img{
-                width: 40%;
-               height: 100%;
-               object-fit: cover;
-               padding: 15px 0;
-               margin-left: 30px;
-            }
         }
 
     }
@@ -826,9 +847,7 @@
 
         .jumbotron{
 
-                img{
-                    display: none;
-                }
+                  height: 600px;
             }
         }
 
