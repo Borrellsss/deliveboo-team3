@@ -17,29 +17,33 @@ class StatisticsController extends Controller
         
         $user = Auth::user();
 
-        $sql_query = 'SELECT COUNT(id) as orders_per_month, created_at FROM orders  WHERE user_id = ' . $user->id . ' GROUP BY month(created_at) ORDER BY created_at DESC';
-
+        $sql_query_monthly_orders = 'SELECT COUNT(id) as orders_per_month, created_at FROM orders  WHERE user_id = ' . $user->id . ' GROUP BY month(created_at) ORDER BY created_at DESC';
+        $sql_query_monthly_revenue = 'SELECT  SUM(total_amount) as revenue_per_month, created_at FROM orders WHERE user_id = '  . $user->id . ' GROUP BY month(created_at) ORDER BY created_at DESC';
         
+        $user_orders = DB::select($sql_query_monthly_orders);
+        $user_revenues = DB::select($sql_query_monthly_revenue);
 
-        $user_orders = DB::select($sql_query);
-
-        $orders_per_month = [];
-
-        $order_by_month_year = [];
+        $monthly_orders = [];
+        $timestamps = [];
+        $monthly_revenue = [];
 
         foreach($user_orders as $order) {
-            $orders_per_month[] = $order->orders_per_month;
-
-            $order_by_month_year[] = Carbon::create($order->created_at)->format('m/Y');
+            $monthly_orders[] = $order->orders_per_month;
+            $timestamps[] = Carbon::create($order->created_at)->format('m/Y');
         }
 
-        $chart_types = ['bar', 'doughnut', 'pie', 'line', 'polarArea', 'radar',];
+        foreach($user_revenues as $revenue) {
+            $monthly_revenue[] = $revenue->revenue_per_month;
+        }
+
+        $chart_types = ['bar', 'line'];
 
         $data = [
             'user' => $user,
             'chart_types' => $chart_types,
-            'orders_per_month' => $orders_per_month,
-            'order_by_month_year' => $order_by_month_year,
+            'monthly_orders' => $monthly_orders,
+            'monthly_revenue' => $monthly_revenue,
+            'timestamps' => $timestamps,
         ];
 
         return view('admin.statistics', $data);

@@ -23,6 +23,11 @@ export default {
         HeaderComponent, 
         PaymentComponent,
         FooterComponent
+    },
+    computed: {
+        isUserLogged() {
+            return  window.userLogged;
+        }
     }
 }
 </script>

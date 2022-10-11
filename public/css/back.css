@@ -434,3 +434,18 @@ section .ms_form-card-body {
   padding-block: 0.5rem;
   border-bottom: 2px solid #feaa02;
 }
+
+.ms_paginator-links {
+  margin-inline: auto;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.ms_paginator-links .page-item > .page-link {
+  color: #740602;
+}
+.ms_paginator-links .page-item.active .page-link {
+  z-index: 3;
+  color: #feaa02;
+  background-color: #740602;
+  border-color: #feaa02;
+}

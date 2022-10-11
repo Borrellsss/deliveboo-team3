@@ -2,3 +2,21 @@
     padding-block: 0.5rem;
     border-bottom: 2px solid $primary-color;
 }
+.ms_paginator-links {
+    margin-inline: auto;
+    width: fit-content;
+
+    .page-item {
+
+        > .page-link {
+            color: $secondary-color;
+        }
+        &.active .page-link {
+            z-index: 3;
+            color: $primary-color;
+            background-color: $secondary-color;
+            border-color: $primary-color;
+        }
+    }
+        
+}

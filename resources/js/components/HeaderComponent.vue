@@ -70,8 +70,12 @@
 <script>
 export default {
     name: 'HeaderComponent',
-
-       }
+    computed: {
+        isUserLogged() {
+            return  window.userLogged;
+        }
+    }
+}
 </script>
 
 <style lang="scss" scoped>

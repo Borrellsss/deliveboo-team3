@@ -7865,7 +7865,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'HeaderComponent'
+  name: 'HeaderComponent',
+  computed: {
+    isUserLogged: function isUserLogged() {
+      return window.userLogged;
+    }
+  }
 });
 
 /***/ }),
@@ -8179,6 +8184,11 @@ __webpack_require__.r(__webpack_exports__);
     HeaderComponent: _components_HeaderComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     PaymentComponent: _components_PaymentComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     FooterComponent: _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  computed: {
+    isUserLogged: function isUserLogged() {
+      return window.userLogged;
+    }
   }
 });
 
