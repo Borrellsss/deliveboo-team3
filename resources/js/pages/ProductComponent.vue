@@ -1,6 +1,7 @@
 <template>
     <div>
         <section>
+      <!-- **************** RESTAURANT JUMBOTRON *********************     -->     
             <div class="jumbotron jumbotron-fluid">
             <div class="jumbotron-overlay"></div>
             <div class="container d-flex justify-content-around">
@@ -12,38 +13,42 @@
             </div>
             <div class="pr_container" style="margin-top:100px">
 
+   <!-- **************** CART SYMBOL FIXED ON SIDE *********************  -->     
                 <a v-if="cart.length" class="floating-cart" @click="cartScroll()">
                     <div class="count-float">
                         <span>{{cart.length}}</span>
                     </div>
                     <i class="fa-solid fa-cart-shopping"></i>
                 </a>
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 products-col px-3">
+                <div class="row master-row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8  px-3 products-col">
+   <!-- **************** PRODUCT SIDE *********************        -->   
                         <div class="products-side">
-                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 d-flex justify-content-start">
+                            <div class="row row-cols-1 row-cols-sm- row-cols-md-2 row-cols-lg-2 row-cols-xl-2">
 
                                 <div v-for="product,index in products" :key="index" class="col p-2">
-                                    <div class="card">
+      <!-- **************** PRODUCT CARD *********************        -->     
+                                    <div class="ms-product-card">
                                        <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
                                        <img v-else class="card-img" src="https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg" :alt="product.name">
-                                       <div class="card-body">
-                                            <h5 class="card-title">{{product.name}}</h5>
-                                            <p class="card-text">Ingredienti: {{product.ingredients.slice(0, 50)}}<span v-if="product.description.length > 70">...</span>
-                                                <!-- <span class="info-popup-inline"> </span> -->
-                                            </p>
-                                            <a href="#popup1" @click="selectProduct(product), showProductInfo()">Maggiori informazioni</a>
-                                       <!-- --------- vecchia card  con description -----------        -->
-                                            <!-- <p class="card-text">{{product.description.slice(0, 70)}}<span v-if="product.description.length > 70">...</span>
-                                                <span class="info-popup-inline"> <a href="#popup1" @click="selectProduct(product), showProductInfo()">Maggiori informazioni</a></span>
-                                            </p> -->
-                                            <!-- --------------- fine --------------   -->
-                                            <!-- <a href="#popup1" @click="selectProduct(product), showProductInfo()">Maggiori informazioni</a> -->
-                                            <h6 class="product-card-price">{{product.price}}&euro;</h6>
-                                            <a @click='addItem(product)' class="add-to-cart">Aggiungi al carrello</a>
+                                       <div class="ms_card-body">
+                                           <h5 class="ms_card-title">{{product.name}}</h5>
+                                           <p class="card-ingredients">Ingredienti: {{product.ingredients.slice(0, 65)}}<span v-if="product.description.length > 65">...</span>
+                                          </p>
+                                          <h6 class="product-card-price">{{product.price}}&euro;</h6>
+                                          <div class="two-part-container d-flex justify-content-between align-items-center ">
+                                              <div class="first-half">
+                                                  <a @click='addItem(product)' class="add-to-cart">Aggiungi al carrello</a>
+                                            </div>
+                                            <div class="second-half">
+                                                    <a class=".info-popup-inline" href="#popup1" @click="selectProduct(product), showProductInfo()"><i class="fa-solid fa-circle-info"></i></a>
+                                                   
+                                                </div>
+                                          </div>
                                         </div>
                                     </div>
-                                     
+                                    
+       <!-- **************** POPUP INFO PRODUCT *********************  -->
                                     <div class="info-popup" style="margin-top:90px"  :class="{'ms_visible' : toggle_popup}">
                                         <div id="popup1" class="overlay">
                                             <div v-for="element,index in myProduct" :key="index">
@@ -55,11 +60,10 @@
                                                         <div>Ingredienti: {{element.ingredients}}</div>
                                                         <a @click='addItem(element)' class="add-to-cart pop-btn">Aggiungi al carrello</a>
                                                     </div>
-
                                                      <a class="close" @click="showProductInfo()">&times;</a>
                                                 </div> 
                                             </div>
-                                            
+                                       
                                         </div>
                                     </div>
                                 </div>
@@ -68,9 +72,12 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-9 col-md-8 col-lg-4 col-xl-4 cart-col">
+
+      <!-- **************** CART *********************  -->
                         <div v-if="cart.length > 0" class="cart-container">
+                            <div class="ghost-cart" id="my-cart"></div>
                             <!-- v-if="cart.length > 0" -->
-                            <h3 id="my-cart">Carrello</h3>
+                            <h3 class="ms_cart_title" >Carrello</h3>
                             <div v-for="(product, index) in cart" :key="index" class="row">
                                 <div class="col col-6">
                                     <div class="product-name d-flex justify-content-center align-items-center">
@@ -432,9 +439,9 @@
 // }
 
 #my-cart{
-        width: 0.2px;
-        height: 0.2px;
-        padding-bottom: 35px;
+        // width: 0.2px;
+        // height: 0.2px;
+        // padding-bottom: 35px;
 
     }
     .add-to-cart{
@@ -609,6 +616,8 @@
         justify-content: center;
         z-index: 10;
         cursor: pointer;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+            0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
             .fa-cart-shopping{
                 font-size: 2.3rem;
@@ -647,18 +656,24 @@
         margin: 0 auto;
         position: relative;
     }
-
+    
+    //    ************** PRODUCT CARDS **********************  
     .products-side{
-
         margin-bottom: 70px;
+        width: 95%;
         .my-circle {
           width: 50px;
           height: 50px;
           text-align: center;
           vertical-align: middle;
-      }
+          }
 
-          .card{
+          .col{
+            margin-bottom: -80px;
+          }
+
+     
+          .ms-product-card{
             border-radius: 15px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
             0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -667,32 +682,51 @@
                     .card-img{
                         object-fit: cover;
                         border-radius: 15px 15px 0 0;
-                        height: 200px;
+                        height: 175px;
                     }
+                    .ms_card-body{
+                        padding: 0.5rem;
+                        margin-top: 0;
 
-                 .card-title{
-                    font-weight: 700;
-                 }
+                        .ms_card-title{
+                            font-weight: 700;
+                            margin-top: 0.2rem;
+                            margin-bottom: 0.5rem;
+                            height: 25px;
+                            overflow: hidden ;
+                            text-overflow: ellipsis;
+                        }
 
-                 .card-text{
+                        .card-ingredients{
+                        }
 
-                    .info-popup-inline{
-                        font-size: 0.9rem;
-                        color: $secondary-color;
-                         text-decoration: underline;
-                    }
-                 }
+                        .two-part-container{
+                            // margin-top: 2rem;
+                            .second-half{
+                                // padding-right: 2rem;
+                                position: relative;
+                            }
+
+                        }
 
 
-            .card-body{
-                padding: 0.5rem;
+                        .fa-circle-info{
+                                    font-size: 2rem;
+                                    padding-right: 1.5rem;
+                                    color: green;
+                                   }
 
-                .product-card-price{
-                    margin-bottom: 1rem;
-                    font-weight: 700;
+                            .product-card-price{
+                                // margin-bottom: 1rem;
+                                margin: 0 0 0.9rem 0.7rem;
+                                font-weight: 700;
+                                font-size: 1.5rem;
+                            }
                 }
-            }
 
+   
+
+    // ************** END PRODUCT CARD ********************** 
             .add-to-cart{
                 display: inline-block;
                 // font-size: 0.9rem;
@@ -707,7 +741,23 @@
         }
     .cart-container{
         border-radius: 15px;
+        position: relative;
         // margin-bottom: 70px;
+
+        .ghost-cart{
+            position: absolute;
+            top: -140px;
+            left: 0;
+            height: 10px;
+            width: 10px;
+            background-color: red;
+            visibility: hidden;
+        }
+
+        .ms_cart_title{
+            margin-bottom: 1rem;
+            position: relative;
+        }
 
         .col{
         border: 1px solid rgb(203, 197, 197);
@@ -840,16 +890,113 @@
 
     .selected{
         color: red;
-        background-color: red;
+        // background-color: red;
     }
+
+
+    @media only screen and (max-width: 1800px) {
+        
+        .products-col{
+                display: flex;
+                 justify-content: center ; 
+                }
+        .products-side{
+        margin-bottom: 70px;
+        width: 85%;
+    }
+        .ms_card-body{
+                        margin-top: 0.5rem;
+                        padding: 0.5rem;
+                    }
+        .card-ingredients{
+                            height: 60px;
+                            // background-color: blue;
+                            margin: 15px auto;
+                            padding-right: 0.2rem;
+                        }
+    }
+
+    @media only screen and (max-width: 1200px) {
+
+        .products-side{
+            margin-bottom: 70px;
+            width: 95%;
+    }
+        .card-ingredients{
+                            height: 65px;
+                            // background-color: red;
+                        }
+    }
+
+    
+
+            @media only screen and (max-width: 1110px) {
+                .products-side{
+                        width: 100%;
+                 }
+            }
+
+            @media only screen and (max-width: 992px) {
+
+                .products-col{
+                    display: flex;
+                 justify-content: start ; 
+                }
+
+                .products-side{
+                        width: 90%;
+                 }
+            }
 
     @media only screen and (max-width: 768px) {
 
-        .jumbotron{
 
-                  height: 600px;
+        .jumbotron{
+                height: 600px;
             }
-        }
+
+        .row{
+            justify-content: center;
+            }
+
+            .products-side{
+        width: 80%;
+     
+          .ms-product-card{
+            height: 400px;
+
+                    .card-img{
+                        height: 175px;
+                        }
+                    .ms_card-body{
+                        padding: 0.5rem;
+
+                        .ms_card-title{
+                            font-weight: 700;
+                            margin-bottom: 0.5rem;
+                        }
+
+                        .card-ingredients{
+                            height: 60px;
+                            // background-color: blue;
+                            margin: 15px auto;
+
+                        }
+
+                        .fa-circle-info{
+                                    font-size: 2rem;
+                                    padding-right: 2rem;
+                                    color: green;
+                                   }
+
+                            .product-card-price{
+                                margin: 0 0 0.9rem 0;
+                                font-weight: 700;
+                                font-size: 1.5rem;
+                            }
+                } }}
+}            
+        
 
 
     </style>
