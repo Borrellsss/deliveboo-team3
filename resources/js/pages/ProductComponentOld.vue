@@ -21,27 +21,37 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                 </a>
                 <div class="row master-row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 px-3 products-col">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 products-col">
    <!-- **************** PRODUCT SIDE *********************        -->   
                         <div class="products-side">
-                            <div class="row row-cols-1 row-cols-sm- row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-between">
+                            <div class="row row-cols-1 row-cols-sm- row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-start">
 
-                                <div v-for="product,index in products" :key="index" class="col p-3">
+                                <div v-for="product,index in products" :key="index" class="col">
       <!-- **************** PRODUCT CARD *********************        -->     
-                                     <div class="ms-product-card">
-                                         <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
-                                         <img v-else class="card-img" src="https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg" :alt="product.name">
-                                       <a class="info-popup-inline" href="#popup1" @click="selectProduct(product), showProductInfo()"><i class="fa-solid fa-circle-info"></i></a>
-                                          <div class="ms-card-body d-flex">
-                                            <div class="title-price">
-                                                <h5 class="ms-card-title">{{product.name}}</h5>
-                                                <h6 class="product-card-price">{{product.price}}&euro;</h6>
+                                    <div class="ms-product-card">
+                                        <div class="ms_wrapper">
+                                            <div class="newcard-container">
+                                                <div class="top"></div>
+                                                <div class="bottom">
+                                                <div class="left">
+                                                    <div class="details">
+                                                        <h3>{{product.name}}</h3>
+                                                        <p>{{product.price}} &euro;</p>
+                                                    </div>
+                                                    <div class="buy"><i class="fa-solid fa-cart-shopping"></i></div>
+                                                </div>
+                                                <div class="right">
+                                                    <div class="details">
+                                                        <h3>{{product.name}}</h3>
+                                                    </div>
+                                                </div>
+                                                </div>
                                             </div>
-                                            <div class="cart-card-symbol">
-                                                <a @click='addItem(product)' class="add-to-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                                            <div class="inside">
+                                                <div class="icon"><i class="fa-solid fa-circle-info"></i></div>
                                             </div>
-                                          </div>
-                                     </div>
+                                        </div>
+                                    </div>
                                     
        <!-- **************** POPUP INFO PRODUCT *********************  -->
                                     <div class="info-popup" style="margin-top:90px"  :class="{'ms_visible' : toggle_popup}">
@@ -186,6 +196,7 @@
         },
         created() {
 
+           
               // $this.route.paramas.id rappresenta il passaggio di informazioni eseguiro con il router link
              axios.get(`http://127.0.0.1:8000/api/${this.$route.params.id}/menu`)
             .then((response) =>{
@@ -213,6 +224,7 @@
         },
 
         methods:{
+
 
             // funzione che scrolla l'icona del carrello
             cartScroll(){
@@ -440,7 +452,11 @@
 
     }
     .add-to-cart{
-                color: rgb(23, 2, 2);
+                // font-size: 0.9rem;
+                color: white;
+                padding: 0.3rem 1rem;
+                background: linear-gradient(to top right, $secondary-color, #bf201b);
+                border-radius: 0.7rem;
                 cursor: pointer;
                 }
   .info-popup{
@@ -481,6 +497,7 @@
     width: 40%;
     position: relative;
     // margin-top: 300px;
+    
     }
 
     .popup h2 {
@@ -512,6 +529,8 @@
           
     }
 
+
+
     &.ms_visible{
          
         .overlay {
@@ -522,14 +541,14 @@
         
     }
 
-    // @media screen and (max-width: 700px){
-    // .box{
-    //     width: 70%;
-    // }
-    // .popup{
-    //     width: 70%;
-    // }
-    // }
+    @media screen and (max-width: 700px){
+    .box{
+        width: 70%;
+    }
+    .popup{
+        width: 70%;
+    }
+    }
 
    
 
@@ -637,7 +656,6 @@
                 }
             }
 
-            
 
     .pr_container{
         width: 90%;
@@ -662,111 +680,219 @@
 
      
           .ms-product-card{
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-            0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            height: 75%;
-            aspect-ratio: 1/1;
-            position: relative;
-            border-radius: 10px 10px 10px 10px;
-            transition: box-shadow 0.5s, transform 0.5s;
-
-            &:hover{
-                    box-shadow: 5px 20px 30px rgba(0,0,0,0.3);
-                }
-
-            .card-img{
-                object-fit: cover;
-                border-radius: 15px 15px 0 0;
-                height: 70%;
-            }
-
-            .info-popup-inline{
-                .fa-circle-info{
-                            position: absolute;
-                            font-size: 160%;
-                            color: white;
-                            top: 10px;
-                            right: 10px;
-
-                            &:hover{
-                                color: #efecec;
-                            }
+    
+            // inizio nuova carta ******************************************************  
+            .ms_wrapper{
+                    width: 300px;
+                    height: 300px;
+                    background: white;
+                      margin: auto;
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: 10px 10px 10px 10px;
+                    transition: box-shadow 0.5s, transform 0.5s;
+                    &:hover{
+                        // transform: scale(0.9);
+                        box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
                     }
+  
+  .newcard-container{
+    width:100%;
+    height:100%;
+    .top{
+      height: 70%;
+      width:100%;
+      background: url("https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg") no-repeat center center; 
+      background-size: cover;
+        // -webkit-background-size: 100%;
+        // -moz-background-size: 100%;
+        // -o-background-size: 100%;
+        // background-size: 100%;
+        }
+    .bottom{
+      width: 200%;
+      height: 40%;
+      transition: transform 0.5s;
+      &.clicked{
+        transform: translateX(-50%);
+      }
+      h3{
+          margin:0;
+          padding:0;
+      }
+      p{
+          margin:0;
+          padding:0;
+      }
+      .left{
+        height:100%;
+        width: 50%;
+        background: #efecec;
+        position:relative;
+        float:left;
+        .details{
+          padding: 10px 20px 20px 20px;
+          float: left;
+          width: calc(70% - 40px);
+
+          h3{
+            height: 40px;
+            // background-color: red;
+            display: block;
+            font-weight: bold;
+            font-size: 1.1rem;
+          }
+
+          p{
+            font-size: 1.1rem;
+          }
+        }
+        .buy{
+          float:right;
+          width: calc(30% - 2px);
+          height: 100%;
+          background: #efecec;
+          transition: background 0.5s;
+          border-left:solid thin rgba(0,0,0,0.1);
+          cursor: pointer;
+          .fa-cart-shopping{
+                font-size: 30px;
+                padding: 20px 0 0 23px;
+                color: #254053;
+                transition: transform 0.5s;
+             }
+          &:hover{
+            background: #A6CDDE;
+          }
+          &:hover .fa-cart-shopping{
+            transform: translateY(5px);
+            color:#00394B;
+          }
+        }
+      }
+      .right{
+        width: 50%;
+        background: #A6CDDE;
+        color: white;
+        float:right;
+        height:200%;
+        overflow: hidden;
+        .details{
+          padding: 20px;
+          float: right;
+          width: calc(70% - 40px);
+        }
+        .done{
+          width: calc(30% - 2px);
+          float:left;
+          transition: transform 0.5s;
+          border-right:solid thin rgba(255,255,255,0.3);
+          height:50%;
+          i{
+            font-size:30px;
+            padding:30px;
+            color: white;
+          }
+        }
+        .remove{
+          width: calc(30% - 1px);
+          clear: both;
+          border-right:solid thin rgba(255,255,255,0.3);
+          height:50%;
+          background: #BC3B59;
+          transition: transform 0.5s, background 0.5s;
+          &:hover{
+            background: #9B2847;
+          }
+          &:hover i{
+            transform: translateY(5px);
+          }
+          i{
+            transition: transform 0.5s;
+            font-size:30px;
+            padding:30px;
+            color: white;
+          }
+        }
+        &:hover{
+          .remove, .done{
+            transform: translateY(-100%);
+          }
+        }
+      }
+    }
+  }
+  
+  .inside{
+    z-index:9;
+    background:transparent;
+    width:140px;
+    height:140px;
+    position: absolute;
+    top: -70px;
+    right: -70px;
+    border-radius: 0px 0px 200px 200px;
+    transition: all 0.5s, border-radius 2s, top 1s;
+    overflow: hidden;
+  }
+    .icon{
+      position:absolute;
+      right:79px;
+      top:82px;
+      color:white;
+      opacity: 1;
+
+      .fa-circle-info{
+            font-size: 2.3rem;
+            cursor: pointer;
+          }
+    }
+    &:hover{
+    //   width:100%;
+    //   right:0;
+    //   top:0;
+    //   border-radius: 0;
+    //   height:80%;
+    //   .icon{
+    //     opacity: 0;
+    //     right:15px;
+    //     top:15px;
+    //   }
+    //   .contents{
+    //     opacity: 1;
+    //     transform: scale(1);
+    //     transform: translateY(0);
+    //   }
+    // }
+    .contents{
+      padding: 5%;
+      opacity: 0;
+      transform: scale(0.5);
+      transform: translateY(-200%);
+      transition: opacity 0.2s, transform 0.8s;
+      table{
+        text-align:left;
+        width:100%;
+      }
+      h3, p, table{
+        color: white;
+      }
+      p{
+        font-size:13px;
+      }
+    }
+  
+}
+  
+}
+            
+
+
+
+             // fine nuova carta ******************************************************  
+
             }
-                    
-            .ms-card-body{
-                height: 40%;
-                    .title-price{
-                        width: ( (100% / 4) * 3);
-                        background-color:  #f7f2f2;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: start;
-                        align-items: start;
-                        padding-left: 1rem;
-                        
-
-                                .ms-card-title{
-                                    margin-top: 1rem;
-                                    font-weight: 600;
-                                    overflow: hidden ;
-                                    text-overflow: ellipsis;
-                                    font-size: 0.9rem;
-                                }
-
-                                .product-card-price{
-                                    margin-bottom: 1rem;
-                                    font-size: 0.8rem;
-                                }
-                         }
-                    .cart-card-symbol{
-                        width: (100% / 4);
-                        background-color:  #f7f2f2;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        border-left:solid thin rgba(0,0,0,0.1);
-                        transition: transform 0.5s;
-
-                        &:hover{
-                                    background:#eae1e1;
-                                }
-
-                                .add-to-cart{
-                                    font-size: 140%;
-                                    margin-bottom: 1.8rem;
-                                    color: #254053;
-                                    transition: transform 0.5s;
-                                    // background: #efecec;
-
-                                        .fa-cart-shopping{
-                                                color: #254053;
-                                                transition: transform 0.5s;
-                                            }
-
-                                        // &:hover{
-                                        //         background: #A6CDDE;
-                                        //     }
-                                        &:hover .fa-cart-shopping{
-                                            transform: translateY(5px);
-                                            color:#00394B;
-                                        }
-
-                             }
-                         }
-                 }
-
-           
-
-                        
-            }
-
-            }
-        
-
-      // ************** END PRODUCT CARD ********************** 
+        }
     .cart-container{
         border-radius: 15px;
         position: sticky;
@@ -779,7 +905,7 @@
             left: 0;
             height: 10px;
             width: 10px;
-            // background-color: red;
+            background-color: red;
             visibility: hidden;
         }
 
@@ -923,13 +1049,19 @@
     }
 
 
-    // @media only screen and (max-width: 1800px) {
+    @media only screen and (max-width: 1800px) {
         
-    //     .products-col{
-    //             display: flex;
-    //              justify-content: center ; 
-    //     }     
-    // }
+        .products-col{
+                display: flex;
+                 justify-content: start ; 
+                }
+
+                .ms_wrapper{
+                    width: 250px;
+                    height: 250px;
+                    background-color: red;
+                    } 
+           }
 
     @media only screen and (max-width: 1200px) {
 
@@ -937,17 +1069,7 @@
             margin-bottom: 70px;
             width: 95%;
     }
-        .card-ingredients{
-                            height: 65px;
-                            // background-color: red;
-                        }
-    }
-
-            @media only screen and (max-width: 1110px) {
-                .products-side{
-                        width: 100%;
-                 }
-            }
+}
 
             @media only screen and (max-width: 992px) {
 
@@ -960,9 +1082,9 @@
                  justify-content: start ; 
                 }
 
-                // .products-side{
-                //         width: 90%;
-                //  }
+                .products-side{
+                        width: 90%;
+                 }
             }
 
     @media only screen and (max-width: 768px) {
@@ -976,42 +1098,11 @@
             justify-content: center;
             }
 
-        //     .products-side{
-        // width: 80%;
+            .products-side{
+        width: 80%;
      
-        //   .ms-product-card{
-        //     height: 400px;
-
-        //             .card-img{
-        //                 height: 175px;
-        //                 }
-        //             .ms_card-body{
-        //                 padding: 0.5rem;
-
-        //                 .ms_card-title{
-        //                     font-weight: 700;
-        //                     margin-bottom: 0.5rem;
-        //                 }
-
-        //                 .card-ingredients{
-        //                     height: 60px;
-        //                     // background-color: blue;
-        //                     margin: 15px auto;
-
-        //                 }
-
-        //                 .fa-circle-info{
-        //                             font-size: 2rem;
-        //                             padding-right: 2rem;
-        //                             color: green;
-        //                            }
-
-        //                     .product-card-price{
-        //                         margin: 0 0 0.9rem 0;
-        //                         font-weight: 700;
-        //                         font-size: 1.5rem;
-        //                     }
-        //         } }}
+         
+                } 
 }            
         
 
