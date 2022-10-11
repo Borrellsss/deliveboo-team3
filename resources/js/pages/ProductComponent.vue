@@ -1,51 +1,5 @@
 <template>
     <div>
-        <div class="carrello-tutto-schermo" :class="{'ms_visible' : toggle_popup}">
-                        <div @click="showProductInfo()" class="cover-all"></div>
-                        <div v-if="cart.length > 0" class="cart-container">
-                            <!-- v-if="cart.length > 0" -->
-                            <h3>Carrello</h3>
-                            <a @click="showProductInfo()">torna ai prodotti</a>
-                            <div v-for="(product, index) in cart" :key="index" class="row">
-                                <div class="col col-6">
-                                    <div class="product-name d-flex justify-content-center align-items-center">
-                                        {{product.name}}
-                                    </div>
-                                </div>
-                                <div class="col col-3">
-                                    <div class="product-quantity-remove d-flex flex-column justify-content-center align-items-center">
-                                        <div class="product-quantity d-flex justify-content-center align-items-center">
-                                            <a class="quantity-btn" @click='decreaseQuantity(product, index)'><span class="decrease">-</span></a>
-                                            <span class="quantity-number">{{product.quantity}}</span>
-                                            <a class="quantity-btn" @click='addItem(product)'><span class="increase">+</span></a>
-                                        </div>
-                                        <a class="remove-btn" @click='deleteItem(index)'>Rimuovi</a>
-                                    </div>
-                                </div>
-                                <div class="col col-3">
-                                    <div class="product-price d-flex flex-column justify-content-center align-items-center">
-                                        {{ product.price * product.quantity }}&euro;
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row d-flex justify-content-end">
-                                <div class="col col-12">
-                                    <div class="checkout">
-                                        <div class="total">
-                                            <div>
-                                                <div class="Subtotal">Sub-Totale</div>
-                                                <div class="items" @click="clearCart(index)">Svuota carrello</div>
-                                            </div>
-                                            <!-- <div v-for="product, index in products" :key="product.id" class="total-amount">
-                                                {{ product.price * product.quantity + index-1}}&euro;
-                                            </div> -->
-                                            <div class="total-amount">&euro;{{total_amount}}</div>
-                                        </div>
-                                    <button class="button">Checkout</button></div>
-                                </div>
-                            </div>
-                        </div>
-             </div>  
         <section>
             <div class="jumbotron jumbotron-fluid" style="margin-top:90px">
             <div class="container d-flex justify-content-around">
@@ -58,7 +12,7 @@
             </div>
             <div class="pr_container" style="margin-top:100px">
 
-                <a v-if="cart.length" class="floating-cart" @click="showProductInfo()">
+                <a v-if="cart.length" class="floating-cart" @click="cartScroll()">
                     <div class="count-float">
                         <span>{{cart.length}}</span>
                     </div>
@@ -90,8 +44,7 @@
                                         </div>
                                     </div>
                                      
-                                    <div class="info-popup" style="margin-top:90px">
-                                        <!-- <div class="info-popup" style="margin-top:90px"  :class="{'ms_visible' : toggle_popup}"> -->
+                                    <div class="info-popup" style="margin-top:90px"  :class="{'ms_visible' : toggle_popup}">
                                         <div id="popup1" class="overlay">
                                             <div v-for="element,index in myProduct" :key="index">
                                                 <div class="popup">
@@ -117,7 +70,7 @@
                     <div class="col-12 col-sm-9 col-md-8 col-lg-4 col-xl-4 cart-col">
                         <div v-if="cart.length > 0" class="cart-container">
                             <!-- v-if="cart.length > 0" -->
-                            <h3>Carrello</h3>
+                            <h3 id="my-cart">Carrello</h3>
                             <div v-for="(product, index) in cart" :key="index" class="row">
                                 <div class="col col-6">
                                     <div class="product-name d-flex justify-content-center align-items-center">
@@ -258,6 +211,14 @@
         },
 
         methods:{
+
+            // funzione che scrolla l'icona del carrello
+            cartScroll(){
+                const element = document.getElementById('my-cart')
+                element.scrollIntoView({ behavior: 'smooth' });
+            },
+
+            // mostra popup info  
 
             showProductInfo(){
                 if (this.toggle_popup){
@@ -464,42 +425,18 @@
     @import '../style/variables';
     @import '../style/common';
 
-.carrello-tutto-schermo{
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.7);
-    opacity: 1;
-    z-index: 10;
-    overflow-y: hidden;
-    display: none;
+// .cart-col{
+//       position:fixed;
+//       top: 20;
+//       right: 0;
+// }
 
-    &.ms_visible{
-        display: block;
+#my-cart{
+        width: 0.2px;
+        height: 0.2px;
+        padding-bottom: 35px;
+
     }
-
-    .cover-all{
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-    }
-
-    .cart-container{
-        width: 60%;
-        margin: 200px auto;
-        background-color: white;
-    }
-}
-
-.cart-col{
-      position:fixed;
-      top: 20;
-      right: 0;
-}
     .add-to-cart{
                 // font-size: 0.9rem;
                 color: white;
