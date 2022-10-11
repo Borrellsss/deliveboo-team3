@@ -31,11 +31,15 @@
                                             <h5 class="card-title">{{product.name}}</h5>
                                             <p class="card-text">{{product.description}}</p>
                                             <h6 class="product-card-price">{{product.price}}&euro;</h6>
-                                            <a @click='addItem(product)' class="add-to-cart">Aggiungi al carrello</a>
+                                            <a @click='addItem(product), selectProduct(product)' class="add-to-cart">Aggiungi al carrello</a>
                                         </div>
-                                     </div>
-                                 </div>
+                                    </div>
+                                    
+                                    <div v-show="true">
+                                        <div v-if="show" class="add-to-cart">Aggiunto!</div>
+                                    </div>
 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -143,6 +147,10 @@
                 cart:[],
                 // numero prodotti presenti nel carrello
                 products_in_cart: 0,
+                // show del messaggio per l'utente
+                show: false,
+
+                myProduct: [],
             }
         },
         created() {
@@ -177,8 +185,8 @@
                 if (!product){
                     return;
                 }
-                console.log(product.id);
                 if(localStorage.getItem('cart') == null || JSON.parse(localStorage.getItem('cart')).length === 0){
+                    
                     product.quantity = 1;
 
                     // pusha nell'array il prodotto
@@ -186,6 +194,9 @@
 
                     // salva il carrello
                     this.saveCart();
+                    // msg per l'utente: conferma aggiunta piatto
+                    this.addItemConfirm();
+                    
 
                 }else{
                     // salvo la stringa di LocalStorage in this.cart
@@ -202,12 +213,13 @@
                             this.cart.push(product);
                             // salva il carrello
                             this.saveCart();
+                            // msg per l'utente: conferma aggiunta piatto
+                            this.addItemConfirm();
                         }
 
                     }else{
                         //se non cambia ristorante:
                         // salva l'id del prodotto selezionato
-
                         let check = this.cart.find(({id}) => id == product.id);
                         // se non esiste già
                         if(!check){
@@ -220,6 +232,8 @@
                                 if(this.cart[i].id == product.id){
                                     this.cart[i].quantity = this.cart[i].quantity + 1
                                     this.saveCart();
+                                    // msg per l'utente: conferma aggiunta piatto
+                                    this.addItemConfirm();
                                 }
                             }
                         }
@@ -227,6 +241,8 @@
                         this.cart.push(product);
                         // salva il carrello
                         this.saveCart();
+                        // msg per l'utente: conferma aggiunta piatto
+                        this.addItemConfirm();
                     }
                 }
             },
@@ -284,6 +300,33 @@
                     total_amount += product.price * product.quantity;
                 })
                 return total_amount;
+            },
+
+            // funzione che avvisa l'utente del prodotto correttamente aggiunto al carrello
+            // addItemConfirm(){
+               
+            //     setTimeout(() => {
+            //         this.show = true;
+            //     }, 0);
+
+            //     setTimeout(() => {
+            //         this.show = false;
+            //     }, 900);
+            // },
+
+            selectProduct(product){
+                this.myProduct.push(product);
+                this.addItemConfirm();
+            },
+
+            addItemConfirm(){
+                if (this.show){
+                    this.show = false
+                      this.myProduct = []; 
+                }else{
+                    this.show = true
+                  
+                }
             },
         },
     }
