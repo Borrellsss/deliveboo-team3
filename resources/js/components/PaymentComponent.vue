@@ -6,25 +6,25 @@
         <!-- Name -->
         <div class="mb-1">
           <label for="customer_name" class="form-label"></label>
-          <input type="text" class="form-control" id="customer_name" placeholder="Cognome e Nome" v-model="formData.customerName">
+          <input type="text" class="form-control" id="customer_name" placeholder="Cognome e Nome" v-model="customerName">
         </div>
 
         <!-- Email -->
         <div class="mb-1">
           <label for="customer_mail" class="form-label" ></label>
-          <input type="email" class="form-control" id="customer_mail" placeholder="Email" v-model="formData.customerEmail">
+          <input type="email" class="form-control" id="customer_mail" placeholder="Email" v-model="customerEmail">
         </div>
 
         <!-- Phone Number -->
         <div class="mb-1">
           <label for="customer_phone_number" class="form-label"></label>
-          <input type="text" class="form-control" id="customer_phone_number" placeholder="Telefono" v-model="formData.customerPhoneNumber">
+          <input type="text" class="form-control" id="customer_phone_number" placeholder="Telefono" v-model="customerPhoneNumber">
         </div> 
 
         <!-- Address -->
         <div class="mb-2">
             <label for="customer_address" class="form-label"></label>
-            <textarea class="form-control" id="customer_address" rows="2" placeholder="Indirizzo di consegna" v-model="formData.customerAddress"></textarea>
+            <textarea class="form-control" id="customer_address" rows="2" placeholder="Indirizzo di consegna" v-model="customerAddress"></textarea>
         </div> 
       </form>     
     </div>
@@ -49,12 +49,10 @@ export default {
       token: '',
       Payed: true,
       orderData: [],
-      formData: {
-        customerName: '',
-        customerEmail: '',
-        customerPhoneNumber: '',
-        customerAddress: ''
-      }
+      customerName: '',
+      customerEmail: '',
+      customerPhoneNumber: '',
+      customerAddress: ''
     }
   },
   props: {
@@ -91,8 +89,10 @@ export default {
             axios.post(
               'http://127.0.0.1:8000/api/orders', {
                 order_cart: this.cart,
-                order_amount: this.amount,
-                order_formdata: this.formData
+                order_customerName: this.customerName,
+                order_customerEmail: this.customerEmail,
+                order_customerPhoneNumber: this.customerPhoneNumber,
+                order_customerAddress: this.customerAddress
               })
               .then((result) => {
                 console.log(result);

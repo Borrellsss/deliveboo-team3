@@ -7886,12 +7886,10 @@ __webpack_require__.r(__webpack_exports__);
       token: '',
       Payed: true,
       orderData: [],
-      formData: {
-        customerName: '',
-        customerEmail: '',
-        customerPhoneNumber: '',
-        customerAddress: ''
-      }
+      customerName: '',
+      customerEmail: '',
+      customerPhoneNumber: '',
+      customerAddress: ''
     };
   },
   props: {
@@ -7926,8 +7924,10 @@ __webpack_require__.r(__webpack_exports__);
 
           axios.post('http://127.0.0.1:8000/api/orders', {
             order_cart: _this2.cart,
-            order_amount: _this2.amount,
-            order_formdata: _this2.formData
+            order_customerName: _this2.customerName,
+            order_customerEmail: _this2.customerEmail,
+            order_customerPhoneNumber: _this2.customerPhoneNumber,
+            order_customerAddress: _this2.customerAddress
           }).then(function (result) {
             console.log(result);
           });
@@ -8519,8 +8519,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.formData.customerName,
-      expression: "formData.customerName"
+      value: _vm.customerName,
+      expression: "customerName"
     }],
     staticClass: "form-control",
     attrs: {
@@ -8529,13 +8529,12 @@ var render = function render() {
       placeholder: "Cognome e Nome"
     },
     domProps: {
-      value: _vm.formData.customerName
+      value: _vm.customerName
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-
-        _vm.$set(_vm.formData, "customerName", $event.target.value);
+        _vm.customerName = $event.target.value;
       }
     }
   })]), _vm._v(" "), _c("div", {
@@ -8549,8 +8548,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.formData.customerEmail,
-      expression: "formData.customerEmail"
+      value: _vm.customerEmail,
+      expression: "customerEmail"
     }],
     staticClass: "form-control",
     attrs: {
@@ -8559,13 +8558,12 @@ var render = function render() {
       placeholder: "Email"
     },
     domProps: {
-      value: _vm.formData.customerEmail
+      value: _vm.customerEmail
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-
-        _vm.$set(_vm.formData, "customerEmail", $event.target.value);
+        _vm.customerEmail = $event.target.value;
       }
     }
   })]), _vm._v(" "), _c("div", {
@@ -8579,8 +8577,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.formData.customerPhoneNumber,
-      expression: "formData.customerPhoneNumber"
+      value: _vm.customerPhoneNumber,
+      expression: "customerPhoneNumber"
     }],
     staticClass: "form-control",
     attrs: {
@@ -8589,13 +8587,12 @@ var render = function render() {
       placeholder: "Telefono"
     },
     domProps: {
-      value: _vm.formData.customerPhoneNumber
+      value: _vm.customerPhoneNumber
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-
-        _vm.$set(_vm.formData, "customerPhoneNumber", $event.target.value);
+        _vm.customerPhoneNumber = $event.target.value;
       }
     }
   })]), _vm._v(" "), _c("div", {
@@ -8609,8 +8606,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.formData.customerAddress,
-      expression: "formData.customerAddress"
+      value: _vm.customerAddress,
+      expression: "customerAddress"
     }],
     staticClass: "form-control",
     attrs: {
@@ -8619,13 +8616,12 @@ var render = function render() {
       placeholder: "Indirizzo di consegna"
     },
     domProps: {
-      value: _vm.formData.customerAddress
+      value: _vm.customerAddress
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-
-        _vm.$set(_vm.formData, "customerAddress", $event.target.value);
+        _vm.customerAddress = $event.target.value;
       }
     }
   })])])]), _vm._v(" "), _vm.Payed ? _c("div", {
