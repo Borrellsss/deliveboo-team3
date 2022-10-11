@@ -9,6 +9,7 @@ use App\Order;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class StatisticsController extends Controller
 {
@@ -16,20 +17,29 @@ class StatisticsController extends Controller
         
         $user = Auth::user();
 
-        $user_orders = Order::with('products')
-        ->where('user_id', '=', $user->id)
-        ->groupBy(function($val) {
-            return Carbon::parse($val->created_at)->format('Y');
-        });
+        $sql_query = 'SELECT COUNT(id) as orders_per_month, created_at FROM orders  WHERE user_id = ' . $user->id . ' GROUP BY month(created_at) ORDER BY created_at DESC';
+
+        
+
+        $user_orders = DB::select($sql_query);
+
+        $orders_per_month = [];
+
+        $order_by_month_year = [];
 
         foreach($user_orders as $order) {
-            $order->created_at = Carbon::parse($order->created_at);
-            $order->new_date = $order->created_at->format('m/Y');
+            $orders_per_month[] = $order->orders_per_month;
+
+            $order_by_month_year[] = Carbon::create($order->created_at)->format('m/Y');
         }
+
+        $chart_types = ['bar', 'doughnut', 'pie', 'line', 'polarArea', 'radar',];
 
         $data = [
             'user' => $user,
-            'user_orders' => $user_orders
+            'chart_types' => $chart_types,
+            'orders_per_month' => $orders_per_month,
+            'order_by_month_year' => $order_by_month_year,
         ];
 
         return view('admin.statistics', $data);

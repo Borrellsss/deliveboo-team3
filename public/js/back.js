@@ -93,22 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var labels = ['January', 'February', 'March', 'April', 'May', 'June'];
-var data = {
-  labels: labels,
-  datasets: [{
-    label: 'My First dataset',
-    backgroundColor: 'rgb(255, 99, 132)',
-    borderColor: 'rgb(255, 99, 132)',
-    data: [0, 10, 5, 2, 20, 30, 45]
-  }]
-};
-var config = {
-  type: 'line',
-  data: data,
-  options: {}
-};
-var myChart = new Chart(document.getElementById('chart'), config);
+
 
 /***/ }),
 
@@ -119,7 +104,7 @@ var myChart = new Chart(document.getElementById('chart'), config);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/js/back.js */"./resources/js/back.js");
+module.exports = __webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\js\back.js */"./resources/js/back.js");
 
 
 /***/ })
