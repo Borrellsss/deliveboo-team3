@@ -1,17 +1,6 @@
 <template>
   <div>
-    
-    <!-- Braintree Drop-in -->
-    <div class="drop-in" v-if="Payed">
-      <div>
-        <div id="dropin-container"></div>
-        <div class="btn-container">
-          <button id="submit-button" @click="payment()" class="ms_btn">Paga Adesso</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- User Form -->
+        <!-- User Form -->
     <div>
       <form>
         <!-- Name -->
@@ -37,12 +26,17 @@
             <label for="customer_address" class="form-label"></label>
             <textarea class="form-control" id="customer_address" rows="2" placeholder="Indirizzo di consegna"></textarea>
         </div> 
-
-        <!-- Button -->
-        <div class="mt-3 d-flex justify-content-center">
-          <button type="submit" class="ms_btn text-center">Invia </button>
-        </div>
       </form>     
+    </div>
+
+    <!-- Braintree Drop-in -->
+    <div class="drop-in" v-if="Payed">
+      <div>
+        <div id="dropin-container"></div>
+        <div class="btn-container">
+          <button id="submit-button" @click="payment()" class="ms_btn">Paga Adesso</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -79,7 +73,6 @@ export default {
         'http://127.0.0.1:8000/api/orders/make/payment', {
           token: this.token,
           amount: this.Amount
-          // amount: this.total_amount
         })
         .then((result) => {
           alert(result.data.message);

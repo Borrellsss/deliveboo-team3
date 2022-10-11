@@ -78,7 +78,7 @@
                                         <button class="button"  data-toggle="modal" data-target="#modalAbandonedCart">Checkout</button>
                                     </div>
 
-                                    <!-- Modal: modalAbandonedCart-->
+                                    <!-- Modal -->
                                     <div class="modal fade right" id="modalAbandonedCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
                                         <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
                                             <!--Content-->
@@ -106,7 +106,7 @@
                                             <!--/.Content-->
                                         </div>
                                     </div>
-                                    <!-- Modal: modalAbandonedCart-->
+                                    <!-- End Modal -->
                                 </div>
                             </div>
                         </div>
@@ -618,8 +618,8 @@
         color: black;
         font-size: 1.35rem;
         padding: 1.7rem;
-        border-radius: 45px;
-        box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
         .yellow {
             color: $primary-color;
