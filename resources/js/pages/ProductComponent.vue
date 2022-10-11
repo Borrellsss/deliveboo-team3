@@ -219,6 +219,12 @@
 
         methods:{
 
+            cartSticky(){
+                const footer = document.querySelector('.jumbotron');
+                const meuSticky = document.querySelector('.meu-sticky');
+                meuSticky.style.height = `${ footer.offsetTop - 82 }px`;
+            },
+
             // funzione che scrolla l'icona del carrello
             cartScroll(){
                 const element = document.getElementById('my-cart')
@@ -601,6 +607,7 @@
     }
 
     .floating-cart{
+        display: none;
         position: fixed;
         top: 0;
         right: 30px;
@@ -609,9 +616,7 @@
         background-color: $primary-color;
         width: 70px;
         height: 70px;
-        display: block;
         border-radius: 50%;
-        display: flex;
         align-items: center;
         justify-content: center;
         z-index: 10;
@@ -741,8 +746,9 @@
         }
     .cart-container{
         border-radius: 15px;
-        position: relative;
-        // margin-bottom: 70px;
+        position: sticky;
+        top: 180px;
+        margin-bottom: 90px;
 
         .ghost-cart{
             position: absolute;
@@ -928,8 +934,6 @@
                         }
     }
 
-    
-
             @media only screen and (max-width: 1110px) {
                 .products-side{
                         width: 100%;
@@ -938,6 +942,10 @@
 
             @media only screen and (max-width: 992px) {
 
+
+                .floating-cart{
+                      display: flex;
+                }   
                 .products-col{
                     display: flex;
                  justify-content: start ; 
