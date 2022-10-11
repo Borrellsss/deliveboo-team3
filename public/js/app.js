@@ -8832,7 +8832,8 @@ var render = function render() {
   }, [_c("a", {
     staticClass: "ms_btn boxshadow",
     attrs: {
-      type: "button"
+      type: "button",
+      "data-dismiss": "modal"
     },
     on: {
       click: function click($event) {

@@ -99,8 +99,7 @@
 
                                                 <!--Footer-->
                                                 <div class="text-center">
-                                                    <!-- <a type="button" class="btn btn-dark p-2 rounded" data-dismiss="modal">Cancella</a> -->
-                                                    <a type="button" @click="AlertPayment()" class="ms_btn boxshadow">Si, ho FAME!</a>
+                                                    <a type="button" @click="AlertPayment()" data-dismiss="modal" class="ms_btn boxshadow">Si, ho FAME!</a>
                                                 </div>
                                             </div>
                                             <!--/.Content-->
