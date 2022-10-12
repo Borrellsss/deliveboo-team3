@@ -1,200 +1,288 @@
 <template>
-    <div>
-        <section>
-      <!-- **************** RESTAURANT JUMBOTRON *********************     -->     
-            <div class="jumbotron jumbotron-fluid">
+    <section>
+    
+        <!-- Jumbotron  -->
+        <div class="jumbotron jumbotron-fluid">
             <div class="jumbotron-overlay"></div>
             <div class="container d-flex justify-content-around">
                 <div class="restaurant-heading">
-                    <h2>Nome Ristorante</h2>
-                    <p class="lead"><i class="fa-solid fa-location-dot mr-2"></i>Via dei girasoli, 15</p>
+
+                    <!-- Restaurant Name -->
+                    <h2>
+                        Nome Ristorante
+                    </h2>
+
+                    <!-- Restaurant Address -->
+                    <p class="lead">
+
+                        <!-- Location Icon -->
+                        <i class="fa-solid fa-location-dot mr-2"></i>
+                        Via dei girasoli, 15
+                    </p>
                 </div>
             </div>
-            </div>
-            <div class="pr_container" style="margin-top:100px">
+        </div>
 
-   <!-- **************** CART SYMBOL FIXED ON SIDE *********************  -->     
-                <a v-if="cart.length" class="floating-cart" @click="cartScroll()">
-                    <div class="count-float">
-                        <span>{{cart.length}}</span>
-                    </div>
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </a>
-                <div class="row master-row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 px-3 products-col">
-   <!-- **************** PRODUCT SIDE *********************        -->   
-                        <div class="products-side">
-                            <div class="row row-cols-1 row-cols-sm- row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-between">
+        <!-- Product Container -->
+        <div class="products_container">
 
-                                <div v-for="product,index in products" :key="index" class="col p-3">
-      <!-- **************** PRODUCT CARD *********************        -->     
-                                     <div class="ms-product-card">
-                                         <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
-                                         <img v-else class="card-img" src="https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg" :alt="product.name">
-                                       <a class="info-popup-inline" href="#popup1" @click.prevent="selectProduct(product), showProductInfo()"><i class="fa-solid fa-circle-info"></i></a>
-                                          <div class="ms-card-body d-flex">
-                                            <div class="title-price">
-                                                <h5 class="ms-card-title">{{product.name}}</h5>
-                                                <h6 class="product-card-price">{{product.price}}&euro;</h6>
+            <!-- Floating Cart -->
+            <a v-if="cart.length" class="floating-cart" @click="cartScroll()">
+
+                <!-- Counter Cart -->
+                <div class="count-float">
+                    <span>{{cart.length}}</span>
+                </div>
+
+                <!-- Cart Icon -->
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+
+            <!-- Main Container -->
+            <div class="row master-row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 px-3 products-col">
+                    
+                    <!-- Products Container  -->
+                    <div class="products-side">
+                        <div class="row row-cols-1 row-cols-sm- row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-between">
+
+                            <!-- Product Cards -->
+                            <div v-for="product,index in products" :key="index" class="col p-3">
+                                <div class="ms-product-card">
+
+                                    <!-- Product Cover -->
+                                    <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
+                                    <img v-else class="card-img" src="https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg" :alt="product.name">
+
+                                    <!-- Product Info Pop-up -->
+                                    <a class="info-popup-inline" href="#popup1" @click.prevent="selectProduct(product), showProductInfo()">
+
+                                        <!-- Info Icon -->
+                                        <i class="fa-solid fa-circle-info"></i>
+                                    </a>
+
+                                    <!-- Card Footer -->
+                                    <div class="ms-card-body d-flex">
+                                        <div class="title-price">
+
+                                            <!-- Product name -->
+                                            <h5 class="ms-card-title">
+                                                {{product.name}}
+                                            </h5>
+                                            
+                                            <!-- Product Price -->
+                                            <div class="product-card-price">
+                                                {{product.price}}&euro;
                                             </div>
-                                            <div class="cart-card-symbol">
-                                                <a @click='addItem(product)' class="add-to-cart"><i class="fa-solid fa-cart-shopping"></i></a>
-                                            </div>
-                                          </div>
-                                     </div>
-                                    
-       <!-- **************** POPUP INFO PRODUCT *********************  -->
-                                    <div class="info-popup" style="margin-top:90px"  :class="{'ms_visible' : toggle_popup}">
-                                        <div id="popup1" class="overlay">
-                                            <div v-for="element,index in myProduct" :key="index">
-                                                <div class="popup">
-                                                    <h2>{{element.name}}</h2>
-                                                   
-                                                    <div class="content">
-                                                        <p>{{element.description}}</p>
-                                                        <div>Ingredienti: {{element.ingredients}}</div>
-                                                        <a @click='addItem(element)' class="add-to-cart pop-btn">Aggiungi al carrello</a>
+                                        </div>
+
+                                        <!-- CTA Add to Cart -->
+                                        <div class="cart-card-symbol">
+                                            <a @click='addItem(product)' class="add-to-cart">
+
+                                                <!-- Cart Icon -->
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <!-- Product Info Pop-up -->
+                                <div class="info-popup" :class="{'ms_visible' : toggle_popup}">
+                                    <div id="popup1" class="overlay">
+                                        <div v-for="element,index in myProduct" :key="index">
+                                            <div class="popup">
+
+                                                <!-- Product Name -->
+                                                <h2>
+                                                    {{element.name}}
+                                                </h2>
+                                                
+                                                <!-- Product Content -->
+                                                <div class="content">
+
+                                                    <!-- Product Description -->
+                                                    <p>
+                                                        {{element.description}}
+                                                    </p>
+
+                                                    <!-- Product Ingredients -->
+                                                    <div>
+                                                        Ingredienti: {{element.ingredients}}
                                                     </div>
-                                                     <a class="close" @click="showProductInfo()">&times;</a>
-                                                </div> 
-                                            </div>
-                                       
+
+                                                    <!-- Add to Cart Button -->
+                                                    <a @click='addItem(element)' class="add-to-cart pop-btn">
+                                                        Aggiungi al carrello
+                                                    </a>
+                                                </div>
+
+                                                <!-- Close Pop-up -->
+                                                <a class="close" @click="showProductInfo()">&times;</a>
+                                            </div> 
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-9 col-md-8 col-lg-4 col-xl-4 cart-col">
+                </div>
 
-      <!-- **************** CART *********************  -->
-                        <div v-if="cart.length > 0" class="cart-container">
-                            <div class="ghost-cart" id="my-cart"></div>
-                            <!-- v-if="cart.length > 0" -->
-                            <h3 class="ms_cart_title" >Carrello</h3>
-                            <div v-for="(product, index) in cart" :key="index" class="row">
-                                <div class="col col-6">
-                                    <div class="product-name d-flex justify-content-center align-items-center">
-                                        {{product.name}}
-                                    </div>
-                                </div>
-                                <div class="col col-3">
-                                    <div class="product-quantity-remove d-flex flex-column justify-content-center align-items-center">
-                                        <div class="product-quantity d-flex justify-content-center align-items-center">
-                                            <a class="quantity-btn" @click='decreaseQuantity(product, index)'><span class="decrease">-</span></a>
-                                            <span class="quantity-number">{{product.quantity}}</span>
-                                            <a class="quantity-btn" @click='addItem(product)'><span class="increase">+</span></a>
-                                        </div>
-                                        <a class="remove-btn" @click='deleteItem(index)'>Rimuovi</a>
-                                    </div>
-                                </div>
-                                <div class="col col-3">
-                                    <div class="product-price d-flex flex-column justify-content-center align-items-center">
-                                        {{ product.price * product.quantity }}&euro;
-                                    </div>
+                <!-- Cart -->
+                <div class="col-12 col-sm-9 col-md-8 col-lg-4 col-xl-4 cart-col">
+                    <div v-if="cart.length > 0" class="cart-container">
+                        <div class="ghost-cart" id="my-cart"></div>
+
+                        <!-- Cart Title -->
+                        <h3 class="ms_cart_title">
+                            Carrello
+                        </h3>
+
+                        <!-- Cart Content -->
+                        <div v-for="(product, index) in cart" :key="index" class="row">
+                            <div class="col col-6">
+
+                                <!-- Cart Products Name -->
+                                <div class="product-name d-flex justify-content-center align-items-center">
+                                    {{product.name}}
                                 </div>
                             </div>
-                            <div class="row d-flex justify-content-end">
-                                <div class="col col-12">
-                                    <div class="checkout">
-                                        <div class="total">
-                                            <div>
-                                                <div class="Subtotal">Sub-Totale</div>
-                                                <div class="items" @click="clearCart(index)">Svuota carrello</div>
-                                            </div>
-                                            <!-- <div v-for="product, index in products" :key="product.id" class="total-amount">
-                                                {{ product.price * product.quantity + index-1}}&euro;
-                                            </div> -->
-                                            <div class="total-amount">&euro;{{ totalAmount(cart) }} </div>
-                                        </div>
-                                        <button class="button"  data-toggle="modal" data-target="#proceedtopayment">Checkout</button>
+
+                            <!-- Cart columns items actions -->
+                            <div class="col col-3">
+                                <div class="product-quantity-remove d-flex flex-column justify-content-center align-items-center">
+                                    <div class="product-quantity d-flex justify-content-center align-items-center">
+
+                                        <!-- Decrease Items -->
+                                        <a class="quantity-btn" @click='decreaseQuantity(product, index)'>
+
+                                            <!-- Descrease Icon -->
+                                            <span class="decrease">-</span>
+                                        </a>
+
+                                        <!-- Items Quantity -->
+                                        <span class="quantity-number">
+                                            {{product.quantity}}
+                                        </span>
+
+                                        <!-- Increase Quantity -->
+                                        <a class="quantity-btn" @click='addItem(product)'>
+
+                                            <!-- Increase Icon -->
+                                            <span class="increase">+</span>
+                                        </a>
                                     </div>
 
-                                    <!-- Modal "proceed to payment"-->
-                                    <div class="modal fade right ms_modal-wrapper" id="proceedtopayment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-                                        <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
-                                            <!--Content-->
-                                            <div class="modal-content ms_modal_container">
-                                                <!--Header-->
-                                                <div>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true" class="white-text">&times;</span>
-                                                    </button>
-                                                </div>
-
-                                                <!--Body-->
-                                                <div class="text-center">
-                                                    <span class="yellow pb-4"><i class="fas fa-credit-card fa-4x"></i></span>
-                                                    <p class="pt-4">Stai per eseguire il pagamento dell'ordine...</p>
-                                                    <p>vuoi procedere?</p>
-                                                </div>
-
-                                                <!--Footer-->
-                                                <div class="text-center">
-                                                    <a type="button" @click="ViewFormPayment()" data-dismiss="modal" class="ms_btn boxshadow">Si, ho FAME!</a>
-                                                </div>
-                                            </div>
-                                            <!--/.Content-->
-                                        </div>
-                                    </div>
-                                    <!-- End Modal -->
+                                    <!-- Delete Items -->
+                                    <a class="remove-btn" @click='deleteItem(index)'>
+                                        Rimuovi
+                                    </a>
                                 </div>
                             </div>
-                            <!-- Payment Component -->
-                            <PaymentComponent :amount="totalAmount(cart)" v-if="isVisible" />
+
+                            <!-- Partials Price for Items -->
+                            <div class="col col-3">
+                                <div class="product-price d-flex flex-column justify-content-center align-items-center">
+                                    {{ product.price * product.quantity }}&euro;
+                                </div>
+                            </div>
                         </div>
-                        <div v-else class="cart-blank">
-                            <h4>Il carrello è vuoto</h4>
-                            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                                width="406.000000pt" height="361.000000pt" viewBox="0 0 406.000000 361.000000"
-                                preserveAspectRatio="xMidYMid meet">
-                                <metadata>
-                                Created by potrace 1.16, written by Peter Selinger 2001-2019
-                                </metadata>
-                                <g transform="translate(0.000000,361.000000) scale(0.100000,-0.100000)"
-                                fill="#000000" stroke="none">
-                                <path d="M2560 3585 c-167 -26 -554 -141 -713 -213 -144 -66 -388 -215 -515
-                                -315 -147 -115 -198 -270 -157 -468 9 -40 14 -73 12 -75 -1 -1 -77 -39 -169
-                                -83 -92 -45 -181 -93 -198 -107 -17 -15 -32 -25 -34 -23 -2 2 -38 141 -82 309
-                                -60 234 -84 310 -101 328 -22 22 -26 22 -282 22 -258 0 -260 0 -287 -23 -20
-                                -17 -27 -33 -27 -57 0 -24 7 -40 27 -57 27 -23 31 -23 239 -23 l212 0 204
-                                -782 c345 -1321 336 -1290 361 -1310 21 -17 83 -18 1327 -18 1149 0 1307 2
-                                1333 15 17 9 30 18 30 20 0 3 9 47 20 98 24 113 90 428 169 812 33 160 76 366
-                                96 458 30 145 34 172 23 195 -23 47 -40 50 -351 51 -215 2 -293 5 -299 14 -4
-                                7 -8 26 -8 43 0 56 -41 187 -118 379 l-76 190 -1 115 c0 145 5 165 53 189 l37
-                                19 -30 7 c-59 13 -75 25 -118 92 -59 91 -98 127 -186 171 -71 35 -80 37 -185
-                                39 -61 1 -154 -5 -206 -12z m337 -169 c52 -28 111 -81 101 -91 -2 -3 -54 -16
-                                -114 -29 -308 -69 -633 -246 -1073 -586 -69 -53 -141 -105 -160 -114 -33 -17
-                                -33 -17 -61 9 -63 61 -92 179 -65 271 21 73 84 135 250 247 184 123 354 196
-                                625 269 173 46 246 58 350 55 83 -2 102 -6 147 -31z m135 -326 c-5 -76 17
-                                -155 122 -439 47 -124 86 -244 88 -266 l3 -40 -733 0 -734 0 -50 98 c-28 54
-                                -48 100 -45 103 13 13 1147 534 1272 585 38 15 72 25 75 23 3 -3 3 -32 2 -64z
-                                m-1972 -855 c0 -8 9 -24 20 -35 20 -20 33 -20 1411 -20 1319 0 1390 -1 1385
-                                -17 -3 -10 -37 -169 -75 -353 -39 -184 -100 -474 -136 -644 -36 -170 -65 -310
-                                -65 -312 0 -2 -549 -4 -1220 -4 l-1219 0 -10 38 c-63 239 -147 565 -226 872
-                                -53 206 -100 390 -105 408 l-8 32 61 0 c45 0 76 7 112 24 59 29 75 31 75 11z"/>
-                                <path d="M2816 2913 c-10 -10 -7 -63 5 -86 31 -60 83 -91 115 -69 28 19 43 86
-                                28 126 -5 12 -15 15 -44 10 -24 -4 -47 -1 -67 10 -17 8 -33 12 -37 9z"/>
-                                <path d="M2240 2688 c0 -6 -10 -32 -22 -56 -20 -43 -21 -46 -4 -77 22 -40 59
-                                -59 87 -45 56 31 63 109 13 162 -28 28 -74 38 -74 16z"/>
-                                <path d="M2664 2650 c-47 -11 -103 -48 -118 -78 -29 -59 11 -68 101 -24 84 41
-                                103 55 103 74 0 10 -9 22 -19 28 -22 11 -23 11 -67 0z"/>
-                                <path d="M1537 593 c-57 -20 -128 -80 -161 -136 -63 -109 -48 -256 35 -351 89
-                                -101 241 -132 361 -73 102 50 160 138 166 254 7 129 -47 226 -159 287 -67 37
-                                -169 45 -242 19z"/>
-                                <path d="M3047 593 c-27 -9 -71 -36 -97 -60 -163 -146 -127 -404 68 -500 47
-                                -23 70 -28 132 -28 127 1 223 62 275 176 23 53 27 71 23 138 -6 121 -61 206
-                                -170 262 -57 30 -165 35 -231 12z"/>
-                                </g>
-                              </svg>
+                        
+                        <!-- Total Amount / Checkout Section -->
+                        <div class="row d-flex justify-content-end">
+                            <div class="col col-12">
+                                <div class="checkout">
+                                    <div class="total">
+                                        <div>
+                                            <!-- Text "Total" -->
+                                            <div class="subtotal">
+                                                Totale
+                                            </div>
+
+                                            <!-- Clear Cart -->
+                                            <div class="items" @click="clearCart(index)">
+                                                Svuota carrello
+                                            </div>
+                                        </div>
+
+                                        <!-- Total Amount -->
+                                        <div class="total-amount">&euro;
+                                            {{ totalAmount(cart) }} 
+                                        </div>
+                                    </div>
+
+                                    <!-- Checkout Button -->
+                                    <button class="button"  data-toggle="modal" data-target="#proceedtopayment">
+                                        Checkout
+                                    </button>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Payment Component -->
+                        <PaymentComponent :amount="totalAmount(cart)" v-if="isVisible" />
                     </div>
 
+                    <!-- Cart Blank layout -->
+                    <div v-else class="cart-blank">
+
+                        <!-- Title -->
+                        <h4>
+                            Il carrello è vuoto
+                        </h4>
+
+                        <!-- SVG Image -->
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                            width="406.000000pt" height="361.000000pt" viewBox="0 0 406.000000 361.000000"
+                            preserveAspectRatio="xMidYMid meet">
+                            <g transform="translate(0.000000,361.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                                <path d="M2560 3585 c-167 -26 -554 -141 -713 -213 -144 -66 -388 -215 -515 -315 -147 -115 -198 -270 -157 -468 9 -40 14 -73 12 -75 -1 -1 -77 -39 -169 -83 -92 -45 -181 -93 -198 -107 -17 -15 -32 -25 -34 -23 -2 2 -38 141 -82 309 -60 234 -84 310 -101 328 -22 22 -26 22 -282 22 -258 0 -260 0 -287 -23 -20
+                                -17 -27 -33 -27 -57 0 -24 7 -40 27 -57 27 -23 31 -23 239 -23 l212 0 204 -782 c345 -1321 336 -1290 361 -1310 21 -17 83 -18 1327 -18 1149 0 1307 2 1333 15 17 9 30 18 30 20 0 3 9 47 20 98 24 113 90 428 169 812 33 160 76 366 96 458 30 145 34 172 23 195 -23 47 -40 50 -351 51 -215 2 -293 5 -299 14 -4
+                                7 -8 26 -8 43 0 56 -41 187 -118 379 l-76 190 -1 115 c0 145 5 165 53 189 l37 19 -30 7 c-59 13 -75 25 -118 92 -59 91 -98 127 -186 171 -71 35 -80 37 -185 39 -61 1 -154 -5 -206 -12z m337 -169 c52 -28 111 -81 101 -91 -2 -3 -54 -16 -114 -29 -308 -69 -633 -246 -1073 -586 -69 -53 -141 -105 -160 -114 -33 -17 -33 -17 -61 9 -63 61 -92 179 -65 271 21 73 84 135 250 247 184 123 354 196 625 269 173 46 246 58 350 55 83 -2 102 -6 147 -31z m135 -326 c-5 -76 17 -155 122 -439 47 -124 86 -244 88 -266 l3 -40 -733 0 -734 0 -50 98 c-28 54
+                                -48 100 -45 103 13 13 1147 534 1272 585 38 15 72 25 75 23 3 -3 3 -32 2 -64z m-1972 -855 c0 -8 9 -24 20 -35 20 -20 33 -20 1411 -20 1319 0 1390 -1 1385 -17 -3 -10 -37 -169 -75 -353 -39 -184 -100 -474 -136 -644 -36 -170 -65 -310 -65 -312 0 -2 -549 -4 -1220 -4 l-1219 0 -10 38 c-63 239 -147 565 -226 872 -53 206 -100 390 -105 408 l-8 32 61 0 c45 0 76 7 112 24 59 29 75 31 75 11z"/>
+                                <path d="M2816 2913 c-10 -10 -7 -63 5 -86 31 -60 83 -91 115 -69 28 19 43 86 28 126 -5 12 -15 15 -44 10 -24 -4 -47 -1 -67 10 -17 8 -33 12 -37 9z"/>
+                                <path d="M2240 2688 c0 -6 -10 -32 -22 -56 -20 -43 -21 -46 -4 -77 22 -40 59 -59 87 -45 56 31 63 109 13 162 -28 28 -74 38 -74 16z"/>
+                                <path d="M2664 2650 c-47 -11 -103 -48 -118 -78 -29 -59 11 -68 101 -24 84 41 103 55 103 74 0 10 -9 22 -19 28 -22 11 -23 11 -67 0z"/>
+                                <path d="M1537 593 c-57 -20 -128 -80 -161 -136 -63 -109 -48 -256 35 -351 89 -101 241 -132 361 -73 102 50 160 138 166 254 7 129 -47 226 -159 287 -67 37 -169 45 -242 19z"/>
+                                <path d="M3047 593 c-27 -9 -71 -36 -97 -60 -163 -146 -127 -404 68 -500 47 -23 70 -28 132 -28 127 1 223 62 275 176 23 53 27 71 23 138 -6 121 -61 206 -170 262 -57 30 -165 35 -231 12z"/>
+                            </g>
+                        </svg>
+                    </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+
+        <!-- MODALS SECTION -->
+
+        <!-- Modal "proceed to payment"-->
+        <div class="modal fade right ms_modal-wrapper" id="proceedtopayment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+            <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+                <!--Content-->
+                <div class="modal-content ms_modal_container">
+                    <!--Header-->
+                    <div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                        </button>
+                    </div>
+
+                    <!--Body-->
+                    <div class="text-center">
+                        <span class="yellow pb-4"><i class="fas fa-credit-card fa-4x"></i></span>
+                        <p class="pt-4">Stai per eseguire il pagamento dell'ordine...</p>
+                        <p>vuoi procedere?</p>
+                    </div>
+
+                    <!--Footer-->
+                    <div class="text-center">
+                        <a type="button" @click="ViewFormPayment()" data-dismiss="modal" class="ms_btn boxshadow">Si, ho FAME!</a>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+        <!-- End Modal -->
+    </section>
 </template>
 
 <script>
@@ -323,7 +411,6 @@ export default {
                         // Salva il carrello
                         this.saveCart();
                     }
-
                 } else {
 
                     // Se non cambia ristorante:
@@ -428,121 +515,22 @@ export default {
 }
 </script>
 
- <style lang="scss" scoped>
-    @import '../style/variables';
-    @import '../style/common';
+<style lang="scss" scoped>
+@import '../style/variables';
+@import '../style/common';
 
-// .cart-col{
-//       position:fixed;
-//       top: 20;
-//       right: 0;
-// }
-
-#my-cart{
-        // width: 0.2px;
-        // height: 0.2px;
-        // padding-bottom: 35px;
-
-    }
-    .add-to-cart{
-                color: rgb(23, 2, 2);
-                cursor: pointer;
-                }
-  .info-popup{
-    
-    .button {
-    font-size: 1em;
-    padding: 10px;
-    color: #fff;
-    border: 2px solid #06D85F;
-    border-radius: 20px/50px;
-    text-decoration: none;
-    cursor: pointer;
-    }
-    .button:hover {
-    background: #06D85F;
-    }
-
-    .overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.7);
-    transition: opacity 200ms;
-    visibility: hidden;
-    // display: none;
-    opacity: 0.1;
-    z-index: 60;
-    }
- 
-
-    .popup {
-    margin: 30vh auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 15px;
-    width: 40%;
+// Jumbotron
+.jumbotron {
+    height: 800px;
+    background-image: url(https://www.settimoristorante.it/wp-content/uploads/sites/106/2020/01/slide_home_sofitel_settimo_ristorante_terrazza2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 0;
     position: relative;
-    // margin-top: 300px;
-    }
+    z-index: -2;
 
-    .popup h2 {
-    margin-top: 0;
-    color: black;
-    font-family: Tahoma, Arial, sans-serif;
-    }
-    .popup .close {
-    position: absolute;
-    top: 5px;
-    right: 13px;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
-    cursor: pointer;
-    }
-    .popup .close:hover {
-    color: #06D85F;
-    }
-    // .popup .content {
-    // max-height: 70%;
-    // overflow: auto;
-    // }
-
-    .add-to-cart.pop-btn{
-        margin-top: 30px;
-        display: inline-block;
-          
-    }
-
-    &.ms_visible{
-         
-        .overlay {
-            visibility: visible;
-            // display: block;
-            opacity: 0.2;
-        }
-        
-    }
-
-   
-
-  }
-    .jumbotron{
-        height: 800px;
-        background-image: url(https://www.settimoristorante.it/wp-content/uploads/sites/106/2020/01/slide_home_sofitel_settimo_ristorante_terrazza2.jpg);
-      //  background-image: url(../../../../public/images/jumbotron-img.jpg);
-       background-size: cover;
-       background-repeat: no-repeat;
-       background-position-x: 50%;
-       background-position-y: 0;
-       position: relative;
-       z-index: -2;
-    //    border-bottom: 15px solid $secondary-color;
-
-       &:after{
+    &:after {
         content: '';
         position: absolute;
         top: 0;
@@ -551,309 +539,388 @@ export default {
         bottom: 0;
         background: rgba(20, 20, 20, .3);
         z-index: -1;
-
-       }
-
-
-        .container{
-            // width: 50%;
-            height: 100%;
-            text-align: center;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            flex-direction: column;
-
-              .restaurant-heading{
-                margin-top: 3rem;
-                // background: rgba(20, 20, 20, .7);
-                padding: 2rem 0.3rem;
-                display: inline-block;
-
-                  h2{
-                      font-size: 3rem;
-                  }
-      
-                  P{
-                    font-size: 1.5rem;
-                  }
-              }
-
-        }
-
     }
 
-    .floating-cart{
-        display: none;
-        position: fixed;
-        top: 0;
-        right: 30px;
-        margin-top: 120px;
+    .container {
+        height: 100%;
+        text-align: center;
         color: white;
-        background-color: $primary-color;
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        align-items: center;
+        display: flex;
         justify-content: center;
-        z-index: 10;
-        cursor: pointer;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-            0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        align-content: center;
+        flex-direction: column;
 
-            .fa-cart-shopping{
-                font-size: 2.3rem;
-                z-index: 10;
-                }
+        .restaurant-heading {
+            margin-top: 3rem;
+            padding: 2rem 0.3rem;
+            display: inline-block;
+
+            h2 {
+                font-size: 3rem;
+            }
+
+            p {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+// Floating Cart
+.floating-cart {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 30px;
+    margin-top: 120px;
+    color: white;
+    background-color: $primary-color;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    cursor: pointer;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    .fa-cart-shopping {
+        font-size: 2.3rem;
+        z-index: 10;
+        }
+
+    &:hover {
+        color: rgb(249, 246, 246);
+    }
+}
+
+// Counter Cart
+.count-float {
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.7rem;
+    border-radius: 50%;
+    background-color: $primary-color;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 34px;
+    right: 25px;
+    z-index: 11;
+
+    &:hover ~ .fa-cart-shopping {
+        color: rgb(249, 246, 246);
+    }
+}
+  
+// ******************** PRODUCT CARDS ******************** // 
+
+.products_container {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.products-side {
+    margin-bottom: 70px;
+    width: 95%;
+
+    .my-circle {
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .col {
+        margin-bottom: -80px;
+    }
+     
+    .ms-product-card {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        height: 75%;
+        aspect-ratio: 1/1;
+        position: relative;
+        border-radius: 10px 10px 10px 10px;
+        transition: box-shadow 0.5s, transform 0.5s;
+
+        &:hover{
+                box-shadow: 5px 20px 30px rgba(0,0,0,0.3);
+        }
+
+        .card-img {
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+            height: 70%;
+        }
+
+        .info-popup-inline {
+            
+            .fa-circle-info {
+                position: absolute;
+                font-size: 160%;
+                color: white;
+                top: 10px;
+                right: 10px;
 
                 &:hover{
-                    color: rgb(249, 246, 246);
+                    color: #efecec;
                 }
             }
-
-            .count-float{
-                width: 1rem;
-                height: 1rem;
-                font-size: 0.7rem;
-                border-radius: 50%;
-                background-color: $primary-color ;
-                // border: 3px solid  $primary-color;
-                color: white;
-                display: flex;
-                 align-items: center;
-                 justify-content: center;
-                position: absolute;
-                bottom: 34px;
-                right: 25px;
-                z-index: 11;
-
-                &:hover ~ .fa-cart-shopping{
-                   color: rgb(249, 246, 246);
-                }
-            }
-
-            
-
-    .pr_container{
-        width: 90%;
-        margin: 0 auto;
-        position: relative;
-    }
-    
-    //    ************** PRODUCT CARDS **********************  
-    .products-side{
-        margin-bottom: 70px;
-        width: 95%;
-        .my-circle {
-          width: 50px;
-          height: 50px;
-          text-align: center;
-          vertical-align: middle;
-          }
-
-          .col{
-            margin-bottom: -80px;
-          }
-
-     
-          .ms-product-card{
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-            0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            height: 75%;
-            aspect-ratio: 1/1;
-            position: relative;
-            border-radius: 10px 10px 10px 10px;
-            transition: box-shadow 0.5s, transform 0.5s;
-
-            &:hover{
-                    box-shadow: 5px 20px 30px rgba(0,0,0,0.3);
-                }
-
-            .card-img{
-                object-fit: cover;
-                border-radius: 15px 15px 0 0;
-                height: 70%;
-            }
-
-            .info-popup-inline{
-                .fa-circle-info{
-                            position: absolute;
-                            font-size: 160%;
-                            color: white;
-                            top: 10px;
-                            right: 10px;
-
-                            &:hover{
-                                color: #efecec;
-                            }
-                    }
-            }
+        }
                     
-            .ms-card-body{
-                height: 40%;
-                    .title-price{
-                        width: ( (100% / 4) * 3);
-                        background-color:  #f7f2f2;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: start;
-                        align-items: start;
-                        padding-left: 1rem;
+        .ms-card-body {
+            height: 40%;
+
+            .title-price {
+                width: calc((100% / 4) * 3);
+                background-color:#f7f2f2;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding-left: 1rem;
                         
 
-                                .ms-card-title{
-                                    margin-top: 1rem;
-                                    font-weight: 600;
-                                    overflow: hidden ;
-                                    text-overflow: ellipsis;
-                                    font-size: 0.9rem;
-                                }
+                .ms-card-title {
+                    margin-top: 1rem;
+                    font-weight: 600;
+                    overflow: hidden ;
+                    text-overflow: ellipsis;
+                    font-size: 0.9rem;
+                }
 
-                                .product-card-price{
-                                    margin-bottom: 1rem;
-                                    font-size: 0.8rem;
-                                }
-                         }
-                    .cart-card-symbol{
-                        width: (100% / 4);
-                        background-color:  #f7f2f2;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        border-left:solid thin rgba(0,0,0,0.1);
-                        transition: transform 0.5s;
-
-                        &:hover{
-                                    background:#eae1e1;
-                                }
-
-                                .add-to-cart{
-                                    font-size: 140%;
-                                    margin-bottom: 1.8rem;
-                                    color: #254053;
-                                    transition: transform 0.5s;
-                                    // background: #efecec;
-
-                                        .fa-cart-shopping{
-                                                color: #254053;
-                                                transition: transform 0.5s;
-                                            }
-
-                                        // &:hover{
-                                        //         background: #A6CDDE;
-                                        //     }
-                                        &:hover .fa-cart-shopping{
-                                            transform: translateY(5px);
-                                            color:#00394B;
-                                        }
-                             }
-                         }
-                 }
+                .product-card-price {
+                    margin-bottom: 1rem;
+                    font-size: 0.8rem;
+                }
             }
 
-        }
-        
+            .cart-card-symbol {
+                width: calc(100% / 4);
+                background-color:  #f7f2f2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-left:solid thin rgba(0,0,0,0.1);
+                transition: transform 0.5s;
 
-      // ************** END PRODUCT CARD ********************** 
-    .cart-container{
+                &:hover {
+                    background:#eae1e1;
+                }
+
+                .add-to-cart {
+                    font-size: 140%;
+                    margin-bottom: 1.8rem;
+                    color: #254053;
+                    transition: transform 0.5s;
+                    
+                    .fa-cart-shopping {
+                        color: #254053;
+                        transition: transform 0.5s;
+                    }
+
+                    &:hover .fa-cart-shopping {
+                        transform: translateY(5px);
+                        color:#00394B;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Add to Cart Button 
+.add-to-cart {
+    color: rgb(23, 2, 2);
+    cursor: pointer;
+}
+
+// Product Info Pop-up
+.info-popup {
+
+    margin-top: 90px;
+
+    .button {
+        font-size: 1em;
+        padding: 10px;
+        color: #fff;
+        border: 2px solid #06D85F;
+        border-radius: 20px/50px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background: #06D85F;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        transition: opacity 200ms;
+        visibility: hidden;
+        opacity: 0.1;
+        z-index: 60;
+    }
+
+    .popup {
+        margin: 30vh auto;
+        padding: 20px;
+        background: #fff;
         border-radius: 15px;
-        position: sticky;
-        top: 180px;
-        margin-bottom: 90px;
+        width: 40%;
+        position: relative;
+    }
 
-        .ghost-cart{
-            position: absolute;
-            top: -140px;
-            left: 0;
-            height: 10px;
-            width: 10px;
-            // background-color: red;
-            visibility: hidden;
+    .popup h2 {
+        margin-top: 0;
+        color: black;
+        font-family: Tahoma, Arial, sans-serif;
+    }
+
+    .popup .close {
+        position: absolute;
+        top: 5px;
+        right: 13px;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+        cursor: pointer;
+    }
+
+    .popup .close:hover {
+        color: #06D85F;
+    }
+
+    .add-to-cart.pop-btn {
+        margin-top: 30px;
+        display: inline-block;
+    }
+
+    &.ms_visible {
+         
+        .overlay {
+            visibility: visible;
+            opacity: 0.2;
         }
+    }
+}
 
-        .ms_cart_title{
-            margin-bottom: 1rem;
-            position: relative;
-        }
+// ****************** END PRODUCT CARDS ****************** // 
 
-        .col{
+// ****************** CART ****************** // 
+
+.cart-container {
+    border-radius: 15px;
+    position: sticky;
+    top: 180px;
+    margin-bottom: 90px;
+
+    .ghost-cart {
+        position: absolute;
+        top: -140px;
+        left: 0;
+        height: 10px;
+        width: 10px;
+        visibility: hidden;
+    }
+
+    .ms_cart_title {
+        margin-bottom: 1rem;
+        position: relative;
+    }
+
+    .col {
         border: 1px solid rgb(203, 197, 197);
     }
 
-        h3{
-            margin-top: 1rem;
-            padding-left: 2rem;
-            font-weight: 600;
-        }
+    h3 {
+        margin-top: 1rem;
+        padding-left: 2rem;
+        font-weight: 600;
+    }
 
-        .product-name{
-            height: 100%;
-            font-weight: 700;
-        }
+    .product-name {
+        height: 100%;
+        font-weight: 700;
+    }
 
-      .product-quantity-remove{
+    .product-quantity-remove {
 
-
-        .product-quantity{
+        .product-quantity {
             height: 100%;
             padding-top: 0.5rem;
 
-                .quantity-number{
-                    padding: 0 5px;
-                    font-weight: 700;
+            .quantity-number {
+                padding: 0 5px;
+                font-weight: 700;
+            }
+
+            .quantity-btn {
+                width: 20px;
+                height: 20px;
+                background-color: rgb(211, 205, 205);
+                padding: 0.3rem;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 3px;
+                cursor: pointer;
+                font-weight: 500;
+
+                .decrease {
+                    padding-bottom: 3px;
                 }
-
-                .quantity-btn{
-                    width: 20px;
-                    height: 20px;
-                    background-color: rgb(211, 205, 205);
-                    padding: 0.3rem;
-                    border-radius: 50%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    margin-bottom: 3px;
-                    cursor: pointer;
-                    font-weight: 500;
-
-                        .decrease{
-                            padding-bottom: 3px;
-                        }
-                     }
-                    }
-                    .remove-btn{
-                        font-size: 0.8rem;
-                        padding-top: 0.3rem;
-                        padding-bottom: 0.5rem;
-                        font-weight: 700;
-                        color: #909090;
-                        cursor: pointer;
-                    }
-           }
-        .product-price{
-            height: 100%;
-            font-size: 1.2rem;
-            font-weight: 700;
+            }
         }
 
-        .checkout{
-            margin: 3% 5%;
-         }
-    .total{
+        .remove-btn {
+            font-size: 0.8rem;
+            padding-top: 0.3rem;
+            padding-bottom: 0.5rem;
+            font-weight: 700;
+            color: #909090;
+            cursor: pointer;
+        }
+    }
+
+    .product-price {
+        height: 100%;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+    
+    .checkout {
+        margin: 3% 5%;
+    }
+
+    .total {
         display: flex;
         justify-content: space-between;
     }
-    .Subtotal{
+
+    .subtotal {
         font-size: 1.2rem;
         font-family: 'Open Sans';
         font-weight: 700;
         color: #202020;
         margin-bottom: 0.3rem;
     }
-    .items{
+
+    .items {
         font-size: 1rem;
         font-family: 'Open Sans';
         font-weight: 500;
@@ -862,17 +929,19 @@ export default {
         cursor: pointer;
         padding: 0.5rem 0 0.7rem 0;
 
-           &:hover{
+        &:hover{
             color: $secondary-color;;
-           }
+        }
     }
-    .total-amount{
+
+    .total-amount {
         font-size: 2rem;
         font-family: 'Open Sans';
         font-weight: 900;
         color: #202020;
     }
-    .button{
+
+    .button {
         margin-top: 10px;
         width: 100%;
         height: 40px;
@@ -885,42 +954,44 @@ export default {
         font-weight: 600;
         color:white;
     }
+}
 
+.cart-blank {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 80px 0;
+
+    h4 {
+        font-weight: 600;
+        margin-bottom: 15px;
+        opacity: 0.7;
     }
-    .cart-blank{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 80px 0;
 
-        h4{
-            font-weight: 600;
-            margin-bottom: 15px;
-            opacity: 0.7;
-        }
-
-       svg{
+    svg {
         width: 50%;
         height: 50%;
         opacity: 0.5;
-       }
     }
+}
 
-    .selected{
-        color: red;
-    }
+// ****************** END CART ****************** // 
 
-    .ms_modal-wrapper {
-        margin-top: 115px;
 
-        .ms_modal_container {
-            background: linear-gradient(to left right, $secondary-color, white);
-            color: black;
-            font-size: 1.35rem;
-            padding: 1.7rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+// ******************** MODALS ******************** //
+
+// "Proceed to Payment" Modal
+.ms_modal-wrapper {
+    margin-top: 115px;
+
+    .ms_modal_container {
+        background: linear-gradient(to left right, $secondary-color, white);
+        color: black;
+        font-size: 1.35rem;
+        padding: 1.7rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
         .yellow {
             color: $primary-color;
@@ -929,56 +1000,63 @@ export default {
         .boxshadow {
             box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         }
-        }
+    }
+}
+
+// ******************** END MODALS ******************** //
+
+// ******************** MEDIA QUERY ******************** //
+
+// Max-width: 1200px
+
+@media only screen and (max-width: 1200px) {
+
+    .products-side {
+        margin-bottom: 70px;
+        width: 95%;
     }
 
-    @media only screen and (max-width: 1200px) {
-
-        .products-side{
-            margin-bottom: 70px;
-            width: 95%;
+    .card-ingredients {
+        height: 65px;
     }
-        .card-ingredients{
-                            height: 65px;
-                            // background-color: red;
-                        }
+}
+
+// Max-width: 1110px
+
+@media only screen and (max-width: 1110px) {
+
+    .products-side {
+        width: 100%;
+    }
+}
+
+// Max-width: 992px
+
+@media only screen and (max-width: 992px) {
+
+    .floating-cart {
+        display: flex;
+    } 
+
+    .products-col {
+        display: flex;
+        justify-content: flex-start ; 
+    }
+}
+
+// Max-width: 768px
+
+@media only screen and (max-width: 768px) {
+
+    .jumbotron {
+        height: 600px;
     }
 
-            @media only screen and (max-width: 1110px) {
-                .products-side{
-                        width: 100%;
-                 }
-            }
+    .row {
+        justify-content: center;
+    }
+}  
 
-            @media only screen and (max-width: 992px) {
+// ******************** END MEDIA QUERY ******************** //
 
-
-                .floating-cart{
-                      display: flex;
-                }   
-                .products-col{
-                    display: flex;
-                 justify-content: start ; 
-                }
-
-                // .products-side{
-                //         width: 90%;
-                //  }
-            }
-
-    @media only screen and (max-width: 768px) {
-
-
-        .jumbotron{
-                height: 600px;
-            }
-
-        .row{
-            justify-content: center;
-            }
-
-}            
-        
-
-
-    </style>
+</style>
