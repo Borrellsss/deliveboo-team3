@@ -35,9 +35,9 @@
                                         </div>
                                     </div>
                                     
-                                    <div v-show="true">
-                                        <div v-if="show" class="add-to-cart">Aggiunto!</div>
-                                    </div>
+                                    <!-- <div v-show="true"> -->
+                                        <div v-if="show">Aggiunto!</div>
+                                    <!-- </div> -->
 
                                 </div>
                             </div>
@@ -150,7 +150,7 @@
                 // show del messaggio per l'utente
                 show: false,
 
-                myProduct: [],
+                // myProduct: [],
             }
         },
         created() {
@@ -303,31 +303,31 @@
             },
 
             // funzione che avvisa l'utente del prodotto correttamente aggiunto al carrello
-            // addItemConfirm(){
+            addItemConfirm(){
                
-            //     setTimeout(() => {
-            //         this.show = true;
-            //     }, 0);
+                setTimeout(() => {
+                    this.show = true;
+                }, 0);
 
-            //     setTimeout(() => {
-            //         this.show = false;
-            //     }, 900);
+                setTimeout(() => {
+                    this.show = false;
+                }, 900);
+            },
+
+            // selectProduct(product){
+            //     this.myProduct.push(product);
+            //     this.addItemConfirm();
             // },
 
-            selectProduct(product){
-                this.myProduct.push(product);
-                this.addItemConfirm();
-            },
-
-            addItemConfirm(){
-                if (this.show){
-                    this.show = false
-                      this.myProduct = []; 
-                }else{
-                    this.show = true
+            // addItemConfirm(){
+            //     if (this.show){
+            //         this.show = false
+            //           this.myProduct = []; 
+            //     }else{
+            //         this.show = true
                   
-                }
-            },
+            //     }
+            // },
         },
     }
     </script>
