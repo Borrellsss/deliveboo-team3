@@ -107,7 +107,7 @@ header{
                     transform: rotate(-1080deg);
                 }
          }
-    }
+     }
 
     .ms_banner{
 
@@ -131,7 +131,7 @@ header{
         flex-basis: 0;
         flex-grow: 1;
         max-width: 70%;
-    }
+        }
 
     //////// MEDIA QUERIES ////////
     
