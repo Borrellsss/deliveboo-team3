@@ -108,7 +108,37 @@
                                             </div> -->
                                             <div class="total-amount">&euro;{{total_amount}}</div>
                                         </div>
-                                    <button class="button">Checkout</button></div>
+                                        <button class="button"  data-toggle="modal" data-target="#proceedtopayment">Checkout</button>
+                                    </div>
+
+                                    <!-- Modal "proceed to payment"-->
+                                    <div class="modal fade right" id="proceedtopayment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+                                        <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+                                            <!--Content-->
+                                            <div class="modal-content ms_modal_container">
+                                                <!--Header-->
+                                                <div>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true" class="white-text">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <!--Body-->
+                                                <div class="text-center">
+                                                    <span class="yellow pb-4"><i class="fas fa-credit-card fa-4x"></i></span>
+                                                    <p class="pt-4">Stai per eseguire il pagamento dell'ordine...</p>
+                                                    <p>vuoi procedere?</p>
+                                                </div>
+
+                                                <!--Footer-->
+                                                <div class="text-center">
+                                                    <a type="button" @click="AlertPayment()" data-dismiss="modal" class="ms_btn boxshadow">Si, ho FAME!</a>
+                                                </div>
+                                            </div>
+                                            <!--/.Content-->
+                                        </div>
+                                    </div>
+                                    <!-- End Modal -->
                                 </div>
                             </div>
                         </div>
@@ -157,6 +187,8 @@
                                 </g>
                               </svg>
                         </div>
+                    <!-- Braintree Component -->
+                    <PaymentComponent :amount="totalAmount(cart)" v-if="isVisible" />
                     </div>
                 </div>
             </div>
@@ -381,40 +413,22 @@
         clearCart(index){
             this.cart.splice(index, this.cart.length)
              localStorage.clear('cart');
-        }
+        },
 
+            // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
+            totalAmount(cart){
+                let total_amount = 0;
+                cart.forEach ((product) => {
+                    total_amount += product.price * product.quantity;
+                })
+                return total_amount;
+            },
 
-            // testFunction(index){
-
-            //     const testCart = JSON.parse(localStorage.getItem("cart"))
-            //     for (let i =0; i< testCart.length; i++) {
-            //         let items = JSON.parse(testCart[i]);
-            //         if (items.id == index) {
-            //         testCart.splice(index, 1);
-            //         }
-            //     }
-            // }
-
-            // salva nel carrello i prodotti
-            // saveProductInCart(){
-            //     const parsed = JSON.stringify(this.products_in_cart);
-            //     localStorage.setItem('cart', parsed);
-            //     this.products_in_cart = JSON.parse(localStorage.cart);
-            // },
-
-
-             // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
-            // totalAmount(){
-            //     this.total_amount = 0;
-            //     for (let i = 0; i < this.cart.length; i++) {
-            //         this.total_amount += parseFloat(this.cart[i].price)*this.product.quantity
-            //         console.log(this.cart[i])
-            //     }
-
-
-            //  },
-
-
+            // Funzione che comunica il processo del pagamento e rende visibile il banner del pagamento
+            AlertPayment() {
+                    this.isVisible = true;
+                
+            }
         },
 
     }
@@ -910,11 +924,29 @@
         opacity: 0.5;
        }
     }
+    .ms_modal_container {
+        background: linear-gradient(to left right, $secondary-color, white);
+        color: black;
+        font-size: 1.35rem;
+        padding: 1.7rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+        .yellow {
+            color: $primary-color;
+        }
+
+        .boxshadow {
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+    }
 
     .selected{
         color: red;
         // background-color: red;
     }
+    
+    @media only screen and (max-width: 768px) {
 
 
     // @media only screen and (max-width: 1800px) {
