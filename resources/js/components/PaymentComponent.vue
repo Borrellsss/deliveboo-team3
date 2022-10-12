@@ -1,6 +1,7 @@
 <template>
-  <div>
-        <!-- User Form -->
+  <div v-if="Payed">
+
+    <!-- User Form -->
     <div>
       <form>
         <!-- Name -->
@@ -28,9 +29,9 @@
         </div> 
       </form>     
     </div>
-
+    
     <!-- Braintree Drop-in -->
-    <div class="drop-in" v-if="Payed">
+    <div class="drop-in" >
       <div>
         <div id="dropin-container"></div>
         <div class="btn-container">
