@@ -21,6 +21,11 @@ export default {
     components: {
         HeaderComponent, 
         FooterComponent
+    },
+    computed: {
+        isUserLogged() {
+            return  window.userLogged;
+        }
     }
 }
 </script>

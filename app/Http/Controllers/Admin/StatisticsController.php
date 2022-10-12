@@ -9,6 +9,7 @@ use App\Order;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class StatisticsController extends Controller
 {
@@ -16,20 +17,33 @@ class StatisticsController extends Controller
         
         $user = Auth::user();
 
-        $user_orders = Order::with('products')
-        ->where('user_id', '=', $user->id)
-        ->groupBy(function($val) {
-            return Carbon::parse($val->created_at)->format('Y');
-        });
+        $sql_query_monthly_orders = 'SELECT COUNT(id) as orders_per_month, created_at FROM orders  WHERE user_id = ' . $user->id . ' GROUP BY month(created_at) ORDER BY created_at DESC';
+        $sql_query_monthly_revenue = 'SELECT  SUM(total_amount) as revenue_per_month, created_at FROM orders WHERE user_id = '  . $user->id . ' GROUP BY month(created_at) ORDER BY created_at DESC';
+        
+        $user_orders = DB::select($sql_query_monthly_orders);
+        $user_revenues = DB::select($sql_query_monthly_revenue);
+
+        $monthly_orders = [];
+        $timestamps = [];
+        $monthly_revenue = [];
 
         foreach($user_orders as $order) {
-            $order->created_at = Carbon::parse($order->created_at);
-            $order->new_date = $order->created_at->format('m/Y');
+            $monthly_orders[] = $order->orders_per_month;
+            $timestamps[] = Carbon::create($order->created_at)->format('m/Y');
         }
+
+        foreach($user_revenues as $revenue) {
+            $monthly_revenue[] = $revenue->revenue_per_month;
+        }
+
+        $chart_types = ['bar', 'line'];
 
         $data = [
             'user' => $user,
-            'user_orders' => $user_orders
+            'chart_types' => $chart_types,
+            'monthly_orders' => $monthly_orders,
+            'monthly_revenue' => $monthly_revenue,
+            'timestamps' => $timestamps,
         ];
 
         return view('admin.statistics', $data);

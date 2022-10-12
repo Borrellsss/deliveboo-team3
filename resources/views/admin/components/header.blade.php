@@ -26,7 +26,7 @@
                                 {{substr($user->business_name, 0, 1)}}
                             </div>
                         @endif
-                        <span class="mr-1 d-none d-sm-block">{{ Auth::user()->business_name }}</span>
+                        <span class="mr-1 ms_user-name-header">{{ Auth::user()->business_name }}</span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </a>
 

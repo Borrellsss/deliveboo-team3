@@ -6,7 +6,12 @@
         <div class="text-center mb-5">
             <a class="ms_btn" href="{{route('admin.statistics')}}">Visualizza statistiche</a>
         </div>
-        <div>
+
+        <div class="ms_paginator-links mb-3">
+            {{ $user_orders->links() }}
+        </div>
+
+        <div class="mb-3">
             @foreach ($user_orders as $order)
                 <div class="ms_user-orders-info ms_order-row mb-3">
                     <div>
@@ -23,6 +28,10 @@
                     </div>
                 </div>
             @endforeach
+
+            <div class="ms_paginator-links">
+                {{ $user_orders->links() }}
+            </div>
         </div>
     </section> 
 @endsection

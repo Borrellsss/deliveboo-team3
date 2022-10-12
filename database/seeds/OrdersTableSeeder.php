@@ -22,7 +22,7 @@ class OrdersTableSeeder extends Seeder
         $user_id = 1;
 
         for($i = 0; $i < 750; $i++) {
-            $order = new Order;
+            $order = new Order();
             $order->user_id = $user_id;
             $order->total_amount = $faker->randomFloat(2, 20, 300);
             $order->order_number = $faker->numberBetween(100000000000000, 999999999999999);

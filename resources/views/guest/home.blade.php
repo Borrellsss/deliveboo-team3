@@ -18,6 +18,12 @@
         
     </div>
 
+    @auth
+        <script>
+            window.userLogged = true;
+        </script>
+    @endauth
+    
     {{-- inserisco lo script relativo alla porzione pubblica --}}
     <script src="{{asset('js/app.js')}}" defer></script>
 </body>
