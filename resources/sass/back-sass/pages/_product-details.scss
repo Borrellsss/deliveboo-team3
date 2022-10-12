@@ -58,3 +58,20 @@
         }
     }
 }
+
+// MEDIA QUERIES
+@media (max-width: 600px) {  
+
+    .ms_product-details {
+        flex-direction: column;
+
+        &-left {
+            margin-inline: auto;
+            margin-bottom: 2rem;
+            width: 70%;
+        }
+        &-info {
+            width: 100%;
+        }
+    }
+}

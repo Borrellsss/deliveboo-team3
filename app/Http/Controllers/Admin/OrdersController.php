@@ -16,7 +16,7 @@ class OrdersController extends Controller
         
         $user = Auth::user();
 
-        $user_orders = Order::with('products')->where('user_id', '=', $user->id)->orderBy('created_at', 'DESC')->paginate(10);
+        $user_orders = Order::with('products')->where('user_id', '=', $user->id)->orderBy('created_at', 'DESC')->paginate(20);
 
         foreach($user_orders as $order) {
             $order->created_at = Carbon::parse($order->created_at);

@@ -7,34 +7,46 @@
         <aside>
             <nav class="d-flex flex-column">
                 <ul>
-                    <li class="d-flex">
-                        <i class="align-self-center mr-2 fa-solid fa-house"></i>
-                        <a href="{{route('admin.home')}}">Home</a>
+                    <li>
+                        <a href="{{route('admin.home')}}">
+                            <i class="mr-1 fa-solid fa-house"></i>
+                            <span class="ms_aside-link-txt">Home</span>
+                        </a>
                     </li>
 
-                    <li class="d-flex">
-                        <i class="align-self-center mr-2 fa-solid fa-user"></i>
-                        <a href="{{route('admin.users.edit', ['user' => $user->id])}}">Modifica profilo</a>
+                    <li>
+                        <a href="{{route('admin.users.edit', ['user' => $user->id])}}">
+                            <i class="mr-1 fa-solid fa-user"></i>
+                            <span class="ms_aside-link-txt">Modifica profilo</span>
+                        </a>
                     </li>
 
-                    <li class="d-flex">
-                        <i class="align-self-center mr-2 fa-solid fa-utensils"></i>
-                        <a href="{{route('admin.products.index')}}">Il mio Menu</a>
+                    <li>
+                        <a href="{{route('admin.products.index')}}">
+                            <i class="mr-1 fa-solid fa-utensils"></i>
+                            <span class="ms_aside-link-txt">Il mio Menu</span>
+                        </a>
                     </li>
 
-                    <li class="d-flex">
-                        <i class=" mr-2 align-self-center fa-solid fa-plus"></i>
-                        <a href="{{route('admin.products.create')}}">Aggiungi prodotto</a>
+                    <li>
+                        <a href="{{route('admin.products.create')}}">
+                            <i class="mr-1 fa-solid fa-plus"></i>
+                            <span class="ms_aside-link-txt">Aggiungi prodotto</span>
+                        </a>
                     </li>
 
-                    <li class="d-flex">
-                        <i class="align-self-center mr-2 fa-solid fa-bag-shopping"></i>
-                        <a href="{{route('admin.orders')}}">I miei ordini</a>
+                    <li>
+                        <a href="{{route('admin.orders')}}">
+                            <i class="mr-1 fa-solid fa-bag-shopping"></i>
+                            <span class="ms_aside-link-txt">I miei ordini</span>
+                        </a>
                     </li>
 
-                    <li class="d-flex">
-                        <i class="align-self-center mr-2 fa-solid fa-chart-line"></i>
-                        <a href="{{route('admin.statistics')}}">Statistiche ordini</a>
+                    <li>
+                        <a href="{{route('admin.statistics')}}">
+                            <i class="mr-1 fa-solid fa-chart-line"></i>
+                            <span class="ms_aside-link-txt">Statistiche ordini</span>
+                        </a>
                     </li>
                 </ul>
             </nav>

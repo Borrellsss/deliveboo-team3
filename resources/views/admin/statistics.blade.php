@@ -3,16 +3,18 @@
 @section('main_content')
     <section>
         <h1 class="text-center">Statistiche</h1>
-        <div class="text-center">
-            <select id="mb-4" onchange="changeChartStyle(this)">
-                <optgroup label="stile grafico"></optgroup>
+
+        <div class="mb-4 text-center">
+            <div class="mb-2">Cambia stile grafico</div>
+            <select autocomplete="off" onchange="changeChartStyle(this)">
+                {{-- <option selected>seleziona</option> --}}
                 @foreach ($chart_types as $chart_type)
-                    <option value="{{$chart_type}}" href="{{route('admin.statistics')}}">{{$chart_type}}</option>
+                    <option value="{{$chart_type}}">{{$chart_type}}</option>
                 @endforeach
             </select>
         </div>
 
-        <div class="ms_chart-wrapper" style="width: 70%; margin: 0 auto">
+        <div class="ms_chart-wrapper">
             <canvas id="ms_js-chart"></canvas>
         </div>
         
@@ -44,22 +46,46 @@
                     data: <?php echo json_encode($monthly_revenue); ?>,
                 }
             ]
-        };
+        }
 
         // charts configurations
         const config1 = {
             type: 'bar',
             data: data,
             options: {
-
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        title: {
+                            color: 'rgb(254, 170, 2)',
+                            display: true,
+                            text: 'Ultimi 12 mesi'
+                        },
+                        ticks: {
+                            color: 'rgb(116, 6, 2)',
+                        }
+                    }
+                }
             }
-        };
+        }
 
         const config2 = {
             type: 'line',
             data: data,
             options: {
-                
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        title: {
+                            color: 'rgb(254, 170, 2)',
+                            display: true,
+                            text: 'Ultimi 12 mesi'
+                        },
+                        ticks: {
+                            color: 'rgb(116, 6, 2)',
+                        },
+                    }
+                }
             }
         };
 

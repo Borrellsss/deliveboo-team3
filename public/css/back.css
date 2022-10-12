@@ -167,7 +167,7 @@ main {
 }
 
 section {
-  padding: 2rem;
+  padding: 2rem 2rem;
 }
 
 .ms_btn {
@@ -213,6 +213,90 @@ section {
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 1rem;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.ms_header-brand-logo {
+  width: 70px;
+  transition: all 150ms ease-in;
+}
+.ms_header-brand-logo:hover {
+  filter: invert(58%) sepia(100%) saturate(450%) hue-rotate(357deg) brightness(100%) contrast(105%);
+}
+
+@media (max-width: 768px) {
+  aside {
+    padding-top: 2rem;
+    width: 55px;
+  }
+  aside li > a .ms_aside-link-txt {
+    display: none;
+  }
+  main {
+    width: calc(100% - 57px);
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+}
+@media (max-width: 480px) {
+  section {
+    padding: 2rem 0.5rem;
+  }
+  header .ms_user-name-header {
+    display: none;
+  }
+  .ms_header-brand-logo {
+    width: 50px;
+  }
+}
+.ms_form-card-wrapper {
+  padding-block: 4rem;
+  width: 100vw;
+  height: 100vh;
+  background: center/cover url("../images/background-registerform.jpg");
+  justify-content: center;
+  box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.5) inset;
+  overflow-y: auto;
+}
+.ms_form-card-wrapper-login {
+  background: center/cover url("../images/wp1874155-restaurant-wallpapers.jpg");
+}
+
+.ms_form-card {
+  width: 50%;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid #740602;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px black;
+}
+.ms_form-card.ms_login-card {
+  width: 50%;
+}
+.ms_form-card input,
+.ms_form-card textarea {
+  background-color: transparent;
+}
+
+.ms_form-card-header {
+  padding-block: 1rem;
+  text-align: center;
+  color: #feaa02;
+  border-bottom: 1px solid #740602;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.ms_form-card-body {
+  padding: 2rem 4rem;
+}
+.ms_form-card-body input:not([type=checkbox]),
+.ms_form-card-body textarea {
+  margin-bottom: 0.5rem;
+}
+
+section .ms_form-card-body {
+  padding: 0 0;
 }
 
 #myModal {
@@ -279,9 +363,9 @@ section {
   border: 4px solid #f00;
 }
 
-.modal-confirm .icon-box i {
+.modal-confirm .icon-box .fa-exclamation {
   color: #f00;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .modal-confirm .btn, .modal-confirm .btn:active {
@@ -303,65 +387,22 @@ section {
   margin: 100px auto;
 }
 
-.ms_header-brand-logo {
-  width: 70px;
-  transition: all 150ms ease-in;
-}
-.ms_header-brand-logo:hover {
-  filter: invert(58%) sepia(100%) saturate(450%) hue-rotate(357deg) brightness(100%) contrast(105%);
+.ms_chart-wrapper {
+  margin-inline: auto;
+  width: 70%;
+  aspect-ratio: 2/1;
 }
 
-.ms_form-card-wrapper {
-  padding-block: 4rem;
-  width: 100vw;
-  height: 100vh;
-  background: center/cover url("../images/background-registerform.jpg");
-  justify-content: center;
-  box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.5) inset;
-  overflow-y: auto;
+@media (max-width: 768px) {
+  .ms_chart-wrapper {
+    width: 100%;
+  }
 }
-.ms_form-card-wrapper-login {
-  background: center/cover url("../images/wp1874155-restaurant-wallpapers.jpg");
+@media (max-width: 600px) {
+  .ms_chart-wrapper {
+    aspect-ratio: 1/1;
+  }
 }
-
-.ms_form-card {
-  width: 50%;
-  height: -moz-fit-content;
-  height: fit-content;
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 1px solid #740602;
-  border-radius: 1rem;
-  box-shadow: 0 0 10px black;
-}
-.ms_form-card.ms_login-card {
-  width: 50%;
-}
-.ms_form-card input,
-.ms_form-card textarea {
-  background-color: transparent;
-}
-
-.ms_form-card-header {
-  padding-block: 1rem;
-  text-align: center;
-  color: #feaa02;
-  border-bottom: 1px solid #740602;
-  font-size: 2rem;
-  font-weight: 600;
-}
-
-.ms_form-card-body {
-  padding: 2rem 4rem;
-}
-.ms_form-card-body input:not([type=checkbox]),
-.ms_form-card-body textarea {
-  margin-bottom: 0.5rem;
-}
-
-section .ms_form-card-body {
-  padding: 0 0;
-}
-
 .ms_product-details {
   justify-content: space-between;
 }
@@ -417,6 +458,19 @@ section .ms_form-card-body {
   color: #740602;
 }
 
+@media (max-width: 600px) {
+  .ms_product-details {
+    flex-direction: column;
+  }
+  .ms_product-details-left {
+    margin-inline: auto;
+    margin-bottom: 2rem;
+    width: 70%;
+  }
+  .ms_product-details-info {
+    width: 100%;
+  }
+}
 .ms_user-home-info,
 .ms_user-orders-info {
   font-size: 1.1rem;
