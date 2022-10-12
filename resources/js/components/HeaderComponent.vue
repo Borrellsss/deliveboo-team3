@@ -2,9 +2,9 @@
 
    <header>
         <div class="container">
-            <div class="row">
+            <div class="row d-flex align-items-center">
                 <div class="col">
-                    <div class="logo-container">
+                    <div class="ms_logo-container">
                         <a href="/">
                             <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                                 width="184.000000pt" height="137.000000pt" viewBox="0 0 184.000000 137.000000"
@@ -70,8 +70,8 @@
 <script>
 export default {
     name: 'HeaderComponent',
-
        }
+       
 </script>
 
 <style lang="scss" scoped>
@@ -83,9 +83,8 @@ export default {
 header{
     display: flex;
     align-items: center;
-    height: 5.5rem;
-    position: fixed;
     width: 100%;
+    height: 5.5rem;
     position: fixed;
     top: 0;
     width: 100%;
@@ -93,12 +92,13 @@ header{
     background-color: white;
     box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
 
-    .logo-container{
+    .ms_logo-container{
         width: 5rem;
 
         svg{
         color: $secondary-color;
         width: 100%;
+        height: 100%;
         transition: transform 60s;
 
                 &:hover{

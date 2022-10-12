@@ -1,48 +1,78 @@
 <template>
     <div>
         <section>
-            <div class="jumbotron jumbotron-fluid" style="margin-top:90px">
+      <!-- **************** RESTAURANT JUMBOTRON *********************     -->     
+            <div class="jumbotron jumbotron-fluid">
+            <div class="jumbotron-overlay"></div>
             <div class="container d-flex justify-content-around">
-                <div>
+                <div class="restaurant-heading">
                     <h2>Nome Ristorante</h2>
                     <p class="lead"><i class="fa-solid fa-location-dot mr-2"></i>Via dei girasoli, 15</p>
                 </div>
-                <img src="https://citynews-romatoday.stgy.ovh/~media/horizontal-mid/52295577773865/unnamed-2020-07-27t134402-606-2.jpg" alt="ristorante">
             </div>
             </div>
             <div class="pr_container" style="margin-top:100px">
 
-                <a v-if="cart.length > 0" class="floating-cart">
+   <!-- **************** CART SYMBOL FIXED ON SIDE *********************  -->     
+                <a v-if="cart.length" class="floating-cart" @click="cartScroll()">
                     <div class="count-float">
                         <span>{{cart.length}}</span>
                     </div>
                     <i class="fa-solid fa-cart-shopping"></i>
                 </a>
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 products-col px-3">
+                <div class="row master-row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 px-3 products-col">
+   <!-- **************** PRODUCT SIDE *********************        -->   
                         <div class="products-side">
-                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 d-flex justify-content-start">
+                            <div class="row row-cols-1 row-cols-sm- row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-between">
 
-                                <div v-for="product in products" :key="product.id" class="col p-2">
-                                    <div class="card">
-                                       <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
-                                       <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="product.name">
-                                       <div class="card-body">
-                                            <h5 class="card-title">{{product.name}}</h5>
-                                            <p class="card-text">{{product.description}}</p>
-                                            <h6 class="product-card-price">{{product.price}}&euro;</h6>
-                                            <a @click='addItem(product)' class="add-to-cart">Aggiungi al carrello</a>
-                                        </div>
+                                <div v-for="product,index in products" :key="index" class="col p-3">
+      <!-- **************** PRODUCT CARD *********************        -->     
+                                     <div class="ms-product-card">
+                                         <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
+                                         <img v-else class="card-img" src="https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg" :alt="product.name">
+                                       <a class="info-popup-inline" href="#popup1" @click="selectProduct(product), showProductInfo()"><i class="fa-solid fa-circle-info"></i></a>
+                                          <div class="ms-card-body d-flex">
+                                            <div class="title-price">
+                                                <h5 class="ms-card-title">{{product.name}}</h5>
+                                                <h6 class="product-card-price">{{product.price}}&euro;</h6>
+                                            </div>
+                                            <div class="cart-card-symbol">
+                                                <a @click='addItem(product)' class="add-to-cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                                            </div>
+                                          </div>
                                      </div>
-                                 </div>
+                                    
+       <!-- **************** POPUP INFO PRODUCT *********************  -->
+                                    <div class="info-popup" style="margin-top:90px"  :class="{'ms_visible' : toggle_popup}">
+                                        <div id="popup1" class="overlay">
+                                            <div v-for="element,index in myProduct" :key="index">
+                                                <div class="popup">
+                                                    <h2>{{element.name}}</h2>
+                                                   
+                                                    <div class="content">
+                                                        <p>{{element.description}}</p>
+                                                        <div>Ingredienti: {{element.ingredients}}</div>
+                                                        <a @click='addItem(element)' class="add-to-cart pop-btn">Aggiungi al carrello</a>
+                                                    </div>
+                                                     <a class="close" @click="showProductInfo()">&times;</a>
+                                                </div> 
+                                            </div>
+                                       
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-sm-9 col-md-8 col-lg-4 col-xl-4 cart-col">
+
+      <!-- **************** CART *********************  -->
                         <div v-if="cart.length > 0" class="cart-container">
+                            <div class="ghost-cart" id="my-cart"></div>
                             <!-- v-if="cart.length > 0" -->
-                            <h3>Carrello</h3>
+                            <h3 class="ms_cart_title" >Carrello</h3>
                             <div v-for="(product, index) in cart" :key="index" class="row">
                                 <div class="col col-6">
                                     <div class="product-name d-flex justify-content-center align-items-center">
@@ -143,8 +173,12 @@
 
         data(){
             return{
+                toggle_popup: false,
+
+                myProduct: [],
                 // array dei prodotti
                 products: [],
+                
                 // array vuoto per il carrello
                 cart:[],
                 // numero prodotti presenti nel carrello
@@ -179,6 +213,28 @@
         },
 
         methods:{
+
+            // funzione che scrolla l'icona del carrello
+            cartScroll(){
+                const element = document.getElementById('my-cart')
+                element.scrollIntoView({ behavior: 'smooth' });
+            },
+
+            // mostra popup info  
+
+            showProductInfo(){
+                if (this.toggle_popup){
+                    this.toggle_popup = false
+                      this.myProduct = []; 
+                }else{
+                    this.toggle_popup = true
+                  
+                }
+            },
+
+            selectProduct(product){
+                this.myProduct.push(product); 
+            },
 
             // funzione che aggiunge il prodotto al carrello
             addItem(product){
@@ -287,14 +343,17 @@
                 localStorage.clear('cart');
             },
 
-            // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
-            totalAmount(cart){
-                let total_amount = 0;
-                cart.forEach ((product) => {
-                    total_amount += product.price * product.quantity;
-                })
-                return total_amount;
-            },
+             // funzione che determina la quantità di prodotti all'interno del carrello ritornando il prezzo finale
+            // totalAmount(){
+            //     this.total_amount = 0;
+            //     for (let i = 0; i < this.cart.length; i++) {
+            //         this.total_amount += parseFloat(this.cart[i].price)*this.product.quantity
+            //         console.log(this.cart[i])
+            //     }
+
+
+            //  },
+
 
             // Funzione che comunica il processo del pagamento e rende visibile il banner del pagamento
             AlertPayment() {
@@ -304,48 +363,182 @@
             }
         },
 
+        // Funzione che comunica il processo del pagamento e rende visibile il banner del pagamento
+        AlertPayment() {
+            if(confirm("Stai per eseguire il pagamento dell\'ordine. Vuoi procedere?")){
+                this.isVisible = true;
+            }
+        }
     }
     </script>
 
+<style lang="scss" scoped>
+@import '../style/variables';
+@import '../style/common';
 
-    <style lang="scss" scoped>
-    @import '../style/variables';
-    @import '../style/common';
+// .cart-col{
+//       position:fixed;
+//       top: 20;
+//       right: 0;
+// }
 
+#my-cart{
+        // width: 0.2px;
+        // height: 0.2px;
+        // padding-bottom: 35px;
+
+    }
+    .add-to-cart{
+                color: rgb(23, 2, 2);
+                cursor: pointer;
+                }
+  .info-popup{
+    
+    .button {
+    font-size: 1em;
+    padding: 10px;
+    color: #fff;
+    border: 2px solid #06D85F;
+    border-radius: 20px/50px;
+    text-decoration: none;
+    cursor: pointer;
+    }
+    .button:hover {
+    background: #06D85F;
+    }
+
+    .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 200ms;
+    visibility: hidden;
+    // display: none;
+    opacity: 0.1;
+    z-index: 60;
+    }
+ 
+
+    .popup {
+    margin: 30vh auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    width: 40%;
+    position: relative;
+    // margin-top: 300px;
+    }
+
+    .popup h2 {
+    margin-top: 0;
+    color: black;
+    font-family: Tahoma, Arial, sans-serif;
+    }
+    .popup .close {
+    position: absolute;
+    top: 5px;
+    right: 13px;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+    }
+    .popup .close:hover {
+    color: #06D85F;
+    }
+    // .popup .content {
+    // max-height: 70%;
+    // overflow: auto;
+    // }
+
+    .add-to-cart.pop-btn{
+        margin-top: 30px;
+        display: inline-block;
+          
+    }
+
+    &.ms_visible{
+         
+        .overlay {
+            visibility: visible;
+            // display: block;
+            opacity: 0.2;
+        }
+        
+    }
+
+    // @media screen and (max-width: 700px){
+    // .box{
+    //     width: 70%;
+    // }
+    // .popup{
+    //     width: 70%;
+    // }
+    // }
+
+   
+
+  }
     .jumbotron{
-        height: 250px;
-        background: rgb(116,6,2);
-        background: radial-gradient(circle, rgba(116,6,2,1) 0%, rgba(116,6,2,1) 23%, rgba(64,4,2,1) 100%);
-        // background-color: $secondary-color;
-        color: white;
+        height: 800px;
+        background-image: url(https://www.settimoristorante.it/wp-content/uploads/sites/106/2020/01/slide_home_sofitel_settimo_ristorante_terrazza2.jpg);
+      //  background-image: url(../../../../public/images/jumbotron-img.jpg);
+       background-size: cover;
+       background-repeat: no-repeat;
+       background-position-x: 50%;
+       background-position-y: 0;
+       position: relative;
+       z-index: -2;
+    //    border-bottom: 15px solid $secondary-color;
+
+       &:after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(20, 20, 20, .3);
+        z-index: -1;
+
+       }
 
 
         .container{
-            width: 90%;
+            // width: 50%;
             height: 100%;
+            text-align: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-direction: column;
 
-            h2{
-                font-size: 2.5rem;
-                padding-top: 50px;
-                font-family: Geneva, Tahoma, sans-serif;
-            }
+              .restaurant-heading{
+                margin-top: 3rem;
+                // background: rgba(20, 20, 20, .7);
+                padding: 2rem 0.3rem;
+                display: inline-block;
 
-            P{
-                font-family: Geneva, Tahoma, sans-serif;
-            }
+                  h2{
+                      font-size: 3rem;
+                  }
+      
+                  P{
+                    font-size: 1.5rem;
+                  }
+              }
 
-            img{
-                width: 40%;
-               height: 100%;
-               object-fit: cover;
-               padding: 15px 0;
-               margin-left: 30px;
-            }
         }
 
     }
 
     .floating-cart{
+        display: none;
         position: fixed;
         top: 0;
         right: 30px;
@@ -354,16 +547,17 @@
         background-color: $primary-color;
         width: 70px;
         height: 70px;
-        display: block;
         border-radius: 50%;
-        display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 20;
+        z-index: 10;
+        cursor: pointer;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+            0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
             .fa-cart-shopping{
                 font-size: 2.3rem;
-                z-index: 20;
+                z-index: 10;
                 }
 
                 &:hover{
@@ -385,75 +579,158 @@
                 position: absolute;
                 bottom: 34px;
                 right: 25px;
-                z-index: 30;
+                z-index: 11;
 
                 &:hover ~ .fa-cart-shopping{
                    color: rgb(249, 246, 246);
                 }
             }
 
+            
 
     .pr_container{
         width: 90%;
         margin: 0 auto;
         position: relative;
     }
-
+    
+    //    ************** PRODUCT CARDS **********************  
     .products-side{
-
         margin-bottom: 70px;
+        width: 95%;
         .my-circle {
           width: 50px;
           height: 50px;
           text-align: center;
           vertical-align: middle;
-      }
+          }
 
-          .card{
+          .col{
+            margin-bottom: -80px;
+          }
+
+     
+          .ms-product-card{
             border-radius: 15px;
+            overflow: hidden;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
             0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            height: 75%;
+            aspect-ratio: 1/1;
+            position: relative;
+            border-radius: 10px 10px 10px 10px;
+            transition: box-shadow 0.5s, transform 0.5s;
 
-                    .card-img{
-                        object-fit: cover;
-                        border-radius: 15px 15px 0 0;
-                        height: 200px;
+            &:hover{
+                    box-shadow: 5px 20px 30px rgba(0,0,0,0.3);
+                }
 
-                        // img{
-                        // }
+            .card-img{
+                object-fit: cover;
+                border-radius: 15px 15px 0 0;
+                height: 70%;
+            }
+
+            .info-popup-inline{
+                .fa-circle-info{
+                            position: absolute;
+                            font-size: 160%;
+                            color: white;
+                            top: 10px;
+                            right: 10px;
+
+                            &:hover{
+                                color: #efecec;
+                            }
                     }
+            }
+                    
+            .ms-card-body{
+                height: 40%;
+                    .title-price{
+                        width: ( (100% / 4) * 3);
+                        background-color:  #f7f2f2;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: start;
+                        align-items: start;
+                        padding-left: 1rem;
+                        
 
-                 .card-title{
-                    font-weight: 700;
+                                .ms-card-title{
+                                    margin-top: 1rem;
+                                    font-weight: 600;
+                                    overflow: hidden ;
+                                    text-overflow: ellipsis;
+                                    font-size: 0.9rem;
+                                }
+
+                                .product-card-price{
+                                    margin-bottom: 1rem;
+                                    font-size: 0.8rem;
+                                }
+                         }
+                    .cart-card-symbol{
+                        width: (100% / 4);
+                        background-color:  #f7f2f2;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-left:solid thin rgba(0,0,0,0.1);
+                        transition: transform 0.5s;
+
+                        &:hover{
+                                    background:#eae1e1;
+                                }
+
+                                .add-to-cart{
+                                    font-size: 140%;
+                                    margin-bottom: 1.8rem;
+                                    color: #254053;
+                                    transition: transform 0.5s;
+                                    // background: #efecec;
+
+                                        .fa-cart-shopping{
+                                                color: #254053;
+                                                transition: transform 0.5s;
+                                            }
+
+                                        // &:hover{
+                                        //         background: #A6CDDE;
+                                        //     }
+                                        &:hover .fa-cart-shopping{
+                                            transform: translateY(5px);
+                                            color:#00394B;
+                                        }
+                             }
+                         }
                  }
-
-                //  .card-text{
-                //  }
-
-
-            .card-body{
-                padding: 0.5rem;
-
-                .product-card-price{
-                    margin-bottom: 1rem;
-                    font-weight: 700;
-                }
             }
 
-            .add-to-cart{
-                // font-size: 0.9rem;
-                color: white;
-                padding: 0.3rem 1rem;
-                background: linear-gradient(to top right, $secondary-color, #bf201b);
-                border-radius: 0.7rem;
-                margin-left: 0.2rem;
-                cursor: pointer;
-                }
-            }
         }
+        
+
+      // ************** END PRODUCT CARD ********************** 
     .cart-container{
         border-radius: 15px;
-        // margin-bottom: 70px;
+        position: sticky;
+        top: 180px;
+        margin-bottom: 90px;
+
+        .ghost-cart{
+            position: absolute;
+            top: -140px;
+            left: 0;
+            height: 10px;
+            width: 10px;
+            // background-color: red;
+            visibility: hidden;
+        }
+
+        .ms_cart_title{
+            margin-bottom: 1rem;
+            position: relative;
+        }
 
         .col{
         border: 1px solid rgb(203, 197, 197);
@@ -498,7 +775,6 @@
                         .decrease{
                             padding-bottom: 3px;
                         }
-
                      }
                     }
                     .remove-btn{
@@ -584,363 +860,69 @@
        }
     }
 
-    @media only screen and (max-width: 768px) {
+    .selected{
+        color: red;
+        // background-color: red;
+    }
 
-        .jumbotron{
 
-                img{
-                    display: none;
-                }
-            }
-        }
-
-    // cart style
-    // .cart-comp{
-    //     .cart-container{
-    //         width: 100%;
-    //         margin: 50px 0;
-    //         min-height: calc(100vh - 590px);
-    //         background-color: white;
-    //         color: black;
-    //         box-shadow: 0px 0px 15px rgb(189, 189, 189);
-    //         border-radius: 20px;
-    //         overflow: hidden;
-    //         .top-links{
+    // @media only screen and (max-width: 1800px) {
+        
+    //     .products-col{
     //             display: flex;
-    //             width: 100%;
-    //             height: 50px;
-    //             color: #dd3546;
-    //             h4{
-    //                 width: 50%;
-    //                 text-align: center;
-    //                 margin: 0 auto;
-    //                 &.active,
-    //                 .active{
-    //                     border-bottom: 3px solid #dd3546;
-    //                     font-weight: bolder;
-    //                 }
-    //                 &.static,
-    //                 .link{
-    //                     padding-top: 10px;
-    //                 }
-    //                 .link{
-    //                     cursor: pointer;
-    //                     display: block;
-    //                     width: 100%;
-    //                     height: 100%;
-    //                     color: #dd3546;
-    //                     text-decoration: none;
-    //                     transition: .2s all;
-    //                     &:hover{
-    //                         background-color: rgb(240, 240, 240);
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //         .mid-bar{
-    //             width: 100%;
-    //             padding: 15px 15px 0;
-    //         }
-    //         .cart-container-content{
-    //             .products-container{
-    //                 margin: 0;
-    //                 list-style: none;
-    //                 li{
-    //                     display: flex;
-    //                     align-items: center;
-    //                     margin: 30px 15px 0 15px;
-    //                     padding-bottom: 15px;
-    //                     border-bottom: 2px solid lightgray;
-    //                     img{
-    //                         width: 100px;
-    //                         border-radius: 10px;
-    //                         margin-right: 15px;
-    //                     }
-    //                     .right-side{
-    //                         display: flex;
-    //                         flex-grow: 1;
-    //                         align-items: center;
-    //                         .info{
-    //                             margin: 10px 0;
-    //                             h5{
-    //                                 font-weight: bolder;
-    //                             }
-    //                             .description{
-    //                                 display: table;
-    //                                 table-layout: fixed;
-    //                                 max-width: 250px;
-    //                                 width: 100%;
-    //                                 font-size: 14px;
-    //                                 color: gray;
-    //                                 white-space: nowrap;
-    //                             }
-    //                             .description > *{
-    //                                 display: table-cell;
-    //                                 overflow: hidden;
-    //                                 text-overflow: ellipsis;
-    //                             }
-    //                             .price{
-    //                                 font-weight: bold;
-    //                                 color: #4E54C8;
-    //                             }
-    //                         }
-    //                         .quantity-inputs{
-    //                             display: flex;
-    //                             align-items: center;
-    //                             .qt-btn,
-    //                             .del-btn{
-    //                                 cursor: pointer;
-    //                             }
-    //                             .qt-btn{
-    //                                 font-size: 20px;
-    //                                 color: gray;
-    //                                 transition: .2s all;
-    //                                 &:hover{
-    //                                     color: rgb(95, 95, 95);
-    //                                 }
-    //                                 &:active{
-    //                                     color: #dd3546;
-    //                                 }
-    //                             }
-    //                             .quantity{
-    //                                 margin: 0 8px;
-    //                                 font-weight: bold;
-    //                                 color: #dd3546;
-    //                             }
-    //                             .del-btn{
-    //                                 margin-left: 30px;
-    //                                 color: red;
-    //                                 transition: .2s all;
-    //                                 &:hover{
-    //                                     color: darkred;
-    //                                 }
-    //                                 &:active{
-    //                                     color: black;
-    //                                 }
-    //                             }
-    //                         }
-    //                     }
-    //                     &:last-of-type{
-    //                         border-bottom: none;
-    //                     }
-    //                 }
-    //             }
-    //             .checkout .ckt-container{
-    //                 text-align: center;
-    //                 padding-top: 60px;
-    //                 margin: 0 auto;
-    //                 width: 50%;
-    //                 h2{
-    //                     font-weight: bolder;
-    //                     .price{
-    //                         display: inline-block;
-    //                         font-weight: bold;
-    //                         color: #4E54C8;
-    //                     }
-    //                 }
-    //                 button{
-    //                     font-weight: bold;
-    //                     i{
-    //                         margin-right: 5px;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //         h1{
-    //             text-align: center;
-    //             font-weight: bolder;
-    //             margin: 70px 0;
-    //             i{
-    //                 color: #dd3546;
-    //             }
-    //         }
-    //     }
+    //              justify-content: center ; 
+    //     }     
     // }
 
+    @media only screen and (max-width: 1200px) {
+
+        .products-side{
+            margin-bottom: 70px;
+            width: 95%;
+    }
+        .card-ingredients{
+                            height: 65px;
+                            // background-color: red;
+                        }
+    }
+
+            @media only screen and (max-width: 1110px) {
+                .products-side{
+                        width: 100%;
+                 }
+            }
+
+            @media only screen and (max-width: 992px) {
 
 
-    // #cart-section{
-    // 	margin: 0;
-    // 	padding: 0;
-    // 	background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
-    // 	height: 100vh;
-    // 	display: flex;
-    // 	justify-content: center;
-    // 	align-items: center;
-    // }
+                .floating-cart{
+                      display: flex;
+                }   
+                .products-col{
+                    display: flex;
+                 justify-content: start ; 
+                }
 
-    // .CartContainer{
-    // 	width: 70%;
-    // 	height: 90%;
-    // 	background-color: #ffffff;
-    //     border-radius: 20px;
-    //     box-shadow: 0px 10px 20px #1687d933;
-    // }
+                // .products-side{
+                //         width: 90%;
+                //  }
+            }
 
-    // .Header{
-    // 	margin: auto;
-    // 	width: 90%;
-    // 	height: 15%;
-    // 	display: flex;
-    // 	justify-content: space-between;
-    // 	align-items: center;
-    // }
+            @media only screen and (max-width: 768px) {
 
-    // .Heading{
-    // 	font-size: 20px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 700;
-    // 	color: #2F3841;
-    // }
 
-    // .Action{
-    // 	font-size: 14px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #E44C4C;
-    // 	cursor: pointer;
-    // 	border-bottom: 1px solid #E44C4C;
-    // }
+                .jumbotron{
+                        height: 600px;
+                    }
 
-    // .Cart-Items{
-    // 	margin: auto;
-    // 	width: 90%;
-    // 	height: 30%;
-    // 	display: flex;
-    // 	justify-content: space-between;
-    // 	align-items: center;
-    // }
-    // .image-box{
-    // 	width: 15%;
-    // 	text-align: center;
-    // }
-    // .about{
-    // 	height: 100%;
-    // 	width: 24%;
-    // }
-    // .title{
-    // 	padding-top: 10px;
-    // 	line-height: 10px;
-    // 	font-size: 32px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 800;
-    // 	color: #202020;
-    // }
-    // .subtitle{
-    // 	line-height: 10px;
-    // 	font-size: 18px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #909090;
-    // }
+                .row{
+                    justify-content: center;
+                    }
 
-    // .counter{
-    // 	width: 15%;
-    // 	display: flex;
-    // 	justify-content: space-between;
-    // 	align-items: center;
-    // }
-    // .btn{
-    // 	width: 40px;
-    // 	height: 40px;
-    // 	border-radius: 50%;
-    // 	background-color: #d9d9d9;
-    // 	display: flex;
-    // 	justify-content: center;
-    // 	align-items: center;
-    // 	font-size: 20px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 900;
-    // 	color: #202020;
-    // 	cursor: pointer;
-    // }
-    // .count{
-    // 	font-size: 20px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #202020;
-    // }
+            }            
+        
+    
 
-    // .prices{
-    // 	height: 100%;
-    // 	text-align: right;
-    // }
-    // .amount{
-    // 	padding-top: 20px;
-    // 	font-size: 26px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 800;
-    // 	color: #202020;
-    // }
-    // .save{
-    // 	padding-top: 5px;
-    // 	font-size: 14px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #1687d9;
-    // 	cursor: pointer;
-    // }
-    // .remove{
-    // 	padding-top: 5px;
-    // 	font-size: 14px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #E44C4C;
-    // 	cursor: pointer;
-    // }
-
-    // .pad{
-    // 	margin-top: 5px;
-    // }
-
-    // hr{
-    // 	width: 66%;
-    // 	float: right;
-    // 	margin-right: 5%;
-    // }
-    // .checkout{
-    // 	float: right;
-    // 	margin-right: 5%;
-    // 	width: 28%;
-    // }
-    // .total{
-    // 	width: 100%;
-    // 	display: flex;
-    // 	justify-content: space-between;
-    // }
-    // .Subtotal{
-    // 	font-size: 22px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 700;
-    // 	color: #202020;
-    // }
-    // .items{
-    // 	font-size: 16px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 500;
-    // 	color: #909090;
-    // 	line-height: 10px;
-    // }
-    // .total-amount{
-    // 	font-size: 36px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 900;
-    // 	color: #202020;
-    // }
-    // .button{
-    // 	margin-top: 10px;
-    // 	width: 100%;
-    // 	height: 40px;
-    // 	border: none;
-    // 	background: linear-gradient(to bottom right, #B8D7FF, #8EB7EB);
-    // 	border-radius: 20px;
-    // 	cursor: pointer;
-    // 	font-size: 16px;
-    // 	font-family: 'Open Sans';
-    // 	font-weight: 600;
-    // 	color: #202020;
-    // }
-
-    </style>
+</style>
 
 
