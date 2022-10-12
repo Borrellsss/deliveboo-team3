@@ -131,31 +131,101 @@
                 <!-- Cart -->
                 <div class="col-12 col-sm-9 col-md-8 col-lg-4 col-xl-4 cart-col">
                     <div v-if="cart.length > 0" class="cart-container">
-                        <div class="item-cart-section d-flex">
-                            <div class="title-price-cart d-flex flex-column justify-content-center align-items-start">
-                                <div class="title-product-cart">Spaghetti allo scoglio</div>
-                                <div class="price-product-cart">29,99£</div>
+                        <div class="ghost-cart" id="my-cart"></div>
+
+                        <!-- Cart Title -->
+                        <h3 class="ms_cart_title">
+                            Carrello
+                        </h3>
+
+                        <!-- Cart Content -->
+                        <div v-for="(product, index) in cart" :key="index" class="row">
+                            <div class="col col-6">
+
+                                <!-- Cart Products Name -->
+                                <div class="product-name d-flex justify-content-center align-items-center">
+                                    {{product.name}}
+                                </div>
                             </div>
-                            <div class="quantity-cart d-flex justify-content-center align-items-center">
-                                <span class="increment quantity-btn"><i class="fa-solid fa-minus"></i>
-                                </span><span class="quantity-number">209</span>
-                                <span class="decrease quantity-btn"><i class="fa-solid fa-plus"></i></span>
+
+                            <!-- Cart columns items actions -->
+                            <div class="col col-3">
+                                <div class="product-quantity-remove d-flex flex-column justify-content-center align-items-center">
+                                    <div class="product-quantity d-flex justify-content-center align-items-center">
+
+                                        <!-- Decrease Items -->
+                                        <a class="quantity-btn" @click='decreaseQuantity(product, index)'>
+
+                                            <!-- Descrease Icon -->
+                                            <span class="decrease">-</span>
+                                        </a>
+
+                                        <!-- Items Quantity -->
+                                        <span class="quantity-number">
+                                            {{product.quantity}}
+                                        </span>
+
+                                        <!-- Increase Quantity -->
+                                        <a class="quantity-btn" @click='addItem(product)'>
+
+                                            <!-- Increase Icon -->
+                                            <span class="increase">+</span>
+                                        </a>
+                                    </div>
+
+                                    <!-- Delete Items -->
+                                    <a class="remove-btn" @click='deleteItem(index)'>
+                                        Rimuovi
+                                    </a>
+                                </div>
                             </div>
-                            <div class="delete-item-cart d-flex justify-content-center align-items-center">
-                                <i class="fa-solid fa-xmark"></i>
+
+                            <!-- Partials Price for Items -->
+                            <div class="col col-3">
+                                <div class="product-price d-flex flex-column justify-content-center align-items-center">
+                                    {{ product.price * product.quantity }}&euro;
+                                </div>
                             </div>
                         </div>
-                        <div class="check-out-section d-flex flex-column justify-content-center align-items-center">
-                            <div class="total-cart d-flex align-items-center">
-                                <div class="total-price">129,99$</div>
-                                <div class="clear-cart">Svuota carrello</div>
+                        
+                        <!-- Total Amount / Checkout Section -->
+                        <div class="row d-flex justify-content-end">
+                            <div class="col col-12">
+                                <div class="checkout">
+                                    <div class="total">
+                                        <div>
+                                            <!-- Text "Total" -->
+                                            <div class="subtotal">
+                                                Totale
+                                            </div>
+
+                                            <!-- Clear Cart -->
+                                            <div class="items" @click="clearCart(index)">
+                                                Svuota carrello
+                                            </div>
+                                        </div>
+
+                                        <!-- Total Amount -->
+                                        <div class="total-amount">&euro;
+                                            {{ totalAmount(cart) }} 
+                                        </div>
+                                    </div>
+
+                                    <!-- Checkout Button -->
+                                    <button class="button"  data-toggle="modal" data-target="#proceedtopayment">
+                                        Checkout
+                                    </button>
+                                </div>
                             </div>
-                            <div class="check-out-btn">chek-out</div>
                         </div>
-                    </div>    
+
+                        <!-- Payment Component -->
+                        <PaymentComponent :amount="totalAmount(cart)" v-if="isVisible" />
+                    </div>
+
                     <!-- Cart Blank layout -->
                     <div v-else class="cart-blank">
-                           
+
                         <!-- Title -->
                         <h4>
                             Il carrello è vuoto
@@ -750,16 +820,13 @@ export default {
 
 // ****************** END PRODUCT CARDS ****************** // 
 
-// ****************** CART ******************++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ // 
+// ****************** CART ****************** // 
 
 .cart-container {
     border-radius: 15px;
-    overflow: hidden;
     position: sticky;
     top: 180px;
     margin-bottom: 90px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
     .ghost-cart {
         position: absolute;
@@ -770,76 +837,123 @@ export default {
         visibility: hidden;
     }
 
-    .item-cart-section{
-        background-color: #f5f5f5;
+    .ms_cart_title {
+        margin-bottom: 1rem;
+        position: relative;
+    }
 
-       .title-price-cart{
-            width: (calc(100% / 9) * 6);
-            padding: 1rem 0;
-            .title-product-cart{
-                padding-left: 5%;
-            }
-            .price-product-cart{
-                padding-left: 6%;
-                color: #808083;
-                font-size: 0.9rem;
-            }
-       }
-       .quantity-cart{
-            width: (calc(100% / 9) * 2);
+    .col {
+        border: 1px solid rgb(203, 197, 197);
+    }
 
-            .quantity-number{
-                padding: 0 0.2rem;
+    h3 {
+        margin-top: 1rem;
+        padding-left: 2rem;
+        font-weight: 600;
+    }
+
+    .product-name {
+        height: 100%;
+        font-weight: 700;
+    }
+
+    .product-quantity-remove {
+
+        .product-quantity {
+            height: 100%;
+            padding-top: 0.5rem;
+
+            .quantity-number {
+                padding: 0 5px;
+                font-weight: 700;
             }
 
-            .quantity-btn{
+            .quantity-btn {
+                width: 20px;
+                height: 20px;
+                background-color: rgb(211, 205, 205);
+                padding: 0.3rem;
                 border-radius: 50%;
-                width: 20%;
-                aspect-ratio: 1/1;
-                font-size: 0.8rem;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color:#fefefe;
-                    &.decrease{
-                           color:#808083;
-                    }
-                    &.increment{
-                           color:#808083;
-                    }
-            }
-       }
-       .delete-item-cart{
-            width: calc(100% / 9);
-            color:#808083;
+                margin-bottom: 3px;
+                cursor: pointer;
+                font-weight: 500;
 
-            .fa-xmark{
-                font-size: 1.2rem;
+                .decrease {
+                    padding-bottom: 3px;
+                }
             }
-       }
+        }
+
+        .remove-btn {
+            font-size: 0.8rem;
+            padding-top: 0.3rem;
+            padding-bottom: 0.5rem;
+            font-weight: 700;
+            color: #909090;
+            cursor: pointer;
+        }
+    }
+
+    .product-price {
+        height: 100%;
+        font-size: 1.2rem;
+        font-weight: 700;
     }
     
-    .check-out-section{
-             background-color: #f5f5f5;
-             
-             .total-cart{
-                width: 100%;
-                // background-color: green;
-                    .total-price{
-                        width: calc(100% / 3);
-                        padding-left: 6%;
-                        font-size: 1.5rem;
-                        font-weight: bold;
-                        // background-color: blue;
-                    }
-                    .clear-cart{
-                        width: calc((100% / 3) * 2);
-                        // background-color: #da2828;
-
-                    }
-              }
+    .checkout {
+        margin: 3% 5%;
     }
 
+    .total {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .subtotal {
+        font-size: 1.2rem;
+        font-family: 'Open Sans';
+        font-weight: 700;
+        color: #202020;
+        margin-bottom: 0.3rem;
+    }
+
+    .items {
+        font-size: 1rem;
+        font-family: 'Open Sans';
+        font-weight: 500;
+        color: #909090;
+        line-height: 10px;
+        cursor: pointer;
+        padding: 0.5rem 0 0.7rem 0;
+
+        &:hover{
+            color: $secondary-color;;
+        }
+    }
+
+    .total-amount {
+        font-size: 2rem;
+        font-family: 'Open Sans';
+        font-weight: 900;
+        color: #202020;
+    }
+
+    .button {
+        margin-top: 10px;
+        width: 100%;
+        height: 40px;
+        border: none;
+        background: linear-gradient(to bottom right, $secondary-color, #bf201b);
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: 'Open Sans';
+        font-weight: 600;
+        color:white;
+    }
 }
 
 .cart-blank {
