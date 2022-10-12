@@ -3,6 +3,7 @@
     <section>
        <JumbotronComponent/>
 
+           <!-- filters categories  -->
         <div class="category-filter-container">
             <h4 class="fo-style">Scegli la tua categoria</h4>
             <div class="categories-bar">
@@ -16,7 +17,7 @@
                         ></polyline>
                     </symbol>
                 </svg>
-
+              <!-- checkbox container  -->
                 <div class="checkbox-container">
                     <div v-for="category in categories" :key="category.id">
                         <input class="checkbox-input" :id="'category-' + category.id" type="checkbox" :value="category.id" v-model="selectedCategories" @change="getSelectedCategories()"/>
@@ -32,9 +33,10 @@
                 </div>
             </div>
         </div>
-
+            
+          <!-- restaurant cards container  -->
         <div class="restaurant-cards">
-          <div class="fo-container">
+          <div class="restaurant-cards-container">
             <div class="row gx-5 row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
 
                 <div v-for="user in users" :key="user.id" class="col">
@@ -61,6 +63,7 @@
             </div>
          </div>
       </div>
+        <!-- join us component -->
           <JoinUsComponent/>
     </section>   
 
@@ -116,262 +119,260 @@ import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
 
             //////// FILTER CATEGORIES ////////  
          
-    .category-filter-container{
+.category-filter-container{
+
+    h4{
+        text-align: center;
+        margin: 2rem 0;
+    }
+    .categories-bar{
+        margin-bottom: 50px;
+        .checkbox-symbol {
+                position: absolute;
+                width: 0;
+                height: 0;
+                pointer-events: none;
+                user-select: none;
+         }
         
-        h4{
-            text-align: center;
-            margin: 2rem 0;
-        }
-        .categories-bar{
-            margin-bottom: 50px;
-                .checkbox-symbol {
-                        position: absolute;
-                        width: 0;
-                        height: 0;
-                        pointer-events: none;
-                        user-select: none;
-                     }
+        .checkbox-container {
+            width: 60%;
+            box-sizing: border-box;
+            background: #ffffff;
+            color: #222;
+            height: 64px;
+            display: flex;
+            justify-content:space-around;
+            align-items: center;
+            flex-flow: row wrap;
+            margin-bottom: 6rem;
+            margin: 0 auto;
+                .checkbox-input {
+                position: absolute;
+                visibility: hidden;
+                }
                 
-                .checkbox-container {
-                    width: 60%;
-                    box-sizing: border-box;
-                    background: #ffffff;
-                    color: #222;
-                    height: 64px;
-                    display: flex;
-                    justify-content:space-around;
-                    align-items: center;
-                    flex-flow: row wrap;
-                    margin-bottom: 6rem;
-                    margin: 0 auto;
-                            .checkbox-input {
-                            position: absolute;
-                            visibility: hidden;
-                            }
-                            
-                            .checkbox {
-                            user-select: none;
-                            cursor: pointer;
-                            padding: 6px 3px;
-                            border-radius: 6px;
-                            overflow: hidden;
-                            transition: all 0.3s ease;
-                            display: flex;
-                            }
-                       }
-              }
-         }     
-
-    //  Checkbox animation 
-    .checkbox:not(:last-child) {
-    margin-right: 6px;
+                .checkbox {
+                user-select: none;
+                cursor: pointer;
+                padding: 6px 3px;
+                border-radius: 6px;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                display: flex;
+                }
+         }
     }
+ }     
 
-    .checkbox:hover {
-    background: rgba(0, 119, 255, 0.06);
-    }
+//  Checkbox animation 
+.checkbox:not(:last-child) {
+margin-right: 6px;
+}
 
-    .checkbox span {
-    vertical-align: middle;
-    transform: translate3d(0, 0, 0);
-    }
+.checkbox:hover {
+background: rgba(0, 119, 255, 0.06);
+}
 
-    .checkbox span:first-child {
-    position: relative;
-    flex: 0 0 18px;
-    width: 18px;
-    height: 18px;
-    border-radius: 4px;
-    transform: scale(1);
-    border: 1px solid #cccfdb;
-    transition: all 0.3s ease;
-    }
+.checkbox span {
+vertical-align: middle;
+transform: translate3d(0, 0, 0);
+}
 
-    .checkbox span:first-child svg {
-    position: absolute;
-    top: 3px;
-    left: 2px;
-    fill: none;
-    stroke: #fff;
-    stroke-dasharray: 16px;
-    stroke-dashoffset: 16px;
-    transition: all 0.3s ease;
-    transform: translate3d(0, 0, 0);
-    }
+.checkbox span:first-child {
+position: relative;
+flex: 0 0 18px;
+width: 18px;
+height: 18px;
+border-radius: 4px;
+transform: scale(1);
+border: 1px solid #cccfdb;
+transition: all 0.3s ease;
+}
 
-    .checkbox span:last-child {
-    padding-left: 8px;
-    line-height: 18px;
-    }
+.checkbox span:first-child svg {
+position: absolute;
+top: 3px;
+left: 2px;
+fill: none;
+stroke: #fff;
+stroke-dasharray: 16px;
+stroke-dashoffset: 16px;
+transition: all 0.3s ease;
+transform: translate3d(0, 0, 0);
+}
 
-    .checkbox:hover span:first-child {
-    border-color: $secondary-color;
-    }
+.checkbox span:last-child {
+padding-left: 8px;
+line-height: 18px;
+}
 
-    .checkbox-input:checked + .checkbox span:first-child {
-    background: $secondary-color;
-    border-color: $secondary-color;
-    animation: zoom-in-out 0.3s ease;
-    }
+.checkbox:hover span:first-child {
+border-color: $secondary-color;
+}
 
-    .checkbox-input:checked + .checkbox span:first-child svg {
-    stroke-dashoffset: 0;
-    }
+.checkbox-input:checked + .checkbox span:first-child {
+background: $secondary-color;
+border-color: $secondary-color;
+animation: zoom-in-out 0.3s ease;
+}
 
-    @keyframes zoom-in-out {
+.checkbox-input:checked + .checkbox span:first-child svg {
+stroke-dashoffset: 0;
+}
+
+@keyframes zoom-in-out {
     50% {
         transform: scale(0.9);
     }
+}
+
+// Restaurant cards  
+
+.restaurant-cards-container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.col{
+    padding: 0 10px;
+}
+
+.card{
+    width: 100%;
+    height: 250px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+    &:hover{
+            transform: translateY(5px)
     }
 
-  //////// RESTAURANT CARDS ////////  
+    .img-container {
+            width: 100%;
+            height: 170px;
+        
+            img{
+                border-radius: 8px 8px 0px 0;
+                height: 100%;
+                object-fit: cover;
+                height: 170px
+             }
+        }
+    .card-body{
+            overflow: hidden;
+            text-overflow: ellipsis;
+        .card-heading {
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 0px 15px;
+            margin-top: 0.4rem;
+            }
 
-    .fo-container{
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    .col{
-        padding: 0 10px;
-    }
-
-        .card{
-                width: 100%;
-                height: 250px;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-                0 6px 20px 0 rgba(0, 0, 0, 0.19);
-             
-             &:hover{
-                     transform: translateY(5px)
-                    }
-
-                .img-container {
-                        width: 100%;
-                        height: 170px;
-                    
-                        img{
-                            border-radius: 8px 8px 0px 0;
-                            height: 100%;
-                            object-fit: cover;
-                            height: 170px
-                            }
-                        }
-                .card-body{
-                overflow: hidden;
-                text-overflow: ellipsis;
-                    .card-heading {
-                        font-size: 0.8rem;
-                        font-weight: bold;
-                        padding: 0px 15px;
-                        margin-top: 0.4rem;
-                
-                        }
-            
-                        .card-text {
-                            padding: 0px 15px;
-                            font-size: 0.7rem;
-                            color: #636262;
-                    
-                                .address{
-                                margin-left: 0.3rem;
-                                }
-                          }
-                     }        
-              }
-
-              ///////// MEDIA QUERIES ////////////
+            .card-text {
+                padding: 0px 15px;
+                font-size: 0.7rem;
+                color: #636262;
+        
+                .address{
+                margin-left: 0.3rem;
+                }
+            }
+      }        
+ }
+ 
+///////// MEDIA QUERIES ////////////
                         
-         @media only screen and (max-width: 1200px) {
+    @media only screen and (max-width: 1200px) {
 
             .col{
                     padding: 0rem 0rem;
                 }
 
-            .fo-container{
+            .restaurant-cards-container{
                             width: 80%;
                             margin: 0 auto;
-                        }
+                }
 
-                        .col{
-                            padding: 5px;
+                .col{
+                    padding: 5px;
+                }
+            }
+
+            .card-heading {
+                        font-size: 0.6rem;
+                        font-weight: bold;
+                        padding: 0px 10px;
+                        margin-top: 0.4rem;
+                
                         }
+                                
+            .card-text {
+                padding: 0px 15px;
+                font-size: 0.4rem;
+                    .address{
+                    margin-left: 0.3rem;
                     }
 
-                    .card-heading {
-                                font-size: 0.6rem;
-                                font-weight: bold;
-                                padding: 0px 10px;
-                                margin-top: 0.4rem;
-                        
-                                }
-                                        
-                    .card-text {
-                        padding: 0px 15px;
-                        font-size: 0.4rem;
-                            .address{
-                            margin-left: 0.3rem;
+                }
+    @media only screen and (max-width: 992px) {
+
+        .restaurant-cards-container{
+                width: 70%;
+                margin: 0 auto;
+
+                .card{
+                    height: 220px;
+                    .img-container {
+                        height: 150px;
+                    
+                        img{
+                            height: 150px;
                             }
+                      }
+              }
 
-                        }
-          @media only screen and (max-width: 992px) {
+            .col{
+                padding: 5px;
+            }
+            
+            .card-heading {
+                font-size: 0.5rem;
+                font-weight: bold;
+                padding: 0px 6px;
+                margin-top: 0.2rem;
+            }
+                                
+            .card-text {
+                padding: 0px 15px;
+                font-size: 0.4rem;
+                .address{
+                    margin-left: 0.3rem;
+                }
+            }
+        }
+     }
+                
+        @media only screen and (max-width: 768px) {
 
-                        .fo-container{
-                            width: 70%;
-                            margin: 0 auto;
-
-                            .card{
-                                height: 220px;
-                                    .img-container {
-                                            height: 150px;
-                                        
-                                            img{
-                                                height: 150px;
-                                                }
-                                            }
-                                    }
-
-                                        .col{
-                                            padding: 5px;
-                                        }
-                                        
-                                        .card-heading {
-                                            font-size: 0.5rem;
-                                            font-weight: bold;
-                                            padding: 0px 6px;
-                                            margin-top: 0.2rem;
-                                            
-                                        }
-                                        
-                                        .card-text {
-                                            padding: 0px 15px;
-                                            font-size: 0.4rem;
-                                            .address{
-                                                margin-left: 0.3rem;
-                                            }
-                                        }
-                                    }
-                                }
-                        
-            @media only screen and (max-width: 768px) {
-
-                .fo-container{
-                        width: 70%;
-                        margin: 0 auto;
-                        }
+            .restaurant-cards-container{
+                    width: 70%;
+                    margin: 0 auto;
                     }
+              }
 
         @media only screen and (max-width: 576px) {
   
-                      .fo-container{
-                                    .card{
-                                        height: 210px;
-                                    }
-                                    width: 80%;
-                                                
-                                .card-text {
-                                                display: none;
-                                            }
-                                        }
-                      }      
+            .restaurant-cards-container{
+                    .card{
+                        height: 210px;
+                        }
+                    width: 80%;
+                                        
+                    .card-text {
+                           display: none;
+                     }
+                 }
+            }      
 </style>
