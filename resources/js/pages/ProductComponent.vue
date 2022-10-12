@@ -75,11 +75,11 @@
                                             </div>
                                             <div class="total-amount">{{totalAmount(cart)}}&euro;</div>
                                         </div>
-                                        <button class="button"  data-toggle="modal" data-target="#modalAbandonedCart">Checkout</button>
+                                        <button class="button"  data-toggle="modal" data-target="#proceedtopayment">Checkout</button>
                                     </div>
 
-                                    <!-- Modal -->
-                                    <div class="modal fade right" id="modalAbandonedCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+                                    <!-- Modal "proceed to payment"-->
+                                    <div class="modal fade right" id="proceedtopayment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
                                         <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
                                             <!--Content-->
                                             <div class="modal-content ms_modal_container">

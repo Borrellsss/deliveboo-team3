@@ -8886,12 +8886,12 @@ var render = function render() {
     staticClass: "button",
     attrs: {
       "data-toggle": "modal",
-      "data-target": "#modalAbandonedCart"
+      "data-target": "#proceedtopayment"
     }
   }, [_vm._v("Checkout")])]), _vm._v(" "), _c("div", {
     staticClass: "modal fade right",
     attrs: {
-      id: "modalAbandonedCart",
+      id: "proceedtopayment",
       tabindex: "-1",
       role: "dialog",
       "aria-labelledby": "myModalLabel",
