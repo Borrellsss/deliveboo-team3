@@ -100,7 +100,6 @@ export default {
           
           }
 
-          
           // Nascondo il form e il drop-in del pagamento
           this.Payed = false
         })
