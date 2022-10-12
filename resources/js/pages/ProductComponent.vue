@@ -753,17 +753,12 @@
                                             transform: translateY(5px);
                                             color:#00394B;
                                         }
-
                              }
                          }
                  }
-
-           
-
-                        
             }
 
-            }
+        }
         
 
       // ************** END PRODUCT CARD ********************** 
@@ -831,7 +826,6 @@
                         .decrease{
                             padding-bottom: 3px;
                         }
-
                      }
                     }
                     .remove-btn{
@@ -976,42 +970,6 @@
             justify-content: center;
             }
 
-        //     .products-side{
-        // width: 80%;
-     
-        //   .ms-product-card{
-        //     height: 400px;
-
-        //             .card-img{
-        //                 height: 175px;
-        //                 }
-        //             .ms_card-body{
-        //                 padding: 0.5rem;
-
-        //                 .ms_card-title{
-        //                     font-weight: 700;
-        //                     margin-bottom: 0.5rem;
-        //                 }
-
-        //                 .card-ingredients{
-        //                     height: 60px;
-        //                     // background-color: blue;
-        //                     margin: 15px auto;
-
-        //                 }
-
-        //                 .fa-circle-info{
-        //                             font-size: 2rem;
-        //                             padding-right: 2rem;
-        //                             color: green;
-        //                            }
-
-        //                     .product-card-price{
-        //                         margin: 0 0 0.9rem 0;
-        //                         font-weight: 700;
-        //                         font-size: 1.5rem;
-        //                     }
-        //         } }}
 }            
         
 

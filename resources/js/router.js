@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 // importo le pagine
 
 import UserRestaurantComponent from './pages/UserRestaurantComponent.vue'
-import ProductComponent from './pages/ProductComponentOld.vuevue'
+import ProductComponent from './pages/ProductComponent.vue'
 
 
 const router = new VueRouter ({
