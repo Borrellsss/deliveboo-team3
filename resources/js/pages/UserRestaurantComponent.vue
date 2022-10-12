@@ -105,9 +105,7 @@ import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
                 axios.get(`http://127.0.0.1:8000/api/restaurants?categories=${this.selectedCategories}`)
                 .then((response) => {
                 this.users = response.data.results;
-                this.matchedCategories = response.data.results.length
-                    // console.log(response.data.results.length)
-                    // console.log(this.selectedCategories.leng)
+                this.matchedCategories = response.data.results
                 });
             }
         },
