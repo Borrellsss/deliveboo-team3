@@ -7888,48 +7888,6 @@ __webpack_require__.r(__webpack_exports__);
   name: 'PaymentComponent',
   data: function data() {
     return {
-      token: ''
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    braintree.dropin.create({
-      authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
-      selector: '#dropin-container'
-    }), // <!-- BRAINTREE -->
-    // Chiamata API che restituisce il token di autorizzazione nella risposta
-    axios.get("http://127.0.0.1:8000/api/orders/generate").then(function (response) {
-      _this.token = response.data.token;
-    });
-  },
-  methods: {
-    payment: function payment() {
-      axios.post('http://127.0.0.1:8000/api/orders/make/payment', {
-        token: this.token,
-        amount: this.total_amount
-      }).then(function (result) {
-        alert(result.data.message);
-      });
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PaymentComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PaymentComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'PaymentComponent',
-  data: function data() {
-    return {
       token: '',
       Payed: true,
       orderData: [],
@@ -8246,7 +8204,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       users: [],
       categories: [],
-      selectedCategories: []
+      selectedCategories: [],
+      matchedCategories: []
     };
   },
   methods: {
@@ -8255,7 +8214,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("http://127.0.0.1:8000/api/restaurants?categories=".concat(this.selectedCategories)).then(function (response) {
         _this.users = response.data.results;
-        console.log(response.data);
+        _this.matchedCategories = response.data.results.length; // console.log(response.data.results.length)
+        // console.log(this.selectedCategories.leng)
       });
     }
   },
@@ -8280,11 +8240,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_HeaderComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/HeaderComponent.vue */ "./resources/js/components/HeaderComponent.vue");
-/* harmony import */ var _components_PaymentComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/PaymentComponent.vue */ "./resources/js/components/PaymentComponent.vue");
-/* harmony import */ var _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue");
-/* harmony import */ var _fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/fontawesome-free/js/all.js */ "./node_modules/@fortawesome/fontawesome-free/js/all.js");
-/* harmony import */ var _fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_3__);
-
+/* harmony import */ var _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue");
+/* harmony import */ var _fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/fontawesome-free/js/all.js */ "./node_modules/@fortawesome/fontawesome-free/js/all.js");
+/* harmony import */ var _fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
@@ -8292,8 +8250,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'App',
   components: {
     HeaderComponent: _components_HeaderComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    PaymentComponent: _components_PaymentComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    FooterComponent: _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    FooterComponent: _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   computed: {
     isUserLogged: function isUserLogged() {
@@ -8590,7 +8547,6 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-<<<<<<< HEAD
   return _vm.Payed ? _c("div", [_c("div", [_c("form", [_c("div", {
     staticClass: "mb-1"
   }, [_c("label", {
@@ -8708,9 +8664,6 @@ var render = function render() {
       }
     }
   })])])]), _vm._v(" "), _c("div", {
-=======
-  return _c("div", {
->>>>>>> statistics-page-fix-work-in-progress
     staticClass: "drop-in"
   }, [_c("div", [_c("div", {
     attrs: {
@@ -8728,11 +8681,7 @@ var render = function render() {
         return _vm.payment();
       }
     }
-<<<<<<< HEAD
   }, [_vm._v("Paga Adesso")])])])])]) : _vm._e();
-=======
-  }, [_vm._v("Paga Adesso")])])])]);
->>>>>>> statistics-page-fix-work-in-progress
 };
 
 var staticRenderFns = [];
@@ -9265,7 +9214,7 @@ var render = function render() {
     staticClass: "restaurant-cards"
   }, [_c("div", {
     staticClass: "fo-container"
-  }, [_c("div", {
+  }, [_vm.selectedCategories.length == 0 ? _c("div", [_c("div", [_vm._v("\n                        Nessuna categoria selezionata\n                ")])]) : _vm.selectedCategories.length != 0 && _vm.matchedCategories.length == 0 ? _c("div", [_c("div", [_vm._v(" Nessun ristorante corrisponde alla tua selezione")])]) : _c("div", [_c("div", {
     staticClass: "row gx-5 row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4"
   }, _vm._l(_vm.users, function (user) {
     return _c("div", {
@@ -9311,7 +9260,7 @@ var render = function render() {
     }), _vm._v(" "), _c("span", {
       staticClass: "address"
     }, [_vm._v(_vm._s(user.address.slice(0, 35)))]), user.address.length > 35 ? _c("span", [_vm._v("...")]) : _vm._e()])])])])], 1);
-  }), 0)])]), _vm._v(" "), _c("JoinUsComponent")], 1);
+  }), 0)])])]), _vm._v(" "), _c("JoinUsComponent")], 1);
 };
 
 var staticRenderFns = [];
@@ -9335,7 +9284,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("HeaderComponent"), _vm._v(" "), _c("PaymentComponent"), _vm._v(" "), _c("main", [_c("router-view")], 1), _vm._v(" "), _c("FooterComponent")], 1);
+  return _c("div", [_c("HeaderComponent"), _vm._v(" "), _c("main", [_c("router-view")], 1), _vm._v(" "), _c("FooterComponent")], 1);
 };
 
 var staticRenderFns = [];
@@ -13742,25 +13691,6 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "*[data-v-153bfd55] {\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\nbody[data-v-153bfd55] {\n  margin: 0;\n}\nimg[data-v-153bfd55] {\n  width: 100%;\n  display: block;\n}\nul[data-v-153bfd55] {\n  list-style-type: none;\n}\na[data-v-153bfd55] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-153bfd55] {\n  color: #ffc509;\n}\n.ms_btn[data-v-153bfd55] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-153bfd55] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-153bfd55] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-153bfd55] {\n  padding-left: 0;\n}\ndl[data-v-153bfd55], ol[data-v-153bfd55], ul[data-v-153bfd55] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.pl-3[data-v-153bfd55], .px-3[data-v-153bfd55] {\n  padding-left: 0 !important;\n}\n.pr-3[data-v-153bfd55], .pr-3[data-v-153bfd55] {\n  padding-right: 0 !important;\n}\n.row[data-v-153bfd55] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\nh1[data-v-153bfd55], h2[data-v-153bfd55], h3[data-v-153bfd55], h4[data-v-153bfd55], h5[data-v-153bfd55], h6[data-v-153bfd55], .h1[data-v-153bfd55], .h2[data-v-153bfd55], .h3[data-v-153bfd55], .h4[data-v-153bfd55], .h5[data-v-153bfd55], .h6[data-v-153bfd55], p[data-v-153bfd55], .p[data-v-153bfd55] {\n  margin-bottom: 0;\n}\n.js_container[data-v-153bfd55] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-153bfd55] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-153bfd55] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-153bfd55] {\n  padding: 0.5rem 2rem;\n}\nh2.fo-style[data-v-153bfd55] {\n  font-weight: 900;\n  font-size: 5rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.fo-style[data-v-153bfd55] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.fo-style[data-v-153bfd55] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.fo-style[data-v-153bfd55] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.fo-style[data-v-153bfd55] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\nheader[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n  height: 5.5rem;\n  position: fixed;\n  top: 0;\n  width: 100%;\n  z-index: 9;\n  background-color: white;\n  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);\n}\nheader .ms_logo-container[data-v-153bfd55] {\n  width: 5rem;\n}\nheader .ms_logo-container svg[data-v-153bfd55] {\n  color: #740602;\n  width: 100%;\n  height: 100%;\n  transition: transform 60s;\n}\nheader .ms_logo-container svg[data-v-153bfd55]:hover {\n  color: #ffc509;\n  width: 100%;\n  transform: rotate(-1080deg);\n}\nheader .ms_banner .js_btn[data-v-153bfd55] {\n  margin: 0 0.3rem;\n  padding: 0.1em 0.8em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #ffc509;\n  color: white;\n  font-weight: 600;\n}\n.col[data-v-153bfd55] {\n  flex-basis: 0;\n  flex-grow: 1;\n  max-width: 70%;\n}\n@media only screen and (max-width: 992px) {\n.ms_text[data-v-153bfd55] {\n    display: none !important;\n}\n.cell-symbol[data-v-153bfd55] {\n    display: none;\n}\n}\n@media only screen and (max-width: 768px) {\n.container-sm[data-v-153bfd55], .container[data-v-153bfd55] {\n    max-width: 643px;\n}\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PaymentComponent.vue?vue&type=style&index=0&id=4f61e082&lang=scss&scoped=true&":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PaymentComponent.vue?vue&type=style&index=0&id=4f61e082&lang=scss&scoped=true& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".drop-in[data-v-4f61e082],\n.btn-container[data-v-4f61e082] {\n  display: flex;\n  justify-content: center;\n}", ""]);
 
 // exports
 
@@ -61999,15 +61929,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
-=======
-__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\back-sass\back.scss */"./resources/sass/back-sass/back.scss");
->>>>>>> statistics-page-fix-work-in-progress
+__webpack_require__(/*! C:\Users\Ilaria\bool\Esercizi\laravel_esercizi\deliveboo-team3\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\Ilaria\bool\Esercizi\laravel_esercizi\deliveboo-team3\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\Ilaria\bool\Esercizi\laravel_esercizi\deliveboo-team3\resources\sass\back-sass\back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })
