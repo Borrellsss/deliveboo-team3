@@ -7888,48 +7888,6 @@ __webpack_require__.r(__webpack_exports__);
   name: 'PaymentComponent',
   data: function data() {
     return {
-      token: ''
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    braintree.dropin.create({
-      authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
-      selector: '#dropin-container'
-    }), // <!-- BRAINTREE -->
-    // Chiamata API che restituisce il token di autorizzazione nella risposta
-    axios.get("http://127.0.0.1:8000/api/orders/generate").then(function (response) {
-      _this.token = response.data.token;
-    });
-  },
-  methods: {
-    payment: function payment() {
-      axios.post('http://127.0.0.1:8000/api/orders/make/payment', {
-        token: this.token,
-        amount: this.total_amount
-      }).then(function (result) {
-        alert(result.data.message);
-      });
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PaymentComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PaymentComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'PaymentComponent',
-  data: function data() {
-    return {
       token: '',
       Payed: true,
       orderData: [],
@@ -8280,11 +8238,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_HeaderComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/HeaderComponent.vue */ "./resources/js/components/HeaderComponent.vue");
-/* harmony import */ var _components_PaymentComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/PaymentComponent.vue */ "./resources/js/components/PaymentComponent.vue");
-/* harmony import */ var _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue");
-/* harmony import */ var _fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/fontawesome-free/js/all.js */ "./node_modules/@fortawesome/fontawesome-free/js/all.js");
-/* harmony import */ var _fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_3__);
-
+/* harmony import */ var _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/FooterComponent.vue */ "./resources/js/components/FooterComponent.vue");
+/* harmony import */ var _fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/fontawesome-free/js/all.js */ "./node_modules/@fortawesome/fontawesome-free/js/all.js");
+/* harmony import */ var _fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_js_all_js__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
@@ -8292,8 +8248,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'App',
   components: {
     HeaderComponent: _components_HeaderComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    PaymentComponent: _components_PaymentComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    FooterComponent: _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    FooterComponent: _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   computed: {
     isUserLogged: function isUserLogged() {
@@ -8590,7 +8545,6 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-<<<<<<< HEAD
   return _vm.Payed ? _c("div", [_c("div", [_c("form", [_c("div", {
     staticClass: "mb-1"
   }, [_c("label", {
@@ -8708,9 +8662,6 @@ var render = function render() {
       }
     }
   })])])]), _vm._v(" "), _c("div", {
-=======
-  return _c("div", {
->>>>>>> statistics-page-fix-work-in-progress
     staticClass: "drop-in"
   }, [_c("div", [_c("div", {
     attrs: {
@@ -8728,11 +8679,7 @@ var render = function render() {
         return _vm.payment();
       }
     }
-<<<<<<< HEAD
   }, [_vm._v("Paga Adesso")])])])])]) : _vm._e();
-=======
-  }, [_vm._v("Paga Adesso")])])])]);
->>>>>>> statistics-page-fix-work-in-progress
 };
 
 var staticRenderFns = [];
@@ -9264,7 +9211,7 @@ var render = function render() {
   }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "restaurant-cards"
   }, [_c("div", {
-    staticClass: "fo-container"
+    staticClass: "restaurant-cards-container"
   }, [_c("div", {
     staticClass: "row gx-5 row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4"
   }, _vm._l(_vm.users, function (user) {
@@ -9335,7 +9282,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("HeaderComponent"), _vm._v(" "), _c("PaymentComponent"), _vm._v(" "), _c("main", [_c("router-view")], 1), _vm._v(" "), _c("FooterComponent")], 1);
+  return _c("div", [_c("HeaderComponent"), _vm._v(" "), _c("main", [_c("router-view")], 1), _vm._v(" "), _c("FooterComponent")], 1);
 };
 
 var staticRenderFns = [];
@@ -13767,25 +13714,6 @@ exports.push([module.i, ".drop-in[data-v-4f61e082],\n.btn-container[data-v-4f61e
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PaymentComponent.vue?vue&type=style&index=0&id=4f61e082&lang=scss&scoped=true&":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PaymentComponent.vue?vue&type=style&index=0&id=4f61e082&lang=scss&scoped=true& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".drop-in[data-v-4f61e082],\n.btn-container[data-v-4f61e082] {\n  display: flex;\n  justify-content: center;\n}", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/sections/JoinUsComponent.vue?vue&type=style&index=0&id=925c3882&lang=scss&scoped=true&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/sections/JoinUsComponent.vue?vue&type=style&index=0&id=925c3882&lang=scss&scoped=true& ***!
@@ -13855,7 +13783,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "*[data-v-6f42587c] {\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\nbody[data-v-6f42587c] {\n  margin: 0;\n}\nimg[data-v-6f42587c] {\n  width: 100%;\n  display: block;\n}\nul[data-v-6f42587c] {\n  list-style-type: none;\n}\na[data-v-6f42587c] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-6f42587c] {\n  color: #ffc509;\n}\n.ms_btn[data-v-6f42587c] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-6f42587c] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-6f42587c] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-6f42587c] {\n  padding-left: 0;\n}\ndl[data-v-6f42587c], ol[data-v-6f42587c], ul[data-v-6f42587c] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.pl-3[data-v-6f42587c], .px-3[data-v-6f42587c] {\n  padding-left: 0 !important;\n}\n.pr-3[data-v-6f42587c], .pr-3[data-v-6f42587c] {\n  padding-right: 0 !important;\n}\n.row[data-v-6f42587c] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\nh1[data-v-6f42587c], h2[data-v-6f42587c], h3[data-v-6f42587c], h4[data-v-6f42587c], h5[data-v-6f42587c], h6[data-v-6f42587c], .h1[data-v-6f42587c], .h2[data-v-6f42587c], .h3[data-v-6f42587c], .h4[data-v-6f42587c], .h5[data-v-6f42587c], .h6[data-v-6f42587c], p[data-v-6f42587c], .p[data-v-6f42587c] {\n  margin-bottom: 0;\n}\n.js_container[data-v-6f42587c] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-6f42587c] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-6f42587c] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-6f42587c] {\n  padding: 0.5rem 2rem;\n}\nh2.fo-style[data-v-6f42587c] {\n  font-weight: 900;\n  font-size: 5rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.fo-style[data-v-6f42587c] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.fo-style[data-v-6f42587c] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.fo-style[data-v-6f42587c] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.fo-style[data-v-6f42587c] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\n.space_line[data-v-6f42587c] {\n  margin-top: 1rem;\n  margin-bottom: 0.5rem;\n}\n.category-filter-container h4[data-v-6f42587c] {\n  text-align: center;\n  margin: 2rem 0;\n}\n.category-filter-container .categories-bar[data-v-6f42587c] {\n  margin-bottom: 50px;\n}\n.category-filter-container .categories-bar .checkbox-symbol[data-v-6f42587c] {\n  position: absolute;\n  width: 0;\n  height: 0;\n  pointer-events: none;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.category-filter-container .categories-bar .checkbox-container[data-v-6f42587c] {\n  width: 60%;\n  box-sizing: border-box;\n  background: #ffffff;\n  color: #222;\n  height: 64px;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  flex-flow: row wrap;\n  margin-bottom: 6rem;\n  margin: 0 auto;\n}\n.category-filter-container .categories-bar .checkbox-container .checkbox-input[data-v-6f42587c] {\n  position: absolute;\n  visibility: hidden;\n}\n.category-filter-container .categories-bar .checkbox-container .checkbox[data-v-6f42587c] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n  cursor: pointer;\n  padding: 6px 3px;\n  border-radius: 6px;\n  overflow: hidden;\n  transition: all 0.3s ease;\n  display: flex;\n}\n.checkbox[data-v-6f42587c]:not(:last-child) {\n  margin-right: 6px;\n}\n.checkbox[data-v-6f42587c]:hover {\n  background: rgba(0, 119, 255, 0.06);\n}\n.checkbox span[data-v-6f42587c] {\n  vertical-align: middle;\n  transform: translate3d(0, 0, 0);\n}\n.checkbox span[data-v-6f42587c]:first-child {\n  position: relative;\n  flex: 0 0 18px;\n  width: 18px;\n  height: 18px;\n  border-radius: 4px;\n  transform: scale(1);\n  border: 1px solid #cccfdb;\n  transition: all 0.3s ease;\n}\n.checkbox span:first-child svg[data-v-6f42587c] {\n  position: absolute;\n  top: 3px;\n  left: 2px;\n  fill: none;\n  stroke: #fff;\n  stroke-dasharray: 16px;\n  stroke-dashoffset: 16px;\n  transition: all 0.3s ease;\n  transform: translate3d(0, 0, 0);\n}\n.checkbox span[data-v-6f42587c]:last-child {\n  padding-left: 8px;\n  line-height: 18px;\n}\n.checkbox:hover span[data-v-6f42587c]:first-child {\n  border-color: #740602;\n}\n.checkbox-input:checked + .checkbox span[data-v-6f42587c]:first-child {\n  background: #740602;\n  border-color: #740602;\n  animation: zoom-in-out-6f42587c 0.3s ease;\n}\n.checkbox-input:checked + .checkbox span:first-child svg[data-v-6f42587c] {\n  stroke-dashoffset: 0;\n}\n@keyframes zoom-in-out-6f42587c {\n50% {\n    transform: scale(0.9);\n}\n}\n.fo-container[data-v-6f42587c] {\n  width: 80%;\n  margin: 0 auto;\n}\n.col[data-v-6f42587c] {\n  padding: 0 10px;\n}\n.card[data-v-6f42587c] {\n  width: 100%;\n  height: 250px;\n  border-radius: 8px;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n.card[data-v-6f42587c]:hover {\n  transform: translateY(5px);\n}\n.card .img-container[data-v-6f42587c] {\n  width: 100%;\n  height: 170px;\n}\n.card .img-container img[data-v-6f42587c] {\n  border-radius: 8px 8px 0px 0;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 170px;\n}\n.card .card-body[data-v-6f42587c] {\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.card .card-body .card-heading[data-v-6f42587c] {\n  font-size: 0.8rem;\n  font-weight: bold;\n  padding: 0px 15px;\n  margin-top: 0.4rem;\n}\n.card .card-body .card-text[data-v-6f42587c] {\n  padding: 0px 15px;\n  font-size: 0.7rem;\n  color: #636262;\n}\n.card .card-body .card-text .address[data-v-6f42587c] {\n  margin-left: 0.3rem;\n}\n@media only screen and (max-width: 1200px) {\n.col[data-v-6f42587c] {\n    padding: 0rem 0rem;\n}\n.fo-container[data-v-6f42587c] {\n    width: 80%;\n    margin: 0 auto;\n}\n.col[data-v-6f42587c] {\n    padding: 5px;\n}\n}\n.card-heading[data-v-6f42587c] {\n  font-size: 0.6rem;\n  font-weight: bold;\n  padding: 0px 10px;\n  margin-top: 0.4rem;\n}\n.card-text[data-v-6f42587c] {\n  padding: 0px 15px;\n  font-size: 0.4rem;\n}\n.card-text .address[data-v-6f42587c] {\n  margin-left: 0.3rem;\n}\n@media only screen and (max-width: 992px) {\n.fo-container[data-v-6f42587c] {\n    width: 70%;\n    margin: 0 auto;\n}\n.fo-container .card[data-v-6f42587c] {\n    height: 220px;\n}\n.fo-container .card .img-container[data-v-6f42587c] {\n    height: 150px;\n}\n.fo-container .card .img-container img[data-v-6f42587c] {\n    height: 150px;\n}\n.fo-container .col[data-v-6f42587c] {\n    padding: 5px;\n}\n.fo-container .card-heading[data-v-6f42587c] {\n    font-size: 0.5rem;\n    font-weight: bold;\n    padding: 0px 6px;\n    margin-top: 0.2rem;\n}\n.fo-container .card-text[data-v-6f42587c] {\n    padding: 0px 15px;\n    font-size: 0.4rem;\n}\n.fo-container .card-text .address[data-v-6f42587c] {\n    margin-left: 0.3rem;\n}\n}\n@media only screen and (max-width: 768px) {\n.fo-container[data-v-6f42587c] {\n    width: 70%;\n    margin: 0 auto;\n}\n}\n@media only screen and (max-width: 576px) {\n.fo-container[data-v-6f42587c] {\n    width: 80%;\n}\n.fo-container .card[data-v-6f42587c] {\n    height: 210px;\n}\n.fo-container .card-text[data-v-6f42587c] {\n    display: none;\n}\n}", ""]);
+exports.push([module.i, "*[data-v-6f42587c] {\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Poppins\", sans-serif;\n}\nbody[data-v-6f42587c] {\n  margin: 0;\n}\nimg[data-v-6f42587c] {\n  width: 100%;\n  display: block;\n}\nul[data-v-6f42587c] {\n  list-style-type: none;\n}\na[data-v-6f42587c] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-6f42587c] {\n  color: #ffc509;\n}\n.ms_btn[data-v-6f42587c] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-6f42587c] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-6f42587c] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-6f42587c]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-6f42587c] {\n  padding-left: 0;\n}\ndl[data-v-6f42587c], ol[data-v-6f42587c], ul[data-v-6f42587c] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.pl-3[data-v-6f42587c], .px-3[data-v-6f42587c] {\n  padding-left: 0 !important;\n}\n.pr-3[data-v-6f42587c], .pr-3[data-v-6f42587c] {\n  padding-right: 0 !important;\n}\n.row[data-v-6f42587c] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\nh1[data-v-6f42587c], h2[data-v-6f42587c], h3[data-v-6f42587c], h4[data-v-6f42587c], h5[data-v-6f42587c], h6[data-v-6f42587c], .h1[data-v-6f42587c], .h2[data-v-6f42587c], .h3[data-v-6f42587c], .h4[data-v-6f42587c], .h5[data-v-6f42587c], .h6[data-v-6f42587c], p[data-v-6f42587c], .p[data-v-6f42587c] {\n  margin-bottom: 0;\n}\n.js_container[data-v-6f42587c] {\n  width: 65%;\n  margin: 0 auto;\n  position: relative;\n}\n.main_title[data-v-6f42587c] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-6f42587c] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-6f42587c] {\n  padding: 0.5rem 2rem;\n}\nh2.fo-style[data-v-6f42587c] {\n  font-weight: 900;\n  font-size: 5rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.fo-style[data-v-6f42587c] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.fo-style[data-v-6f42587c] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.fo-style[data-v-6f42587c] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.fo-style[data-v-6f42587c] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\n.space_line[data-v-6f42587c] {\n  margin-top: 1rem;\n  margin-bottom: 0.5rem;\n}\n.category-filter-container h4[data-v-6f42587c] {\n  text-align: center;\n  margin: 2rem 0;\n}\n.category-filter-container .categories-bar[data-v-6f42587c] {\n  margin-bottom: 50px;\n}\n.category-filter-container .categories-bar .checkbox-symbol[data-v-6f42587c] {\n  position: absolute;\n  width: 0;\n  height: 0;\n  pointer-events: none;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.category-filter-container .categories-bar .checkbox-container[data-v-6f42587c] {\n  width: 60%;\n  box-sizing: border-box;\n  background: #ffffff;\n  color: #222;\n  height: 64px;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  flex-flow: row wrap;\n  margin-bottom: 6rem;\n  margin: 0 auto;\n}\n.category-filter-container .categories-bar .checkbox-container .checkbox-input[data-v-6f42587c] {\n  position: absolute;\n  visibility: hidden;\n}\n.category-filter-container .categories-bar .checkbox-container .checkbox[data-v-6f42587c] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n  cursor: pointer;\n  padding: 6px 3px;\n  border-radius: 6px;\n  overflow: hidden;\n  transition: all 0.3s ease;\n  display: flex;\n}\n.checkbox[data-v-6f42587c]:not(:last-child) {\n  margin-right: 6px;\n}\n.checkbox[data-v-6f42587c]:hover {\n  background: rgba(0, 119, 255, 0.06);\n}\n.checkbox span[data-v-6f42587c] {\n  vertical-align: middle;\n  transform: translate3d(0, 0, 0);\n}\n.checkbox span[data-v-6f42587c]:first-child {\n  position: relative;\n  flex: 0 0 18px;\n  width: 18px;\n  height: 18px;\n  border-radius: 4px;\n  transform: scale(1);\n  border: 1px solid #cccfdb;\n  transition: all 0.3s ease;\n}\n.checkbox span:first-child svg[data-v-6f42587c] {\n  position: absolute;\n  top: 3px;\n  left: 2px;\n  fill: none;\n  stroke: #fff;\n  stroke-dasharray: 16px;\n  stroke-dashoffset: 16px;\n  transition: all 0.3s ease;\n  transform: translate3d(0, 0, 0);\n}\n.checkbox span[data-v-6f42587c]:last-child {\n  padding-left: 8px;\n  line-height: 18px;\n}\n.checkbox:hover span[data-v-6f42587c]:first-child {\n  border-color: #740602;\n}\n.checkbox-input:checked + .checkbox span[data-v-6f42587c]:first-child {\n  background: #740602;\n  border-color: #740602;\n  animation: zoom-in-out-6f42587c 0.3s ease;\n}\n.checkbox-input:checked + .checkbox span:first-child svg[data-v-6f42587c] {\n  stroke-dashoffset: 0;\n}\n@keyframes zoom-in-out-6f42587c {\n50% {\n    transform: scale(0.9);\n}\n}\n.restaurant-cards-container[data-v-6f42587c] {\n  width: 80%;\n  margin: 0 auto;\n}\n.col[data-v-6f42587c] {\n  padding: 0 10px;\n}\n.card[data-v-6f42587c] {\n  width: 100%;\n  height: 250px;\n  border-radius: 8px;\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\n}\n.card[data-v-6f42587c]:hover {\n  transform: translateY(5px);\n}\n.card .img-container[data-v-6f42587c] {\n  width: 100%;\n  height: 170px;\n}\n.card .img-container img[data-v-6f42587c] {\n  border-radius: 8px 8px 0px 0;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  height: 170px;\n}\n.card .card-body[data-v-6f42587c] {\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.card .card-body .card-heading[data-v-6f42587c] {\n  font-size: 0.8rem;\n  font-weight: bold;\n  padding: 0px 15px;\n  margin-top: 0.4rem;\n}\n.card .card-body .card-text[data-v-6f42587c] {\n  padding: 0px 15px;\n  font-size: 0.7rem;\n  color: #636262;\n}\n.card .card-body .card-text .address[data-v-6f42587c] {\n  margin-left: 0.3rem;\n}\n@media only screen and (max-width: 1200px) {\n.col[data-v-6f42587c] {\n    padding: 0rem 0rem;\n}\n.restaurant-cards-container[data-v-6f42587c] {\n    width: 80%;\n    margin: 0 auto;\n}\n.col[data-v-6f42587c] {\n    padding: 5px;\n}\n}\n.card-heading[data-v-6f42587c] {\n  font-size: 0.6rem;\n  font-weight: bold;\n  padding: 0px 10px;\n  margin-top: 0.4rem;\n}\n.card-text[data-v-6f42587c] {\n  padding: 0px 15px;\n  font-size: 0.4rem;\n}\n.card-text .address[data-v-6f42587c] {\n  margin-left: 0.3rem;\n}\n@media only screen and (max-width: 992px) {\n.restaurant-cards-container[data-v-6f42587c] {\n    width: 70%;\n    margin: 0 auto;\n}\n.restaurant-cards-container .card[data-v-6f42587c] {\n    height: 220px;\n}\n.restaurant-cards-container .card .img-container[data-v-6f42587c] {\n    height: 150px;\n}\n.restaurant-cards-container .card .img-container img[data-v-6f42587c] {\n    height: 150px;\n}\n.restaurant-cards-container .col[data-v-6f42587c] {\n    padding: 5px;\n}\n.restaurant-cards-container .card-heading[data-v-6f42587c] {\n    font-size: 0.5rem;\n    font-weight: bold;\n    padding: 0px 6px;\n    margin-top: 0.2rem;\n}\n.restaurant-cards-container .card-text[data-v-6f42587c] {\n    padding: 0px 15px;\n    font-size: 0.4rem;\n}\n.restaurant-cards-container .card-text .address[data-v-6f42587c] {\n    margin-left: 0.3rem;\n}\n}\n@media only screen and (max-width: 768px) {\n.restaurant-cards-container[data-v-6f42587c] {\n    width: 70%;\n    margin: 0 auto;\n}\n}\n@media only screen and (max-width: 576px) {\n.restaurant-cards-container[data-v-6f42587c] {\n    width: 80%;\n}\n.restaurant-cards-container .card[data-v-6f42587c] {\n    height: 210px;\n}\n.restaurant-cards-container .card-text[data-v-6f42587c] {\n    display: none;\n}\n}", ""]);
 
 // exports
 
@@ -61999,15 +61927,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
-=======
-__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\back-sass\back.scss */"./resources/sass/back-sass/back.scss");
->>>>>>> statistics-page-fix-work-in-progress
+__webpack_require__(/*! C:\Users\Jack\boolean progetti\laravel-projects\deliveboo-team3\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\Jack\boolean progetti\laravel-projects\deliveboo-team3\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\Jack\boolean progetti\laravel-projects\deliveboo-team3\resources\sass\back-sass\back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })
