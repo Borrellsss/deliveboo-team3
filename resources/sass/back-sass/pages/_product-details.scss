@@ -14,7 +14,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #d4d4d4;
     
             > img:not(.ms_placeholder-img) {
                 height: 100%;
@@ -26,17 +25,20 @@
                 }
             }
             > .ms_placeholder-img {
-                width: 80%;
+                width: 60%;
                 aspect-ratio: 1 / 1;
-                transition: all 100ms ease-in;
                 
-            }
-            &:hover .ms_placeholder-img {
-                scale: 1.05;
             }
         }
         > div.text-center {
             font-size: 1.5rem;
+
+            &.ms_available {
+                color: $tertiary-color;
+            }
+            &.ms_not-available {
+                color: $secondary-color;
+            }
         }
     }
     &-info {
@@ -60,6 +62,14 @@
 }
 
 // MEDIA QUERIES
+@media (min-width: 1700px) {  
+
+    .ms_product-details {
+        margin-inline: auto;
+        width: 80%;
+    }
+}
+
 @media (max-width: 600px) {  
 
     .ms_product-details {

@@ -1,10 +1,18 @@
 .ms_chart-wrapper {
     margin-inline: auto;
     width: 70%;
+    max-width: 1000px;
     aspect-ratio: 2 / 1;
 }
 
 // MEDIA QUERIES
+@media (max-width: 1024px) {  
+
+    .ms_chart-wrapper {
+        width: 90%;
+    }
+}
+
 @media (max-width: 768px) {  
 
     .ms_chart-wrapper {

@@ -2,7 +2,8 @@
 
 @section('main_content')
     <section>
-        <h1 class="text-center">Statistiche</h1>
+        <h1 class="text-center mb-0">Statistiche</h1>
+        <div class="text-center mb-4">(basate sugli ultimi 12 mesi)</div>
 
         <div class="mb-4 text-center">
             <div class="mb-2">Cambia stile grafico</div>
@@ -87,11 +88,6 @@
                 maintainAspectRatio: false,
                 scales: {
                     x: {
-                        title: {
-                            color: 'rgb(254, 170, 2)',
-                            display: true,
-                            text: 'Ultimi 12 mesi'
-                        },
                         ticks: {
                             color: 'rgb(116, 6, 2)',
                         }
@@ -108,11 +104,6 @@
                 maintainAspectRatio: false,
                 scales: {
                     x: {
-                        title: {
-                            color: 'rgb(254, 170, 2)',
-                            display: true,
-                            text: 'Ultimi 12 mesi'
-                        },
                         ticks: {
                             color: 'rgb(116, 6, 2)',
                         },
@@ -129,11 +120,6 @@
                 maintainAspectRatio: false,
                 scales: {
                     x: {
-                        title: {
-                            color: 'rgb(254, 170, 2)',
-                            display: true,
-                            text: 'Ultimi 12 mesi'
-                        },
                         ticks: {
                             color: 'rgb(116, 6, 2)',
                         },
@@ -150,11 +136,6 @@
                 maintainAspectRatio: false,
                 scales: {
                     x: {
-                        title: {
-                            color: 'rgb(254, 170, 2)',
-                            display: true,
-                            text: 'Ultimi 12 mesi'
-                        },
                         ticks: {
                             color: 'rgb(116, 6, 2)',
                         },
@@ -171,11 +152,6 @@
                 maintainAspectRatio: false,
                 scales: {
                     x: {
-                        title: {
-                            color: 'rgb(254, 170, 2)',
-                            display: true,
-                            text: 'Ultimi 12 mesi'
-                        },
                         ticks: {
                             color: 'rgb(116, 6, 2)',
                         },

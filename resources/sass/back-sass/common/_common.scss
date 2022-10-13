@@ -6,13 +6,16 @@
     padding: 0;
     box-sizing: border-box;   
 }
+
 img {
     width: 100%;
     display: block;
 }
+
 ul {
     list-style-type: none;
 }
+
 a {
     color: inherit;
     text-decoration: none;
@@ -22,9 +25,11 @@ a {
         color: inherit;
     }
 }
+
 .ms_link {
     color: $primary-color;
 }
+
 label:not([for="cover"], .form-check-label) {
     position: relative;
     top: 52px;
@@ -32,6 +37,7 @@ label:not([for="cover"], .form-check-label) {
     transition: all 150ms ease-in-out;
     color: #acabab;
 }
+
 .ms_input-hover-wrapper {
 
     &:hover {
@@ -45,12 +51,14 @@ label:not([for="cover"], .form-check-label) {
         }
     }
 }
+
 label.ms_label-active {
     position: relative;
     top: 0;
     translate: 0.5rem 0;
     color: $primary-color;
 }
+
 .ms_js-pwd-check-msg-wrapper {
     position: relative;
 
@@ -63,6 +71,7 @@ label.ms_label-active {
         }
     }
 }
+
 input,
 textarea {
     
@@ -173,7 +182,8 @@ main {
 }
 
 section {
-    padding: 2rem 2rem;
+    padding-block: 2rem;
+    padding-inline: 2rem;
 }
 
 // buttons
@@ -219,15 +229,6 @@ section {
     }
 }
 
-// CARDS
-// product card 
-.ms_product-card {
-    padding: 2rem;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 1rem;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-}
-
 // BRAND LOGO
 .ms_header-brand-logo {
     width: 70px;
@@ -239,11 +240,17 @@ section {
 }
 
 // MEDIA QUERIES
+@media (min-width: 1200px) { 
+
+    section {
+        padding-inline: 7rem;
+    }
+}
+
 @media (max-width: 768px) { 
 
     // aside
     aside {
-        padding-top: 2rem;
         width: 55px;
 
         li {
@@ -259,15 +266,13 @@ section {
     // main
     main {
         width: calc(100% - 57px);
-        height: calc(100vh - 70px);
-        overflow-y: auto;
     }
 }
 
 @media (max-width: 480px) {  
 
     section {
-        padding: 2rem 0.5rem;
+        padding-inline: 0.5rem;
     }
 
     // header

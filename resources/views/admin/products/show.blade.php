@@ -29,7 +29,7 @@
                 </div>
 
                 {{-- disponibilità --}}
-                <div class="{{$product->visible == 0 ? 'ms_txt-danger' : 'ms_txt-success'}} text-center">{{$product->visible == 0 ? 'Prodotto non disponibile' : 'Prodotto disponibile'}}</div>
+                <div class="{{$product->visible === 0 ? 'ms_not-available' : 'ms_available'}} text-center">{{$product->visible == 0 ? 'Prodotto non disponibile' : 'Prodotto disponibile'}}</div>
             </div>
             <div class="ms_product-details-info">
                 {{-- nome --}}
