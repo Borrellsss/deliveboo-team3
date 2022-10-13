@@ -19,7 +19,7 @@
 
                 <div class="checkbox-container">
                     <div v-for="category in categories" :key="category.id">
-                        <input class="checkbox-input" :id="'category-' + category.id" type="checkbox" :value="category.id" v-model="selectedCategories" @change="getSelectedCategories()"/>
+                        <input class="checkbox-input" :id="'category-' + category.id" type="checkbox" :value="category.id" v-model="selectedCategories" @change="getSelectedCategories()" :disabled="isWaiting ? '' : false"/>
                         <label class="checkbox" :for="'category-' + category.id">
                             <span>
                             <svg width="12px" height="10px">
@@ -96,17 +96,21 @@ import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
                 users : [],
                 categories: [],
                 selectedCategories: [],
-                matchedCategories:[]
+                matchedCategories:[],
+                isWaiting: false
             }
         },
         methods: {
+
             getSelectedCategories() {
-                
+                this.isWaiting = true;
                 axios.get(`http://127.0.0.1:8000/api/restaurants?categories=${this.selectedCategories}`)
                 .then((response) => {
                 this.users = response.data.results;
-                this.matchedCategories = response.data.results
+                this.matchedCategories = response.data.results;
+                this.isWaiting = false;
                 });
+
             }
         },
         mounted(){
