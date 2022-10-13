@@ -8245,16 +8245,20 @@ __webpack_require__.r(__webpack_exports__);
     return {
       users: [],
       categories: [],
-      selectedCategories: []
+      selectedCategories: [],
+      matchedCategories: [],
+      isWaiting: false
     };
   },
   methods: {
     getSelectedCategories: function getSelectedCategories() {
       var _this = this;
 
+      this.isWaiting = true;
       axios.get("http://127.0.0.1:8000/api/restaurants?categories=".concat(this.selectedCategories)).then(function (response) {
         _this.users = response.data.results;
-        console.log(response.data);
+        _this.matchedCategories = response.data.results;
+        _this.isWaiting = false;
       });
     }
   },
@@ -9335,7 +9339,8 @@ var render = function render() {
       staticClass: "checkbox-input",
       attrs: {
         id: "category-" + category.id,
-        type: "checkbox"
+        type: "checkbox",
+        disabled: _vm.isWaiting ? "" : false
       },
       domProps: {
         value: category.id,
@@ -9381,6 +9386,8 @@ var render = function render() {
   }), 0)])]), _vm._v(" "), _c("div", {
     staticClass: "restaurant-cards"
   }, [_c("div", {
+    staticClass: "fo-container"
+  }, [_vm.selectedCategories.length == 0 ? _c("div", [_c("div", [_vm._v("\n                        Nessuna categoria selezionata\n                ")])]) : _vm.selectedCategories.length != 0 && _vm.matchedCategories.length == 0 ? _c("div", [_c("div", [_vm._v(" Nessun ristorante corrisponde alla tua selezione")])]) : _c("div", [_c("div", {
     staticClass: "restaurant-cards-container"
   }, [_c("div", {
     staticClass: "row gx-5 row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4"
@@ -9428,7 +9435,7 @@ var render = function render() {
     }), _vm._v(" "), _c("span", {
       staticClass: "address"
     }, [_vm._v(_vm._s(user.address.slice(0, 35)))]), user.address.length > 35 ? _c("span", [_vm._v("...")]) : _vm._e()])])])])], 1);
-  }), 0)])]), _vm._v(" "), _c("JoinUsComponent")], 1);
+  }), 0)])])])]), _vm._v(" "), _c("JoinUsComponent")], 1);
 };
 
 var staticRenderFns = [];
@@ -62117,7 +62124,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '*/',
     name: 'not-found',
     component: _pages_NotFoundComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }]
+  }],
+  scrollBehavior: function scrollBehavior(to, from, savedPosition) {
+    // always scroll to top
+    return {
+      y: 0
+    };
+  }
 }); // inserisco la stringa export default a fine pagina per permettere l'utilizo di app.js
 
 /* harmony default export */ __webpack_exports__["default"] = (router);
@@ -62240,9 +62253,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
+__webpack_require__(/*! C:\Users\Ilaria\bool\Esercizi\laravel_esercizi\deliveboo-team3\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\Ilaria\bool\Esercizi\laravel_esercizi\deliveboo-team3\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\Ilaria\bool\Esercizi\laravel_esercizi\deliveboo-team3\resources\sass\back-sass\back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })

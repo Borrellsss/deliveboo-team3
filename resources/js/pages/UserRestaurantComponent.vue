@@ -20,7 +20,7 @@
               <!-- checkbox container  -->
                 <div class="checkbox-container">
                     <div v-for="category in categories" :key="category.id">
-                        <input class="checkbox-input" :id="'category-' + category.id" type="checkbox" :value="category.id" v-model="selectedCategories" @change="getSelectedCategories()"/>
+                        <input class="checkbox-input" :id="'category-' + category.id" type="checkbox" :value="category.id" v-model="selectedCategories" @change="getSelectedCategories()" :disabled="isWaiting ? '' : false"/>
                         <label class="checkbox" :for="'category-' + category.id">
                             <span>
                             <svg width="12px" height="10px">
@@ -36,34 +36,50 @@
             
           <!-- restaurant cards container  -->
         <div class="restaurant-cards">
-          <div class="restaurant-cards-container">
-            <div class="row gx-5 row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
+            <div class="fo-container">
+                <div v-if="selectedCategories.length == 0">
+                    <div>
+                            Nessuna categoria selezionata
+                    </div>
+                </div>
 
-                <div v-for="user in users" :key="user.id" class="col">
-                    <router-link  :to="{name: 'products-page',params: {id: user.id}}" class="d-flex">
-                        <div class="card" style="margin-top:50px;" >
-                            <div class="img-container">
-                                <img v-if="user.cover" :src="'storage/' + user.cover" :alt="user.business_name">
-                                <!-- <img v-if="user.cover" src="https://images.adsttc.com/media/images/5e4c/1025/6ee6/7e0b/9d00/0877/slideshow/feature_-_Main_hall_1.jpg?1582043123" :alt="user.business_name"> -->
-                                <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="user.business_name">
-                            </div>
-                            <div class="card-body">
-                                <div class="card-heading">
-                                   <div v-if="user.business_name.length < 33" class="space_line"></div>
-                                   <span>{{user.business_name.slice(0, 33) }}</span><span v-if="user.business_name.length > 33">...</span>
-                                </div>
-                                <div class="card-text">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <span class="address">{{user.address.slice(0, 35)}}</span><span v-if="user.address.length > 35">...</span>
-                                </div>
+                <div v-else-if="selectedCategories.length != 0 && matchedCategories.length == 0">
+                    <div> Nessun ristorante corrisponde alla tua selezione</div>
+                </div>
+
+                <!-- stampa ristoranti -->
+                <div v-else>
+                    <div class="restaurant-cards-container">
+                        <div class="row gx-5 row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
+                            <div v-for="user in users" :key="user.id" class="col">
+                                <router-link  :to="{name: 'products-page',params: {id: user.id}}" class="d-flex">
+                                    <div class="card" style="margin-top:50px;" >
+                                        <div class="img-container">
+                                            <img v-if="user.cover" :src="'storage/' + user.cover" :alt="user.business_name">
+                                            <!-- <img v-if="user.cover" src="https://images.adsttc.com/media/images/5e4c/1025/6ee6/7e0b/9d00/0877/slideshow/feature_-_Main_hall_1.jpg?1582043123" :alt="user.business_name"> -->
+                                            <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="user.business_name">
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="card-heading">
+                                            <div v-if="user.business_name.length < 33" class="space_line"></div>
+                                            <span>{{user.business_name.slice(0, 33) }}</span><span v-if="user.business_name.length > 33">...</span>
+                                            </div>
+                                            <div class="card-text">
+                                                <i class="fa-solid fa-location-dot"></i>
+                                                <span class="address">{{user.address.slice(0, 35)}}</span><span v-if="user.address.length > 35">...</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </router-link>
                             </div>
                         </div>
-                    </router-link>
+                    </div>
                 </div>
             </div>
-         </div>
-      </div>
-        <!-- join us component -->
+        </div>
+
+
+
           <JoinUsComponent/>
     </section>   
 
@@ -83,17 +99,22 @@ import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
             return{
                 users : [],
                 categories: [],
-                selectedCategories: []
+                selectedCategories: [],
+                matchedCategories:[],
+                isWaiting: false
             }
         },
         methods: {
+
             getSelectedCategories() {
-                
+                this.isWaiting = true;
                 axios.get(`http://127.0.0.1:8000/api/restaurants?categories=${this.selectedCategories}`)
                 .then((response) => {
                 this.users = response.data.results;
-                    console.log(response.data)
+                this.matchedCategories = response.data.results;
+                this.isWaiting = false;
                 });
+
             }
         },
         mounted(){
