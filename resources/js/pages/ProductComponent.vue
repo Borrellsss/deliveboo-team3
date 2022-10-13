@@ -328,7 +328,8 @@
                     <!--Body-->
                     <div class="text-center">
                         <span class="yellow pb-4"><i class="fas fa-burger fa-4x"></i></span>
-                        <p class="pt-4">Stiamo preparando il tuo ordine! Hai appena ricevuto tutti i dettagli sulla tua mail.</p>
+                        <p class="pt-4">Stiamo preparando il tuo ordine!</p>
+                        <p>Controlla la mail per tutti i dettagli.</p>
                         <p>Fra poco si mangia!</p>
                     </div>
 
