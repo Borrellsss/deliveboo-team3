@@ -253,8 +253,9 @@
         </div>
 
         <!-- MODALS SECTION -->
+    <div v-for="(product, index) in cart" :key="index">
 
-        <!-- Modal "proceed to payment"-->
+        <!-- Modal "proceed to payment" -->
         <div class="modal fade right ms_modal-wrapper" id="proceedtopayment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
             <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
                 <!--Content-->
@@ -270,18 +271,77 @@
                     <div class="text-center">
                         <span class="yellow pb-4"><i class="fas fa-credit-card fa-4x"></i></span>
                         <p class="pt-4">Stai per eseguire il pagamento dell'ordine...</p>
-                        <p>vuoi procedere?</p>
+                        <p>Vuoi procedere?</p>
                     </div>
 
                     <!--Footer-->
                     <div class="text-center">
-                        <a type="button" @click="ViewFormPayment()" data-dismiss="modal" class="ms_btn boxshadow">Si, ho FAME!</a>
+                        <button type="button" @click="ViewFormPayment()" data-dismiss="modal" class="ms_btn boxshadow mt-3">Si, ho FAME!</button>
                     </div>
                 </div>
                 <!--/.Content-->
             </div>
         </div>
-        <!-- End Modal -->
+        <!-- End Modal "proceed to payment" -->
+
+        <!-- Modal "change restaurant" -->
+        <!-- <div class="modal fade right ms_modal-wrapper" id="changerestaurant" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+            <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document"> -->
+                <!--Content-->
+                <!-- <div class="modal-content ms_modal_container"> -->
+                    <!--Header-->
+                    <!-- <div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                        </button>
+                    </div> -->
+
+                    <!--Body-->
+                    <!-- <div class="text-center">
+                        <span class="red pb-4"><i class="fa-solid fa-bell fa-4x"></i></span>
+                        <p class="pt-4">Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello.</p>
+                        <p>Vuoi cambiare ristorante?</p>
+                    </div> -->
+
+                    <!--Footer-->
+                    <!-- <div class="text-center">
+                        <button type="button" data-dismiss="modal" class="ms_btn boxshadow mt-3" @click="GetChange()">Si, ho cambiato idea!</button>
+                    </div>
+                </div> -->
+                <!--/.Content-->
+            <!-- </div> -->
+        <!-- </div> -->
+        <!-- End Modal "change restaurant" -->
+
+        <!-- Modal "order confirmed" -->
+        <div class="modal fade right ms_modal-wrapper" id="orderconfirmed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+            <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+                <!--Content-->
+                <div class="modal-content ms_modal_container">
+                    <!--Header-->
+                    <div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                        </button>
+                    </div>
+
+                    <!--Body-->
+                    <div class="text-center">
+                        <span class="yellow pb-4"><i class="fas fa-burger fa-4x"></i></span>
+                        <p class="pt-4">Stiamo preparando il tuo ordine! Hai appena ricevuto tutti i dettagli sulla tua mail.</p>
+                        <p>Fra poco si mangia!</p>
+                    </div>
+
+                    <!--Footer-->
+                    <div class="text-center">
+                        <button type="button" data-dismiss="modal" class="ms_btn boxshadow mt-3">Ok</button>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+        <!-- End Modal "order confirmed" -->
+    </div>
     </section>
 </template>
 
@@ -292,7 +352,7 @@ import PaymentComponent from "../components/PaymentComponent.vue";
 export default {
     name: 'ProductComponent',
     components: {
-        PaymentComponent
+        PaymentComponent,
     },
 
     data(){
@@ -314,11 +374,14 @@ export default {
             products_in_cart: 0,
 
             // Definisco una variabile per visionare il pannello del pagamento
-            isVisible: false
+            isVisible: false,
+            
+            // definisco una variabile che diventa true quando l'utente sceglie di cambiare ristorante nel modal
+            // isChanged: false
         }
     },
     created() {
-
+                    
         // $this.route.paramas.id rappresenta il passaggio di informazioni eseguiro con il router link
         axios.get(`http://127.0.0.1:8000/api/${this.$route.params.id}/menu`)
         .then((response) =>{
@@ -369,6 +432,11 @@ export default {
             this.myProduct.push(product); 
         },
 
+        // Funzione che cambia il valore della variabile "change" che serve come condizione il cambio del ristorante al click sul modal
+        // GetChange() {
+        //     this.isChanged = true;
+        // },
+
         // Funzione che aggiunge il prodotto al carrello
         addItem(product){
 
@@ -395,10 +463,13 @@ export default {
 
                 // Se l'id del prodotto presente nel carrello è diverso dall'user_id presente nella tabella prodotti
                 if(this.cart[0].user_id !== product.user_id){
+                    
+                    // Mostro il Modal in pagina
+                    // $('#changerestaurant').modal('show');
 
                     // Se conferma di cambiare ristorante
-                    if(confirm('Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello. Vuoi cambiare ristorante? ')){
-                    
+                    if(confirm("Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello. Vuoi cambiare ristorante?")){
+                        
                         // Svuoto il carrello
                         this.cart = [];
 
@@ -449,6 +520,28 @@ export default {
                 }
             }
         },
+
+        // Funzione che svuota il carrello all'ok sul modal
+        // resetCart(product) {
+           
+        //     // Svuoto il carrello
+        //     this.cart = [];
+        //     console.log('cart', this.cart);
+            
+        //     // Salva il carrello
+        //     this.saveCart();
+            
+        //     // Setto la quantità del prodotto (del nuovo ristorante)
+        //     product.quantity = 1;
+        //     console.log('quantity', product.quantity);
+            
+        //     // Pusho nell'array il prodotto
+        //     this.cart.push(product);
+        //     console.log('cart che pusha', this.cart);
+
+        //     // Salva il carrello
+        //     this.saveCart();
+        // },
 
         // Funzione salva carrello
         saveCart() {
@@ -510,7 +603,7 @@ export default {
         // Funzione che comunica il processo del pagamento e rende visibile il banner del pagamento
         ViewFormPayment() {
             this.isVisible = true;
-        }
+        }   
     },
 }
 </script>
@@ -995,6 +1088,10 @@ export default {
 
         .yellow {
             color: $primary-color;
+        }
+
+        .red {
+            color: $secondary_color;
         }
 
         .boxshadow {

@@ -98,7 +98,9 @@ export default {
               .then((result) => {
                 console.log(result);
               })
-          
+
+              // Mostro il Modal in pagina
+              $('#orderconfirmed').modal('show');
           }
 
           // Nascondo il form e il drop-in del pagamento
