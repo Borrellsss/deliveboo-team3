@@ -134,7 +134,7 @@
                         <div class="item-cart-section d-flex">
                             <div class="title-price-cart d-flex flex-column justify-content-center align-items-start">
                                 <div class="title-product-cart">Spaghetti allo scoglio</div>
-                                <div class="price-product-cart">29,99£</div>
+                                <div class="price-product-cart"><i class="fa-solid fa-xmark"></i></div>
                             </div>
                             <div class="quantity-cart d-flex justify-content-center align-items-center">
                                 <span class="increment quantity-btn"><i class="fa-solid fa-minus"></i>
@@ -142,7 +142,7 @@
                                 <span class="decrease quantity-btn"><i class="fa-solid fa-plus"></i></span>
                             </div>
                             <div class="delete-item-cart d-flex justify-content-center align-items-center">
-                                <i class="fa-solid fa-xmark"></i>
+                                price-product-cart
                             </div>
                         </div>
                         <div class="check-out-section d-flex flex-column justify-content-center align-items-center">
