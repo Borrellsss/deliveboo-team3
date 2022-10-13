@@ -31,7 +31,7 @@
 
                 <!-- Counter Cart -->
                 <div class="count-float">
-                    <span>{{cart.length}}</span>
+                    <span>{{totalQuantity(cart)}}</span>
                 </div>
 
                 <!-- Cart Icon -->
@@ -52,7 +52,7 @@
 
                                     <!-- Product Cover -->
                                     <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
-                                    <img v-else class="card-img" src="https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg" :alt="product.name">
+                                    <img v-else class="card-img" src="https://i.ibb.co/WfdPzMr/backup-posate3.jpg" :alt="product.name">
 
                                     <!-- Product Info Pop-up -->
                                     <a class="info-popup-inline" href="#popup1" @click.prevent="selectProduct(product), showProductInfo()">
@@ -100,7 +100,7 @@
 
                                                 <!-- Product image -->
                                                     <img src="https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg" alt="">
-                                                
+                                                    
                                                 <!-- Product Content -->
                                                 <div class="ms_content">
 
@@ -302,6 +302,15 @@ export default {
     },
 
     methods: {
+
+        // Funzione che calcola il numero totale dei prodotti nel carrello
+        totalQuantity(cart){
+            let total_quantity = 0;
+            cart.forEach ((product) => {
+                total_quantity += product.quantity;
+            })
+            return total_quantity;
+        },
 
         // Funzione che scrolla l'icona del carrello
         cartScroll(){
@@ -552,8 +561,8 @@ export default {
 
 // Counter Cart
 .count-float {
-    width: 1rem;
-    height: 1rem;
+    width: 1.1rem;
+    height: 1.1rem;
     font-size: 0.7rem;
     border-radius: 50%;
     background-color: $primary-color;
@@ -562,8 +571,8 @@ export default {
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 34px;
-    right: 25px;
+    bottom: 33px;
+    right: 24px;
     z-index: 11;
 
     &:hover ~ .fa-cart-shopping {
@@ -595,6 +604,7 @@ export default {
     }
      
     .ms-product-card {
+        user-select: none;
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
@@ -673,17 +683,17 @@ export default {
 
                 &:hover .fa-cart-shopping {
                         transform: translateY(5px);
-                        color:#00394B;
+                        // color:#00394B;
                     }
 
                 .add-to-cart {
                     font-size: 140%;
                     margin-bottom: 1.8rem;
-                    color: #254053;
                     transition: transform 0.5s;
                     
                     .fa-cart-shopping {
-                        color: #254053;
+                        // color: #254053;
+                        color: $secondary-color;
                         transition: transform 0.5s;
                     }
 
@@ -771,6 +781,7 @@ export default {
             display: inline-block;
             margin: 1rem 0 0 0;
             background-color: #6c808f;
+            background-color: $secondary-color;
             padding: 0.3rem 0.7rem;
             border-radius: 13px;
             color: white;
@@ -943,7 +954,9 @@ export default {
                 text-align: center;
                 width: 50%;
                 color: white;
+                // color: $secondary-color;
                 background-color: #6c808f;
+                // background-color: $primary-color;S
                 cursor: pointer;
              }
 
