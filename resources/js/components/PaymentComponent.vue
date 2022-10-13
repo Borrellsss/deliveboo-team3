@@ -1,5 +1,5 @@
 <template>
-  <div v-if="Payed">
+  <div class="payment-form-braintree" v-if="Payed">
 
     <!-- User Form -->
     <div>
@@ -35,7 +35,7 @@
       <div>
         <div id="dropin-container"></div>
         <div class="btn-container">
-          <button id="submit-button" @click="payment()" class="ms_btn">Paga Adesso</button>
+          <button id="submit-button" @click="payment()" class="check-out-btn">Paga Adesso</button>
         </div>
       </div>
     </div>
@@ -110,9 +110,45 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.payment-form-braintree{
+  padding-top: 2rem;
+  border-top: 1px solid #c1c1c3;
+}
+
+.form-control{
+  width: 90%;
+  margin: 0 auto;
+
+  input{
+    background-color: white;
+  }
+}
+
 .drop-in,
 .btn-container {
   display: flex;
   justify-content: center;
 } 
+
+.drop-in{
+  width: 90%;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+}
+
+.check-out-btn{
+    margin: 0.5rem 0 1rem 0;
+    font-weight: 600;
+    padding: 0.4rem 0;
+    border-radius: 15px;
+    border: 0 solid grey;
+    text-align: center;
+    width: 50%;
+    color: white;
+    background-color: #6c808f;
+    cursor: pointer;
+}
+
+
 </style>

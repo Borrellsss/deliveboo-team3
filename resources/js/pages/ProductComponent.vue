@@ -136,45 +136,58 @@
                     <div  v-if="cart.length > 0"  class="cart-container">
                         <div class="ms-cart-title">Carrello</div>
                         <div class="ghost-cart" id="my-cart"></div>
+
+                        <!-- All products in cart-->
                         <div class="all-products-in-cart">
                             <div v-for="(product, index) in cart" :key="index" class="item-cart-section d-flex">
+
+                                  <!-- title - price-->
                                 <div class="title-price-cart d-flex flex-column justify-content-center align-items-start">
                                     <div class="title-product-cart"> {{product.name}}</div>
                                     <div  @click='deleteItem(index)' class="delete-item-cart">Rimuovi</div>
-                                    <!-- price-product-cart -->
                                 </div>
+
+                                   <!-- quantity + - -->
                                 <div class="quantity-cart d-flex justify-content-center align-items-center">
-                                    <span @click='decreaseQuantity(product, index)' class="increment quantity-btn"><i class="fa-solid fa-minus"></i>
+                                    <span @click='decreaseQuantity(product, index)' class="increment quantity-btn"><i class="fa-solid fa-circle-minus"></i>
                                     </span><span class="quantity-number">{{product.quantity}}</span>
-                                    <span  @click='addItem(product)' class="decrease quantity-btn"><i class="fa-solid fa-plus"></i></span>
+                                    <span  @click='addItem(product)' class="decrease quantity-btn"><i class="fa-solid fa-circle-plus"></i></span>
                                 </div>
+
+                                 <!-- product price- -->
                                 <div class="price-product-cart d-flex justify-content-center align-items-center">
                                     <!-- <i class="fa-solid fa-xmark"></i> -->
                                     {{ product.price * product.quantity }}&euro;
                                 </div>
                             </div>
                         </div>
+
+                         <!-- checkout section -->
                         <div class="check-out-section d-flex flex-column justify-content-center align-items-center">
                             <div class="total-clear-price d-flex justify-content-between align-items-center">
                                 <div class="total-clear d-flex flex-column justify-content-center align-items-start">
                                     <div class="totale-text">Totale</div>
                                     <div @click="clearCart(index)" class="clear-cart">Svuota carrello</div>
                                 </div>
+
+                                 <!-- final price -->
                                 <div class="final-price">{{ totalAmount(cart) }} &euro;</div>
                             </div>
                             <div data-toggle="modal" data-target="#proceedtopayment" class="check-out-btn">Checkout</div>
                         </div>
+                        <!-- Payment Component -->
+                        <PaymentComponent :amount="totalAmount(cart)" v-if="isVisible" />
                     </div>    
                     <!-- Cart Blank layout -->
                     <div v-else class="cart-blank">
                            
                         <!-- Title -->
-                        <!-- <h4>
+                        <div class="blank-cart-title">
                             Il carrello è vuoto
-                        </h4> -->
+                        </div>
 
                         <!-- SVG Image -->
-                        <!-- <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                             width="406.000000pt" height="361.000000pt" viewBox="0 0 406.000000 361.000000"
                             preserveAspectRatio="xMidYMid meet">
                             <g transform="translate(0.000000,361.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
@@ -188,7 +201,7 @@
                                 <path d="M1537 593 c-57 -20 -128 -80 -161 -136 -63 -109 -48 -256 35 -351 89 -101 241 -132 361 -73 102 50 160 138 166 254 7 129 -47 226 -159 287 -67 37 -169 45 -242 19z"/>
                                 <path d="M3047 593 c-27 -9 -71 -36 -97 -60 -163 -146 -127 -404 68 -500 47 -23 70 -28 132 -28 127 1 223 62 275 176 23 53 27 71 23 138 -6 121 -61 206 -170 262 -57 30 -165 35 -231 12z"/>
                             </g>
-                        </svg> -->
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -719,7 +732,7 @@ export default {
     }
 
     .popup {
-        margin: 15vh auto;
+        margin: 20vh auto;
         padding: 20px;
         background: #fff;
         border-radius: 15px;
@@ -807,14 +820,16 @@ export default {
     border-bottom: 1px solid #c1c1c3;
 }
 .cart-container {
+    user-select: none;
     border-radius: 15px;
     overflow: hidden;
     position: sticky;
     top: 180px;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     margin-bottom: 90px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #f5f5f5;
 
     // custom scrollbar cart
 ::-webkit-scrollbar {
@@ -848,9 +863,6 @@ export default {
     }
 
     .item-cart-section{
-        // box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2),
-        // 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        background-color: #f5f5f5;
         border-bottom: 1px solid #c1c1c3;
        
 
@@ -871,33 +883,22 @@ export default {
             width: (calc(100% / 9) * 2);
 
             .quantity-number{
-                padding: 0 0.2rem;
+                padding: 0 0.3rem;
             }
 
             .quantity-btn{
-                border-radius: 50%;
-                width: 20%;
-                aspect-ratio: 1/1;
-                font-size: 0.8rem;
+                font-size: 1.1rem;
                 display: flex;
+                color: #b9b9d1;
                 justify-content: center;
                 align-items: center;
-                background-color:#fefefe;
                 cursor: pointer;
-                
-                    &.decrease{
-                           color:#808083;
-                    }
-                    &.increment{
-                           color:#808083;
-                    }
             }
        }
        .price-product-cart{
             width: (calc(100% / 9) * 2);
             color:black;
             font-size: 1rem;
-
        }
     }
     
@@ -929,13 +930,13 @@ export default {
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                       font-size: 1.6rem;
-                       font-weight: 600;
-                    //    padding: 0 0.7rem;
+                        font-size: 1.6rem;
+                        font-weight: 600;
+                        margin-right: 0.5rem
                     }
              }
              .check-out-btn{
-                margin: 0.5rem 0 1rem 0;
+                margin: 0.5rem 0 1.5rem 0;
                 font-weight: 600;
                 padding: 0.4rem 0;
                 border-radius: 15px;
@@ -951,22 +952,37 @@ export default {
 }
 
 .cart-blank {
+   
+    width: 80%;
+    background-color:#f5f5f5;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 80px 0;
-
-    h4 {
-        font-weight: 600;
-        margin-bottom: 15px;
-        opacity: 0.7;
-    }
+    margin: 1.5rem 0;
+    margin-left: 40px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: sticky;
+    top: 180px;
+    
+        .blank-cart-title{
+            width: 100%;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #f5f5f5;
+            font-weight: 600;
+            border-bottom: 1px solid #c1c1c3;
+            color: #808083;
+        }
 
     svg {
-        width: 50%;
-        height: 50%;
-        opacity: 0.5;
+        padding: 50px 0;
+        width: 40%;
+        height: 40%;
+        opacity: 0.4;
     }
 }
 
