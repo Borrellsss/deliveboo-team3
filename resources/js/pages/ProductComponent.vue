@@ -24,7 +24,7 @@
         </div>
 
         <!-- Product Container -->
-        <div class="products_container">
+        <div class="products-cart-wrapper">
 
             <!-- Floating Cart -->
             <a v-if="cart.length" class="floating-cart" @click="cartScroll()">
@@ -134,15 +134,17 @@
                         <div class="item-cart-section d-flex">
                             <div class="title-price-cart d-flex flex-column justify-content-center align-items-start">
                                 <div class="title-product-cart">Spaghetti allo scoglio</div>
-                                <div class="price-product-cart"><i class="fa-solid fa-xmark"></i></div>
+                                <div class="delete-item-cart">Rimuovi</div>
+                                <!-- price-product-cart -->
                             </div>
                             <div class="quantity-cart d-flex justify-content-center align-items-center">
                                 <span class="increment quantity-btn"><i class="fa-solid fa-minus"></i>
-                                </span><span class="quantity-number">209</span>
+                                </span><span class="quantity-number">2</span>
                                 <span class="decrease quantity-btn"><i class="fa-solid fa-plus"></i></span>
                             </div>
-                            <div class="delete-item-cart d-flex justify-content-center align-items-center">
-                                price-product-cart
+                            <div class="price-product-cart d-flex justify-content-center align-items-center">
+                                <!-- <i class="fa-solid fa-xmark"></i> -->
+                                29,99&euro;
                             </div>
                         </div>
                         <div class="check-out-section d-flex flex-column justify-content-center align-items-center">
@@ -548,7 +550,7 @@ export default {
   
 // ******************** PRODUCT CARDS ******************** // 
 
-.products_container {
+.products-cart-wrapper {
     width: 90%;
     margin: 0 auto;
     position: relative;
@@ -774,19 +776,21 @@ export default {
         background-color: #f5f5f5;
 
        .title-price-cart{
-            width: (calc(100% / 9) * 6);
+            width: (calc(100% / 9) * 5);
             padding: 1rem 0;
+            border: 1px solid red;
             .title-product-cart{
                 padding-left: 5%;
             }
-            .price-product-cart{
+            .delete-item-cart{
                 padding-left: 6%;
                 color: #808083;
-                font-size: 0.9rem;
+                font-size: 0.8rem;
             }
        }
        .quantity-cart{
             width: (calc(100% / 9) * 2);
+            border: 1px solid red;
 
             .quantity-number{
                 padding: 0 0.2rem;
@@ -809,13 +813,12 @@ export default {
                     }
             }
        }
-       .delete-item-cart{
-            width: calc(100% / 9);
-            color:#808083;
+       .price-product-cart{
+            width: (calc(100% / 9) * 2);
+            border: 1px solid red;
+            color:black;
+            font-size: 1rem;
 
-            .fa-xmark{
-                font-size: 1.2rem;
-            }
        }
     }
     
@@ -896,6 +899,11 @@ export default {
 // Max-width: 1200px
 
 @media only screen and (max-width: 1200px) {
+
+      .products-cart-wrapper {
+        margin-bottom: 70px;
+        width: 95%;
+    }
 
     .products-side {
         margin-bottom: 70px;
