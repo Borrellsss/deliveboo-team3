@@ -1,4 +1,6 @@
 .ms_product-details {
+    margin-inline: auto;
+    max-width: 1200px;
     justify-content: space-between;
 
     &-left {
@@ -25,9 +27,7 @@
                 }
             }
             > .ms_placeholder-img {
-                width: 60%;
-                aspect-ratio: 1 / 1;
-                
+                filter: grayscale(1) opacity(0.5);
             }
         }
         > div.text-center {
@@ -62,14 +62,6 @@
 }
 
 // MEDIA QUERIES
-@media (min-width: 1700px) {  
-
-    .ms_product-details {
-        margin-inline: auto;
-        width: 80%;
-    }
-}
-
 @media (max-width: 600px) {  
 
     .ms_product-details {

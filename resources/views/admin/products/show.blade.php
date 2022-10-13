@@ -24,7 +24,7 @@
                     @else
 
                         {{-- immagine placeholder --}}
-                        <img class="ms_placeholder-img" src="{{asset('images/PinClipart.com_add-clip-art-download_1266771.png')}}" alt="{{$product->name}}">
+                        <img class="ms_placeholder-img" src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" alt="{{$product->name}}">
                     @endif
                 </div>
 

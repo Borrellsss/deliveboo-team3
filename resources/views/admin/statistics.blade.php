@@ -8,7 +8,6 @@
         <div class="mb-4 text-center">
             <div class="mb-2">Cambia stile grafico</div>
             <select autocomplete="off" onchange="changeChartStyle(this)">
-                {{-- <option selected>seleziona</option> --}}
                 @foreach ($chart_types as $chart_type)
                     <option value="{{$chart_type}}">{{$chart_type}}</option>
                 @endforeach
@@ -32,18 +31,18 @@
             datasets: [
                 {
                     label: 'Ordini',
-                    backgroundColor: 'rgba(254, 170, 2, 0.55)',
-                    borderColor: 'rgb(254, 170, 2)',
+                    backgroundColor: ['rgba(220, 236, 201, 0.75)', 'rgba(179, 221, 204, 0.75)', 'rgba(138, 205, 206, 0.75)', 'rgba(98, 190, 210, 0.75)', 'rgba(70, 170, 206, 0.75)', 'rgba(61, 145, 190, 0.75)', 'rgba(53, 119, 174, 0.75)', 'rgba(45, 94, 158, 0.75)', 'rgba(36, 68, 142, 0.75)', 'rgba(28, 43, 127, 0.75)', 'rgba(22, 32, 101, 0.75)', 'rgba(17, 23, 75, 0.75)'],
+                    hoverBackgroundColor: ['rgb(220, 236, 201)', 'rgb(179, 221, 204)', 'rgb(138, 205, 206)', 'rgb(98, 190, 210)', 'rgb(70, 170, 206)', 'rgb(61, 145, 190)', 'rgb(53, 119, 174)', 'rgb(45, 94, 158)', 'rgb(36, 68, 142)', 'rgb(28, 43, 127)', 'rgb(22, 32, 101)', 'rgb(17, 23, 75)'],
                     borderWidth: 1,
-                    hoverBackgroundColor: 'rgb(254, 170, 2)',
+                    borderColor: ['rgb(220, 236, 201)', 'rgb(179, 221, 204)', 'rgb(138, 205, 206)', 'rgb(98, 190, 210)', 'rgb(70, 170, 206)', 'rgb(61, 145, 190)', 'rgb(53, 119, 174)', 'rgb(45, 94, 158)', 'rgb(36, 68, 142)', 'rgb(28, 43, 127)', 'rgb(22, 32, 101)', 'rgb(17, 23, 75)'],
                     data: <?php echo json_encode($monthly_orders); ?>,
                 },
                 {
                     label: 'Entrate (€)',
-                    backgroundColor: 'rgba(38, 79, 54, 0.55)',
-                    borderColor: 'rgb(38, 79, 54)',
-                    borderWidth: 1,
+                    backgroundColor: 'rgba(38, 79, 54, 0.65)',
                     hoverBackgroundColor: 'rgb(38, 79, 54)',
+                    borderWidth: 1,
+                    borderColor: 'rgb(38, 79, 54)',
                     data: <?php echo json_encode($monthly_revenue); ?>,
                 }
             ]
@@ -55,11 +54,26 @@
             datasets: [
                 {
                     label: 'Ordini',
-                    backgroundColor: 'rgba(254, 170, 2, 0.55)',
-                    borderColor: 'rgb(254, 170, 2)',
+                    radius: 5,
+                    hoverRadius: 10,
+                    hitRadius: 20,
+                    backgroundColor: ['rgba(220, 236, 201, 0.75)', 'rgba(179, 221, 204, 0.75)', 'rgba(138, 205, 206, 0.75)', 'rgba(98, 190, 210, 0.75)', 'rgba(70, 170, 206, 0.75)', 'rgba(61, 145, 190, 0.75)', 'rgba(53, 119, 174, 0.75)', 'rgba(45, 94, 158, 0.75)', 'rgba(36, 68, 142, 0.75)', 'rgba(28, 43, 127, 0.75)', 'rgba(22, 32, 101, 0.75)', 'rgba(17, 23, 75, 0.75)'],
+                    hoverBackgroundColor: ['rgb(220, 236, 201)', 'rgb(179, 221, 204)', 'rgb(138, 205, 206)', 'rgb(98, 190, 210)', 'rgb(70, 170, 206)', 'rgb(61, 145, 190)', 'rgb(53, 119, 174)', 'rgb(45, 94, 158)', 'rgb(36, 68, 142)', 'rgb(28, 43, 127)', 'rgb(22, 32, 101)', 'rgb(17, 23, 75)'],
                     borderWidth: 1,
-                    hoverBackgroundColor: 'rgb(254, 170, 2)',
+                    borderColor: 'rgb(17, 23, 75)',
+                    pointBorderColor: ['rgb(220, 236, 201)', 'rgb(179, 221, 204)', 'rgb(138, 205, 206)', 'rgb(98, 190, 210)', 'rgb(70, 170, 206)', 'rgb(61, 145, 190)', 'rgb(53, 119, 174)', 'rgb(45, 94, 158)', 'rgb(36, 68, 142)', 'rgb(28, 43, 127)', 'rgb(22, 32, 101)', 'rgb(17, 23, 75)'],
                     data: <?php echo json_encode($monthly_orders); ?>,
+                },
+                {
+                    label: 'Entrate (€)',
+                    radius: 5,
+                    hoverRadius: 10,
+                    hitRadius: 20,
+                    backgroundColor: 'rgba(38, 79, 54, 0.65)',
+                    hoverBackgroundColor: 'rgb(38, 79, 54)',
+                    borderWidth: 1,
+                    borderColor: 'rgb(38, 79, 54)',
+                    data: <?php echo json_encode($monthly_revenue); ?>,
                 }
             ]
         }
@@ -70,10 +84,31 @@
             datasets: [
                 {
                     label: 'Ordini',
-                    backgroundColor: 'rgba(254, 170, 2, 0.55)',
-                    borderColor: 'rgb(254, 170, 2)',
+                    radius: 3,
+                    hoverRadius: 6,
+                    hitRadius: 15,
+                    backgroundColor: 'rgba(138, 205, 206, 0.6)',
+                    hoverBackgroundColor: 'rgb(138, 205, 206)',
+                    pointBackgroundColor: ['rgba(220, 236, 201, 0.75)', 'rgba(179, 221, 204, 0.75)', 'rgba(138, 205, 206, 0.75)', 'rgba(98, 190, 210, 0.75)', 'rgba(70, 170, 206, 0.75)', 'rgba(61, 145, 190, 0.75)', 'rgba(53, 119, 174, 0.75)', 'rgba(45, 94, 158, 0.75)', 'rgba(36, 68, 142, 0.75)', 'rgba(28, 43, 127, 0.75)', 'rgba(22, 32, 101, 0.75)', 'rgba(17, 23, 75, 0.75)'],
+                    pointHoverBackgroundColor: ['rgb(220, 236, 201)', 'rgb(179, 221, 204)', 'rgb(138, 205, 206)', 'rgb(98, 190, 210)', 'rgb(70, 170, 206)', 'rgb(61, 145, 190)', 'rgb(53, 119, 174)', 'rgb(45, 94, 158)', 'rgb(36, 68, 142)', 'rgb(28, 43, 127)', 'rgb(22, 32, 101)', 'rgb(17, 23, 75)'],
                     borderWidth: 1,
-                    hoverBackgroundColor: 'rgb(254, 170, 2)',
+                    borderColor: 'rgb(17, 23, 75)',
+                    pointBorderColor: ['rgb(220, 236, 201)', 'rgb(179, 221, 204)', 'rgb(138, 205, 206)', 'rgb(98, 190, 210)', 'rgb(70, 170, 206)', 'rgb(61, 145, 190)', 'rgb(53, 119, 174)', 'rgb(45, 94, 158)', 'rgb(36, 68, 142)', 'rgb(28, 43, 127)', 'rgb(22, 32, 101)', 'rgb(17, 23, 75)'],
+                    data: <?php echo json_encode($monthly_orders); ?>,
+                }
+            ]
+        }
+
+        // charts data4
+        const data4 = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Ordini',
+                    backgroundColor: ['rgba(220, 236, 201, 0.75)', 'rgba(179, 221, 204, 0.75)', 'rgba(138, 205, 206, 0.75)', 'rgba(98, 190, 210, 0.75)', 'rgba(70, 170, 206, 0.75)', 'rgba(61, 145, 190, 0.75)', 'rgba(53, 119, 174, 0.75)', 'rgba(45, 94, 158, 0.75)', 'rgba(36, 68, 142, 0.75)', 'rgba(28, 43, 127, 0.75)', 'rgba(22, 32, 101, 0.75)', 'rgba(17, 23, 75, 0.75)'],
+                    hoverBackgroundColor: ['rgb(220, 236, 201)', 'rgb(179, 221, 204)', 'rgb(138, 205, 206)', 'rgb(98, 190, 210)', 'rgb(70, 170, 206)', 'rgb(61, 145, 190)', 'rgb(53, 119, 174)', 'rgb(45, 94, 158)', 'rgb(36, 68, 142)', 'rgb(28, 43, 127)', 'rgb(22, 32, 101)', 'rgb(17, 23, 75)'],
+                    borderWidth: 1,
+                    borderColor: ['rgb(220, 236, 201)', 'rgb(179, 221, 204)', 'rgb(138, 205, 206)', 'rgb(98, 190, 210)', 'rgb(70, 170, 206)', 'rgb(61, 145, 190)', 'rgb(53, 119, 174)', 'rgb(45, 94, 158)', 'rgb(36, 68, 142)', 'rgb(28, 43, 127)', 'rgb(22, 32, 101)', 'rgb(17, 23, 75)'],
                     data: <?php echo json_encode($monthly_orders); ?>,
                 }
             ]
@@ -87,11 +122,7 @@
             options: {
                 maintainAspectRatio: false,
                 scales: {
-                    x: {
-                        ticks: {
-                            color: 'rgb(116, 6, 2)',
-                        }
-                    }
+                    
                 }
             }
         }
@@ -99,15 +130,11 @@
         // line chart
         const config2 = {
             type: 'line',
-            data: data1,
+            data: data2,
             options: {
                 maintainAspectRatio: false,
                 scales: {
-                    x: {
-                        ticks: {
-                            color: 'rgb(116, 6, 2)',
-                        },
-                    }
+                    
                 }
             }
         }
@@ -115,15 +142,11 @@
         // radar chart
         const config3 = {
             type: 'radar',
-            data: data2,
+            data: data3,
             options: {
                 maintainAspectRatio: false,
                 scales: {
-                    x: {
-                        ticks: {
-                            color: 'rgb(116, 6, 2)',
-                        },
-                    }
+                
                 }
             }
         }
@@ -131,15 +154,11 @@
         // polarArea chart
         const config4 = {
             type: 'polarArea',
-            data: data3,
+            data: data4,
             options: {
                 maintainAspectRatio: false,
                 scales: {
-                    x: {
-                        ticks: {
-                            color: 'rgb(116, 6, 2)',
-                        },
-                    }
+                
                 }
             }
         }
@@ -147,15 +166,11 @@
         // doughnut chart
         const config5 = {
             type: 'doughnut',
-            data: data3,
+            data: data4,
             options: {
                 maintainAspectRatio: false,
                 scales: {
-                    x: {
-                        ticks: {
-                            color: 'rgb(116, 6, 2)',
-                        },
-                    }
+                
                 }
             }
         }

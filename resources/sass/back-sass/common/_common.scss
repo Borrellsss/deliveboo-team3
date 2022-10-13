@@ -44,7 +44,7 @@ label:not([for="cover"], .form-check-label) {
         label:not([for="cover"], .form-check-label) {
             top: 0;
             translate: 0.5rem 0;
-            color: #000
+            color: #212529; 
         }
         label.ms_label-active {
             color: $primary-color;
@@ -202,7 +202,7 @@ section {
         color: $primary-color;
     }
     &[disabled] {
-        background-color: #000;
+        background-color: #212529;
         color: #acabab;
 
         &:hover {
@@ -243,7 +243,14 @@ section {
 @media (min-width: 1200px) { 
 
     section {
-        padding-inline: 7rem;
+        padding-inline: 4rem;
+    }
+}
+
+@media (min-width: 1500px) { 
+
+    section {
+        padding-inline: 6rem;
     }
 }
 
@@ -272,7 +279,7 @@ section {
 @media (max-width: 480px) {  
 
     section {
-        padding-inline: 0.5rem;
+        padding-inline: 1rem;
     }
 
     // header

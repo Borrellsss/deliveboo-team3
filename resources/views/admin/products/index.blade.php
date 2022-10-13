@@ -47,7 +47,7 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         </div>
                                         <div class="modal-body">
-                                            <p class="pb-2">L'eliminazione del prodotto è <span class="ms_txt-danger">irreversibile</span></p>
+                                            <p class="ms_modal-delete-txt">L'eliminazione del prodotto è <span class="ms_txt-danger">irreversibile</span></p>
                                         </div>
                                         <div class="modal-footer justify-content-center">
                                             <button type="button" class="ms_btn ms_btn-secondary" data-dismiss="modal">Annulla</button>
