@@ -92,7 +92,7 @@ header{
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 9;
+    z-index: 15;
     background-color: white;
     box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
 
