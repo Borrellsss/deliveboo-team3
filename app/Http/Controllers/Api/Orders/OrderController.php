@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Order;
 use App\Product;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewOrderUserMail;
+
 
 class OrderController extends Controller
 {
@@ -130,6 +133,12 @@ class OrderController extends Controller
         for ($i=0; $i < count($products_ids_array); $i++) { 
             $new_order->products()->attach($products_ids_array[$i], ['quantity' => $product_quantity_array[$i]]);
         }
+
+        $user = User::findOrFail($user_id);
+
+        Mail::to('hilary.lion@gmail.com')->send(new NewOrderUserMail($new_order, $user));
+
+
 
         return response()->json([
             'success' => true
