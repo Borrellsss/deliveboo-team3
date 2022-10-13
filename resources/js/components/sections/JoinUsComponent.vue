@@ -35,8 +35,8 @@ export default {
     @import '../../style/common';
 
     .join-us-container{
-        margin-bottom: 3rem;
-       margin-top: 5.5rem;
+       margin-bottom: 3rem;
+       margin-top: 2.5rem;
        background-image: url(https://i.ibb.co/vDdrPkr/mockup-background.jpg);
        background-size: cover;
        background-repeat: no-repeat;

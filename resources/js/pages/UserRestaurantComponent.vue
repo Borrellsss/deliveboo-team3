@@ -5,7 +5,7 @@
 
            <!-- filters categories  -->
         <div class="category-filter-container">
-            <h4 class="fo-style">Scegli la tua categoria</h4>
+            <h4 class="front-office-style">Scegli la tua categoria</h4>
             <div class="categories-bar">
                 <svg class="checkbox-symbol">
                     <symbol id="check" viewbox="0 0 12 10">
@@ -37,22 +37,22 @@
           <!-- restaurant cards container  -->
         <div class="restaurant-cards">
           <div class="restaurant-cards-container">
-            <div class="row gx-5 row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
+            <div class="row gx-5 row row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4">
 
                 <div v-for="user in users" :key="user.id" class="col">
                     <router-link  :to="{name: 'products-page',params: {id: user.id}}" class="d-flex">
-                        <div class="card" style="margin-top:50px;" >
+                        <div class="ms_card">
                             <div class="img-container">
                                 <img v-if="user.cover" :src="'storage/' + user.cover" :alt="user.business_name">
                                 <!-- <img v-if="user.cover" src="https://images.adsttc.com/media/images/5e4c/1025/6ee6/7e0b/9d00/0877/slideshow/feature_-_Main_hall_1.jpg?1582043123" :alt="user.business_name"> -->
                                 <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="user.business_name">
                             </div>
-                            <div class="card-body">
-                                <div class="card-heading">
-                                   <div v-if="user.business_name.length < 33" class="space_line"></div>
+                            <div class="ms_card-body">
+                                <div class="ms_card-heading">
+                                   <!-- <div v-if="user.business_name.length < 33" class="space_line"></div> -->
                                    <span>{{user.business_name.slice(0, 33) }}</span><span v-if="user.business_name.length > 33">...</span>
                                 </div>
-                                <div class="card-text">
+                                <div class="ms_card-text">
                                     <i class="fa-solid fa-location-dot"></i>
                                     <span class="address">{{user.address.slice(0, 35)}}</span><span v-if="user.address.length > 35">...</span>
                                 </div>
@@ -126,7 +126,7 @@ import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
         margin: 2rem 0;
     }
     .categories-bar{
-        margin-bottom: 50px;
+        display: block;
         .checkbox-symbol {
                 position: absolute;
                 width: 0;
@@ -140,12 +140,10 @@ import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
             box-sizing: border-box;
             background: #ffffff;
             color: #222;
-            height: 64px;
             display: flex;
-            justify-content:space-around;
+            justify-content:center;
             align-items: center;
             flex-flow: row wrap;
-            margin-bottom: 6rem;
             margin: 0 auto;
                 .checkbox-input {
                 position: absolute;
@@ -231,52 +229,54 @@ stroke-dashoffset: 0;
 
 .restaurant-cards-container{
     width: 80%;
-    margin: 0 auto;
+    margin: 4rem auto;
 }
 
 .col{
     padding: 0 10px;
 }
 
-.card{
+.ms_card{
     width: 100%;
-    height: 250px;
+    aspect-ratio: 1/1;
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+    user-select: none;
     
     &:hover{
-            transform: translateY(5px)
+           box-shadow: 5px 20px 30px rgba(0,0,0,0.3);
+            transform: translateY(-1px);
     }
 
     .img-container {
             width: 100%;
-            height: 170px;
+            height: 70%;
         
             img{
                 border-radius: 8px 8px 0px 0;
                 height: 100%;
                 object-fit: cover;
-                height: 170px
              }
         }
-    .card-body{
+    .ms_card-body{
             overflow: hidden;
             text-overflow: ellipsis;
-        .card-heading {
-            font-size: 0.8rem;
-            font-weight: bold;
-            padding: 0px 15px;
-            margin-top: 0.4rem;
-            }
+            padding: 0 5%;
+            width: 100%;
+            .ms_card-heading {
+                font-size: 1vw;
+                font-weight: bold;
+                margin-top: 0.4rem;
+                }
 
-            .card-text {
-                padding: 0px 15px;
-                font-size: 0.7rem;
+            .ms_card-text {
+                font-size: 0.9vw;
                 color: #636262;
         
                 .address{
-                margin-left: 0.3rem;
+                margin-left: 0.1rem;
                 }
             }
       }        
@@ -284,95 +284,33 @@ stroke-dashoffset: 0;
  
 ///////// MEDIA QUERIES ////////////
                         
-    @media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1200px) {
+    // .ms_card-heading {
+    //             font-size: calc(1vw + 0.5rem);
+    //             }
 
-            .col{
-                    padding: 0rem 0rem;
-                }
-
-            .restaurant-cards-container{
-                            width: 80%;
-                            margin: 0 auto;
-                }
-
-                .col{
-                    padding: 5px;
-                }
+    //         .ms_card-text {
+    //             font-size: 0.9em;
+    //         }
+}
+@media only screen and (max-width: 992px) {
+    .ms_card-heading {
+        font-size: 5wv !important;
+        background-color: #cccfdb;
             }
 
-            .card-heading {
-                        font-size: 0.6rem;
-                        font-weight: bold;
-                        padding: 0px 10px;
-                        margin-top: 0.4rem;
-                
-                        }
-                                
-            .card-text {
-                padding: 0px 15px;
-                font-size: 0.4rem;
-                    .address{
-                    margin-left: 0.3rem;
-                    }
-
-                }
-    @media only screen and (max-width: 992px) {
-
-        .restaurant-cards-container{
-                width: 70%;
-                margin: 0 auto;
-
-                .card{
-                    height: 220px;
-                    .img-container {
-                        height: 150px;
-                    
-                        img{
-                            height: 150px;
-                            }
-                      }
-              }
-
-            .col{
-                padding: 5px;
-            }
-            
-            .card-heading {
-                font-size: 0.5rem;
-                font-weight: bold;
-                padding: 0px 6px;
-                margin-top: 0.2rem;
-            }
-                                
-            .card-text {
-                padding: 0px 15px;
-                font-size: 0.4rem;
-                .address{
-                    margin-left: 0.3rem;
-                }
-            }
+        .ms_card-text {
+            font-size: 0.7em;
         }
-     }
+}
                 
-        @media only screen and (max-width: 768px) {
+ @media only screen and (max-width: 768px) {
+    // .ms_card-heading {
+    //     font-size: calc(1vw + 2rem);
+    //     }
 
-            .restaurant-cards-container{
-                    width: 70%;
-                    margin: 0 auto;
-                    }
-              }
-
-        @media only screen and (max-width: 576px) {
-  
-            .restaurant-cards-container{
-                    .card{
-                        height: 210px;
-                        }
-                    width: 80%;
-                                        
-                    .card-text {
-                           display: none;
-                     }
-                 }
-            }      
+    // .ms_card-text {
+    //     font-size: 1rem;
+    // }
+}      
 </style>

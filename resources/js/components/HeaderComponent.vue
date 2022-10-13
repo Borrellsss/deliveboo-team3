@@ -1,9 +1,9 @@
 <template>
 
    <header>
-        <div class="container">
+        <div class="ms_container">
             <div class="row d-flex align-items-center">
-                <div class="col">
+                <div class="col col-3">
                     <div class="ms_logo-container">
                         <a href="/">
                             <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col d-flex align-items-center justify-content-end">
+                <div class="col col-9 d-flex align-items-center justify-content-end">
                     <div class="nav-container">
                         <div class="ms_banner d-flex">
                             <div class="ms_text d-flex align-items-center">
@@ -82,39 +82,40 @@ export default {
 @import '../style/variables';
 @import '../style/common';
 
-
-
 header{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 5.5rem;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 15;
-    background-color: white;
-    box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
+display: flex;
+align-items: center;
+width: 100%;
+height: 5.5rem;
+position: fixed;
+top: 0;
+z-index: 15;
+background-color: white;
+box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
+user-select: none;
 
+.ms_container{
+width: 80%;
+margin: 0 auto;
     .ms_logo-container{
         width: 5rem;
-
+    
         svg{
         color: $secondary-color;
         width: 100%;
         height: 100%;
         transition: transform 60s;
-
-                &:hover{
-                    color: $primary-color;
-                    width: 100%;
-                    transform: rotate(-1080deg);
-                }
-         }
-    }
-
+    
+            &:hover{
+                color: $primary-color;
+                width: 100%;
+                transform: rotate(-1080deg);
+            }
+        }
+      }
+    
     .ms_banner{
-
+    
         .js_btn{
             margin: 0 0.3rem;
             padding: 0.1em 0.8em;
@@ -124,35 +125,26 @@ header{
             background-color: $primary-color;
             color:white;
             font-weight: 600;
-
-        }
-    }
+    
+         }
+      }
 }
 
-// bootstrap col reset 
-
-    .col {
-        flex-basis: 0;
-        flex-grow: 1;
-        max-width: 70%;
-    }
+}
 
     //////// MEDIA QUERIES ////////
-    
- @media only screen and (max-width: 992px) {
-            .ms_text{
-            display: none !important;
-            }
 
-            .cell-symbol{
-            display: none;
-            }
-    }      
-
-    @media only screen and (max-width: 768px) {
-        .container-sm, .container {
-                    max-width: 643px;
-             }
+@media only screen and (max-width: 992px) {
+    .ms_text{
+    display: none !important;
     }
+
+    .cell-symbol{
+    display: none;
+    }
+}      
+
+@media only screen and (max-width: 768px) {
+}
 
 </style>
