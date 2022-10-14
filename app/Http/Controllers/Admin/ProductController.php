@@ -302,6 +302,10 @@ class ProductController extends Controller
                 Storage::delete($product_to_delete->cover);
             }
 
+            if(isset($product_to_delete->orders)) {
+                $product_to_delete->orders()->sync([]);
+            }
+            
             $product_to_delete->delete();
 
             $product_deleted = 'y';
