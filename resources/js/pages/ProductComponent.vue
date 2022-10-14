@@ -632,6 +632,7 @@ export default {
         .restaurant-heading {
             padding: 2rem 0.3rem;
             display: inline-block;
+            margin-bottom: 3.5rem;
 
             h2 {
                 font-size: 4.5rem;

@@ -40,7 +40,7 @@ export default {
           margin: auto;
       }
  .jumbo_container{
-      margin-top: 5.5rem;
+       margin-top: 5.5rem;
        background-image: url(https://i.ibb.co/zXPr22D/jumbotron-img.jpg);
        background-size: cover;
        background-repeat: no-repeat;
@@ -74,12 +74,13 @@ export default {
            .ms_main-jumbotron{
             
            .jumbotron-text{
+               margin: 3.5rem;
                text-align: center;
                padding:0 40px;
 
                p {
                     margin-top: 20px;
-                    font-size: 1.7rem;
+                    font-size: 1.3rem;
                     text-shadow: 2px 2px 0 #ffc509, 2px -2px 0 #ffc509,
                     -2px 2px 0 #ffc509, -2px -2px 0 #ffc509, 2px 0px 0 #ffc509,
                     0px 2px 0 #ffc509, -2px 0px 0 #ffc509, 0px -2px 0 #ffc509;
