@@ -101,33 +101,31 @@
     </section>
 
     <!-- Section: Social media -->
-    <section class="social-media-links mb-4">
+    <section class="d-flex social-media-links mb-4">
 
       <!-- Twitter -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-twitter"></i
-      ></a>
+      <a class="ms_social-btn" href="#!">
+        <i class="fab fa-twitter"></i>
+      </a>
 
       <!-- Google -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-google"></i
-      ></a>
+      <a class="ms_social-btn" href="#!">
+        <i class="fab fa-google"></i>
+      </a>
 
       <!-- Instagram -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-instagram"></i
-      ></a>
+      <a class="ms_social-btn" href="#!">
+        <i class="fab fa-instagram"></i>
+      </a>
 
       <!-- Linkedin -->
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-        ><i class="fab fa-linkedin-in"></i
-      ></a>
+      <a class="ms_social-btn" href="#!">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
 
     </section>
     <!-- Section: Social media -->
 
-
-    <!-- Section: Links -->
   </div>
   <!-- Grid container -->
 
@@ -152,32 +150,37 @@ export default {
 
 @import '../style/variables';
 @import '../style/common';
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;500;700;900&display=swap');
-
-  *{
-    margin: 0 auto;
 
   footer{
     background-color: rgb(47, 47, 47);
-    margin-top: 70px;
         
-        .links-container{
-          margin-top: 3rem;
-        }
-        .social-media-links{
-          margin-top: 3rem;
-        }
-
-        .btn{
-          padding: 13px 18px;
-          border-radius: 50%;
-        }
-
-        .btn:hover{
-          background-color: rgb(116, 111, 111);
-        }
-
+    .links-container{
+      margin-top: 3rem;
     }
+    .social-media-links{
+      margin-top: 3rem;
+      justify-content: center;
+      gap: 0.7rem;
+    }
+
+    .ms_social-btn {
+      width: 50px;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 50%;
+    }
+
+    .ms_social-btn:hover{
+      color: $primary-color;
+      background-color: $secondary-color;
+      border: 2px solid $primary-color;
+      box-shadow: 0 0 5px $primary-color;
+    }
+
   }
   
 </style>
