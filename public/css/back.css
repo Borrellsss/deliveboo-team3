@@ -25,7 +25,7 @@ a:hover {
 }
 
 .ms_link {
-  color: #feaa02;
+  color: #ffc509;
 }
 
 label:not([for=cover], .form-check-label) {
@@ -42,14 +42,14 @@ label:not([for=cover], .form-check-label) {
   color: #212529;
 }
 .ms_input-hover-wrapper:hover label.ms_label-active {
-  color: #feaa02;
+  color: #ffc509;
 }
 
 label.ms_label-active {
   position: relative;
   top: 0;
   translate: 0.5rem 0;
-  color: #feaa02;
+  color: #ffc509;
 }
 
 .ms_js-pwd-check-msg-wrapper {
@@ -74,8 +74,8 @@ textarea:not([type=checkbox], .ms_btn) {
 input:not([type=checkbox], .ms_btn):focus-visible,
 textarea:not([type=checkbox], .ms_btn):focus-visible {
   outline: none;
-  box-shadow: 0 0 4px #feaa02;
-  border-bottom: 1px solid #feaa02;
+  box-shadow: 0 0 4px #ffc509;
+  border-bottom: 1px solid #ffc509;
   border-radius: 0.5rem;
 }
 
@@ -102,7 +102,7 @@ main :is(h2, h3, h4, h5, h6) {
 }
 
 .ms_asterisk {
-  color: #feaa02;
+  color: #ffc509;
 }
 
 .ms_txt-danger {
@@ -125,7 +125,7 @@ header {
   height: 70px;
   background-color: white;
   color: #740602;
-  border-bottom: 2px solid #feaa02;
+  border-bottom: 2px solid #ffc509;
   box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.12);
 }
 header > nav {
@@ -134,9 +134,9 @@ header > nav {
 header .ms_profile-pic {
   width: 30px;
   aspect-ratio: 1/1;
-  border: 2px solid #feaa02;
+  border: 2px solid #ffc509;
   border-radius: 50%;
-  color: #feaa02;
+  color: #ffc509;
   background-color: #264f36;
   overflow: hidden;
 }
@@ -151,9 +151,9 @@ aside {
   width: 200px;
   height: calc(100vh - 70px);
   background-color: #740602;
-  color: #feaa02;
+  color: #ffc509;
   font-weight: 600;
-  border-right: 2px solid #feaa02;
+  border-right: 2px solid #ffc509;
 }
 aside li {
   padding-bottom: 1rem;
@@ -180,12 +180,12 @@ section {
   border-radius: 10rem;
   background-color: #740602;
   font-size: 0.95rem;
-  color: #feaa02;
+  color: #ffc509;
   font-weight: 600;
 }
 .ms_btn:hover {
   text-decoration: none;
-  color: #feaa02;
+  color: #ffc509;
 }
 .ms_btn[disabled] {
   background-color: #212529;
@@ -195,7 +195,7 @@ section {
   color: #acabab;
 }
 .ms_btn-secondary {
-  background-color: #feaa02;
+  background-color: #ffc509;
   color: #740602;
 }
 .ms_btn-secondary:hover {
@@ -204,11 +204,11 @@ section {
 }
 .ms_btn-tertiary {
   background-color: #264f36;
-  color: #feaa02;
+  color: #ffc509;
 }
 .ms_btn-tertiary:hover {
   text-decoration: none;
-  color: #feaa02;
+  color: #ffc509;
 }
 
 .ms_header-brand-logo {
@@ -329,7 +329,7 @@ section {
 .ms_form-card-header {
   padding-block: 1rem;
   text-align: center;
-  color: #feaa02;
+  color: #ffc509;
   border-bottom: 1px solid #740602;
   font-size: 2rem;
   font-weight: 600;
@@ -372,7 +372,7 @@ section .ms_form-card-body {
 }
 
 .modal-confirm {
-  color: #feaa02;
+  color: #ffc509;
   width: 400px;
 }
 
@@ -399,7 +399,7 @@ section .ms_form-card-body {
   position: absolute;
   top: 0;
   right: 0;
-  color: #feaa02;
+  color: #ffc509;
 }
 .modal-confirm .close:hover {
   color: #740602;
@@ -444,7 +444,7 @@ section .ms_form-card-body {
   color: #264f36;
 }
 .ms_more-info h5 {
-  color: #feaa02;
+  color: #ffc509;
 }
 .ms_more-info div {
   font-size: 0.94rem;
@@ -494,7 +494,7 @@ section .ms_form-card-body {
   margin-bottom: 1rem;
   aspect-ratio: 1/1;
   align-self: flex-start;
-  border: 5px solid #feaa02;
+  border: 5px solid #ffc509;
   border-radius: 1.5rem;
   overflow: hidden;
   display: flex;
@@ -530,7 +530,7 @@ section .ms_form-card-body {
 }
 .ms_product-details-info > div:not(div:last-of-type) {
   padding-bottom: 0.7rem;
-  border-bottom: 2px solid #feaa02;
+  border-bottom: 2px solid #ffc509;
 }
 .ms_product-details-info > div > p {
   margin-bottom: 0;
@@ -558,7 +558,7 @@ section .ms_form-card-body {
 }
 .ms_user-home-info > h1 span,
 .ms_user-orders-info > h1 span {
-  color: #feaa02;
+  color: #ffc509;
 }
 .ms_user-home-info > div span,
 .ms_user-orders-info > div span {
@@ -570,7 +570,7 @@ section .ms_form-card-body {
   align-items: center;
   justify-content: space-between;
   padding-block: 0.5rem;
-  border-bottom: 2px solid #feaa02;
+  border-bottom: 2px solid #ffc509;
 }
 
 .ms_paginator-links {
@@ -583,9 +583,9 @@ section .ms_form-card-body {
 }
 .ms_paginator-links .page-item.active .page-link {
   z-index: 3;
-  color: #feaa02;
+  color: #ffc509;
   background-color: #740602;
-  border-color: #feaa02;
+  border-color: #ffc509;
 }
 
 @media screen and (max-width: 640px) {

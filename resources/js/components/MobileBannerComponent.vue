@@ -65,7 +65,7 @@ export default {
 .ms_mobile-app {
     padding-block: 4rem;
     background: $primary-color;
-    // background: radial-gradient(circle, $primary-color 0%, $primary-color 23%, rgba(64,4,2,1) 100%);
+    background: radial-gradient(circle, rgba(255,197,9,1) 58%, rgba(235,179,2,1) 80%, rgba(208,158,0,1) 100%);
 
     .ms_container {
         margin-inline: auto;
