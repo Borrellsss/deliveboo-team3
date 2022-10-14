@@ -1,6 +1,6 @@
 <template>
     <div class="ms_mobile-app">
-        <div class="ms_container d-flex">
+        <div class="ms_container">
             <div class="ms_mobile-app-left">
                 <div class="ms_mobile-app-img">
                     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -36,13 +36,14 @@
                 </div>
             </div>
             <div class="ms_mobile-app-right">
-                <div>
-                    <div>
-                        <img src="../../../public/images/app-store.png" alt="App Store logo">
-                    </div>
-                    <div>
-                        <img src="../../../public/images/google-play.png" alt="Google Play logo">
-                    </div>
+                <h2>Scarica l'App</h2>
+                <div class="d-flex ms_app-link">
+                    <a class="ms_mobile-logo" href="https://www.apple.com/it/app-store/">
+                        <img src="https://www.mcdonalds.it/themes/mcd/build/images/app/app-store.png" alt="App Store logo">
+                    </a>
+                    <a class="ms_mobile-logo" href="https://play.google.com/store/games?hl=it&gl=US">
+                        <img src="https://www.mcdonalds.it/themes/mcd/build/images/app/google-play.png" alt="Google Play logo">
+                    </a>
                 </div>
             </div>
         </div>
@@ -62,29 +63,136 @@ export default {
 @import '../style/common';
 
 .ms_mobile-app {
-    padding-block: 2rem;
+    padding-block: 4rem;
     background-color: $primary-color;
 
-    .ms_mobile-app-left {
-        padding: 1rem;
-        width: 200px;
-        aspect-ratio: 1 / 1;
-        position: relative;
-        background-color: #fff;
-        border-radius: 2.8rem;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;;
+    .ms_container {
+        margin-inline: auto;
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
 
-        .ms_mobile-app-img > svg {
-            width: 150px;
-            color: #212529;
-            rotate: -20deg;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            translate: -50% -50%;
+        .ms_mobile-app-left {
+            width: fit-content;
+            
+            .ms_mobile-app-img {
+                padding: 1rem;
+                width: 200px;
+                aspect-ratio: 1 / 1;
+                position: relative;
+                background-color: #fff;
+                border-radius: 2.8rem;
+                box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+                > svg {
+                    width: 150px;
+                    color: #212529;
+                    rotate: -20deg;
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    translate: -50% -50%;
+                }
+            }
+        }
+
+        .ms_mobile-app-right {
+            width: 50%;
+            
+            h2 {
+                margin-bottom: 1.5rem;
+                text-align: center;
+                color: #212529;
+                font-weight: 700;
+            }
+            > .d-flex {
+                gap: 0 1.5rem;
+
+                .ms_mobile-logo {
+                    display: block;
+                    
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// MEDIA QUERIES
+@media (max-width: 970px) { 
+
+    .ms_mobile-app {
+
+        .ms_container {
+            width: 60%;
         }
     }
     
+}
+
+@media (max-width: 768px) { 
+
+    .ms_mobile-app {
+
+        .ms_container {
+            flex-direction: column;
+
+            .ms_mobile-app-left {
+                
+                .ms_mobile-app-img {
+                    margin-bottom: 1.5rem;
+                }
+            }
+            .ms_mobile-app-right {
+                width: 90%;
+            }
+        }
+    } 
+}
+
+@media (max-width: 620px) { 
+
+    .ms_mobile-app {
+
+        .ms_container {
+            width: 80%;
+
+        }
+    } 
+}
+
+@media (max-width: 450px) { 
+
+    .ms_mobile-app {
+
+        .ms_container {
+            padding-inline: 1rem;
+            width: 100%;
+
+            .ms_mobile-app-right {
+                width: 100%;
+
+                .ms_app-link {
+                     margin-inline: auto;
+                    width: fit-content;
+                    flex-direction: column;
+                    
+                    > a.ms_mobile-logo {
+                        width: 200px;
+                    }
+                    > a.ms_mobile-logo:first-child {
+                        margin-bottom: 1.5rem;
+                    }
+                }
+            }
+            
+
+        }
+    } 
 }
 
 </style>

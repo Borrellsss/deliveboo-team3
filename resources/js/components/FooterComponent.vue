@@ -152,32 +152,26 @@ export default {
 
 @import '../style/variables';
 @import '../style/common';
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;500;700;900&display=swap');
-
-  *{
-    margin: 0 auto;
 
   footer{
     background-color: rgb(47, 47, 47);
-    margin-top: 70px;
         
-        .links-container{
-          margin-top: 3rem;
-        }
-        .social-media-links{
-          margin-top: 3rem;
-        }
-
-        .btn{
-          padding: 13px 18px;
-          border-radius: 50%;
-        }
-
-        .btn:hover{
-          background-color: rgb(116, 111, 111);
-        }
-
+    .links-container{
+      margin-top: 3rem;
     }
+    .social-media-links{
+      margin-top: 3rem;
+    }
+
+    .btn{
+      padding: 13px 18px;
+      border-radius: 50%;
+    }
+
+    .btn:hover{
+      background-color: rgb(116, 111, 111);
+    }
+
   }
   
 </style>
