@@ -51,3 +51,26 @@
 section .ms_form-card-body {
     padding: 0 0;
 }
+
+// MEDIA QUERIES
+@media (max-width: 768px) {  
+
+    .ms_form-card {
+        width: 80%;
+    
+        &.ms_login-card {
+            width: 80%;
+        }
+    }
+}
+
+@media (max-width: 480px) {  
+
+    .ms_form-card {
+        width: 90%;
+    
+        &.ms_login-card {
+            width: 90%;
+        }
+    }
+}
