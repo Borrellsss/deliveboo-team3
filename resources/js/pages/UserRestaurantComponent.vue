@@ -54,7 +54,7 @@
                         <div class="row gx-5 row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
 
                             <div v-for="user in users" :key="user.id" class="col">
-                                <router-link  :to="{name: 'products-page',params: {id: user.id}}" class="d-flex">
+                                <router-link  :to="{name: 'products-page',params: {slug: user.slug}}" class="d-flex">
                                     <div class="ms_card">
                                         <div class="img-container">
                                             <img v-if="user.cover" :src="'storage/' + user.cover" :alt="user.business_name">

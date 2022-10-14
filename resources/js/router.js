@@ -24,7 +24,7 @@ const router = new VueRouter ({
 
         //  rotta per il singolo menu
          {
-            path : '/:id/menu',
+            path : '/:slug/menu',
             name: 'products-page',
             component: ProductComponent
          },

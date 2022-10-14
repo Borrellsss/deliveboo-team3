@@ -9,7 +9,7 @@
 
                     <!-- Restaurant Name -->
                     <h2>
-                        Nome Ristorante
+                        {{user.business_name}}
                     </h2>
 
                     <!-- Restaurant Address -->
@@ -17,7 +17,7 @@
 
                         <!-- Location Icon -->
                         <i class="fa-solid fa-location-dot mr-2"></i>
-                        Via dei girasoli, 15
+                        {{user.address}}
                     </p>
                 </div>
             </div>
@@ -319,6 +319,7 @@ export default {
 
     data(){
         return {
+            user: [],
 
             // Toogle che rende visibile/invisibile il pop-up
             toggle_popup: false,
@@ -348,9 +349,16 @@ export default {
     created() {
                     
         // $this.route.paramas.id rappresenta il passaggio di informazioni eseguiro con il router link
-        axios.get(`http://127.0.0.1:8000/api/${this.$route.params.id}/menu`)
+        axios.get(`http://127.0.0.1:8000/api/${this.$route.params.slug}/menu`)
         .then((response) =>{
             this.products = response.data.results
+        });
+
+
+        axios.get(`http://127.0.0.1:8000/api/${this.$route.params.slug}/user`)
+        .then((response) =>{
+            this.user = response.data.results
+        //   console.log(response.data.results)
         });
 
         // Se il carrello non è null
