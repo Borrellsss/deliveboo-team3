@@ -95,7 +95,7 @@ box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
 user-select: none;
 
 .ms_container{
-width: 80%;
+width: 87%;
 margin: 0 auto;
     .ms_logo-container{
         width: 5rem;
