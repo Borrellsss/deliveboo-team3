@@ -42,12 +42,11 @@ export default {
  .jumbo_container{
       margin-top: 5.5rem;
        background-image: url(https://i.ibb.co/zXPr22D/jumbotron-img.jpg);
-      //  background-image: url(../../../../public/images/jumbotron-img.jpg);
        background-size: cover;
        background-repeat: no-repeat;
        background-position-x: 50%;
        background-position-y: 0;
-       height: 500px;
+       height: 700px;
        min-width: 100%;
        color: $secondary-color;
            .top_header{
@@ -78,8 +77,9 @@ export default {
                text-align: center;
                padding:0 40px;
 
-               p{
+               p {
                     margin-top: 20px;
+                    font-size: 1.7rem;
                     text-shadow: 2px 2px 0 #ffc509, 2px -2px 0 #ffc509,
                     -2px 2px 0 #ffc509, -2px -2px 0 #ffc509, 2px 0px 0 #ffc509,
                     0px 2px 0 #ffc509, -2px 0px 0 #ffc509, 0px -2px 0 #ffc509;

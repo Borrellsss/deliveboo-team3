@@ -38,13 +38,15 @@
         <div class="restaurant-cards">
             <div class="fo-container">
                 <div v-if="selectedCategories.length == 0">
-                    <div>
-                            Nessuna categoria selezionata
+                    <div class="text-center mt-4">
+                        Nessuna categoria selezionata
                     </div>
                 </div>
 
                 <div v-else-if="selectedCategories.length != 0 && matchedCategories.length == 0">
-                    <div> Nessun ristorante corrisponde alla tua selezione</div>
+                    <div class="text-center mt-4">
+                        Nessun ristorante corrisponde alla tua selezione
+                    </div>
                 </div>
                   <!-- stampa ristoranti -->
                 <div v-else>

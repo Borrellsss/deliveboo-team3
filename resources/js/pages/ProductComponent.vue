@@ -579,7 +579,8 @@ export default {
 
 // Jumbotron
 .jumbotron {
-    height: 800px;
+    margin-top: 5.5rem;
+    height: 700px;
     background-image: url(https://www.settimoristorante.it/wp-content/uploads/sites/106/2020/01/slide_home_sofitel_settimo_ristorante_terrazza2.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -607,18 +608,18 @@ export default {
         justify-content: center;
         align-content: center;
         flex-direction: column;
+        margin: 0 auto;
 
         .restaurant-heading {
-            margin-top: 3rem;
             padding: 2rem 0.3rem;
             display: inline-block;
 
             h2 {
-                font-size: 3rem;
+                font-size: 4.5rem;
             }
 
             p {
-                font-size: 1.5rem;
+                font-size: 2.1rem;
             }
         }
     }
@@ -847,7 +848,6 @@ export default {
     .popup h2 {
         margin-bottom: 1rem;
         color: black;
-        // font-family: Tahoma, Arial, sans-serif;
     }
 
     img{
