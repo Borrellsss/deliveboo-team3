@@ -285,13 +285,7 @@ stroke-dashoffset: 0;
 ///////// MEDIA QUERIES ////////////
                         
 @media only screen and (max-width: 1200px) {
-    // .ms_card-heading {
-    //             font-size: calc(1vw + 0.5rem);
-    //             }
 
-    //         .ms_card-text {
-    //             font-size: 0.9em;
-    //         }
 }
 @media only screen and (max-width: 992px) {
     .ms_card-heading {
