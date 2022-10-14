@@ -6,7 +6,7 @@
         <main>
 			<router-view></router-view>
 	    </main>
-
+        <CookiesComponent/>
         <FooterComponent/>
     </div>
 </template>
@@ -15,12 +15,14 @@
 
 import HeaderComponent from '../components/HeaderComponent.vue';
 import FooterComponent from '../components/FooterComponent.vue';
+import CookiesComponent from '../components/CookiesComponent.vue'
 import '@fortawesome/fontawesome-free/js/all.js';
 export default {
     name: 'App',
     components: {
         HeaderComponent, 
-        FooterComponent
+        FooterComponent,
+        CookiesComponent
     },
     computed: {
         isUserLogged() {
