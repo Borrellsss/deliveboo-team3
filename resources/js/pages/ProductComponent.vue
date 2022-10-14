@@ -52,13 +52,13 @@
 
                                     <!-- Product Cover -->
                                     <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
-                                    <img v-else class="card-img" src="	https://i.ibb.co/N37KSqL/circleposate.jpg" :alt="product.name">
+                                    <img v-else class="card-img" src="https://i.ibb.co/QmbxCVg/backup-posatedarker.png" :alt="product.name">
 
                                     <!-- Product Info Pop-up -->
                                     <a class="info-popup-inline" href="#popup1" @click.prevent="selectProduct(product), showProductInfo()">
-
                                         <!-- Info Icon -->
                                         <i class="fa-solid fa-circle-info"></i>
+                                        <div class="overlay-info"></div>
                                     </a>
 
                                     <!-- Card Footer -->
@@ -116,7 +116,9 @@
 
                                                     <!-- Add to Cart Button -->
                                                     <div @click='addItem(element), showProductInfo()' class="add-to-cart-popup">
-                                                        Aggiungi al carrello
+                                                        <div class="popup-add-btn">
+                                                             Aggiungi al carrello
+                                                        </div>
                                                     </div>
                                                 </div>
 
@@ -715,23 +717,35 @@ export default {
 
         .card-img {
             object-fit: cover;
-            border-radius: 15px 15px 0 0;
             height: 70%;
         }
 
         .info-popup-inline {
+            display: block;
             
             .fa-circle-info {
                 position: absolute;
                 font-size: 160%;
-                color: white;
+                
+                color: $primary-color;
                 top: 10px;
                 right: 10px;
-
-                &:hover{
-                    color: #efecec;
-                }
+                z-index: 2;
+            
             }
+            .overlay-info{
+                position: absolute;
+                top: 12px;
+                right: 13px;
+                width: 18px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: $secondary-color;
+
+            }
+        &:hover .overlay-info{
+                opacity: 0;
+            }   
         }
                     
         .ms-card-body {
@@ -739,7 +753,7 @@ export default {
 
             .title-price {
                 width: calc((100% / 4) * 3);
-                background-color:#f7f2f2;
+                background-color: #f5f5f5;
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
@@ -763,7 +777,7 @@ export default {
 
             .cart-card-symbol {
                 width: calc(100% / 4);
-                background-color:  #f7f2f2;
+                background-color: #f5f5f5;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -836,7 +850,7 @@ export default {
     }
 
     .popup {
-        margin: 20vh auto;
+        margin: 15vh auto;
         padding: 20px;
         background: #fff;
         border-radius: 15px;
@@ -858,7 +872,6 @@ export default {
     }
 
     .ms_content{
-        // display: block;
         margin: 1rem 0;
 
         .popup-ingredients{
@@ -872,14 +885,20 @@ export default {
         }
         
         .add-to-cart-popup{
-            display: inline-block;
-            margin: 1rem 0 0 0;
-            background-color: #6c808f;
-            background-color: $secondary-color;
-            padding: 0.3rem 0.7rem;
-            border-radius: 13px;
-            color: white;
-            cursor: pointer;
+            margin: 2rem 0 0 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+
+            .popup-add-btn{
+                background-color: #6c808f;
+                background-color: $secondary-color;
+                padding: 0.3rem 2.8rem;
+                border-radius: 15px;
+                color: white;
+                cursor: pointer;
+
+            }
         }    
      }
 
@@ -895,7 +914,7 @@ export default {
     }
 
     .popup .close:hover {
-        color: #06D85F;
+        color: $secondary-color;
     }
 
     .add-to-cart.pop-btn {
