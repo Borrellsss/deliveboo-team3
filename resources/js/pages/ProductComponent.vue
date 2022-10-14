@@ -540,6 +540,7 @@ export default {
 
 section {
     background: radial-gradient(circle, rgba(255,197,9,1) 58%, rgba(235,179,2,1) 80%, rgba(208,158,0,1) 100%);
+    background: $page-product-bg;
 }
 
 // Jumbotron
@@ -1070,6 +1071,7 @@ section {
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
     position: sticky;
     top: 180px;
+    overflow: hidden;
     
         .blank-cart-title{
             width: 100%;
