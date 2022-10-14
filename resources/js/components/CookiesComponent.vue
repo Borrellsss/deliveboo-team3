@@ -1,20 +1,30 @@
 <template>
      <!-- Cookie -->
      <section v-if="!cookies.includes(false)">
-          <div id="cookie" class="alert alert-warning d-flex justify-content-spacebetween" role="alert">
-            <div class="cookie-text">
+
+        <div id="cookie" class="alert-warning d-flex justify-content-spacebetween align-items-center" role="alert">
+
+            <div class="cookies-img">
+                <img class="evidon-banner-image" alt="Logo Evidon" src="https://i.ibb.co/0XM75Ph/Cookies.png" data-di-id="c8ec593f-5aadcfb9">
+            </div>
+
+            <div class="cookie-text brown">
                 TOAST RIDER utilizza i cookie per personalizzare la tua esperienza e gli annunci pubblicitari su questo sito Web e su siti Web di terze parti, analizzare i dati, migliorare le prestazioni del sito e consentire la condivisione sui social media. Per ulteriori informazioni o per modificare le impostazioni, consulta la nostra Informativa sui cookie. 
             </div>
-            <!-- Accetta -->
-            <button type="button" class="close cookie-button" data-dismiss="alert" aria-label="Close" @click="checkCookies()">
-                <span aria-hidden="true">Accetta</span>
-            </button>
 
-            <button type="button" class="close cookie-button" data-dismiss="alert" aria-label="Close"  @click="checkCookies()">
-                <span aria-hidden="true">Rifiuta</span>
-            </button>
-
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"  @click="checkCookies()">
+          
+            <div class="d-flex justify-content-spacebetween align-items-center">
+                  <!-- Accetta -->
+                <button type="button" class="close brown ms_button" data-dismiss="alert" aria-label="Close" @click="checkCookies()">
+                    <span aria-hidden="true">Accetta</span>
+                </button>
+                    <!-- Rifiuta -->
+                <button type="button" class="close brown ms_button" data-dismiss="alert" aria-label="Close"  @click="checkCookies()">
+                    <span aria-hidden="true">Rifiuta</span>
+                </button>
+            </div>
+                <!-- ICSI -->
+            <button type="button" class="close brown x-close" data-dismiss="alert" aria-label="Close"  @click="checkCookies()">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -78,16 +88,70 @@ export default {
         z-index: 100;
         position: fixed;
         bottom: 0px;
-        padding: 1rem;
-        font-size: 0.7rem;
-        .cookie-text{
-            padding-right: 0.3rem;
+        padding: 1.5rem 2.5rem ;
+        font-size: 0.9rem;
+        
+        .brown{
+            color: #856404
         }
-        .cookie-button{
-        padding-right: 1rem;
-        font-size: 1rem;
+        .cookies-img{
+            img{
+                width: 55px;
+                filter: invert(0.5);
+                filter: invert(36%) sepia(29%) saturate(2713%) hue-rotate(24deg) brightness(92%) contrast(97%);
+            }
+           
+        }
+        .cookie-text{
+            padding: 1.5rem;
+        }
+
+        .close.brown.ms_button{
+            padding: 0.3rem;
+            font-size: 1rem;
+            border: 1px solid #856404;
+            margin: 0.3rem;
+        }
+
+        .close.brown.x-close{
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+    
+        
+    }
+
+    ///////////// MEDIA //////////
+
+    @media only screen and (max-width: 576px) {
+
+        #cookie{
+            flex-direction: column;
+
+            .cookie-text{
+                padding: 0.5rem 0;
+            }
+            
+            .cookies-img{
+                width: 100%;
+            }
+
+
+           .close.brown.x-close{
+               position: absolute;
+               top: 1rem;
+               right: 1rem;
+            }
+
+            .close.brown.ms_biutton{
+                flex-direction:row;
+                padding: 0.5rem;
+            }
 
         }
         
     }
+
 </style>
