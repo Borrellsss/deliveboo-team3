@@ -749,8 +749,8 @@ export default {
             .fa-circle-info {
                 position: absolute;
                 font-size: 160%;
-                
                 color: $primary-color;
+                color: $product-card-cart-info;
                 top: 10px;
                 right: 10px;
                 z-index: 2;
@@ -764,7 +764,7 @@ export default {
                 height: 20px;
                 border-radius: 50%;
                 background-color: $secondary-color;
-
+                background-color: $product-card-info-under;
             }
         &:hover .overlay-info{
                 opacity: 0;
@@ -776,12 +776,13 @@ export default {
 
             .title-price {
                 width: calc((100% / 4) * 3);
-                background-color: #f5f5f5;
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: flex-start;
                 padding-left: 1rem;
+                background-color: #f5f5f5;
+                background-color: $product-card-bg;
                         
 
                 .ms-card-title {
@@ -800,21 +801,22 @@ export default {
 
             .cart-card-symbol {
                 width: calc(100% / 4);
-                background-color: #f5f5f5;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 border-left: solid thin rgba(0,0,0,0.1);
                 transition: transform 0.5s;
                 cursor: pointer;
+                background-color: #f5f5f5;
+                background-color: $product-card-bg;
 
                 &:hover {
                     background:#eae1e1;
+                    background: $product-card-cart-icon-hover;
                 }
 
                 &:hover .fa-cart-shopping {
                         transform: translateY(5px);
-                        // color:#00394B;
                     }
 
                 .add-to-cart {
@@ -823,9 +825,9 @@ export default {
                     transition: transform 0.5s;
                     
                     .fa-cart-shopping {
-                        // color: #254053;
-                        color: $secondary-color;
                         transition: transform 0.5s;
+                        color: $secondary-color;
+                        color: $product-card-cart-icon;
                     }
 
                    
@@ -914,11 +916,12 @@ export default {
 
             .popup-add-btn{
                 background-color: #6c808f;
-                background-color: $secondary-color;
                 padding: 0.3rem 2.8rem;
                 border-radius: 15px;
                 color: white;
                 cursor: pointer;
+                background-color: $secondary-color;
+                background-color: $popup-cart-btn-bg;
 
             }
         }    
@@ -932,11 +935,13 @@ export default {
         font-weight: bold;
         text-decoration: none;
         color: #333;
+        color: $popup-cart-close;
         cursor: pointer;
     }
 
     .popup .close:hover {
         color: $secondary-color;
+        color: $popup-cart-close-overlay;
     }
 
     .add-to-cart.pop-btn {
@@ -961,9 +966,10 @@ export default {
     font-size: 1.2rem;
     text-align: center;
     padding: 1rem 0;
-    background-color: #f5f5f5;
     font-weight: 600;
     border-bottom: 1px solid #c1c1c3;
+    background-color: #f5f5f5;
+    background-color:$cart-bg;
 }
 .cart-container {
     user-select: none;
@@ -976,6 +982,7 @@ export default {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: #f5f5f5;
+    background-color:$cart-bg;
 
     // custom scrollbar cart
 ::-webkit-scrollbar {
@@ -1036,6 +1043,7 @@ export default {
                 font-size: 1.1rem;
                 display: flex;
                 color: #b9b9d1;
+                color: $cart-quantity-btn;
                 justify-content: center;
                 align-items: center;
                 cursor: pointer;
@@ -1050,6 +1058,7 @@ export default {
     
     .check-out-section{
              background-color: #f5f5f5;
+             background-color: $cart-bg;
              
              
              .total-clear-price{
@@ -1068,6 +1077,7 @@ export default {
                             padding-left: 1px;
                             font-size: 0.9rem;
                             color: #808083;
+                            color: $clear-cart-color;
                             cursor: pointer;
                         }
                     }
@@ -1091,6 +1101,7 @@ export default {
                 color: white;
                 // color: $secondary-color;
                 background-color: #6c808f;
+                background-color: $cart-checkout-btn-bg;
                 // background-color: $primary-color;S
                 cursor: pointer;
              }
