@@ -12,18 +12,18 @@
                 TOAST RIDER utilizza i cookie per personalizzare la tua esperienza e gli annunci pubblicitari su questo sito Web e su siti Web di terze parti, analizzare i dati, migliorare le prestazioni del sito e consentire la condivisione sui social media. Per ulteriori informazioni o per modificare le impostazioni, consulta la nostra Informativa sui cookie. 
             </div>
 
-            <!-- Accetta -->
-            <div class="cookie-button">
-                <button type="button" class="close brown button" data-dismiss="alert" aria-label="Close" @click="checkCookies()">
+          
+            <div class="d-flex justify-content-spacebetween align-items-center">
+                  <!-- Accetta -->
+                <button type="button" class="close brown ms_button" data-dismiss="alert" aria-label="Close" @click="checkCookies()">
                     <span aria-hidden="true">Accetta</span>
                 </button>
-
-                <button type="button" class="close brown button" data-dismiss="alert" aria-label="Close"  @click="checkCookies()">
+                    <!-- Rifiuta -->
+                <button type="button" class="close brown ms_button" data-dismiss="alert" aria-label="Close"  @click="checkCookies()">
                     <span aria-hidden="true">Rifiuta</span>
-                 </button>
+                </button>
             </div>
-           
-
+                <!-- ICSI -->
             <button type="button" class="close brown x-close" data-dismiss="alert" aria-label="Close"  @click="checkCookies()">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -104,12 +104,13 @@ export default {
         }
         .cookie-text{
             padding: 1.5rem;
-            
-     
         }
-        .close.brown.button{
-            padding: 0.3rem 0;
+
+        .close.brown.ms_button{
+            padding: 0.3rem;
             font-size: 1rem;
+            border: 1px solid #856404;
+            margin: 0.3rem;
         }
 
         .close.brown.x-close{
@@ -144,7 +145,8 @@ export default {
                right: 1rem;
             }
 
-            .close.brown.button{
+            .close.brown.ms_biutton{
+                flex-direction:row;
                 padding: 0.5rem;
             }
 
