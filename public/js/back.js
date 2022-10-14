@@ -105,10 +105,14 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/js/back.js */"./resources/js/back.js");
 =======
 module.exports = __webpack_require__(/*! C:\Users\Ilaria\bool\Esercizi\laravel_esercizi\deliveboo-team3\resources\js\back.js */"./resources/js/back.js");
 >>>>>>> Ila-task
+=======
+module.exports = __webpack_require__(/*! C:\Users\Jack\boolean progetti\laravel-projects\deliveboo-team3\resources\js\back.js */"./resources/js/back.js");
+>>>>>>> cart-design-jack
 
 
 /***/ })

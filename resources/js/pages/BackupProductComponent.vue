@@ -24,14 +24,14 @@
         </div>
 
         <!-- Product Container -->
-        <div class="products-cart-wrapper">
+        <div class="products_container">
 
             <!-- Floating Cart -->
             <a v-if="cart.length" class="floating-cart" @click="cartScroll()">
 
                 <!-- Counter Cart -->
                 <div class="count-float">
-                    <span>{{totalQuantity(cart)}}</span>
+                    <span>{{cart.length}}</span>
                 </div>
 
                 <!-- Cart Icon -->
@@ -40,11 +40,11 @@
 
             <!-- Main Container -->
             <div class="row master-row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 products-col">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 px-3 products-col">
                     
                     <!-- Products Container  -->
                     <div class="products-side">
-                        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-between">
+                        <div class="row row-cols-1 row-cols-sm- row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-between">
 
                             <!-- Product Cards -->
                             <div v-for="product,index in products" :key="index" class="col p-3">
@@ -52,7 +52,7 @@
 
                                     <!-- Product Cover -->
                                     <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
-                                    <img v-else class="card-img" src="https://i.ibb.co/WfdPzMr/backup-posate3.jpg" :alt="product.name">
+                                    <img v-else class="card-img" src="https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg" :alt="product.name">
 
                                     <!-- Product Info Pop-up -->
                                     <a class="info-popup-inline" href="#popup1" @click.prevent="selectProduct(product), showProductInfo()">
@@ -77,8 +77,8 @@
                                         </div>
 
                                         <!-- CTA Add to Cart -->
-                                        <div @click='addItem(product)' class="cart-card-symbol">
-                                            <a class="add-to-cart">
+                                        <div class="cart-card-symbol">
+                                            <a @click='addItem(product)' class="add-to-cart">
 
                                                 <!-- Cart Icon -->
                                                 <i class="fa-solid fa-cart-shopping"></i>
@@ -97,12 +97,9 @@
                                                 <h2>
                                                     {{element.name}}
                                                 </h2>
-
-                                                <!-- Product image -->
-                                                    <img src="https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg" alt="">
-                                                    
+                                                
                                                 <!-- Product Content -->
-                                                <div class="ms_content">
+                                                <div class="content">
 
                                                     <!-- Product Description -->
                                                     <p>
@@ -110,14 +107,14 @@
                                                     </p>
 
                                                     <!-- Product Ingredients -->
-                                                    <div class="popup-ingredients">
-                                                       <span class="ingredienti-text">Ingredienti:  </span>{{element.ingredients}}
+                                                    <div>
+                                                        Ingredienti: {{element.ingredients}}
                                                     </div>
 
                                                     <!-- Add to Cart Button -->
-                                                    <div @click='addItem(element), showProductInfo()' class="add-to-cart-popup">
+                                                    <a @click='addItem(element)' class="add-to-cart pop-btn">
                                                         Aggiungi al carrello
-                                                    </div>
+                                                    </a>
                                                 </div>
 
                                                 <!-- Close Pop-up -->
@@ -132,59 +129,107 @@
                 </div>
 
                 <!-- Cart -->
-                <div class="col-12 col-sm-10 col-md-10 col-lg-4 col-xl-4 cart-col">
-                    <div  v-if="cart.length > 0"  class="cart-container">
-                        <div class="ms-cart-title">Carrello</div>
+                <div class="col-12 col-sm-9 col-md-8 col-lg-4 col-xl-4 cart-col">
+                    <div v-if="cart.length > 0" class="cart-container">
                         <div class="ghost-cart" id="my-cart"></div>
 
-                        <!-- All products in cart-->
-                        <div class="all-products-in-cart">
-                            <div v-for="(product, index) in cart" :key="index" class="item-cart-section d-flex">
+                        <!-- Cart Title -->
+                        <h3 class="ms_cart_title">
+                            Carrello
+                        </h3>
 
-                                  <!-- title - price-->
-                                <div class="title-price-cart d-flex flex-column justify-content-center align-items-start">
-                                    <div class="title-product-cart"> {{product.name}}</div>
-                                    <div  @click='deleteItem(index)' class="delete-item-cart">Rimuovi</div>
+                        <!-- Cart Content -->
+                        <div v-for="(product, index) in cart" :key="index" class="row">
+                            <div class="col col-6">
+
+                                <!-- Cart Products Name -->
+                                <div class="product-name d-flex justify-content-center align-items-center">
+                                    {{product.name}}
                                 </div>
+                            </div>
 
-                                   <!-- quantity + - -->
-                                <div class="quantity-cart d-flex justify-content-center align-items-center">
-                                    <span @click='decreaseQuantity(product, index)' class="increment quantity-btn"><i class="fa-solid fa-circle-minus"></i>
-                                    </span><span class="quantity-number">{{product.quantity}}</span>
-                                    <span  @click='addItem(product)' class="decrease quantity-btn"><i class="fa-solid fa-circle-plus"></i></span>
+                            <!-- Cart columns items actions -->
+                            <div class="col col-3">
+                                <div class="product-quantity-remove d-flex flex-column justify-content-center align-items-center">
+                                    <div class="product-quantity d-flex justify-content-center align-items-center">
+
+                                        <!-- Decrease Items -->
+                                        <a class="quantity-btn" @click='decreaseQuantity(product, index)'>
+
+                                            <!-- Descrease Icon -->
+                                            <span class="decrease">-</span>
+                                        </a>
+
+                                        <!-- Items Quantity -->
+                                        <span class="quantity-number">
+                                            {{product.quantity}}
+                                        </span>
+
+                                        <!-- Increase Quantity -->
+                                        <a class="quantity-btn" @click='addItem(product)'>
+
+                                            <!-- Increase Icon -->
+                                            <span class="increase">+</span>
+                                        </a>
+                                    </div>
+
+                                    <!-- Delete Items -->
+                                    <a class="remove-btn" @click='deleteItem(index)'>
+                                        Rimuovi
+                                    </a>
                                 </div>
+                            </div>
 
-                                 <!-- product price- -->
-                                <div class="price-product-cart d-flex justify-content-center align-items-center">
-                                    <!-- <i class="fa-solid fa-xmark"></i> -->
+                            <!-- Partials Price for Items -->
+                            <div class="col col-3">
+                                <div class="product-price d-flex flex-column justify-content-center align-items-center">
                                     {{ product.price * product.quantity }}&euro;
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- Total Amount / Checkout Section -->
+                        <div class="row d-flex justify-content-end">
+                            <div class="col col-12">
+                                <div class="checkout">
+                                    <div class="total">
+                                        <div>
+                                            <!-- Text "Total" -->
+                                            <div class="subtotal">
+                                                Totale
+                                            </div>
 
-                         <!-- checkout section -->
-                        <div class="check-out-section d-flex flex-column justify-content-center align-items-center">
-                            <div class="total-clear-price d-flex justify-content-between align-items-center">
-                                <div class="total-clear d-flex flex-column justify-content-center align-items-start">
-                                    <div class="totale-text">Totale</div>
-                                    <div @click="clearCart(index)" class="clear-cart">Svuota carrello</div>
+                                            <!-- Clear Cart -->
+                                            <div class="items" @click="clearCart(index)">
+                                                Svuota carrello
+                                            </div>
+                                        </div>
+
+                                        <!-- Total Amount -->
+                                        <div class="total-amount">&euro;
+                                            {{ totalAmount(cart) }} 
+                                        </div>
+                                    </div>
+
+                                    <!-- Checkout Button -->
+                                    <button class="button"  data-toggle="modal" data-target="#proceedtopayment">
+                                        Checkout
+                                    </button>
                                 </div>
-
-                                 <!-- final price -->
-                                <div class="final-price">{{ totalAmount(cart) }} &euro;</div>
                             </div>
-                            <div data-toggle="modal" data-target="#proceedtopayment" class="check-out-btn">Checkout</div>
                         </div>
+
                         <!-- Payment Component -->
                         <PaymentComponent :amount="totalAmount(cart)" v-if="isVisible" />
-                    </div>    
+                    </div>
+
                     <!-- Cart Blank layout -->
                     <div v-else class="cart-blank">
-                           
+
                         <!-- Title -->
-                        <div class="blank-cart-title">
+                        <h4>
                             Il carrello è vuoto
-                        </div>
+                        </h4>
 
                         <!-- SVG Image -->
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -208,9 +253,8 @@
         </div>
 
         <!-- MODALS SECTION -->
-    <div v-for="(product, index) in cart" :key="index">
 
-        <!-- Modal "proceed to payment" -->
+        <!-- Modal "proceed to payment"-->
         <div class="modal fade right ms_modal-wrapper" id="proceedtopayment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
             <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
                 <!--Content-->
@@ -226,78 +270,18 @@
                     <div class="text-center">
                         <span class="yellow pb-4"><i class="fas fa-credit-card fa-4x"></i></span>
                         <p class="pt-4">Stai per eseguire il pagamento dell'ordine...</p>
-                        <p>Vuoi procedere?</p>
+                        <p>vuoi procedere?</p>
                     </div>
 
                     <!--Footer-->
                     <div class="text-center">
-                        <button type="button" @click="ViewFormPayment()" data-dismiss="modal" class="ms_btn boxshadow mt-3">Si, ho FAME!</button>
+                        <a type="button" @click="ViewFormPayment()" data-dismiss="modal" class="ms_btn boxshadow">Si, ho FAME!</a>
                     </div>
                 </div>
                 <!--/.Content-->
             </div>
         </div>
-        <!-- End Modal "proceed to payment" -->
-
-        <!-- Modal "change restaurant" -->
-        <!-- <div class="modal fade right ms_modal-wrapper" id="changerestaurant" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-            <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document"> -->
-                <!--Content-->
-                <!-- <div class="modal-content ms_modal_container"> -->
-                    <!--Header-->
-                    <!-- <div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="white-text">&times;</span>
-                        </button>
-                    </div> -->
-
-                    <!--Body-->
-                    <!-- <div class="text-center">
-                        <span class="red pb-4"><i class="fa-solid fa-bell fa-4x"></i></span>
-                        <p class="pt-4">Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello.</p>
-                        <p>Vuoi cambiare ristorante?</p>
-                    </div> -->
-
-                    <!--Footer-->
-                    <!-- <div class="text-center">
-                        <button type="button" data-dismiss="modal" class="ms_btn boxshadow mt-3" @click="GetChange()">Si, ho cambiato idea!</button>
-                    </div>
-                </div> -->
-                <!--/.Content-->
-            <!-- </div> -->
-        <!-- </div> -->
-        <!-- End Modal "change restaurant" -->
-
-        <!-- Modal "order confirmed" -->
-        <div class="modal fade right ms_modal-wrapper" id="orderconfirmed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-            <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
-                <!--Content-->
-                <div class="modal-content ms_modal_container">
-                    <!--Header-->
-                    <div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="white-text">&times;</span>
-                        </button>
-                    </div>
-
-                    <!--Body-->
-                    <div class="text-center">
-                        <span class="yellow pb-4"><i class="fas fa-burger fa-4x"></i></span>
-                        <p class="pt-4">Stiamo preparando il tuo ordine!</p>
-                        <p>Controlla la mail per tutti i dettagli.</p>
-                        <p>Fra poco si mangia!</p>
-                    </div>
-
-                    <!--Footer-->
-                    <div class="text-center">
-                        <button type="button" data-dismiss="modal" class="ms_btn boxshadow mt-3">Ok</button>
-                    </div>
-                </div>
-                <!--/.Content-->
-            </div>
-        </div>
-        <!-- End Modal "order confirmed" -->
-    </div>
+        <!-- End Modal -->
     </section>
 </template>
 
@@ -308,7 +292,7 @@ import PaymentComponent from "../components/PaymentComponent.vue";
 export default {
     name: 'ProductComponent',
     components: {
-        PaymentComponent,
+        PaymentComponent
     },
 
     data(){
@@ -330,14 +314,11 @@ export default {
             products_in_cart: 0,
 
             // Definisco una variabile per visionare il pannello del pagamento
-            isVisible: false,
-            
-            // definisco una variabile che diventa true quando l'utente sceglie di cambiare ristorante nel modal
-            // isChanged: false
+            isVisible: false
         }
     },
     created() {
-                    
+
         // $this.route.paramas.id rappresenta il passaggio di informazioni eseguiro con il router link
         axios.get(`http://127.0.0.1:8000/api/${this.$route.params.id}/menu`)
         .then((response) =>{
@@ -367,15 +348,6 @@ export default {
 
     methods: {
 
-        // Funzione che calcola il numero totale dei prodotti nel carrello
-        totalQuantity(cart){
-            let total_quantity = 0;
-            cart.forEach ((product) => {
-                total_quantity += product.quantity;
-            })
-            return total_quantity;
-        },
-
         // Funzione che scrolla l'icona del carrello
         cartScroll(){
             const element = document.getElementById('my-cart')
@@ -396,11 +368,6 @@ export default {
         selectProduct(product){
             this.myProduct.push(product); 
         },
-
-        // Funzione che cambia il valore della variabile "change" che serve come condizione il cambio del ristorante al click sul modal
-        // GetChange() {
-        //     this.isChanged = true;
-        // },
 
         // Funzione che aggiunge il prodotto al carrello
         addItem(product){
@@ -428,13 +395,10 @@ export default {
 
                 // Se l'id del prodotto presente nel carrello è diverso dall'user_id presente nella tabella prodotti
                 if(this.cart[0].user_id !== product.user_id){
-                    
-                    // Mostro il Modal in pagina
-                    // $('#changerestaurant').modal('show');
 
                     // Se conferma di cambiare ristorante
-                    if(confirm("Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello. Vuoi cambiare ristorante?")){
-                        
+                    if(confirm('Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello. Vuoi cambiare ristorante? ')){
+                    
                         // Svuoto il carrello
                         this.cart = [];
 
@@ -485,28 +449,6 @@ export default {
                 }
             }
         },
-
-        // Funzione che svuota il carrello all'ok sul modal
-        // resetCart(product) {
-           
-        //     // Svuoto il carrello
-        //     this.cart = [];
-        //     console.log('cart', this.cart);
-            
-        //     // Salva il carrello
-        //     this.saveCart();
-            
-        //     // Setto la quantità del prodotto (del nuovo ristorante)
-        //     product.quantity = 1;
-        //     console.log('quantity', product.quantity);
-            
-        //     // Pusho nell'array il prodotto
-        //     this.cart.push(product);
-        //     console.log('cart che pusha', this.cart);
-
-        //     // Salva il carrello
-        //     this.saveCart();
-        // },
 
         // Funzione salva carrello
         saveCart() {
@@ -568,7 +510,7 @@ export default {
         // Funzione che comunica il processo del pagamento e rende visibile il banner del pagamento
         ViewFormPayment() {
             this.isVisible = true;
-        }   
+        }
     },
 }
 </script>
@@ -655,8 +597,8 @@ export default {
 
 // Counter Cart
 .count-float {
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 1rem;
+    height: 1rem;
     font-size: 0.7rem;
     border-radius: 50%;
     background-color: $primary-color;
@@ -665,8 +607,8 @@ export default {
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 33px;
-    right: 24px;
+    bottom: 34px;
+    right: 25px;
     z-index: 11;
 
     &:hover ~ .fa-cart-shopping {
@@ -676,7 +618,7 @@ export default {
   
 // ******************** PRODUCT CARDS ******************** // 
 
-.products-cart-wrapper {
+.products_container {
     width: 90%;
     margin: 0 auto;
     position: relative;
@@ -698,7 +640,6 @@ export default {
     }
      
     .ms-product-card {
-        user-select: none;
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
@@ -767,31 +708,28 @@ export default {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                border-left: solid thin rgba(0,0,0,0.1);
+                border-left:solid thin rgba(0,0,0,0.1);
                 transition: transform 0.5s;
-                cursor: pointer;
 
                 &:hover {
                     background:#eae1e1;
                 }
 
-                &:hover .fa-cart-shopping {
-                        transform: translateY(5px);
-                        // color:#00394B;
-                    }
-
                 .add-to-cart {
                     font-size: 140%;
                     margin-bottom: 1.8rem;
+                    color: #254053;
                     transition: transform 0.5s;
                     
                     .fa-cart-shopping {
-                        // color: #254053;
-                        color: $secondary-color;
+                        color: #254053;
                         transition: transform 0.5s;
                     }
 
-                   
+                    &:hover .fa-cart-shopping {
+                        transform: translateY(5px);
+                        color:#00394B;
+                    }
                 }
             }
         }
@@ -806,6 +744,7 @@ export default {
 
 // Product Info Pop-up
 .info-popup {
+
     margin-top: 90px;
 
     .button {
@@ -828,7 +767,7 @@ export default {
         bottom: 0;
         left: 0;
         right: 0;
-        background: rgba(0, 0, 0, 0.1);
+        background: rgba(0, 0, 0, 0.7);
         transition: opacity 200ms;
         visibility: hidden;
         opacity: 0.1;
@@ -836,7 +775,7 @@ export default {
     }
 
     .popup {
-        margin: 20vh auto;
+        margin: 30vh auto;
         padding: 20px;
         background: #fff;
         border-radius: 15px;
@@ -845,43 +784,10 @@ export default {
     }
 
     .popup h2 {
-        margin-bottom: 1rem;
+        margin-top: 0;
         color: black;
-        // font-family: Tahoma, Arial, sans-serif;
+        font-family: Tahoma, Arial, sans-serif;
     }
-
-    img{
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-        border-radius: 5px;
-    }
-
-    .ms_content{
-        // display: block;
-        margin: 1rem 0;
-
-        .popup-ingredients{
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-
-            .ingredienti-text{
-                color: grey;
-                font-size: 0.9rem;
-            }
-        }
-        
-        .add-to-cart-popup{
-            display: inline-block;
-            margin: 1rem 0 0 0;
-            background-color: #6c808f;
-            background-color: $secondary-color;
-            padding: 0.3rem 0.7rem;
-            border-radius: 13px;
-            color: white;
-            cursor: pointer;
-        }    
-     }
 
     .popup .close {
         position: absolute;
@@ -907,51 +813,20 @@ export default {
          
         .overlay {
             visibility: visible;
-            opacity: 1;
+            opacity: 0.2;
         }
     }
 }
 
 // ****************** END PRODUCT CARDS ****************** // 
 
-// ****************** CART ******************
+// ****************** CART ****************** // 
 
-.ms-cart-title{
-    font-size: 1.2rem;
-    text-align: center;
-    padding: 1rem 0;
-    background-color: #f5f5f5;
-    font-weight: 600;
-    border-bottom: 1px solid #c1c1c3;
-}
 .cart-container {
-    user-select: none;
     border-radius: 15px;
-    overflow: hidden;
     position: sticky;
     top: 180px;
-    margin-top: 1.5rem;
     margin-bottom: 90px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color: #f5f5f5;
-
-    // custom scrollbar cart
-::-webkit-scrollbar {
-    width: 10px;
-    }
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    }
-
-::-webkit-scrollbar-thumb {
-    background-color: #6c808f;
-    }
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: #9ba9b4;
-    }
 
     .ghost-cart {
         position: absolute;
@@ -962,134 +837,142 @@ export default {
         visibility: hidden;
     }
 
-    .all-products-in-cart{
-        overflow-y: scroll;
-        max-height: 45vh;
+    .ms_cart_title {
+        margin-bottom: 1rem;
+        position: relative;
     }
 
-    .item-cart-section{
-        border-bottom: 1px solid #c1c1c3;
-       
+    .col {
+        border: 1px solid rgb(203, 197, 197);
+    }
 
-       .title-price-cart{
-            width: (calc(100% / 9) * 5);
-            padding: 1rem 0;
-            .title-product-cart{
-                padding-left: 5%;
-            }
-            .delete-item-cart{
-                padding-left: 6%;
-                color: #808083;
-                font-size: 0.8rem;
-                cursor: pointer;
-            }
-       }
-       .quantity-cart{
-            width: (calc(100% / 9) * 2);
+    h3 {
+        margin-top: 1rem;
+        padding-left: 2rem;
+        font-weight: 600;
+    }
 
-            .quantity-number{
-                padding: 0 0.3rem;
+    .product-name {
+        height: 100%;
+        font-weight: 700;
+    }
+
+    .product-quantity-remove {
+
+        .product-quantity {
+            height: 100%;
+            padding-top: 0.5rem;
+
+            .quantity-number {
+                padding: 0 5px;
+                font-weight: 700;
             }
 
-            .quantity-btn{
-                font-size: 1.1rem;
+            .quantity-btn {
+                width: 20px;
+                height: 20px;
+                background-color: rgb(211, 205, 205);
+                padding: 0.3rem;
+                border-radius: 50%;
                 display: flex;
-                color: #b9b9d1;
                 justify-content: center;
                 align-items: center;
+                margin-bottom: 3px;
                 cursor: pointer;
+                font-weight: 500;
+
+                .decrease {
+                    padding-bottom: 3px;
+                }
             }
-       }
-       .price-product-cart{
-            width: (calc(100% / 9) * 2);
-            color:black;
-            font-size: 1rem;
-       }
+        }
+
+        .remove-btn {
+            font-size: 0.8rem;
+            padding-top: 0.3rem;
+            padding-bottom: 0.5rem;
+            font-weight: 700;
+            color: #909090;
+            cursor: pointer;
+        }
+    }
+
+    .product-price {
+        height: 100%;
+        font-size: 1.2rem;
+        font-weight: 700;
     }
     
-    .check-out-section{
-             background-color: #f5f5f5;
-             
-             
-             .total-clear-price{
-                width: 100%;
-                padding: 0.6rem 0;
-                padding-left: 3%;
-                // background-color: green;
-                    .total-clear{
-                        width: (calc(100% / 9) * 7);
-                        
-                        .totale-text{
-                            font-size: 1.5rem;
-                            font-weight: 600;
-                        }
-                        .clear-cart{
-                            padding-left: 1px;
-                            font-size: 0.9rem;
-                            color: #808083;
-                            cursor: pointer;
-                        }
-                    }
-                    .final-price{
-                        width: calc( (100% / 9) * 2);
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        font-size: 1.6rem;
-                        font-weight: 600;
-                        margin-right: 0.5rem
-                    }
-             }
-             .check-out-btn{
-                margin: 0.5rem 0 1.5rem 0;
-                font-weight: 600;
-                padding: 0.4rem 0;
-                border-radius: 15px;
-                text-align: center;
-                width: 50%;
-                color: white;
-                // color: $secondary-color;
-                background-color: #6c808f;
-                // background-color: $primary-color;S
-                cursor: pointer;
-             }
-
+    .checkout {
+        margin: 3% 5%;
     }
 
+    .total {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .subtotal {
+        font-size: 1.2rem;
+        font-family: 'Open Sans';
+        font-weight: 700;
+        color: #202020;
+        margin-bottom: 0.3rem;
+    }
+
+    .items {
+        font-size: 1rem;
+        font-family: 'Open Sans';
+        font-weight: 500;
+        color: #909090;
+        line-height: 10px;
+        cursor: pointer;
+        padding: 0.5rem 0 0.7rem 0;
+
+        &:hover{
+            color: $secondary-color;;
+        }
+    }
+
+    .total-amount {
+        font-size: 2rem;
+        font-family: 'Open Sans';
+        font-weight: 900;
+        color: #202020;
+    }
+
+    .button {
+        margin-top: 10px;
+        width: 100%;
+        height: 40px;
+        border: none;
+        background: linear-gradient(to bottom right, $secondary-color, #bf201b);
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 16px;
+        font-family: 'Open Sans';
+        font-weight: 600;
+        color:white;
+    }
 }
 
 .cart-blank {
-   
-    width: 80%;
-    background-color:#f5f5f5;
-    border-radius: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1.5rem 0;
-    margin-left: 40px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    position: sticky;
-    top: 180px;
-    
-        .blank-cart-title{
-            width: 100%;
-            font-size: 1.2rem;
-            text-align: center;
-            padding: 1rem 0;
-            background-color: #f5f5f5;
-            font-weight: 600;
-            border-bottom: 1px solid #c1c1c3;
-            color: #808083;
-        }
+    margin: 80px 0;
+
+    h4 {
+        font-weight: 600;
+        margin-bottom: 15px;
+        opacity: 0.7;
+    }
 
     svg {
-        padding: 50px 0;
-        width: 40%;
-        height: 40%;
-        opacity: 0.4;
+        width: 50%;
+        height: 50%;
+        opacity: 0.5;
     }
 }
 
@@ -1114,10 +997,6 @@ export default {
             color: $primary-color;
         }
 
-        .red {
-            color: $secondary_color;
-        }
-
         .boxshadow {
             box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         }
@@ -1132,22 +1011,9 @@ export default {
 
 @media only screen and (max-width: 1200px) {
 
-      .products-cart-wrapper {
-        margin-bottom: 70px;
-        width: 95%;
-    }
-
     .products-side {
         margin-bottom: 70px;
         width: 95%;
-    }
-
-    .info-popup{
-
-        .popup {
-            margin: 15vh auto;
-            width: 50%;
-        }
     }
 
     .card-ingredients {
@@ -1168,27 +1034,9 @@ export default {
 
 @media only screen and (max-width: 992px) {
 
-    .popup {
-        margin: 20vh auto;
-        width: 60%;
-    }
-
     .floating-cart {
         display: flex;
     } 
-
-    .info-popup{
-
-        .popup {
-            margin: 10vh auto;
-            width: 60%;
-        }
-    }
-
-   .cart-container{
-        margin-left: 16px;
-        z-index: 11;
-    }
 
     .products-col {
         display: flex;
@@ -1200,28 +1048,13 @@ export default {
 
 @media only screen and (max-width: 768px) {
 
-
-    .cart-container{
-        margin-left: 16px;
-    }
-
-    .info-popup{
-
-        .popup {
-            margin: 10vh auto;
-            width: 80%;
-        }
-    }
-
-    .all-products-in-cart{
-        overflow-y: scroll;
-        max-height: 20vh;
-    }
-    
-   .jumbotron {
+    .jumbotron {
         height: 600px;
     }
 
+    .row {
+        justify-content: center;
+    }
 }  
 
 // ******************** END MEDIA QUERY ******************** //

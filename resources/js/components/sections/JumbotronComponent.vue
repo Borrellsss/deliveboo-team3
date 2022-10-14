@@ -1,13 +1,13 @@
 <template>
 
   <section>
-      <div class="js_container d-flex justify-content-center align-items-center">
-          <div class="js_jumbotron">
+      <div class="jumbo_container d-flex justify-content-center align-items-center">
+          <div class="ms_main-jumbotron">
             <div class="row">
               <div class="col ">
                   <div class="jumbotron-text">
-                      <h2 class="fo-style">TOAST RIDER</h2>
-                      <p class="fo-style">L'unico servizio di delivery che porta i migliori ristoranti a casa tua, <br>
+                      <h2 class="front-office-style">TOAST RIDER</h2>
+                      <p class="front-office-style">L'unico servizio di delivery che porta i migliori ristoranti a casa tua, <br>
                           rapidamente e senza spese di spedizione. <br>
                           Affidati al potere del toast!
                       </p>
@@ -39,7 +39,7 @@ export default {
   *{
           margin: auto;
       }
- .js_container{
+ .jumbo_container{
       margin-top: 5.5rem;
        background-image: url(https://i.ibb.co/zXPr22D/jumbotron-img.jpg);
       //  background-image: url(../../../../public/images/jumbotron-img.jpg);
@@ -72,7 +72,7 @@ export default {
                      }
                   }
                }
-           .js_jumbotron{
+           .ms_main-jumbotron{
             
            .jumbotron-text{
                text-align: center;

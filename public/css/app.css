@@ -9328,12 +9328,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, .p {
   margin-bottom: 0;
 }
 
-.js_container {
-  width: 65%;
-  margin: 0 auto;
-  position: relative;
-}
-
 .main_title {
   margin: 100px auto 0 auto;
   text-align: center;
@@ -9356,28 +9350,28 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, .p {
   padding: 0.5rem 2rem;
 }
 
-h2.fo-style {
+h2.front-office-style {
   font-weight: 900;
   font-size: 5rem;
   text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;
 }
 
-h3.fo-style {
+h3.front-office-style {
   font-weight: 700;
   font-size: 2rem;
 }
 
-h4.fo-style {
+h4.front-office-style {
   font-weight: 700;
   font-size: 1.4rem;
 }
 
-h5.fo-style {
+h5.front-office-style {
   font-weight: 900;
   font-size: 1.4rem;
 }
 
-p.fo-style {
+p.front-office-style {
   font-size: 1.2rem;
   text-align: center;
   font-weight: 900;
