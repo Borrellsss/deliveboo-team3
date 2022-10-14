@@ -112,6 +112,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../style/variables';
+// @import '../style/common';
 
 .payment-form-braintree{
   padding-top: 2rem;
@@ -137,6 +139,7 @@ export default {
   width: 90%;
   margin: 0 auto;
   background-color: #f5f5f5;
+  background-color: $cart-bg;
 }
 
 .check-out-btn{
@@ -149,6 +152,7 @@ export default {
     width: 50%;
     color: white;
     background-color: #6c808f;
+    background-color: $pay-now-btn;
     cursor: pointer;
 }
 

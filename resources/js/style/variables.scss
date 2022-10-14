@@ -4,10 +4,35 @@ $line-height-base: 1.6;
 
 // COLOR PALETTE
 $text-color: #181f1c;
-// $primary-color: #feaa02;
 $primary-color: #ffc509;
 $secondary-color: #740602;
-// $secondary-color: #5D1100;
-// $tertiary-color: #394f49;
 $tertiary-color: #264f36;
+
+
+// COLOR OF ELEMENTS
+
+// product card 
+$product-card-bg: #f5f5f5;
+$product-card-cart-icon: #740602;  //secondary
+$product-card-cart-icon-hover: #eae1e1;
+$product-card-cart-info:#ffc509;  //primary
+$product-card-info-under: #740602;  //secondary
+
+// info popup card 
+$popup-cart-btn-bg:#740602;  //secondary
+$popup-cart-close: #333;
+$popup-cart-close-overlay: #740602;  //secondary
+
+
+// cart 
+$cart-bg: #f5f5f5;
+$cart-quantity-btn: #b9b9d1;
+$cart-checkout-btn-bg: #6c808f;
+$clear-cart-color:  #808083;
+
+// payment form and visa 
+$payment-card-bg: red;
+$pay-now-btn:  #6c808f;
+
+
 
