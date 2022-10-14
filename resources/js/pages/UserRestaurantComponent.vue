@@ -1,9 +1,9 @@
 <template>
 
     <section>
-       <JumbotronComponent/>
+        <JumbotronComponent/>
 
-           <!-- filters categories  -->
+        <!-- filters categories  -->
         <div class="category-filter-container">
             <h4 class="front-office-style">Scegli la tua categoria</h4>
             <div class="categories-bar">
@@ -80,7 +80,10 @@
             </div>
         </div>
         <!-- join us component -->
-          <JoinUsComponent/>
+        <JoinUsComponent/>
+
+        <!-- mobile app component -->
+        <MobileBannerComponent/>
     </section>   
 
 </template>
@@ -88,12 +91,14 @@
 <script>
 import JumbotronComponent from '../components/sections/JumbotronComponent.vue';
 import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
+import MobileBannerComponent from '../components/MobileBannerComponent.vue';
 
     export default {
         name:'UserRestaurantComponent',
         components: {
             JumbotronComponent,
-            JoinUsComponent
+            JoinUsComponent,
+            MobileBannerComponent
         },
         data(){
             return{
