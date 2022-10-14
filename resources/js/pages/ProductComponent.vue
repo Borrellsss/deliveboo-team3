@@ -208,7 +208,7 @@
         </div>
 
         <!-- MODALS SECTION -->
-    <div v-for="(product, index) in cart" :key="index">
+    <div v-for="(product, index) in cart" :key="index" class="margin">
 
         <!-- Modal "proceed to payment" -->
         <div class="modal fade right ms_modal-wrapper" id="proceedtopayment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
@@ -1103,6 +1103,7 @@ export default {
     margin-top: 115px;
 
     .ms_modal_container {
+        margin: 0 auto;
         background: linear-gradient(to left right, $secondary-color, white);
         color: black;
         font-size: 1.35rem;
@@ -1121,6 +1122,10 @@ export default {
         .boxshadow {
             box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         }
+    }
+
+    .modal-dialog {
+        margin: 0 auto;
     }
 }
 
