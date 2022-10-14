@@ -619,7 +619,7 @@ export default {
             }
 
             p {
-                font-size: 2.1rem;
+                font-size: 1.3rem;
             }
         }
     }
@@ -652,6 +652,10 @@ export default {
     &:hover {
         color: rgb(249, 246, 246);
     }
+}
+
+.master-row {
+    margin-top: 4rem;
 }
 
 // Counter Cart
