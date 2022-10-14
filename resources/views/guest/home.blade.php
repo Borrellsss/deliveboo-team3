@@ -8,9 +8,11 @@
     {{-- Braintree --}}
     <script src="https://js.braintreegateway.com/web/dropin/1.33.4/js/dropin.min.js"></script>
 
+    {{-- Css --}}
     <link rel=“stylesheet” href="{{asset ('css/app.css')}}">
 
-    <title>Document</title>
+    {{-- Title --}}
+    <title>Toast Rider</title>
     
 </head>
 <body>
