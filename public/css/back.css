@@ -158,6 +158,7 @@ aside {
 aside li {
   padding-bottom: 1rem;
   padding-left: 1rem;
+  font-size: 0.95rem;
 }
 
 main {
@@ -178,6 +179,7 @@ section {
   border: none;
   border-radius: 10rem;
   background-color: #740602;
+  font-size: 0.95rem;
   color: #feaa02;
   font-weight: 600;
 }

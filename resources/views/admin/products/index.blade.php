@@ -24,8 +24,8 @@
                 @foreach ($products as $product)
                     {{-- card singola --}}
                     <div class="ms_product-card text-center">
-                        <h5 class="card-title">Nome: {{$product->name}}</h5>
-                        <p class="card-text mb-2">Prezzo: {{$product->price . '€'}}</p>
+                        <h5 class="card-title">{{$product->name}}</h5>
+                        <p class="card-text mb-2">{{str_replace('.', ',', $product->price) . '€'}}</p>
                         <form action="{{route('admin.products.destroy', ['product' => $product->id])}}" method="POST">
                             @csrf
                             @method('DELETE')
