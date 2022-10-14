@@ -138,7 +138,8 @@
                         <div class="ghost-cart" id="my-cart"></div>
 
                         <!-- All products in cart-->
-                        <div class="all-products-in-cart">
+                        <div v-if="cartVisible">
+                            <div class="all-products-in-cart">
                             <div v-for="(product, index) in cart" :key="index" class="item-cart-section d-flex">
 
                                   <!-- title - price-->
@@ -177,6 +178,9 @@
                         </div>
                         <!-- Payment Component -->
                         <PaymentComponent :amount="totalAmount(cart)" v-if="isVisible" />
+                        </div>
+
+                        
                     </div>    
                     <!-- Cart Blank layout -->
                     <div v-else class="cart-blank">
@@ -290,7 +294,7 @@
 
                     <!--Footer-->
                     <div class="text-center">
-                        <button type="button" data-dismiss="modal" class="ms_btn boxshadow mt-3">Ok</button>
+                        <button type="button" data-dismiss="modal" class="ms_btn boxshadow mt-3" @click="paymentDone()">Ok</button>
                     </div>
                 </div>
                 <!--/.Content-->
@@ -331,6 +335,9 @@ export default {
 
             // Definisco una variabile per visionare il pannello del pagamento
             isVisible: false,
+            
+            // Definisco una variabile per visionare il carrello, servirà per rimuovere il carrello quando il pagamento viene eseguito
+            cartVisible: true
             
             // definisco una variabile che diventa true quando l'utente sceglie di cambiare ristorante nel modal
             // isChanged: false
@@ -568,7 +575,17 @@ export default {
         // Funzione che comunica il processo del pagamento e rende visibile il banner del pagamento
         ViewFormPayment() {
             this.isVisible = true;
-        }   
+        },   
+
+        // funzione per cancellare il carrello sia in local storage che in pagina
+        paymentDone(cart){
+            if(this.cart.length > 0){
+                 this.cartVisible = false
+            }
+            this.cart.length = 0
+            this.cartVisible = true
+            localStorage.removeItem('cart');
+        }
     },
 }
 </script>

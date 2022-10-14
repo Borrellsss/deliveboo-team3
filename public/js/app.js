@@ -8073,7 +8073,9 @@ __webpack_require__.r(__webpack_exports__);
       // Numero prodotti presenti nel carrello
       products_in_cart: 0,
       // Definisco una variabile per visionare il pannello del pagamento
-      isVisible: false // definisco una variabile che diventa true quando l'utente sceglie di cambiare ristorante nel modal
+      isVisible: false,
+      // Definisco una variabile per visionare il carrello, servirà per rimuovere il carrello quando il pagamento viene eseguito
+      cartVisible: true // definisco una variabile che diventa true quando l'utente sceglie di cambiare ristorante nel modal
       // isChanged: false
 
     };
@@ -8274,6 +8276,16 @@ __webpack_require__.r(__webpack_exports__);
     // Funzione che comunica il processo del pagamento e rende visibile il banner del pagamento
     ViewFormPayment: function ViewFormPayment() {
       this.isVisible = true;
+    },
+    // funzione per cancellare il carrello sia in local storage che in pagina
+    paymentDone: function paymentDone(cart) {
+      if (this.cart.length > 0) {
+        this.cartVisible = false;
+      }
+
+      this.cart.length = 0;
+      this.cartVisible = true;
+      localStorage.removeItem('cart');
     }
   }
 });
@@ -9181,7 +9193,7 @@ var render = function render() {
     attrs: {
       id: "my-cart"
     }
-  }), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _vm.cartVisible ? _c("div", [_c("div", {
     staticClass: "all-products-in-cart"
   }, _vm._l(_vm.cart, function (product, index) {
     return _c("div", {
@@ -9250,7 +9262,7 @@ var render = function render() {
     attrs: {
       amount: _vm.totalAmount(_vm.cart)
     }
-  }) : _vm._e()], 1) : _c("div", {
+  }) : _vm._e()], 1) : _vm._e()]) : _c("div", {
     staticClass: "cart-blank"
   }, [_c("div", {
     staticClass: "blank-cart-title"
@@ -9327,7 +9339,37 @@ var render = function render() {
           return _vm.ViewFormPayment();
         }
       }
-    }, [_vm._v("Si, ho FAME!")])])])])]), _vm._v(" "), _vm._m(4, true)]);
+    }, [_vm._v("Si, ho FAME!")])])])])]), _vm._v(" "), _c("div", {
+      staticClass: "modal fade right ms_modal-wrapper",
+      attrs: {
+        id: "orderconfirmed",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "myModalLabel",
+        "aria-hidden": "true",
+        "data-backdrop": "false"
+      }
+    }, [_c("div", {
+      staticClass: "modal-dialog modal-side modal-bottom-right modal-notify modal-info",
+      attrs: {
+        role: "document"
+      }
+    }, [_c("div", {
+      staticClass: "modal-content ms_modal_container"
+    }, [_vm._m(4, true), _vm._v(" "), _vm._m(5, true), _vm._v(" "), _c("div", {
+      staticClass: "text-center"
+    }, [_c("button", {
+      staticClass: "ms_btn boxshadow mt-3",
+      attrs: {
+        type: "button",
+        "data-dismiss": "modal"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.paymentDone();
+        }
+      }
+    }, [_vm._v("Ok")])])])])])]);
   })], 2);
 };
 
@@ -9391,24 +9433,7 @@ var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", {
-    staticClass: "modal fade right ms_modal-wrapper",
-    attrs: {
-      id: "orderconfirmed",
-      tabindex: "-1",
-      role: "dialog",
-      "aria-labelledby": "myModalLabel",
-      "aria-hidden": "true",
-      "data-backdrop": "false"
-    }
-  }, [_c("div", {
-    staticClass: "modal-dialog modal-side modal-bottom-right modal-notify modal-info",
-    attrs: {
-      role: "document"
-    }
-  }, [_c("div", {
-    staticClass: "modal-content ms_modal_container"
-  }, [_c("div", [_c("button", {
+  return _c("div", [_c("button", {
     staticClass: "close",
     attrs: {
       type: "button",
@@ -9420,7 +9445,12 @@ var staticRenderFns = [function () {
     attrs: {
       "aria-hidden": "true"
     }
-  }, [_vm._v("×")])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("×")])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
     staticClass: "text-center"
   }, [_c("span", {
     staticClass: "yellow pb-4"
@@ -9428,15 +9458,7 @@ var staticRenderFns = [function () {
     staticClass: "fas fa-burger fa-4x"
   })]), _vm._v(" "), _c("p", {
     staticClass: "pt-4"
-  }, [_vm._v("Stiamo preparando il tuo ordine!")]), _vm._v(" "), _c("p", [_vm._v("Controlla la mail per tutti i dettagli.")]), _vm._v(" "), _c("p", [_vm._v("Fra poco si mangia!")])]), _vm._v(" "), _c("div", {
-    staticClass: "text-center"
-  }, [_c("button", {
-    staticClass: "ms_btn boxshadow mt-3",
-    attrs: {
-      type: "button",
-      "data-dismiss": "modal"
-    }
-  }, [_vm._v("Ok")])])])])]);
+  }, [_vm._v("Stiamo preparando il tuo ordine!")]), _vm._v(" "), _c("p", [_vm._v("Controlla la mail per tutti i dettagli.")]), _vm._v(" "), _c("p", [_vm._v("Fra poco si mangia!")])]);
 }];
 render._withStripped = true;
 
@@ -62544,9 +62566,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
+__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })
