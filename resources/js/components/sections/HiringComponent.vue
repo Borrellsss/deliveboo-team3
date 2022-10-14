@@ -1,5 +1,5 @@
 <template>
-  <section class="mt-5">
+  <section>
 
     <!-- Card Left -->
     <div class="row1-container">
@@ -93,8 +93,7 @@ export default {
 @import '../../style/common';
 
 section {
-    background: rgb(255,255,143);
-    background: radial-gradient(circle, rgba(255,255,143,1) 0%, rgba(250,197,9,1) 100%);
+    background-image: url('https://i.ibb.co/Hp7ZgXj/backgroundfood2.jpg');
 
     :root {
         --red: hsl(0, 78%, 62%);

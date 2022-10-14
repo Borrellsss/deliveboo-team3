@@ -1,6 +1,6 @@
 <template>
 
-    <section>
+    <div>
         <JumbotronComponent/>
 
         <!-- filters categories  -->
@@ -83,12 +83,12 @@
         <!-- Hiring Component -->
         <HiringComponent />
 
-        <!-- join us component -->
-        <JoinUsComponent/>
-
         <!-- mobile app component -->
-        <MobileBannerComponent/>
-    </section>   
+        <MobileBannerComponent />
+
+        <!-- join us component -->
+        <JoinUsComponent />
+    </div>   
 
 </template>
 
@@ -99,74 +99,80 @@ import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
 import MobileBannerComponent from '../components/MobileBannerComponent.vue';
 
 
-    export default {
-        name:'UserRestaurantComponent',
-        components: {
-            JumbotronComponent,
-            HiringComponent,
-            JoinUsComponent,
-            MobileBannerComponent
-        },
-        data(){
-            return{
-                users : [],
-                categories: [],
-                selectedCategories: [],
-                matchedCategories:[],
-                isWaiting: false
-            }
-        },
-        methods: {
-
-            getSelectedCategories() {
-                this.isWaiting = true;
-                axios.get(`http://127.0.0.1:8000/api/restaurants?categories=${this.selectedCategories}`)
-                .then((response) => {
-                this.users = response.data.results;
-                this.matchedCategories = response.data.results;
-                this.isWaiting = false;
-                });
-
-            }
-        },
-        mounted(){
-
-            axios.get('http://127.0.0.1:8000/api/restaurants-categories')
+export default {
+    name:'UserRestaurantComponent',
+    components: {
+        JumbotronComponent,
+        HiringComponent,
+        JoinUsComponent,
+        MobileBannerComponent
+    },
+    data(){
+        return{
+            users : [],
+            categories: [],
+            selectedCategories: [],
+            matchedCategories:[],
+            isWaiting: false
+        }
+    },
+    methods: {
+        getSelectedCategories() {
+            this.isWaiting = true;
+            axios.get(`http://127.0.0.1:8000/api/restaurants?categories=${this.selectedCategories}`)
             .then((response) => {
-                this.categories = response.data.results;
-                // console.log(this.categories);
+            this.users = response.data.results;
+            this.matchedCategories = response.data.results;
+            this.isWaiting = false;
             });
         }
+    },
+    mounted(){
+
+        axios.get('http://127.0.0.1:8000/api/restaurants-categories')
+        .then((response) => {
+            this.categories = response.data.results;
+        });
+    }
 }
 
 </script>
 
 <style lang="scss" scoped>
-    @import '../style/variables';
-    @import '../style/common';
+@import '../style/variables';
+@import '../style/common';
 
-     .space_line{
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-     }
+.ms_category {
+    padding-block: 4rem;
+    background: rgb(116,6,2);
+    background: radial-gradient(circle, rgba(116,6,2,1) 0%, rgba(116,6,2,1) 23%, rgba(64,4,2,1) 100%);
+}
 
-            //////// FILTER CATEGORIES ////////  
-         
-.category-filter-container{
+.space_line {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
 
-    h4{
+//////// FILTER CATEGORIES ////////  
+        
+.category-filter-container {
+    padding-block: 4rem;
+
+    h4 {
         text-align: center;
         margin: 2rem 0;
     }
-    .categories-bar{
+
+    .categories-bar {
         display: block;
+
         .checkbox-symbol {
-                position: absolute;
-                width: 0;
-                height: 0;
-                pointer-events: none;
-                user-select: none;
-         }
+            position: absolute;
+            width: 0;
+            height: 0;
+            pointer-events: none;
+            user-select: none;
+        }
         
         .checkbox-container {
             width: 60%;
@@ -178,12 +184,13 @@ import MobileBannerComponent from '../components/MobileBannerComponent.vue';
             align-items: center;
             flex-flow: row wrap;
             margin: 0 auto;
-                .checkbox-input {
+
+            .checkbox-input {
                 position: absolute;
                 visibility: hidden;
-                }
-                
-                .checkbox {
+            }
+            
+            .checkbox {
                 user-select: none;
                 cursor: pointer;
                 padding: 6px 3px;
@@ -191,65 +198,65 @@ import MobileBannerComponent from '../components/MobileBannerComponent.vue';
                 overflow: hidden;
                 transition: all 0.3s ease;
                 display: flex;
-                }
-         }
+            }
+        }
     }
- }     
+}     
 
 //  Checkbox animation 
 .checkbox:not(:last-child) {
-margin-right: 6px;
+    margin-right: 6px;
 }
 
 .checkbox:hover {
-background: rgba(0, 119, 255, 0.06);
+    background: rgba(0, 119, 255, 0.06);
 }
 
 .checkbox span {
-vertical-align: middle;
-transform: translate3d(0, 0, 0);
+    vertical-align: middle;
+    transform: translate3d(0, 0, 0);
 }
 
 .checkbox span:first-child {
-position: relative;
-flex: 0 0 18px;
-width: 18px;
-height: 18px;
-border-radius: 4px;
-transform: scale(1);
-border: 1px solid #cccfdb;
-transition: all 0.3s ease;
+    position: relative;
+    flex: 0 0 18px;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    transform: scale(1);
+    border: 1px solid #cccfdb;
+    transition: all 0.3s ease;
 }
 
 .checkbox span:first-child svg {
-position: absolute;
-top: 3px;
-left: 2px;
-fill: none;
-stroke: #fff;
-stroke-dasharray: 16px;
-stroke-dashoffset: 16px;
-transition: all 0.3s ease;
-transform: translate3d(0, 0, 0);
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    fill: none;
+    stroke: #fff;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: 16px;
+    transition: all 0.3s ease;
+    transform: translate3d(0, 0, 0);
 }
 
 .checkbox span:last-child {
-padding-left: 8px;
-line-height: 18px;
+    padding-left: 8px;
+    line-height: 18px;
 }
 
 .checkbox:hover span:first-child {
-border-color: $secondary-color;
+    border-color: $secondary-color;
 }
 
 .checkbox-input:checked + .checkbox span:first-child {
-background: $secondary-color;
-border-color: $secondary-color;
-animation: zoom-in-out 0.3s ease;
+    background: $secondary-color;
+    border-color: $secondary-color;
+    animation: zoom-in-out 0.3s ease;
 }
 
 .checkbox-input:checked + .checkbox span:first-child svg {
-stroke-dashoffset: 0;
+    stroke-dashoffset: 0;
 }
 
 @keyframes zoom-in-out {
@@ -259,17 +266,16 @@ stroke-dashoffset: 0;
 }
 
 // Restaurant cards  
-
-.restaurant-cards-container{
+.restaurant-cards-container {
     width: 86%;
     margin: 4rem auto;
 }
 
-.col{
+.col {
     padding: 0 10px;
 }
 
-.ms_card{
+.ms_card {
     width: 100%;
     aspect-ratio: 1/1;
     border-radius: 8px;
@@ -278,66 +284,61 @@ stroke-dashoffset: 0;
     overflow: hidden;
     user-select: none;
     
-    &:hover{
-           box-shadow: 5px 20px 30px rgba(0,0,0,0.3);
-            transform: translateY(-1px);
+    &:hover {
+        box-shadow: 5px 20px 30px rgba(0,0,0,0.3);
+        transform: translateY(-1px);
     }
 
     .img-container {
-            width: 100%;
-            height: 70%;
+        width: 100%;
+        height: 70%;
         
-            img{
-                border-radius: 8px 8px 0px 0;
-                height: 100%;
-                object-fit: cover;
-             }
+        img {
+            border-radius: 8px 8px 0px 0;
+            height: 100%;
+            object-fit: cover;
         }
-    .ms_card-body{
-            overflow: hidden;
-            text-overflow: ellipsis;
-            padding: 0 5%;
-            width: 100%;
-            .ms_card-heading {
-                font-size: 1vw;
-                font-weight: bold;
-                margin-top: 0.4rem;
-                }
+    }
+    .ms_card-body {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0 5%;
+        width: 100%;
 
-            .ms_card-text {
-                font-size: 0.9vw;
-                color: #636262;
-        
-                .address{
-                margin-left: 0.1rem;
-                }
+        .ms_card-heading {
+            font-size: 1vw;
+            font-weight: bold;
+            margin-top: 0.4rem;
             }
-      }        
- }
+
+        .ms_card-text {
+            font-size: 0.9vw;
+            color: #636262;
+    
+            .address {
+                margin-left: 0.1rem;
+            }
+        }
+    }        
+}
  
 ///////// MEDIA QUERIES ////////////
-                        
 @media only screen and (max-width: 1200px) {
 
 }
+
 @media only screen and (max-width: 992px) {
     .ms_card-heading {
         font-size: 5wv !important;
         background-color: #cccfdb;
-            }
+    }
 
-        .ms_card-text {
-            font-size: 0.7em;
-        }
+    .ms_card-text {
+        font-size: 0.7em;
+    }
 }
                 
  @media only screen and (max-width: 768px) {
-    // .ms_card-heading {
-    //     font-size: calc(1vw + 2rem);
-    //     }
 
-    // .ms_card-text {
-    //     font-size: 1rem;
-    // }
 }      
 </style>
