@@ -36,7 +36,7 @@ class StatisticsController extends Controller
             $monthly_revenue[] = $revenue->revenue_per_month;
         }
 
-        $chart_types = ['bar', 'line'];
+        $chart_types = ['bar', 'line', 'radar', 'polarArea', 'doughnut'];
 
         $data = [
             'user' => $user,
