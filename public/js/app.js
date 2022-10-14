@@ -9054,9 +9054,9 @@ var staticRenderFns = [function () {
   return _c("section", [_c("div", {
     staticClass: "row1-container"
   }, [_c("div", {
-    staticClass: "box box-down cyan"
+    staticClass: "box"
   }, [_c("div", {
-    staticClass: "text-center pb-3 secondary-color"
+    staticClass: "text-center pb-3 secondary-color pb-5"
   }, [_c("i", {
     staticClass: "fa-solid fa-bicycle fa-4x"
   })]), _vm._v(" "), _c("h3", {
@@ -9064,29 +9064,17 @@ var staticRenderFns = [function () {
   }, [_vm._v("\n              Rider\n          ")]), _vm._v(" "), _c("p", {
     staticClass: "text-center"
   }, [_vm._v("\n              Diventa un rider: flessibilità, ottimi guadagni e un mondo di vantaggi per te!\n          ")])]), _vm._v(" "), _c("div", {
-    staticClass: "box red"
-  }, [_c("div", {
-    staticClass: "text-center pb-3 secondary-color"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-face-grin-stars fa-4x"
-  })]), _vm._v(" "), _c("h3", {
-    staticClass: "text-center mb-3"
-  }, [_vm._v("\n              Lavora con noi\n          ")]), _vm._v(" "), _c("p", {
-    staticClass: "text-center"
-  }, [_vm._v("\n              La nostra missione è trasformare il modo in cui le persone mangiano.\n          ")])]), _vm._v(" "), _c("div", {
-    staticClass: "box box-down blue"
+    staticClass: "box"
   }, [_c("div", {
     staticClass: "text-center pb-3 secondary-color"
   }, [_c("i", {
     staticClass: "fa-solid fa-utensils fa-4x"
   })]), _vm._v(" "), _c("h3", {
     staticClass: "text-center mb-3"
-  }, [_vm._v("\n              Ristoranti\n          ")]), _vm._v(" "), _c("p", {
+  }, [_vm._v("\n              Lavora con noi\n          ")]), _vm._v(" "), _c("p", {
     staticClass: "text-center"
-  }, [_vm._v("\n              Diventa un nostro partner e raggiungi sempre più clienti!\n          ")])])]), _vm._v(" "), _c("div", {
-    staticClass: "row2-container"
-  }, [_c("div", {
-    staticClass: "box orange"
+  }, [_vm._v("\n              La nostra missione è trasformare il modo in cui le persone mangiano.\n          ")])]), _vm._v(" "), _c("div", {
+    staticClass: "box"
   }, [_c("div", {
     staticClass: "text-center pb-3 secondary-color"
   }, [_c("i", {
@@ -14334,7 +14322,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "*[data-v-1e393916] {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\nimg[data-v-1e393916] {\n  width: 100%;\n  display: block;\n}\nul[data-v-1e393916] {\n  list-style-type: none;\n}\na[data-v-1e393916] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-1e393916]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-1e393916] {\n  color: #ffc509;\n}\n.ms_btn[data-v-1e393916] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-1e393916]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-1e393916] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-1e393916]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-1e393916] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-1e393916]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-1e393916] {\n  padding-left: 0;\n}\ndl[data-v-1e393916], ol[data-v-1e393916], ul[data-v-1e393916] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.pl-3[data-v-1e393916], .px-3[data-v-1e393916] {\n  padding-left: 0 !important;\n}\n.pr-3[data-v-1e393916], .pr-3[data-v-1e393916] {\n  padding-right: 0 !important;\n}\n.row[data-v-1e393916] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\nh1[data-v-1e393916], h2[data-v-1e393916], h3[data-v-1e393916], h4[data-v-1e393916], h5[data-v-1e393916], h6[data-v-1e393916], .h1[data-v-1e393916], .h2[data-v-1e393916], .h3[data-v-1e393916], .h4[data-v-1e393916], .h5[data-v-1e393916], .h6[data-v-1e393916], p[data-v-1e393916], .p[data-v-1e393916] {\n  margin-bottom: 0;\n}\n.main_title[data-v-1e393916] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-1e393916] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-1e393916] {\n  padding: 0.5rem 2rem;\n}\nh2.front-office-style[data-v-1e393916] {\n  font-weight: 900;\n  font-size: 7rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.front-office-style[data-v-1e393916] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.front-office-style[data-v-1e393916] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.front-office-style[data-v-1e393916] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.front-office-style[data-v-1e393916] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\nsection[data-v-1e393916] :root {\n  --red: hsl(0, 78%, 62%);\n  --cyan: hsl(180, 62%, 55%);\n  --orange: hsl(34, 97%, 64%);\n  --blue: hsl(212, 86%, 64%);\n  --varyDarkBlue: hsl(234, 12%, 34%);\n  --grayishBlue: hsl(229, 6%, 66%);\n  --veryLightGray: hsl(0, 0%, 98%);\n  --weight1: 200;\n  --weight2: 400;\n  --weight3: 600;\n}\nsection .box p[data-v-1e393916] {\n  color: var(--grayishBlue);\n}\nsection .box[data-v-1e393916] {\n  border-radius: 5px;\n  box-shadow: 0px 30px 40px -20px var(--grayishBlue);\n  padding: 30px;\n  margin: 20px;\n}\nsection .primary-color[data-v-1e393916] {\n  color: #ffc509;\n}\nsection .secondary-color[data-v-1e393916] {\n  color: #740602;\n}\n@media (max-width: 400px) {\nsection h3[data-v-1e393916] {\n    font-size: 1.5rem;\n}\n}\n@media (max-width: 450px) {\nsection .box[data-v-1e393916] {\n    height: 200px;\n}\n}\n@media (max-width: 950px) and (min-width: 450px) {\nsection .box[data-v-1e393916] {\n    text-align: center;\n    height: 180px;\n}\n}\n@media (min-width: 950px) {\nsection .row1-container[data-v-1e393916] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\nsection .row2-container[data-v-1e393916] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\nsection .box-down[data-v-1e393916] {\n    position: relative;\n    top: 150px;\n}\nsection .box[data-v-1e393916] {\n    width: 20%;\n}\nsection .header p[data-v-1e393916] {\n    width: 30%;\n}\n}", ""]);
+exports.push([module.i, "*[data-v-1e393916] {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\nimg[data-v-1e393916] {\n  width: 100%;\n  display: block;\n}\nul[data-v-1e393916] {\n  list-style-type: none;\n}\na[data-v-1e393916] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-1e393916]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-1e393916] {\n  color: #ffc509;\n}\n.ms_btn[data-v-1e393916] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-1e393916]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-1e393916] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-1e393916]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-1e393916] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-1e393916]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-1e393916] {\n  padding-left: 0;\n}\ndl[data-v-1e393916], ol[data-v-1e393916], ul[data-v-1e393916] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.pl-3[data-v-1e393916], .px-3[data-v-1e393916] {\n  padding-left: 0 !important;\n}\n.pr-3[data-v-1e393916], .pr-3[data-v-1e393916] {\n  padding-right: 0 !important;\n}\n.row[data-v-1e393916] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\nh1[data-v-1e393916], h2[data-v-1e393916], h3[data-v-1e393916], h4[data-v-1e393916], h5[data-v-1e393916], h6[data-v-1e393916], .h1[data-v-1e393916], .h2[data-v-1e393916], .h3[data-v-1e393916], .h4[data-v-1e393916], .h5[data-v-1e393916], .h6[data-v-1e393916], p[data-v-1e393916], .p[data-v-1e393916] {\n  margin-bottom: 0;\n}\n.main_title[data-v-1e393916] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-1e393916] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-1e393916] {\n  padding: 0.5rem 2rem;\n}\nh2.front-office-style[data-v-1e393916] {\n  font-weight: 900;\n  font-size: 7rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.front-office-style[data-v-1e393916] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.front-office-style[data-v-1e393916] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.front-office-style[data-v-1e393916] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.front-office-style[data-v-1e393916] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\nsection .box p[data-v-1e393916] {\n  color: var(--grayishBlue);\n}\nsection .box[data-v-1e393916] {\n  padding: 30px;\n  margin: 20px;\n}\nsection .primary-color[data-v-1e393916] {\n  color: #ffc509;\n}\nsection .secondary-color[data-v-1e393916] {\n  color: #740602;\n}\n@media (max-width: 400px) {\nsection h3[data-v-1e393916] {\n    font-size: 1.5rem;\n}\n}\n@media (max-width: 450px) {\nsection .box[data-v-1e393916] {\n    height: 200px;\n}\n}\n@media (max-width: 950px) and (min-width: 450px) {\nsection .box[data-v-1e393916] {\n    text-align: center;\n    height: 180px;\n}\n}\n@media (min-width: 950px) {\nsection .row1-container[data-v-1e393916] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\nsection .row2-container[data-v-1e393916] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\nsection .box-down[data-v-1e393916] {\n    position: relative;\n    top: 150px;\n}\nsection .box[data-v-1e393916] {\n    width: 20%;\n}\nsection .header p[data-v-1e393916] {\n    width: 30%;\n}\n}", ""]);
 
 // exports
 
@@ -63054,9 +63042,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\back-sass\back.scss */"./resources/sass/back-sass/back.scss");
+__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })

@@ -3,10 +3,10 @@
 
     <!-- Card Left -->
     <div class="row1-container">
-        <div class="box box-down cyan">
+        <div class="box">
 
             <!-- Card Icon -->
-            <div class="text-center pb-3 secondary-color">
+            <div class="text-center pb-3 secondary-color pb-5">
                 <i class="fa-solid fa-bicycle fa-4x"></i>
             </div>
 
@@ -22,11 +22,11 @@
         </div>
 
         <!-- Card Top -->
-        <div class="box red">
+        <div class="box">
 
             <!-- Card Icon -->
             <div class="text-center pb-3 secondary-color">
-                <i class="fa-solid fa-face-grin-stars fa-4x"></i>
+                <i class="fa-solid fa-utensils fa-4x"></i>
             </div>
 
             <!-- Card Title -->
@@ -41,28 +41,7 @@
         </div>
 
         <!-- Card Right -->
-        <div class="box box-down blue">
-
-            <!-- Card Icon -->
-            <div class="text-center pb-3 secondary-color">
-                <i class="fa-solid fa-utensils fa-4x"></i>
-            </div>
-
-            <!-- Card Title -->
-            <h3 class="text-center mb-3">
-                Ristoranti
-            </h3>
-
-            <!-- Card Text -->
-            <p class="text-center">
-                Diventa un nostro partner e raggiungi sempre più clienti!
-            </p>
-        </div>
-    </div>
-    
-    <!-- Card Bottom -->
-    <div class="row2-container">
-        <div class="box orange">
+        <div class="box">
 
             <!-- Card Icon -->
             <div class="text-center pb-3 secondary-color">
@@ -79,6 +58,26 @@
             </p>
         </div>
     </div>
+    
+    <!-- Card Bottom -->
+    <!-- <div class="row2-container">
+        <div class="box orange"> -->
+
+            <!-- Card Icon -->
+            <!-- <div class="text-center pb-3 secondary-color">
+                <i class="fa-solid fa-recycle fa-4x"></i>
+            </div> -->
+            
+            <!-- <h3 class="text-center mb-3">
+                Rispettiamo l'Ambiente
+            </h3> -->
+            
+            <!-- Card Text -->
+            <!-- <p class="text-center">
+                Utilizziamo un packaging Plastic-free funzionale e sostenibile.
+            </p> -->
+        <!-- </div>
+    </div> -->
   </section>
 </template>
 
@@ -93,28 +92,12 @@ export default {
 @import '../../style/common';
 
 section {
-    // background-image: url('https://i.ibb.co/Hp7ZgXj/backgroundfood2.jpg');
-
-    :root {
-        --red: hsl(0, 78%, 62%);
-        --cyan: hsl(180, 62%, 55%);
-        --orange: hsl(34, 97%, 64%);
-        --blue: hsl(212, 86%, 64%);
-        --varyDarkBlue: hsl(234, 12%, 34%);
-        --grayishBlue: hsl(229, 6%, 66%);
-        --veryLightGray: hsl(0, 0%, 98%);
-        --weight1: 200;
-        --weight2: 400;
-        --weight3: 600;
-    }
 
     .box p {
         color: var(--grayishBlue);
     }
 
     .box {
-        border-radius: 5px;
-        box-shadow: 0px 30px 40px -20px var(--grayishBlue);
         padding: 30px;
         margin: 20px;  
     }
