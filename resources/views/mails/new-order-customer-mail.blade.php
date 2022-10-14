@@ -7,8 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Ciao {{$new_order->customer_name}} stiamo elaborando il tuo ordine.</h1>
-    <p>Questi sono i prodotti ordinati: </p>
+    <div>Ciao {{$new_order->customer_name}},
+        <br>
+    grazie da <a href="http://127.0.0.1:8000/">Toast Rider</a>, stiamo elaborando il tuo ordine.</div>
+    
+    <br>
+
+    <p>Numero ordine {{$new_order->order_number}}
+    <div>Riepilogo:</div>
     <ul>
         @foreach ($new_order->products as $product)
             <li>
@@ -17,6 +23,8 @@
         @endforeach
     </ul>
     <p>Per un totale di: {{$new_order->total_amount}} euro </p>
+    <br>
+    <div>La consegna è prevista tra:------ minuti</div>
      
             
     

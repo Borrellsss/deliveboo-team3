@@ -225,7 +225,7 @@
                     <!--Body-->
                     <div class="text-center">
                         <span class="yellow pb-4"><i class="fas fa-credit-card fa-4x"></i></span>
-                        <p class="pt-4">Stai per eseguire il pagamento dell'ordine...</p>
+                        <p class="pt-4">Vuoi concludere il tuo ordine e procedere al pagameto?</p>
                         <p>Vuoi procedere?</p>
                     </div>
 
