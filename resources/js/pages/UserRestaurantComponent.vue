@@ -247,7 +247,7 @@ stroke-dashoffset: 0;
 // Restaurant cards  
 
 .restaurant-cards-container{
-    width: 80%;
+    width: 86%;
     margin: 4rem auto;
 }
 

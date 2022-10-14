@@ -52,7 +52,7 @@
 
                                     <!-- Product Cover -->
                                     <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
-                                    <img v-else class="card-img" src="https://i.ibb.co/WfdPzMr/backup-posate3.jpg" :alt="product.name">
+                                    <img v-else class="card-img" src="	https://i.ibb.co/N37KSqL/circleposate.jpg" :alt="product.name">
 
                                     <!-- Product Info Pop-up -->
                                     <a class="info-popup-inline" href="#popup1" @click.prevent="selectProduct(product), showProductInfo()">
@@ -677,7 +677,7 @@ export default {
 // ******************** PRODUCT CARDS ******************** // 
 
 .products-cart-wrapper {
-    width: 90%;
+    width: 86%;
     margin: 0 auto;
     position: relative;
 }
