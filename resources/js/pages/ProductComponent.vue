@@ -245,35 +245,6 @@
         </div>
         <!-- End Modal "proceed to payment" -->
 
-        <!-- Modal "change restaurant" -->
-        <!-- <div class="modal fade right ms_modal-wrapper" id="changerestaurant" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-            <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document"> -->
-                <!--Content-->
-                <!-- <div class="modal-content ms_modal_container"> -->
-                    <!--Header-->
-                    <!-- <div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="white-text">&times;</span>
-                        </button>
-                    </div> -->
-
-                    <!--Body-->
-                    <!-- <div class="text-center">
-                        <span class="red pb-4"><i class="fa-solid fa-bell fa-4x"></i></span>
-                        <p class="pt-4">Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello.</p>
-                        <p>Vuoi cambiare ristorante?</p>
-                    </div> -->
-
-                    <!--Footer-->
-                    <!-- <div class="text-center">
-                        <button type="button" data-dismiss="modal" class="ms_btn boxshadow mt-3" @click="GetChange()">Si, ho cambiato idea!</button>
-                    </div>
-                </div> -->
-                <!--/.Content-->
-            <!-- </div> -->
-        <!-- </div> -->
-        <!-- End Modal "change restaurant" -->
-
         <!-- Modal "order confirmed" -->
         <div class="modal fade right ms_modal-wrapper" id="orderconfirmed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
             <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
@@ -341,8 +312,6 @@ export default {
             // Definisco una variabile per visionare il carrello, servirà per rimuovere il carrello quando il pagamento viene eseguito
             cartVisible: true
             
-            // definisco una variabile che diventa true quando l'utente sceglie di cambiare ristorante nel modal
-            // isChanged: false
         }
     },
     created() {
@@ -405,11 +374,6 @@ export default {
         selectProduct(product){
             this.myProduct.push(product); 
         },
-
-        // Funzione che cambia il valore della variabile "change" che serve come condizione il cambio del ristorante al click sul modal
-        // GetChange() {
-        //     this.isChanged = true;
-        // },
 
         // Funzione che aggiunge il prodotto al carrello
         addItem(product){
@@ -495,28 +459,6 @@ export default {
             }
         },
 
-        // Funzione che svuota il carrello all'ok sul modal
-        // resetCart(product) {
-           
-        //     // Svuoto il carrello
-        //     this.cart = [];
-        //     console.log('cart', this.cart);
-            
-        //     // Salva il carrello
-        //     this.saveCart();
-            
-        //     // Setto la quantità del prodotto (del nuovo ristorante)
-        //     product.quantity = 1;
-        //     console.log('quantity', product.quantity);
-            
-        //     // Pusho nell'array il prodotto
-        //     this.cart.push(product);
-        //     console.log('cart che pusha', this.cart);
-
-        //     // Salva il carrello
-        //     this.saveCart();
-        // },
-
         // Funzione salva carrello
         saveCart() {
             const parsed = JSON.stringify(this.cart);
@@ -596,6 +538,10 @@ export default {
 @import '../style/variables';
 @import '../style/common';
 
+section {
+    background: radial-gradient(circle, rgba(255,197,9,1) 58%, rgba(235,179,2,1) 80%, rgba(208,158,0,1) 100%);
+}
+
 // Jumbotron
 .jumbotron {
     margin-top: 5.5rem;
@@ -606,7 +552,6 @@ export default {
     background-position-x: 50%;
     background-position-y: 0;
     position: relative;
-    z-index: -2;
 
     &:after {
         content: '';
@@ -667,7 +612,7 @@ export default {
     .fa-cart-shopping {
         font-size: 2.3rem;
         z-index: 10;
-        }
+    }
 
     &:hover {
         color: rgb(249, 246, 246);
