@@ -37,10 +37,7 @@ export default {
 @import '../style/variables';
 @import '../style/common';
 
-*{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;;
+* {
+    font-family: 'Poppins', sans-serif;
 }
-
-
-
 </style>
