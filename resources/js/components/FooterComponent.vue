@@ -130,7 +130,7 @@
   <!-- Grid container -->
 
   <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+  <div class="ms_copyright text-center p-3">
     © 2022 Copyright | Toast Rider S.p.A. 
   </div>
   <!-- Copyright -->
@@ -152,7 +152,7 @@ export default {
 @import '../style/common';
 
   footer{
-    background-color: rgb(47, 47, 47);
+    background-color: #202020;
         
     .links-container{
       margin-top: 3rem;
@@ -176,11 +176,13 @@ export default {
 
     .ms_social-btn:hover{
       color: $primary-color;
-      background-color: $secondary-color;
       border: 2px solid $primary-color;
       box-shadow: 0 0 5px $primary-color;
     }
 
+    .ms_copyright {
+      background-color: #151515;
+    }
   }
   
 </style>

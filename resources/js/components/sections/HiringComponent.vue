@@ -93,7 +93,7 @@ export default {
 @import '../../style/common';
 
 section {
-    background-image: url('https://i.ibb.co/Hp7ZgXj/backgroundfood2.jpg');
+    // background-image: url('https://i.ibb.co/Hp7ZgXj/backgroundfood2.jpg');
 
     :root {
         --red: hsl(0, 78%, 62%);

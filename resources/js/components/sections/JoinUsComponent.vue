@@ -37,10 +37,10 @@ export default {
     .join-us-container{
         width: 100%;
         height: 500px;
-        background-image: url(https://i.ibb.co/vDdrPkr/mockup-background.jpg);
+        background-image: url('https://i.ibb.co/ypPyH1r/mockup-backgroundlong.jpg');
         background-size: cover;
         background-repeat: no-repeat;
-        background-position-x: 10%;
+        background-position-x: 80%;
         background-position-y: 0;
         
         .text-container{
