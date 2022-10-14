@@ -54,7 +54,7 @@
                         <div class="row gx-5 row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
 
                             <div v-for="user in users" :key="user.id" class="col">
-                                <router-link  :to="{name: 'products-page',params: {id: user.id}}" class="d-flex">
+                                <router-link  :to="{name: 'products-page',params: {id: user.id} }" class="d-flex">
                                     <div class="ms_card">
                                         <div class="img-container">
                                             <img v-if="user.cover" :src="'storage/' + user.cover" :alt="user.business_name">
@@ -79,6 +79,10 @@
                 </div>
             </div>
         </div>
+
+        <!-- Hiring Component -->
+        <HiringComponent />
+
         <!-- join us component -->
         <JoinUsComponent/>
 
@@ -90,13 +94,16 @@
 
 <script>
 import JumbotronComponent from '../components/sections/JumbotronComponent.vue';
+import HiringComponent from '../components/sections/HiringComponent.vue';
 import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
 import MobileBannerComponent from '../components/MobileBannerComponent.vue';
+
 
     export default {
         name:'UserRestaurantComponent',
         components: {
             JumbotronComponent,
+            HiringComponent,
             JoinUsComponent,
             MobileBannerComponent
         },
