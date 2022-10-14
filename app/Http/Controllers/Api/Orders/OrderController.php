@@ -14,6 +14,7 @@ use App\Order;
 use App\Product;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewOrderUserMail;
+use App\Mail\NewOrderCustomerMail;
 
 
 class OrderController extends Controller
@@ -137,6 +138,8 @@ class OrderController extends Controller
         $user = User::findOrFail($user_id);
 
         Mail::to('hilary.lion@gmail.com')->send(new NewOrderUserMail($new_order, $user));
+        Mail::to('hilary.lion@gmail.com')->send(new NewOrderCustomerMail($new_order, $user));
+        
 
 
 

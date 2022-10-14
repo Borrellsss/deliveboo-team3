@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Ciao {{$user->business_name}} hai ricevuto un nuovo ordine.</h1>
+    <h1>Ciao {{$new_order->customer_name}} stiamo elaborando il tuo ordine.</h1>
     <p>Questi sono i prodotti ordinati: </p>
     <ul>
         @foreach ($new_order->products as $product)
@@ -16,6 +16,9 @@
             </li>
         @endforeach
     </ul>
+    <p>Per un totale di: {{$new_order->total_amount}} euro </p>
+     
+            
     
 </body>
 </html>

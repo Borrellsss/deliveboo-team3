@@ -11,14 +11,19 @@ class NewOrderCustomerMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $new_order;
+    private $user;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($_new_order, $_user)
     {
-        //
+        $this->new_order = $_new_order;
+        $this->user = $_user;
+
     }
 
     /**
@@ -27,7 +32,13 @@ class NewOrderCustomerMail extends Mailable
      * @return $this
      */
     public function build()
+
     {
-        return $this->view('view.name');
+        $data = [
+            'new_order' => $this->new_order,
+            'user' => $this->user
+        ];
+
+        return $this->view('mails.new-order-customer-mail', $data);
     }
 }
