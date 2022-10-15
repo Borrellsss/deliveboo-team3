@@ -4,7 +4,13 @@
   <div class="ms_main-jumbotron">
     <div class="ms_jumbotron-container d-flex">
       <div class="jumbotron-text">
-        <h2 class="front-office-style">TOAST RIDER</h2>
+
+        <!-- Title -->
+        <h1 class="front-office-style">
+          TOAST RIDER
+        </h1>
+
+        <!-- Subtitle -->
         <p class="front-office-style">
             L'unico servizio di delivery che porta i migliori ristoranti a casa tua, <br>
             rapidamente e senza spese di spedizione. <br>
@@ -14,7 +20,6 @@
     </div> 
   </div> 
 </section>
-
 </template>
 
 <script>
@@ -29,6 +34,16 @@ export default {
 @import '../../style/common';
 
 .ms_main-jumbotron {
+
+  h1 {
+    font-size: 9.5rem;
+    text-shadow: 4px 4px 0 #ffc509, 4px -4px 0 #ffc509,-4px 4px 0 
+    #ffc509, -4px -4px 0 #ffc509, 4px 0px 0 
+    #ffc509, 0px 4px 0 #ffc509, -4px 0px 0 
+    #ffc509, 0px -4px 0 #ffc509;
+    // box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+
   margin-top: 5.5rem;
   height: 700px;
   color: $secondary-color;
@@ -43,7 +58,7 @@ export default {
     justify-content: center;
     align-items: center;
 
-    .jumbotron-text{
+    .jumbotron-text {
       text-align: center;
 
       p {
@@ -65,11 +80,12 @@ export default {
 
     .ms_jumbotron-container {
 
-      .jumbotron-text{
+      .jumbotron-text {
 
-        h2 {
+        h1 {
           font-size: 5rem;
         }
+        
         p {
           font-size: 1rem;
           text-shadow: 2px 2px 0 #ffc509, 2px -2px 0 #ffc509,
