@@ -15,15 +15,14 @@ export default {
 @import '../style/common';
 
 .ms_loader-wrapper {
-    font-weight: 600;
-    font-style: oblique;
-    letter-spacing: 3px;
-    text-align: center;
-    margin-top: 5rem;
+    margin-top: 3rem;
     margin-inline: auto;
-    margin-top: 5rem;
+    padding-block: 2rem;
+    letter-spacing: 3px;
     font-size: 1.2rem;
-    padding: 1.5rem 0;
+    font-weight: 600;
+    text-align: center;
+    font-style: oblique;
     color: $secondary-color;
     background-color: $primary-color;
     background: radial-gradient(circle, rgba(255,197,9,1) 58%, rgba(235,179,2,1) 80%, rgba(208,158,0,1) 100%);

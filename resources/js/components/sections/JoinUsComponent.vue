@@ -35,6 +35,7 @@ section {
     background-position-x: 80%;
     background-position-y: 0;
     overflow: hidden;
+    border-bottom: 2px solid #212529;
 
     .join-us-container{
         margin-inline: auto;
