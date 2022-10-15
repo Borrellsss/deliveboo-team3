@@ -19,7 +19,7 @@
         <div class="text-center p-4">
             <form action="#" method="Post" class="newsletter">
                 <input type="text" name="text" placeholder="inserisci la tua mail">
-                <button type="button" class="btn btn-secondary">Iscriviti!</button>
+                <button type="button" class="btn btn-secondary">Invia</button>
             </form>
         </div>
 	</section>
