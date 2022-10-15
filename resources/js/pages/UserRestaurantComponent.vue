@@ -53,7 +53,7 @@
                 </div>
 
                 <div v-else-if="isEmpty">
-                    <div class="text-center mt-4">
+                    <div class="text-center ms_empty-category">
                         Nessun ristorante corrisponde alla tua selezione
                     </div>
                 </div>
@@ -178,12 +178,17 @@ export default {
 // FILTER CATEGORIES
 .ms_restaurants-cards-section {
     padding-block: 4rem;
+    background-image: url(https://i.ibb.co/mX7bXgD/foodpattern1.png);
+    background-color: rgba(white, $alpha: 0.85);
+    background-blend-mode: color-dodge;
 }
 .category-filter-container {
 
     h3 {
         text-align: center;
         margin: 0 0 2rem;
+        color: $secondary-color;
+        font-size: 2.5rem;
     }
 
     .categories-bar {
@@ -200,17 +205,20 @@ export default {
         .checkbox-container {
             width: 60%;
             box-sizing: border-box;
-            background: #ffffff;
+            // background: #ffffff;
             color: #222;
             display: flex;
             justify-content:center;
             align-items: center;
             flex-flow: row wrap;
             margin: 0 auto;
+            font-weight: 600;
 
             .checkbox-input {
                 position: absolute;
                 visibility: hidden;
+                outline: 3px solid red;
+                
             }
             
             .checkbox {
@@ -247,7 +255,7 @@ export default {
     height: 18px;
     border-radius: 4px;
     transform: scale(1);
-    border: 1px solid #cccfdb;
+    border: 1px solid #222;
     transition: all 0.3s ease;
 }
 
@@ -290,11 +298,18 @@ export default {
 
 // Restaurant cards 
 .ms_empty-category {
-    margin-top: 4rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    margin-top: 3rem;
+    font-size: 1.2rem;
+    padding: 1.5rem 0;
+    background-color: $primary-color;
+    background: radial-gradient(circle, rgba(255,197,9,1) 58%, rgba(235,179,2,1) 80%, rgba(208,158,0,1) 100%);
 }
 
 .ms_restaurant-cards-container {
     width: 80%;
+    max-width: 1300px;
     margin: 4rem auto 0;
 
     > .d-flex {
@@ -319,7 +334,7 @@ export default {
 
             .img-container {
                 width: 100%;
-                height: 150px;
+                height: 200px;
                 
                 img {
                     height: 100%;
@@ -350,11 +365,28 @@ export default {
         }
     }
 }
+
+// MEDIA QUERIES
+@media only screen and (max-width: 1350px) {
+     
+     .ms_restaurant-cards-container {
+         width: 80%;
+ 
+         > .d-flex {
+             gap: 2.1;
+ 
+             .ms_restaurant-card {
+                 width: calc((100% / 3) - 1.4rem);
+             }
+         }
+     }
+ }
  
 // MEDIA QUERIES
 @media only screen and (max-width: 1100px) {
-
+     
     .ms_restaurant-cards-container {
+        width: 80%;
 
         > .d-flex {
             gap: 2.1;
@@ -366,7 +398,7 @@ export default {
     }
 }
 
-@media only screen and (max-width: 740px) {
+@media only screen and (max-width: 920px) {
 
     .ms_restaurant-cards-container {
 
@@ -377,7 +409,7 @@ export default {
                 width: calc((100% / 2) - 1rem);
 
                 .img-container {
-                    height: 180px;
+                    height: 220px;
                 }  
             }
         }
