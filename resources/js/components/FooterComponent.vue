@@ -3,9 +3,9 @@
 
   <footer class="text-center text-white">
     <!-- Grid container -->
-    <div class="container p-4">
+    <div class="ms_container p-4">
 
-    <!-- Section: Links -->
+      <!-- Section: Links -->
       <div class="links-container">
 
       <!--Grid row-->
@@ -131,7 +131,7 @@
       </div>
 
       <!-- Section: Social media -->
-      <div class="d-flex social-media-links mb-4">
+      <div class="d-flex social-media-links">
 
         <!-- Twitter -->
         <a class="ms_social-btn" href="#!">
@@ -168,55 +168,59 @@
 </template>
 
 <script>
-
 export default {
-  name: 'FooterComponent',
+  name: 'FooterComponent'
 }
-
 </script>
 
 <style lang="scss" scoped>
-
 @import '../style/variables';
 @import '../style/common';
 
-  footer{
+  footer {
     background-color: #202020;
 
-    h5 {
-      color: $primary-color;
-      padding-bottom: 1rem;
-    }
-        
-    .links-container{
-      margin-top: 3rem;
-    }
-    .social-media-links{
-      margin-top: 3rem;
-      justify-content: center;
-      gap: 0.7rem;
-    }
+    .ms_container {
+      width: 87%;
+      max-width: 1300px;
+      margin: 0 auto;
 
-    .ms_social-btn {
-      width: 50px;
-      aspect-ratio: 1 / 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      border: 2px solid #fff;
-      border-radius: 50%;
-    }
+      h5 {
+        color: $primary-color;
+        padding-bottom: 1rem;
+      }
+          
+      .links-container {
+        margin-top: 3rem;
+      }
 
-    .ms_social-btn:hover{
-      color: $primary-color;
-      border: 2px solid $primary-color;
-      box-shadow: 0 0 5px $primary-color;
+      .social-media-links {
+        margin-top: 2.5rem;
+        margin-bottom: 3rem;
+        justify-content: center;
+        gap: 0.7rem;
+      }
+
+      .ms_social-btn {
+        width: 50px;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        border: 2px solid #fff;
+        border-radius: 50%;
+      }
+
+      .ms_social-btn:hover {
+        color: $primary-color;
+        border: 2px solid $primary-color;
+        box-shadow: 0 0 5px $primary-color;
+      }
     }
 
     .ms_copyright {
       background-color: #151515;
     }
   }
-  
 </style>
