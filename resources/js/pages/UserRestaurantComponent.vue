@@ -206,7 +206,7 @@ export default {
 // FILTER CATEGORIES
 .ms_restaurants-cards-section {
     padding-block: 4rem 8rem;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0) 85%,
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0) 80%,
     rgba(255,255,255,1)), url(https://i.ibb.co/mX7bXgD/foodpattern1.png);
     background-size: 600px;
     background-color: rgba(white, $alpha: 0.85);
