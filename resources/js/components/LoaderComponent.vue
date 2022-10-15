@@ -15,11 +15,18 @@ export default {
 @import '../style/common';
 
 .ms_loader-wrapper {
-    margin-top: 4rem;
+    font-weight: 600;
+    font-style: oblique;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-top: 5rem;
     margin-inline: auto;
-    width: fit-content;
+    margin-top: 5rem;
+    font-size: 1.2rem;
+    padding: 1.5rem 0;
     color: $secondary-color;
-    font-size: 2rem;
+    background-color: $primary-color;
+    background: radial-gradient(circle, rgba(255,197,9,1) 58%, rgba(235,179,2,1) 80%, rgba(208,158,0,1) 100%);
 
     > .ms_animated-dot-1 {
         animation: first-dot 400ms infinite;

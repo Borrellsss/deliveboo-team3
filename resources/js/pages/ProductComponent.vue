@@ -22,196 +22,197 @@
                 </div>
             </div>
         </div>
+        <div class="ms_pattern-background">
+            <!-- Product Container -->
+            <div class="products-cart-wrapper">
 
-        <!-- Product Container -->
-        <div class="products-cart-wrapper">
+                <!-- Floating Cart -->
+                <a v-if="cart.length" class="floating-cart" @click="cartScroll()">
 
-            <!-- Floating Cart -->
-            <a v-if="cart.length" class="floating-cart" @click="cartScroll()">
+                    <!-- Counter Cart -->
+                    <div class="count-float">
+                        <span>{{totalQuantity(cart)}}</span>
+                    </div>
 
-                <!-- Counter Cart -->
-                <div class="count-float">
-                    <span>{{totalQuantity(cart)}}</span>
-                </div>
+                    <!-- Cart Icon -->
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
 
-                <!-- Cart Icon -->
-                <i class="fa-solid fa-cart-shopping"></i>
-            </a>
+                <!-- Main Container -->
+                <div class="row master-row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 products-col">
+                        
+                        <!-- Products Container  -->
+                        <div class="products-side">
+                            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-between">
 
-            <!-- Main Container -->
-            <div class="row master-row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 products-col">
-                    
-                    <!-- Products Container  -->
-                    <div class="products-side">
-                        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-between">
+                                <!-- Product Cards -->
+                                <div v-for="product,index in products" :key="index" class="col p-3">
+                                    <div class="ms-product-card">
 
-                            <!-- Product Cards -->
-                            <div v-for="product,index in products" :key="index" class="col p-3">
-                                <div class="ms-product-card">
+                                        <!-- Product Cover -->
+                                        <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
+                                        <img v-else class="card-img" src="https://i.ibb.co/QmbxCVg/backup-posatedarker.png" :alt="product.name">
 
-                                    <!-- Product Cover -->
-                                    <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
-                                    <img v-else class="card-img" src="https://i.ibb.co/QmbxCVg/backup-posatedarker.png" :alt="product.name">
+                                        <!-- Product Info Pop-up -->
+                                        <a class="info-popup-inline" href="#popup1" @click.prevent="selectProduct(product), showProductInfo()">
+                                            <!-- Info Icon -->
+                                            <i class="fa-solid fa-circle-info"></i>
+                                            <div class="overlay-info"></div>
+                                        </a>
 
-                                    <!-- Product Info Pop-up -->
-                                    <a class="info-popup-inline" href="#popup1" @click.prevent="selectProduct(product), showProductInfo()">
-                                        <!-- Info Icon -->
-                                        <i class="fa-solid fa-circle-info"></i>
-                                        <div class="overlay-info"></div>
-                                    </a>
+                                        <!-- Card Footer -->
+                                        <div class="ms-card-body d-flex">
+                                            <div class="title-price">
 
-                                    <!-- Card Footer -->
-                                    <div class="ms-card-body d-flex">
-                                        <div class="title-price">
+                                                <!-- Product name -->
+                                                <h5 class="ms-card-title">
+                                                    {{product.name}}
+                                                </h5>
+                                                
+                                                <!-- Product Price -->
+                                                <div class="product-card-price">
+                                                    {{product.price}}&euro;
+                                                </div>
+                                            </div>
 
-                                            <!-- Product name -->
-                                            <h5 class="ms-card-title">
-                                                {{product.name}}
-                                            </h5>
-                                            
-                                            <!-- Product Price -->
-                                            <div class="product-card-price">
-                                                {{product.price}}&euro;
+                                            <!-- CTA Add to Cart -->
+                                            <div @click='addItem(product)' class="cart-card-symbol">
+                                                <a class="add-to-cart">
+
+                                                    <!-- Cart Icon -->
+                                                    <i class="fa-solid fa-cart-shopping"></i>
+                                                </a>
                                             </div>
                                         </div>
-
-                                        <!-- CTA Add to Cart -->
-                                        <div @click='addItem(product)' class="cart-card-symbol">
-                                            <a class="add-to-cart">
-
-                                                <!-- Cart Icon -->
-                                                <i class="fa-solid fa-cart-shopping"></i>
-                                            </a>
-                                        </div>
                                     </div>
-                                </div>
-                            
-                                <!-- Product Info Pop-up -->
-                                <div class="info-popup" :class="{'ms_visible' : toggle_popup}">
-                                    <div id="popup1" class="overlay">
-                                        <div v-for="element,index in myProduct" :key="index">
-                                            <div class="popup">
+                                
+                                    <!-- Product Info Pop-up -->
+                                    <div class="info-popup" :class="{'ms_visible' : toggle_popup}">
+                                        <div id="popup1" class="overlay">
+                                            <div v-for="element,index in myProduct" :key="index">
+                                                <div class="popup">
 
-                                                <!-- Product Name -->
-                                                <h2>
-                                                    {{element.name}}
-                                                </h2>
+                                                    <!-- Product Name -->
+                                                    <h2>
+                                                        {{element.name}}
+                                                    </h2>
 
-                                                <!-- Product image -->
-                                                    <img src="https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg" alt="">
-                                                    
-                                                <!-- Product Content -->
-                                                <div class="ms_content">
+                                                    <!-- Product image -->
+                                                        <img src="https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg" alt="">
+                                                        
+                                                    <!-- Product Content -->
+                                                    <div class="ms_content">
 
-                                                    <!-- Product Description -->
-                                                    <p>
-                                                        {{element.description}}
-                                                    </p>
+                                                        <!-- Product Description -->
+                                                        <p>
+                                                            {{element.description}}
+                                                        </p>
 
-                                                    <!-- Product Ingredients -->
-                                                    <div class="popup-ingredients">
-                                                       <span class="ingredienti-text">Ingredienti:  </span>{{element.ingredients}}
-                                                    </div>
+                                                        <!-- Product Ingredients -->
+                                                        <div class="popup-ingredients">
+                                                        <span class="ingredienti-text">Ingredienti:  </span>{{element.ingredients}}
+                                                        </div>
 
-                                                    <!-- Add to Cart Button -->
-                                                    <div @click='addItem(element), showProductInfo()' class="add-to-cart-popup">
-                                                        <div class="popup-add-btn">
-                                                             Aggiungi al carrello
+                                                        <!-- Add to Cart Button -->
+                                                        <div @click='addItem(element), showProductInfo()' class="add-to-cart-popup">
+                                                            <div class="popup-add-btn">
+                                                                Aggiungi al carrello
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                <!-- Close Pop-up -->
-                                                <a class="close" @click="showProductInfo()">&times;</a>
-                                            </div> 
+                                                    <!-- Close Pop-up -->
+                                                    <a class="close" @click="showProductInfo()">&times;</a>
+                                                </div> 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Cart -->
-                <div class="col-12 col-sm-10 col-md-10 col-lg-4 col-xl-4 cart-col">
-                    <div  v-if="cart.length > 0"  class="cart-container">
-                        <div class="ms-cart-title">Carrello</div>
-                        <div class="ghost-cart" id="my-cart"></div>
+                    <!-- Cart -->
+                    <div class="col-12 col-sm-10 col-md-10 col-lg-4 col-xl-4 cart-col">
+                        <div  v-if="cart.length > 0"  class="cart-container">
+                            <div class="ms-cart-title">Carrello</div>
+                            <div class="ghost-cart" id="my-cart"></div>
 
-                        <!-- All products in cart-->
-                        <div v-if="cartVisible">
-                            <div class="all-products-in-cart">
-                            <div v-for="(product, index) in cart" :key="index" class="item-cart-section d-flex">
+                            <!-- All products in cart-->
+                            <div v-if="cartVisible">
+                                <div class="all-products-in-cart">
+                                <div v-for="(product, index) in cart" :key="index" class="item-cart-section d-flex">
 
-                                  <!-- title - price-->
-                                <div class="title-price-cart d-flex flex-column justify-content-center align-items-start">
-                                    <div class="title-product-cart"> {{product.name}}</div>
-                                    <div  @click='deleteItem(index)' class="delete-item-cart">Rimuovi</div>
-                                </div>
+                                    <!-- title - price-->
+                                    <div class="title-price-cart d-flex flex-column justify-content-center align-items-start">
+                                        <div class="title-product-cart"> {{product.name}}</div>
+                                        <div  @click='deleteItem(index)' class="delete-item-cart">Rimuovi</div>
+                                    </div>
 
-                                   <!-- quantity + - -->
-                                <div class="quantity-cart d-flex justify-content-center align-items-center">
-                                    <span @click='decreaseQuantity(product, index)' class="increment quantity-btn"><i class="fa-solid fa-circle-minus"></i>
-                                    </span><span class="quantity-number">{{product.quantity}}</span>
-                                    <span  @click='addItem(product)' class="decrease quantity-btn"><i class="fa-solid fa-circle-plus"></i></span>
-                                </div>
+                                    <!-- quantity + - -->
+                                    <div class="quantity-cart d-flex justify-content-center align-items-center">
+                                        <span @click='decreaseQuantity(product, index)' class="increment quantity-btn"><i class="fa-solid fa-circle-minus"></i>
+                                        </span><span class="quantity-number">{{product.quantity}}</span>
+                                        <span  @click='addItem(product)' class="decrease quantity-btn"><i class="fa-solid fa-circle-plus"></i></span>
+                                    </div>
 
-                                 <!-- product price- -->
-                                <div class="price-product-cart d-flex justify-content-center align-items-center">
-                                    <!-- <i class="fa-solid fa-xmark"></i> -->
-                                    {{ product.price * product.quantity }}&euro;
+                                    <!-- product price- -->
+                                    <div class="price-product-cart d-flex justify-content-center align-items-center">
+                                        <!-- <i class="fa-solid fa-xmark"></i> -->
+                                        {{ product.price * product.quantity }}&euro;
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                         <!-- checkout section -->
-                        <div class="check-out-section d-flex flex-column justify-content-center align-items-center">
-                            <div class="total-clear-price d-flex justify-content-between align-items-center">
-                                <div class="total-clear d-flex flex-column justify-content-center align-items-start">
-                                    <div class="totale-text">Totale</div>
-                                    <div @click="clearCart(index)" class="clear-cart">Svuota carrello</div>
+                            <!-- checkout section -->
+                            <div class="check-out-section d-flex flex-column justify-content-center align-items-center">
+                                <div class="total-clear-price d-flex justify-content-between align-items-center">
+                                    <div class="total-clear d-flex flex-column justify-content-center align-items-start">
+                                        <div class="totale-text">Totale</div>
+                                        <div @click="clearCart(index)" class="clear-cart">Svuota carrello</div>
+                                    </div>
+
+                                    <!-- final price -->
+                                    <div class="final-price">{{ totalAmount(cart) }} &euro;</div>
                                 </div>
-
-                                 <!-- final price -->
-                                <div class="final-price">{{ totalAmount(cart) }} &euro;</div>
+                                <div data-toggle="modal" data-target="#proceedtopayment" class="check-out-btn">Checkout</div>
                             </div>
-                            <div data-toggle="modal" data-target="#proceedtopayment" class="check-out-btn">Checkout</div>
-                        </div>
-                        <!-- Payment Component -->
-                        <PaymentComponent :amount="totalAmount(cart)" v-if="isVisible" />
-                        </div>
+                            <!-- Payment Component -->
+                            <PaymentComponent :amount="totalAmount(cart)" v-if="isVisible" />
+                            </div>
 
-                        
-                    </div>    
-                    <!-- Cart Blank layout -->
-                    <div v-else class="cart-blank">
-                           
-                        <!-- Title -->
-                        <div class="blank-cart-title">
-                            Il carrello è vuoto
-                        </div>
+                            
+                        </div>    
+                        <!-- Cart Blank layout -->
+                        <div v-else class="cart-blank">
+                            
+                            <!-- Title -->
+                            <div class="blank-cart-title">
+                                Il carrello è vuoto
+                            </div>
 
-                        <!-- SVG Image -->
-                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                            width="406.000000pt" height="361.000000pt" viewBox="0 0 406.000000 361.000000"
-                            preserveAspectRatio="xMidYMid meet">
-                            <g transform="translate(0.000000,361.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
-                                <path d="M2560 3585 c-167 -26 -554 -141 -713 -213 -144 -66 -388 -215 -515 -315 -147 -115 -198 -270 -157 -468 9 -40 14 -73 12 -75 -1 -1 -77 -39 -169 -83 -92 -45 -181 -93 -198 -107 -17 -15 -32 -25 -34 -23 -2 2 -38 141 -82 309 -60 234 -84 310 -101 328 -22 22 -26 22 -282 22 -258 0 -260 0 -287 -23 -20
-                                -17 -27 -33 -27 -57 0 -24 7 -40 27 -57 27 -23 31 -23 239 -23 l212 0 204 -782 c345 -1321 336 -1290 361 -1310 21 -17 83 -18 1327 -18 1149 0 1307 2 1333 15 17 9 30 18 30 20 0 3 9 47 20 98 24 113 90 428 169 812 33 160 76 366 96 458 30 145 34 172 23 195 -23 47 -40 50 -351 51 -215 2 -293 5 -299 14 -4
-                                7 -8 26 -8 43 0 56 -41 187 -118 379 l-76 190 -1 115 c0 145 5 165 53 189 l37 19 -30 7 c-59 13 -75 25 -118 92 -59 91 -98 127 -186 171 -71 35 -80 37 -185 39 -61 1 -154 -5 -206 -12z m337 -169 c52 -28 111 -81 101 -91 -2 -3 -54 -16 -114 -29 -308 -69 -633 -246 -1073 -586 -69 -53 -141 -105 -160 -114 -33 -17 -33 -17 -61 9 -63 61 -92 179 -65 271 21 73 84 135 250 247 184 123 354 196 625 269 173 46 246 58 350 55 83 -2 102 -6 147 -31z m135 -326 c-5 -76 17 -155 122 -439 47 -124 86 -244 88 -266 l3 -40 -733 0 -734 0 -50 98 c-28 54
-                                -48 100 -45 103 13 13 1147 534 1272 585 38 15 72 25 75 23 3 -3 3 -32 2 -64z m-1972 -855 c0 -8 9 -24 20 -35 20 -20 33 -20 1411 -20 1319 0 1390 -1 1385 -17 -3 -10 -37 -169 -75 -353 -39 -184 -100 -474 -136 -644 -36 -170 -65 -310 -65 -312 0 -2 -549 -4 -1220 -4 l-1219 0 -10 38 c-63 239 -147 565 -226 872 -53 206 -100 390 -105 408 l-8 32 61 0 c45 0 76 7 112 24 59 29 75 31 75 11z"/>
-                                <path d="M2816 2913 c-10 -10 -7 -63 5 -86 31 -60 83 -91 115 -69 28 19 43 86 28 126 -5 12 -15 15 -44 10 -24 -4 -47 -1 -67 10 -17 8 -33 12 -37 9z"/>
-                                <path d="M2240 2688 c0 -6 -10 -32 -22 -56 -20 -43 -21 -46 -4 -77 22 -40 59 -59 87 -45 56 31 63 109 13 162 -28 28 -74 38 -74 16z"/>
-                                <path d="M2664 2650 c-47 -11 -103 -48 -118 -78 -29 -59 11 -68 101 -24 84 41 103 55 103 74 0 10 -9 22 -19 28 -22 11 -23 11 -67 0z"/>
-                                <path d="M1537 593 c-57 -20 -128 -80 -161 -136 -63 -109 -48 -256 35 -351 89 -101 241 -132 361 -73 102 50 160 138 166 254 7 129 -47 226 -159 287 -67 37 -169 45 -242 19z"/>
-                                <path d="M3047 593 c-27 -9 -71 -36 -97 -60 -163 -146 -127 -404 68 -500 47 -23 70 -28 132 -28 127 1 223 62 275 176 23 53 27 71 23 138 -6 121 -61 206 -170 262 -57 30 -165 35 -231 12z"/>
-                            </g>
-                        </svg>
+                            <!-- SVG Image -->
+                            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                                width="406.000000pt" height="361.000000pt" viewBox="0 0 406.000000 361.000000"
+                                preserveAspectRatio="xMidYMid meet">
+                                <g transform="translate(0.000000,361.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                                    <path d="M2560 3585 c-167 -26 -554 -141 -713 -213 -144 -66 -388 -215 -515 -315 -147 -115 -198 -270 -157 -468 9 -40 14 -73 12 -75 -1 -1 -77 -39 -169 -83 -92 -45 -181 -93 -198 -107 -17 -15 -32 -25 -34 -23 -2 2 -38 141 -82 309 -60 234 -84 310 -101 328 -22 22 -26 22 -282 22 -258 0 -260 0 -287 -23 -20
+                                    -17 -27 -33 -27 -57 0 -24 7 -40 27 -57 27 -23 31 -23 239 -23 l212 0 204 -782 c345 -1321 336 -1290 361 -1310 21 -17 83 -18 1327 -18 1149 0 1307 2 1333 15 17 9 30 18 30 20 0 3 9 47 20 98 24 113 90 428 169 812 33 160 76 366 96 458 30 145 34 172 23 195 -23 47 -40 50 -351 51 -215 2 -293 5 -299 14 -4
+                                    7 -8 26 -8 43 0 56 -41 187 -118 379 l-76 190 -1 115 c0 145 5 165 53 189 l37 19 -30 7 c-59 13 -75 25 -118 92 -59 91 -98 127 -186 171 -71 35 -80 37 -185 39 -61 1 -154 -5 -206 -12z m337 -169 c52 -28 111 -81 101 -91 -2 -3 -54 -16 -114 -29 -308 -69 -633 -246 -1073 -586 -69 -53 -141 -105 -160 -114 -33 -17 -33 -17 -61 9 -63 61 -92 179 -65 271 21 73 84 135 250 247 184 123 354 196 625 269 173 46 246 58 350 55 83 -2 102 -6 147 -31z m135 -326 c-5 -76 17 -155 122 -439 47 -124 86 -244 88 -266 l3 -40 -733 0 -734 0 -50 98 c-28 54
+                                    -48 100 -45 103 13 13 1147 534 1272 585 38 15 72 25 75 23 3 -3 3 -32 2 -64z m-1972 -855 c0 -8 9 -24 20 -35 20 -20 33 -20 1411 -20 1319 0 1390 -1 1385 -17 -3 -10 -37 -169 -75 -353 -39 -184 -100 -474 -136 -644 -36 -170 -65 -310 -65 -312 0 -2 -549 -4 -1220 -4 l-1219 0 -10 38 c-63 239 -147 565 -226 872 -53 206 -100 390 -105 408 l-8 32 61 0 c45 0 76 7 112 24 59 29 75 31 75 11z"/>
+                                    <path d="M2816 2913 c-10 -10 -7 -63 5 -86 31 -60 83 -91 115 -69 28 19 43 86 28 126 -5 12 -15 15 -44 10 -24 -4 -47 -1 -67 10 -17 8 -33 12 -37 9z"/>
+                                    <path d="M2240 2688 c0 -6 -10 -32 -22 -56 -20 -43 -21 -46 -4 -77 22 -40 59 -59 87 -45 56 31 63 109 13 162 -28 28 -74 38 -74 16z"/>
+                                    <path d="M2664 2650 c-47 -11 -103 -48 -118 -78 -29 -59 11 -68 101 -24 84 41 103 55 103 74 0 10 -9 22 -19 28 -22 11 -23 11 -67 0z"/>
+                                    <path d="M1537 593 c-57 -20 -128 -80 -161 -136 -63 -109 -48 -256 35 -351 89 -101 241 -132 361 -73 102 50 160 138 166 254 7 129 -47 226 -159 287 -67 37 -169 45 -242 19z"/>
+                                    <path d="M3047 593 c-27 -9 -71 -36 -97 -60 -163 -146 -127 -404 68 -500 47 -23 70 -28 132 -28 127 1 223 62 275 176 23 53 27 71 23 138 -6 121 -61 206 -170 262 -57 30 -165 35 -231 12z"/>
+                                </g>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>    
 
         <!-- MODALS SECTION -->
         <div v-for="(product, index) in cart" :key="index" class="margin">
@@ -546,8 +547,8 @@ export default {
 @import '../style/common';
 
 section {
-    background-image: url('https://img.freepik.com/premium-vector/food-vector-seamless-pattern-cuisine-fast-food-cafe-wallpaper-with-gastronomy-icons-yellow-gold-color-texture-decorative-textile-wrapping-paper-design-bright-background-menu-receipts_106317-9575.jpg?w=2000');
-    background-size: 700px;
+    background-color: $primary-color;
+    // background-image: url('https://img.freepik.com/premium-vector/food-vector-seamless-pattern-cuisine-fast-food-cafe-wallpaper-with-gastronomy-icons-yellow-gold-color-texture-decorative-textile-wrapping-paper-design-bright-background-menu-receipts_106317-9575.jpg?w=2000');
     // background-repeat: repeat;
 }
 
@@ -655,6 +656,13 @@ section {
   
 // ******************** PRODUCT CARDS ******************** // 
 
+.ms_pattern-background{
+    background-image: url(https://i.ibb.co/mX7bXgD/foodpattern1.png);
+    background-color: rgba($color: $primary-color, $alpha: 0.5);
+    background-blend-mode: color-dodge;
+    background-size: 700px;
+    padding-top: 4rem;
+}
 .products-cart-wrapper {
     width: 86%;
     margin: 0 auto;
