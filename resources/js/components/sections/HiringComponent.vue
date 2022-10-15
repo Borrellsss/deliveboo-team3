@@ -1,9 +1,9 @@
 <template>
     <section>
-
         <div class="ms_main-container">
             <div class="d-flex">
                 <div class="box">
+
                     <!-- Card Icon -->
                     <div class="text-center pb-3 secondary-color">
                         <i class="fa-solid fa-bicycle fa-4x"></i>
@@ -21,6 +21,7 @@
                 </div>
 
                 <div class="box">
+
                     <!-- Card Icon -->
                     <div class="text-center pb-3 secondary-color">
                         <i class="fa-solid fa-recycle fa-4x"></i>
@@ -80,10 +81,13 @@ section {
             .box {
                 width: calc((100% / 3) - 1rem);
                 align-self: flex-start;
+                cursor: pointer;
             }
+
             .primary-color {
                 color: $primary-color;
             }
+            
             .secondary-color {
                 color: $secondary-color;
             }
