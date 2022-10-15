@@ -7866,9 +7866,6 @@ __webpack_require__.r(__webpack_exports__);
       this.cookies = JSON.parse(localStorage.getItem('cookies'));
     }
   },
-  mounted: function mounted() {
-    console.log(this.cookies);
-  },
   methods: {
     checkCookies: function checkCookies() {
       // salvo il dato in formato stringa nel local storage
@@ -8450,7 +8447,7 @@ var render = function render() {
     }
   }, [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "cookie-text brown"
-  }, [_vm._v("\n           TOAST RIDER utilizza i cookie per personalizzare la tua esperienza e gli annunci pubblicitari su questo sito Web e su siti Web di terze parti, analizzare i dati, migliorare le prestazioni del sito e consentire la condivisione sui social media. Per ulteriori informazioni o per modificare le impostazioni, consulta la nostra Informativa sui cookie. \n       ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n           TOAST RIDER utilizza i cookie per personalizzare la tua esperienza e gli annunci pubblicitari su questo sito web e su siti web di terze parti, analizzare i dati, migliorare le prestazioni del sito e consentire la condivisione sui social media. Per ulteriori informazioni o per modificare le impostazioni, consulta la nostra Informativa sui cookie. \n       ")]), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-content-spacebetween align-items-center"
   }, [_c("button", {
     staticClass: "close brown ms_button",
@@ -8468,7 +8465,7 @@ var render = function render() {
     attrs: {
       "aria-hidden": "true"
     }
-  }, [_vm._v("Accetta")])]), _vm._v(" "), _c("button", {
+  }, [_vm._v("\n                   Accetta\n               ")])]), _vm._v(" "), _c("button", {
     staticClass: "close brown ms_button",
     attrs: {
       type: "button",
@@ -8484,7 +8481,7 @@ var render = function render() {
     attrs: {
       "aria-hidden": "true"
     }
-  }, [_vm._v("Rifiuta")])])]), _vm._v(" "), _c("button", {
+  }, [_vm._v("\n                   Rifiuta\n               ")])])]), _vm._v(" "), _c("button", {
     staticClass: "close brown x-close",
     attrs: {
       type: "button",
@@ -8500,7 +8497,7 @@ var render = function render() {
     attrs: {
       "aria-hidden": "true"
     }
-  }, [_vm._v("×")])])])]) : _vm._e();
+  }, [_vm._v("\n               ×\n           ")])])])]) : _vm._e();
 };
 
 var staticRenderFns = [function () {
@@ -8509,13 +8506,8 @@ var staticRenderFns = [function () {
 
   return _c("div", {
     staticClass: "cookies-img"
-  }, [_c("img", {
-    staticClass: "evidon-banner-image",
-    attrs: {
-      alt: "Logo Evidon",
-      src: "//c.evidon.com/logos/6063/6063-20200226114150.",
-      "data-di-id": "c8ec593f-5aadcfb9"
-    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-cookie-bite fa-4x"
   })]);
 }];
 render._withStripped = true;
@@ -14266,7 +14258,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#cookie {\n  z-index: 100;\n  position: fixed;\n  bottom: 0px;\n  padding: 1.5rem 2.5rem;\n  font-size: 0.9rem;\n}\n#cookie .brown {\n  color: #856404;\n}\n#cookie .cookies-img img {\n  width: 55px;\n  filter: invert(0.5);\n  filter: invert(36%) sepia(29%) saturate(2713%) hue-rotate(24deg) brightness(92%) contrast(97%);\n}\n#cookie .cookie-text {\n  padding: 1.5rem;\n}\n#cookie .close.brown.ms_button {\n  padding: 0.3rem;\n  font-size: 1rem;\n  border: 1px solid #856404;\n  margin: 0.3rem;\n}\n#cookie .close.brown.x-close {\n  position: absolute;\n  top: 1rem;\n  right: 1rem;\n}\n@media only screen and (max-width: 576px) {\n#cookie {\n    flex-direction: column;\n}\n#cookie .cookie-text {\n    padding: 0.5rem 0;\n}\n#cookie .cookies-img {\n    width: 100%;\n}\n#cookie .close.brown.x-close {\n    position: absolute;\n    top: 1rem;\n    right: 1rem;\n}\n#cookie .close.brown.ms_biutton {\n    flex-direction: row;\n    padding: 0.5rem;\n}\n}", ""]);
+exports.push([module.i, "#cookie {\n  z-index: 100;\n  position: fixed;\n  bottom: 0px;\n  padding: 1.5rem 2.5rem;\n  font-size: 0.9rem;\n}\n#cookie .brown {\n  color: brown;\n}\n#cookie .cookies-img {\n  color: brown;\n}\n#cookie .cookie-text {\n  padding: 1.5rem;\n}\n#cookie .close.brown.ms_button {\n  padding: 0.4rem;\n  font-size: 1rem;\n  border: 1px solid #856404;\n  margin: 0.3rem;\n  border-radius: 10px;\n}\n#cookie .close.brown.x-close {\n  position: absolute;\n  top: 1rem;\n  right: 1rem;\n}\n@media only screen and (max-width: 576px) {\n#cookie {\n    flex-direction: column;\n}\n#cookie .cookie-text {\n    padding: 0.5rem 0;\n}\n#cookie .cookies-img {\n    width: 100%;\n}\n#cookie .close.brown.x-close {\n    position: absolute;\n    top: 1rem;\n    right: 1rem;\n}\n#cookie .close.brown.ms_biutton {\n    flex-direction: row;\n    padding: 0.5rem;\n}\n}", ""]);
 
 // exports
 
@@ -63217,9 +63209,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\back-sass\back.scss */"./resources/sass/back-sass/back.scss");
+__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })
