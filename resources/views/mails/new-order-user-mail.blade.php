@@ -7,38 +7,77 @@
     <title>NewOrderUserMail</title>
 </head>
 <body>
-
-    <div class="title">Il business <strong>{{$user->business_name}}</strong> ha ricevuto un nuovo ordine.</div>
     <br>
-    <div>Riepilogo ordine N.{{ $new_order->order_number}}: </div>
-    <ul>
+    <br>
+    <img src="https://i.ibb.co/8BJ7h21/logodone-ROSSO.png" alt="logo">
+
+    <div>Ciao <strong>{{$user->business_name}}</strong> hai ricevuto un nuovo ordine!</div>
+    
+    <br>
+
+    <p>Ordine N.{{ $new_order->order_number}} </p>
+
+    <table style="width:500px; text-align: center">
+        <tr>
+          <th>Prodotto</th>
+          <th>Quantità</th>
+          <th>Prezzo</th>
+        </tr>
+
         @foreach ($new_order->products as $product)
-            <li>
-                {{$product->name}} - pz: {{$product->pivot['quantity']}}
-            </li>
+        <tr>
+          <td>{{$product->name}}</td>
+                  
+          <td>{{$product->pivot['quantity']}}</td>
+                    
+          <td>{{$product->price}}€</td>
+        </tr>
         @endforeach
-    </ul>
+
+    </table>
      
     <div>Per un totale di: {{$new_order->total_amount}}€</div>
 
     <br>
 
-    {{-- <div> <strong>Dettagli per la consegna</strong> 
-        <div>Nome e Cognome: {{$new_order->customer_name}}</div>
-        <div>Indirizzo: {{$new_order->customer_address}}</div>
-        <div>Email: {{$new_order->customer_mail}}</div>
-        <div>Telefono: {{$new_order->customer_phone_number}}</div>
+    <div>I dettagli per la consegna sono disponibili nella tua
+        <a href="{{route ('admin.orders')}}">sezione ordini.</a>
     </div>
-
-    <br> --}}
-
-    <div>I dettagli per la consegna sono disponibili nella 
-        <a href="{{route ('admin.orders')}}">sezione privata ordini.</a>
-    </div>
-    
-
+    <br>
+    <br>
 
 </body>
+
+<style>
+body{
+    padding-left: 70px;
+    font-size: 21px;
+    border: 2px solid #740602
+    
+}
+div{
+    padding-top: 50px;
+}
+a{
+    padding: 0;
+}
+tr{
+    text-align: center;
+}
+
+th{
+    text-align: center;
+    border-bottom: 1px solid green;
+}
+img{
+    padding-left: 200px;
+    width: 155px;
+}
+a{
+    text-decoration: none;
+}
+
+</style>
 </html>
 
     
