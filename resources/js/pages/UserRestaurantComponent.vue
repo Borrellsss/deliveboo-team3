@@ -204,22 +204,12 @@ export default {
 }
 
 // FILTER CATEGORIES
-// .ms_restaurants-cards-section {
-//     padding-block: 4rem;
-//     background-image: url(https://i.ibb.co/mX7bXgD/foodpattern1.png);
-//     background-color: rgba(white, $alpha: 0.85);
-//     background-size: 700px;
-//     background-blend-mode: color-dodge;
-//     border-block: 2px solid #212529;
-// }
-
 .ms_restaurants-cards-section {
     padding-block: 4rem;
-    // background-image: url(https://i.ibb.co/mX7bXgD/foodpattern1.png);
     background: linear-gradient(to bottom, rgba(0,0,0,0) 70%,
     rgba(255,255,255,1)), url(https://i.ibb.co/mX7bXgD/foodpattern1.png);
     background-color: rgba(white, $alpha: 0.85);
-    background-blend-mode: color-dodge;
+    background-blend-mode: screen;
 }
 .category-filter-container {
 

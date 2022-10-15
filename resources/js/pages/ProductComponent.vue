@@ -655,12 +655,11 @@ section {
 }
   
 // ******************** PRODUCT CARDS ******************** // 
-
 .ms_pattern-background{
     background-image: url(https://i.ibb.co/mX7bXgD/foodpattern1.png);
     background-color: rgba($color: $primary-color, $alpha: 0.5);
     background-size: 700px;
-    background-blend-mode: color-dodge;
+    background-blend-mode: screen;
     padding-top: 4rem;
 }
 .products-cart-wrapper {
