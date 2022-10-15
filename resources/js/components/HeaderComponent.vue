@@ -106,6 +106,7 @@ header {
     background-color: white;
     box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
     user-select: none;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 
     .ms_container {
         width: 87%;
