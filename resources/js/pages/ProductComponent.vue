@@ -214,72 +214,71 @@
         </div>
 
         <!-- MODALS SECTION -->
-    <div v-for="(product, index) in cart" :key="index" class="margin">
+        <div v-for="(product, index) in cart" :key="index" class="margin">
 
-        <!-- Modal "proceed to payment" -->
-        <div class="modal fade right ms_modal-wrapper" id="proceedtopayment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-            <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
-                <!--Content-->
-                <div class="modal-content ms_modal_container">
-                    <!--Header-->
-                    <div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="white-text">&times;</span>
-                        </button>
-                    </div>
+            <!-- Modal "proceed to payment" -->
+            <div class="modal fade right ms_modal-wrapper" id="proceedtopayment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+                    <!--Content-->
+                    <div class="modal-content ms_modal_container">
+                        <!--Header-->
+                        <div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="white-text">&times;</span>
+                            </button>
+                        </div>
 
-                    <!--Body-->
-                    <div class="text-center">
-                        <span class="yellow pb-4"><i class="fas fa-credit-card fa-4x"></i></span>
-                        <p class="pt-4">Stai per eseguire il pagamento dell'ordine...</p>
-                        <p>Vuoi procedere?</p>
-                    </div>
+                        <!--Body-->
+                        <div class="text-center">
+                            <span class="yellow pb-4"><i class="fas fa-credit-card fa-4x"></i></span>
+                            <p class="pt-4">Stai per eseguire il pagamento dell'ordine...</p>
+                            <p>Vuoi procedere?</p>
+                        </div>
 
-                    <!--Footer-->
-                    <div class="text-center">
-                        <button type="button" @click="ViewFormPayment()" data-dismiss="modal" class="ms_btn boxshadow mt-3">Si, ho FAME!</button>
+                        <!--Footer-->
+                        <div class="text-center">
+                            <button type="button" @click="ViewFormPayment()" data-dismiss="modal" class="ms_btn boxshadow mt-3">Si, ho FAME!</button>
+                        </div>
                     </div>
+                    <!--/.Content-->
                 </div>
-                <!--/.Content-->
             </div>
-        </div>
-        <!-- End Modal "proceed to payment" -->
+            <!-- End Modal "proceed to payment" -->
 
-        <!-- Modal "order confirmed" -->
-        <div class="modal fade right ms_modal-wrapper" id="orderconfirmed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-            <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
-                <!--Content-->
-                <div class="modal-content ms_modal_container">
-                    <!--Header-->
-                    <div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="white-text">&times;</span>
-                        </button>
-                    </div>
+            <!-- Modal "order confirmed" -->
+            <div class="modal fade right ms_modal-wrapper" id="orderconfirmed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+                    <!--Content-->
+                    <div class="modal-content ms_modal_container">
+                        <!--Header-->
+                        <div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="white-text">&times;</span>
+                            </button>
+                        </div>
 
-                    <!--Body-->
-                    <div class="text-center">
-                        <span class="yellow pb-4"><i class="fas fa-burger fa-4x"></i></span>
-                        <p class="pt-4">Stiamo preparando il tuo ordine!</p>
-                        <p>Controlla la mail per tutti i dettagli.</p>
-                        <p>Fra poco si mangia!</p>
-                    </div>
+                        <!--Body-->
+                        <div class="text-center">
+                            <span class="yellow pb-4"><i class="fas fa-burger fa-4x"></i></span>
+                            <p class="pt-4">Stiamo preparando il tuo ordine!</p>
+                            <p>Controlla la mail per tutti i dettagli.</p>
+                            <p>Fra poco si mangia!</p>
+                        </div>
 
-                    <!--Footer-->
-                    <div class="text-center">
-                        <button type="button" data-dismiss="modal" class="ms_btn boxshadow mt-3" @click="paymentDone()">Ok</button>
+                        <!--Footer-->
+                        <div class="text-center">
+                            <button type="button" data-dismiss="modal" class="ms_btn boxshadow mt-3" @click="paymentDone()">Ok</button>
+                        </div>
                     </div>
+                    <!--/.Content-->
                 </div>
-                <!--/.Content-->
             </div>
+            <!-- End Modal "order confirmed" -->
         </div>
-        <!-- End Modal "order confirmed" -->
-    </div>
     </section>
 </template>
 
 <script>
-
 import PaymentComponent from "../components/PaymentComponent.vue";
 
 export default {
@@ -539,8 +538,9 @@ export default {
 @import '../style/common';
 
 section {
-    background: radial-gradient(circle, rgba(255,197,9,1) 58%, rgba(235,179,2,1) 80%, rgba(208,158,0,1) 100%);
-    background: $page-product-bg;
+    background-image: url('https://img.freepik.com/premium-vector/food-vector-seamless-pattern-cuisine-fast-food-cafe-wallpaper-with-gastronomy-icons-yellow-gold-color-texture-decorative-textile-wrapping-paper-design-bright-background-menu-receipts_106317-9575.jpg?w=2000');
+    background-size: 700px;
+    // background-repeat: repeat;
 }
 
 // Jumbotron

@@ -40,15 +40,27 @@ class RestaurantsController extends Controller
                 }
             }
 
-            $data = [
-                'success' => true,
-                'results' => $filtered_restaurants,
-            ];
+            if(count($filtered_restaurants) > 0) {
 
+                $data = [
+                    'success' => true,
+                    'is_empty' => false,
+                    'results' => $filtered_restaurants,
+                ];
+            } else {
+
+                $data = [
+                    'success' => true,
+                    'is_empty' => true,
+                    'results' => [],
+                ];
+            }
         } else {
+
             $data = [
-                'success' => 'nothing clicked',
-                'results' => [],
+                'success' => false,
+                'is_empty' => true,
+                'results' => null,
             ];
         }
 

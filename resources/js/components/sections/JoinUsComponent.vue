@@ -1,22 +1,16 @@
 <template>
    <section>
-       <div class="d-flex">
-            <div class="join-us-container d-flex align-items-center ">
-                <div class="row">
-                    <div class="col">
-                        <div class="text-container">
-                            <h3 class="fo-style">Hai un ristorante?</h3>
-                            <h4 class="fo-style">
-                                Diventa Partner! <br>
-                                Per te subito grandi vantaggi.
-                            </h4>
-                            <a class="js_btn" href="/register">
-                                Registrati
-                                <i class="cell-symbol  fa-solid fa-right-to-bracket"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <div class="join-us-container">
+            <div class="text-container">
+                <h3 class="fo-style">Hai un ristorante?</h3>
+                <h4 class="fo-style">
+                    Diventa Partner! <br>
+                    Per te subito grandi vantaggi.
+                </h4>
+                <a class="js_btn" href="/register">
+                    Registrati
+                    <i class="cell-symbol  fa-solid fa-right-to-bracket"></i>
+                </a>
             </div>
         </div>
    </section>
@@ -34,20 +28,26 @@ export default {
     @import '../../style/variables';
     @import '../../style/common';
 
+section {
+    background-image: url('https://i.ibb.co/ypPyH1r/mockup-backgroundlong.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: 80%;
+    background-position-y: 0;
+
     .join-us-container{
-        width: 100%;
+        margin-inline: auto;
+        width: 80%;
         height: 500px;
-        background-image: url('https://i.ibb.co/ypPyH1r/mockup-backgroundlong.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position-x: 80%;
-        background-position-y: 0;
+        position: relative;
         
         .text-container{
             color: white;
             text-align: left;
-            padding-left: 5rem;
-            padding-right: 5rem;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            translate: 0 -50%;
     
             h3{
                 font-size: 2.5rem;
@@ -73,4 +73,5 @@ export default {
             }
         }
     }
+}
  </style>

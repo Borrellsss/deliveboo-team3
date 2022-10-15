@@ -3,82 +3,84 @@
     <div>
         <JumbotronComponent/>
 
-        <!-- filters categories  -->
-        <div class="category-filter-container">
-            <h4 class="front-office-style">Scegli la tua categoria</h4>
-            <div class="categories-bar">
-                <svg class="checkbox-symbol">
-                    <symbol id="check" viewbox="0 0 12 10">
-                        <polyline
-                        points="1.5 6 4.5 9 10.5 1"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        ></polyline>
-                    </symbol>
-                </svg>
-              <!-- checkbox container  -->
-                <div class="checkbox-container">
-                    <div v-for="category in categories" :key="category.id">
-                        <input class="checkbox-input" :id="'category-' + category.id" type="checkbox" :value="category.id" v-model="selectedCategories" @change="getSelectedCategories()" :disabled="isWaiting ? '' : false"/>
-                        <label class="checkbox" :for="'category-' + category.id">
-                            <span>
-                            <svg width="12px" height="10px">
-                                <use xlink:href="#check"></use>
-                            </svg>
-                            </span>
-                            <span>{{category.name}}</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-            
-          <!-- restaurant cards container  -->
-        <div class="restaurant-cards">
-            <div class="fo-container">
-                <div v-if="selectedCategories.length == 0">
-                    <div class="text-center mt-4">
-                        Nessuna categoria selezionata
-                    </div>
-                </div>
+        <section class="ms_restaurants-cards-section">
+            <!-- filters categories  -->
+            <div class="category-filter-container">
+                <h3 class="front-office-style">Scegli la tua categoria</h3>
+                <div class="categories-bar">
+                    <svg class="checkbox-symbol">
+                        <symbol id="check" viewbox="0 0 12 10">
+                            <polyline
+                            points="1.5 6 4.5 9 10.5 1"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            ></polyline>
+                        </symbol>
+                    </svg>
 
-                <div v-else-if="selectedCategories.length != 0 && matchedCategories.length == 0">
-                    <div class="text-center mt-4">
-                        Nessun ristorante corrisponde alla tua selezione
-                    </div>
-                </div>
-                  <!-- stampa ristoranti -->
-                <div v-else>
-                    <div class="restaurant-cards-container">
-                        <div class="row gx-5 row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
+                    <!-- checkbox container  -->
+                    <div class="checkbox-container">
+                        <!-- loader component -->
+                        <LoaderComponent v-if="categories.length === 0"/>
 
-                            <div v-for="user in users" :key="user.id" class="col">
-                                <router-link  :to="{name: 'products-page',params: {id: user.id} }" class="d-flex">
-                                    <div class="ms_card">
-                                        <div class="img-container">
-                                            <img v-if="user.cover" :src="'storage/' + user.cover" :alt="user.business_name">
-                                            <!-- <img v-if="user.cover" src="https://images.adsttc.com/media/images/5e4c/1025/6ee6/7e0b/9d00/0877/slideshow/feature_-_Main_hall_1.jpg?1582043123" :alt="user.business_name"> -->
-                                            <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="user.business_name">
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="ms_card-heading">
-                                            <div v-if="user.business_name.length < 33" class="space_line"></div>
-                                            <span>{{user.business_name.slice(0, 33) }}</span><span v-if="user.business_name.length > 33">...</span>
-                                            </div>
-                                            <div class="ms_card-text">
-                                                <i class="fa-solid fa-location-dot"></i>
-                                                <span class="address">{{user.address.slice(0, 35)}}</span><span v-if="user.address.length > 35">...</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </router-link>
-                            </div>
+                        <div v-else v-for="category in categories" :key="category.id">
+                            <input class="checkbox-input" :id="'category-' + category.id" type="checkbox" :value="category.id" v-model="selectedCategories" @change="getSelectedCategories()" :disabled="isWaiting ? '' : false"/>
+                            <label class="checkbox" :for="'category-' + category.id">
+                                <span>
+                                <svg width="12px" height="10px">
+                                    <use xlink:href="#check"></use>
+                                </svg>
+                                </span>
+                                <span>{{category.name}}</span>
+                            </label>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+                
+            <!-- restaurant cards container  -->
+            <div>
+                <!-- loader component -->
+                <LoaderComponent v-if="isWaiting"/>
+
+                <div v-else-if="users === null && categories.length !== 0">
+                    <div class="fo-container">
+                        <div class="ms_empty-category text-center">
+                            Nessuna categoria selezionata
+                        </div>
+                    </div>
+                </div>
+
+                <div v-else-if="isEmpty">
+                    <div class="text-center mt-4">
+                        Nessun ristorante corrisponde alla tua selezione
+                    </div>
+                </div>
+                    
+                <!-- stampa ristoranti -->
+                <div v-else class="ms_restaurant-cards-container">
+                    <div class="d-flex">
+                        <router-link v-for="user in users" :key="user.id" :to="{name: 'products-page',params: {id: user.id} }" class="ms_restaurant-card">
+                            <div class="img-container">
+                                <img v-if="user.cover" :src="'storage/' + user.cover" :alt="user.business_name">
+                                <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="user.business_name">
+                            </div>
+                            <div class="ms_card-body">
+                                <div class="ms_card-heading">
+                                    <!-- <div v-if="user.business_name.length < 33" class="space_line"></div> -->
+                                    {{user.business_name.slice(0, 20)}}<span v-if="user.business_name.length > 20">...</span>
+                                </div>
+                                <div class="ms_card-text">
+                                    <i class="ms_card-address fa-solid fa-location-dot"></i>
+                                    {{user.address.slice(0, 20)}}<span v-if="user.address.length > 20">...</span>
+                                </div>
+                            </div>
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Hiring Component -->
         <HiringComponent />
@@ -95,8 +97,9 @@
 <script>
 import JumbotronComponent from '../components/sections/JumbotronComponent.vue';
 import HiringComponent from '../components/sections/HiringComponent.vue';
-import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
 import MobileBannerComponent from '../components/MobileBannerComponent.vue';
+import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
+import LoaderComponent from '../components/LoaderComponent.vue';
 
 
 export default {
@@ -104,35 +107,60 @@ export default {
     components: {
         JumbotronComponent,
         HiringComponent,
+        MobileBannerComponent,
         JoinUsComponent,
-        MobileBannerComponent
+        LoaderComponent,
     },
     data(){
         return{
-            users : [],
+            users: null,
             categories: [],
             selectedCategories: [],
             matchedCategories:[],
-            isWaiting: false
+            isWaiting: true,
+            isEmpty: null,
+            categoriesMessage: '',
         }
     },
     methods: {
+        getAllCategories() {
+            this.isWaiting = true;
+
+            axios.get('http://127.0.0.1:8000/api/restaurants-categories')
+            .then((response) => {
+                this.categories = response.data.results;
+            });
+
+            this.isWaiting = false;
+        },
         getSelectedCategories() {
             this.isWaiting = true;
+
             axios.get(`http://127.0.0.1:8000/api/restaurants?categories=${this.selectedCategories}`)
             .then((response) => {
-            this.users = response.data.results;
-            this.matchedCategories = response.data.results;
-            this.isWaiting = false;
+
+                if(response.data.success) {
+
+                    if(response.data.is_empty) {
+                        this.isEmpty = true;
+                        this.users = response.data.results;
+                    } else {
+                        this.isEmpty = false;
+                        this.users = response.data.results;
+                    }
+                } else {
+
+                    this.isEmpty = true;
+                    this.users = response.data.results;
+                }
+
+                this.isWaiting = false;
             });
         }
     },
     mounted(){
 
-        axios.get('http://127.0.0.1:8000/api/restaurants-categories')
-        .then((response) => {
-            this.categories = response.data.results;
-        });
+        this.getAllCategories()
     }
 }
 
@@ -142,25 +170,20 @@ export default {
 @import '../style/variables';
 @import '../style/common';
 
-.ms_category {
-    padding-block: 4rem;
-    background: rgb(116,6,2);
-    background: radial-gradient(circle, rgba(116,6,2,1) 0%, rgba(116,6,2,1) 23%, rgba(64,4,2,1) 100%);
-}
-
 .space_line {
     margin-top: 1rem;
     margin-bottom: 0.5rem;
 }
 
-//////// FILTER CATEGORIES ////////  
-        
-.category-filter-container {
+// FILTER CATEGORIES
+.ms_restaurants-cards-section {
     padding-block: 4rem;
+}
+.category-filter-container {
 
-    h4 {
+    h3 {
         text-align: center;
-        margin: 2rem 0;
+        margin: 0 0 2rem;
     }
 
     .categories-bar {
@@ -209,7 +232,7 @@ export default {
 }
 
 .checkbox:hover {
-    background: rgba(0, 119, 255, 0.06);
+    background: rgba($color: $primary-color, $alpha: 0.3);
 }
 
 .checkbox span {
@@ -265,80 +288,130 @@ export default {
     }
 }
 
-// Restaurant cards  
-.restaurant-cards-container {
-    width: 86%;
-    margin: 4rem auto;
+// Restaurant cards 
+.ms_empty-category {
+    margin-top: 4rem;
 }
 
-.col {
-    padding: 0 10px;
-}
+.ms_restaurant-cards-container {
+    width: 80%;
+    margin: 4rem auto 0;
 
-.ms_card {
-    width: 100%;
-    aspect-ratio: 1/1;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    overflow: hidden;
-    user-select: none;
-    
-    &:hover {
-        box-shadow: 5px 20px 30px rgba(0,0,0,0.3);
-        transform: translateY(-1px);
-    }
+    > .d-flex {
+        flex-wrap: wrap;
+        gap: 2rem;
 
-    .img-container {
-        width: 100%;
-        height: 70%;
-        
-        img {
-            border-radius: 8px 8px 0px 0;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-    .ms_card-body {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding: 0 5%;
-        width: 100%;
-
-        .ms_card-heading {
-            font-size: 1vw;
-            font-weight: bold;
-            margin-top: 0.4rem;
+        .ms_restaurant-card {
+            width: calc((100% / 4) - 1.5rem);
+            // aspect-ratio: 1 / 1;
+            display: block;
+            background-color: #fff;
+            border-radius: 0.7rem;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            overflow: hidden;
+            transition: all 200ms ease-out;
+            // user-select: none;
+            
+            &:hover {
+                box-shadow: 5px 20px 30px rgba(0,0,0,0.3);
+                transform: translateY(-1px);
             }
 
-        .ms_card-text {
-            font-size: 0.9vw;
-            color: #636262;
-    
-            .address {
-                margin-left: 0.1rem;
+            .img-container {
+                width: 100%;
+                height: 150px;
+                
+                img {
+                    height: 100%;
+                    object-fit: cover;
+                }
             }
+
+            .ms_card-body {
+                padding: 0.5rem 1rem 1rem;
+                // height: 40%;
+                color: #212529;
+                // text-overflow: ellipsis;
+
+                .ms_card-heading {
+                    font-size: 1rem;
+                    font-weight: 700;
+                    margin-bottom: 0.3rem;
+                }
+
+                .ms_card-text {
+                    font-size: 0.7rem;
+
+                    .ms_card-address {
+                        margin-right: 0.2rem;
+                    }
+                }
+            }        
         }
-    }        
+    }
 }
  
-///////// MEDIA QUERIES ////////////
-@media only screen and (max-width: 1200px) {
+// MEDIA QUERIES
+@media only screen and (max-width: 1100px) {
 
+    .ms_restaurant-cards-container {
+
+        > .d-flex {
+            gap: 2.1;
+
+            .ms_restaurant-card {
+                width: calc((100% / 3) - 1.4rem);
+            }
+        }
+    }
 }
 
-@media only screen and (max-width: 992px) {
-    .ms_card-heading {
-        font-size: 5wv !important;
-        background-color: #cccfdb;
-    }
+@media only screen and (max-width: 740px) {
 
-    .ms_card-text {
-        font-size: 0.7em;
+    .ms_restaurant-cards-container {
+
+        > .d-flex {
+            gap: 2;
+
+            .ms_restaurant-card {
+                width: calc((100% / 2) - 1rem);
+
+                .img-container {
+                    height: 180px;
+                }  
+            }
+        }
     }
 }
-                
- @media only screen and (max-width: 768px) {
 
+@media only screen and (max-width: 550px) {
+
+    .ms_restaurant-cards-container {
+
+        > .d-flex {
+
+            .ms_restaurant-card {
+                margin-inline: auto;
+                width: 70%;
+            }
+        }
+    }
+}    
+
+@media only screen and (max-width: 470px) {
+
+    .ms_restaurant-cards-container {
+
+        > .d-flex {
+
+            .ms_restaurant-card {
+                width: 100%;
+
+                .img-container {
+                    height: 220px;
+                }  
+            }
+        }
+    }
 }      
 </style>
