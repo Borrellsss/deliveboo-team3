@@ -55,16 +55,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_dimsum as $product_dimsum) {
-            $product_dimsum = new Product();
-            $product_dimsum->name = $product_dimsum['name'];
-            $product_dimsum->cover = null;
-            $product_dimsum->description = $product_dimsum['description'];
-            $product_dimsum->ingredients = $product_dimsum['ingredients'];
-            $product_dimsum->cooking_time = $product_dimsum['cooking_time'];
-            $product_dimsum->price = $product_dimsum['price'];
-            $product_dimsum->visible = rand(0, 1);
-            $product_dimsum->user_id = 16;
-            $product_dimsum->save();
+            $new_product = new Product();
+            $new_product->name = $product_dimsum['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_dimsum['description'];
+            $new_product->ingredients = $product_dimsum['ingredients'];
+            $new_product->cooking_time = $product_dimsum['cooking_time'];
+            $new_product->price = $product_dimsum['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 16;
+            $new_product->save();
         }
 
         $products_wangjao = [
@@ -113,16 +113,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_wangjao as $product_wangjao) {
-            $product_wangjao = new Product();
-            $product_wangjao->name = $product_wangjao['name'];
-            $product_wangjao->cover = null;
-            $product_wangjao->description = $product_wangjao['description'];
-            $product_wangjao->ingredients = $product_wangjao['ingredients'];
-            $product_wangjao->cooking_time = $product_wangjao['cooking_time'];
-            $product_wangjao->price = $product_wangjao['price'];
-            $product_wangjao->visible = rand(0, 1);
-            $product_wangjao->user_id = 17;
-            $product_wangjao->save();
+            $new_product = new Product();
+            $new_product->name = $product_wangjao['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_wangjao['description'];
+            $new_product->ingredients = $product_wangjao['ingredients'];
+            $new_product->cooking_time = $product_wangjao['cooking_time'];
+            $new_product->price = $product_wangjao['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 17;
+            $new_product->save();
         }
 
         ////////////////////////////////////////////////////////////////////
@@ -174,16 +174,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_kensho as $product_kensho) {
-            $product_kensho = new Product();
-            $product_kensho->name = $product_kensho['name'];
-            $product_kensho->cover = null;
-            $product_kensho->description = $product_kensho['description'];
-            $product_kensho->ingredients = $product_kensho['ingredients'];
-            $product_kensho->cooking_time = $product_kensho['cooking_time'];
-            $product_kensho->price = $product_kensho['price'];
-            $product_kensho->visible = rand(0, 1);
-            $product_kensho->user_id = 18;
-            $product_kensho->save();
+            $new_product = new Product();
+            $new_product->name = $product_kensho['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_kensho['description'];
+            $new_product->ingredients = $product_kensho['ingredients'];
+            $new_product->cooking_time = $product_kensho['cooking_time'];
+            $new_product->price = $product_kensho['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 18;
+            $new_product->save();
         }
 
         $products_teikit = [
@@ -232,16 +232,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_teikit as $product_teikit) {
-            $product_teikit = new Product();
-            $product_teikit->name = $product_teikit['name'];
-            $product_teikit->cover = null;
-            $product_teikit->description = $product_teikit['description'];
-            $product_teikit->ingredients = $product_teikit['ingredients'];
-            $product_teikit->cooking_time = $product_teikit['cooking_time'];
-            $product_teikit->price = $product_teikit['price'];
-            $product_teikit->visible = rand(0, 1);
-            $product_teikit->user_id = 19;
-            $product_teikit->save();
+            $new_product = new Product();
+            $new_product->name = $product_teikit['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_teikit['description'];
+            $new_product->ingredients = $product_teikit['ingredients'];
+            $new_product->cooking_time = $product_teikit['cooking_time'];
+            $new_product->price = $product_teikit['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 19;
+            $new_product->save();
         }
 
         ////////////////////////////////////////////////////////////////////
@@ -335,16 +335,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_hundred as $product_hundred) {
-            $product_hundred = new Product();
-            $product_hundred->name = $product_hundred['name'];
-            $product_hundred->cover = null;
-            $product_hundred->description = $product_hundred['description'];
-            $product_hundred->ingredients = $product_hundred['ingredients'];
-            $product_hundred->cooking_time = $product_hundred['cooking_time'];
-            $product_hundred->price = $product_hundred['price'];
-            $product_hundred->visible = rand(0, 1);
-            $product_hundred->user_id = 20;
-            $product_hundred->save();
+            $new_product = new Product();
+            $new_product->name = $product_hundred['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_hundred['description'];
+            $new_product->ingredients = $product_hundred['ingredients'];
+            $new_product->cooking_time = $product_hundred['cooking_time'];
+            $new_product->price = $product_hundred['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 20;
+            $new_product->save();
         }
 
         $products_manik = [
@@ -435,16 +435,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_manik as $product_manik) {
-            $product_manik = new Product();
-            $product_manik->name = $product_manik['name'];
-            $product_manik->cover = null;
-            $product_manik->description = $product_manik['description'];
-            $product_manik->ingredients = $product_manik['ingredients'];
-            $product_manik->cooking_time = $product_manik['cooking_time'];
-            $product_manik->price = $product_manik['price'];
-            $product_manik->visible = rand(0, 1);
-            $product_manik->user_id = 21;
-            $product_manik->save();
+            $new_product = new Product();
+            $new_product->name = $product_manik['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_manik['description'];
+            $new_product->ingredients = $product_manik['ingredients'];
+            $new_product->cooking_time = $product_manik['cooking_time'];
+            $new_product->price = $product_manik['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 21;
+            $new_product->save();
         }
 
         ////////////////////////////////////////////////////////////////////
@@ -496,16 +496,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_himalaya as $product_himalaya) {
-            $product_himalaya = new Product();
-            $product_himalaya->name = $product_himalaya['name'];
-            $product_himalaya->cover = null;
-            $product_himalaya->description = $product_himalaya['description'];
-            $product_himalaya->ingredients = $product_himalaya['ingredients'];
-            $product_himalaya->cooking_time = $product_himalaya['cooking_time'];
-            $product_himalaya->price = $product_himalaya['price'];
-            $product_himalaya->visible = rand(0, 1);
-            $product_himalaya->user_id = 22;
-            $product_himalaya->save();
+            $new_product = new Product();
+            $new_product->name = $product_himalaya['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_himalaya['description'];
+            $new_product->ingredients = $product_himalaya['ingredients'];
+            $new_product->cooking_time = $product_himalaya['cooking_time'];
+            $new_product->price = $product_himalaya['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 22;
+            $new_product->save();
         }
 
         $products_moon = [
@@ -540,16 +540,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_moon as $product_moon) {
-            $product_moon = new Product();
-            $product_moon->name = $product_moon['name'];
-            $product_moon->cover = null;
-            $product_moon->description = $product_moon['description'];
-            $product_moon->ingredients = $product_moon['ingredients'];
-            $product_moon->cooking_time = $product_moon['cooking_time'];
-            $product_moon->price = $product_moon['price'];
-            $product_moon->visible = rand(0, 1);
-            $product_moon->user_id = 23;
-            $product_moon->save();
+            $new_product = new Product();
+            $new_product->name = $product_moon['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_moon['description'];
+            $new_product->ingredients = $product_moon['ingredients'];
+            $new_product->cooking_time = $product_moon['cooking_time'];
+            $new_product->price = $product_moon['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 23;
+            $new_product->save();
         }
 
         ////////////////////////////////////////////////////////////////////
@@ -580,16 +580,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_elpueblo as $product_elpueblo) {
-            $product_elpueblo = new Product();
-            $product_elpueblo->name = $product_elpueblo['name'];
-            $product_elpueblo->cover = null;
-            $product_elpueblo->description = $product_elpueblo['description'];
-            $product_elpueblo->ingredients = $product_elpueblo['ingredients'];
-            $product_elpueblo->cooking_time = $product_elpueblo['cooking_time'];
-            $product_elpueblo->price = $product_elpueblo['price'];
-            $product_elpueblo->visible = rand(0, 1);
-            $product_elpueblo->user_id = 24;
-            $product_elpueblo->save();
+            $new_product = new Product();
+            $new_product->name = $product_elpueblo['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_elpueblo['description'];
+            $new_product->ingredients = $product_elpueblo['ingredients'];
+            $new_product->cooking_time = $product_elpueblo['cooking_time'];
+            $new_product->price = $product_elpueblo['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 24;
+            $new_product->save();
         }
 
         $products_piedradelsol = [
@@ -624,16 +624,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_piedradelsol as $product_piedradelsol) {
-            $product_piedradelsol = new Product();
-            $product_piedradelsol->name = $product_piedradelsol['name'];
-            $product_piedradelsol->cover = null;
-            $product_piedradelsol->description = $product_piedradelsol['description'];
-            $product_piedradelsol->ingredients = $product_piedradelsol['ingredients'];
-            $product_piedradelsol->cooking_time = $product_piedradelsol['cooking_time'];
-            $product_piedradelsol->price = $product_piedradelsol['price'];
-            $product_piedradelsol->visible = rand(0, 1);
-            $product_piedradelsol->user_id = 25;
-            $product_piedradelsol->save();
+            $new_product = new Product();
+            $new_product->name = $product_piedradelsol['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_piedradelsol['description'];
+            $new_product->ingredients = $product_piedradelsol['ingredients'];
+            $new_product->cooking_time = $product_piedradelsol['cooking_time'];
+            $new_product->price = $product_piedradelsol['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 25;
+            $new_product->save();
         }
 
         ////////////////////////////////////////////////////////////////////
@@ -664,16 +664,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_damichele as $product_damichele) {
-            $product_damichele = new Product();
-            $product_damichele->name = $product_damichele['name'];
-            $product_damichele->cover = null;
-            $product_damichele->description = $product_damichele['description'];
-            $product_damichele->ingredients = $product_damichele['ingredients'];
-            $product_damichele->cooking_time = $product_damichele['cooking_time'];
-            $product_damichele->price = $product_damichele['price'];
-            $product_damichele->visible = rand(0, 1);
-            $product_damichele->user_id = 26;
-            $product_damichele->save();
+            $new_product = new Product();
+            $new_product->name = $product_damichele['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_damichele['description'];
+            $new_product->ingredients = $product_damichele['ingredients'];
+            $new_product->cooking_time = $product_damichele['cooking_time'];
+            $new_product->price = $product_damichele['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 26;
+            $new_product->save();
         }
 
         $products_pizzeriagourmet = [
@@ -701,16 +701,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_pizzeriagourmet as $product_pizzeriagourmet) {
-            $product_pizzeriagourmet = new Product();
-            $product_pizzeriagourmet->name = $product_pizzeriagourmet['name'];
-            $product_pizzeriagourmet->cover = null;
-            $product_pizzeriagourmet->description = $product_pizzeriagourmet['description'];
-            $product_pizzeriagourmet->ingredients = $product_pizzeriagourmet['ingredients'];
-            $product_pizzeriagourmet->cooking_time = $product_pizzeriagourmet['cooking_time'];
-            $product_pizzeriagourmet->price = $product_pizzeriagourmet['price'];
-            $product_pizzeriagourmet->visible = rand(0, 1);
-            $product_pizzeriagourmet->user_id = 27;
-            $product_pizzeriagourmet->save();
+            $new_product = new Product();
+            $new_product->name = $product_pizzeriagourmet['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_pizzeriagourmet['description'];
+            $new_product->ingredients = $product_pizzeriagourmet['ingredients'];
+            $new_product->cooking_time = $product_pizzeriagourmet['cooking_time'];
+            $new_product->price = $product_pizzeriagourmet['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 27;
+            $new_product->save();
         }
 
         ////////////////////////////////////////////////////////////////////
@@ -741,16 +741,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_romeowcatbistrot as $product_romeowcatbistrot) {
-            $product_romeowcatbistrot = new Product();
-            $product_romeowcatbistrot->name = $product_romeowcatbistrot['name'];
-            $product_romeowcatbistrot->cover = null;
-            $product_romeowcatbistrot->description = $product_romeowcatbistrot['description'];
-            $product_romeowcatbistrot->ingredients = $product_romeowcatbistrot['ingredients'];
-            $product_romeowcatbistrot->cooking_time = $product_romeowcatbistrot['cooking_time'];
-            $product_romeowcatbistrot->price = $product_romeowcatbistrot['price'];
-            $product_romeowcatbistrot->visible = rand(0, 1);
-            $product_romeowcatbistrot->user_id = 28;
-            $product_romeowcatbistrot->save();
+            $new_product = new Product();
+            $new_product->name = $product_romeowcatbistrot['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_romeowcatbistrot['description'];
+            $new_product->ingredients = $product_romeowcatbistrot['ingredients'];
+            $new_product->cooking_time = $product_romeowcatbistrot['cooking_time'];
+            $new_product->price = $product_romeowcatbistrot['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 28;
+            $new_product->save();
         }
 
         $products_soulkitchen = [
@@ -778,16 +778,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_soulkitchen as $product_soulkitchen) {
-            $product_soulkitchen = new Product();
-            $product_soulkitchen->name = $product_soulkitchen['name'];
-            $product_soulkitchen->cover = null;
-            $product_soulkitchen->description = $product_soulkitchen['description'];
-            $product_soulkitchen->ingredients = $product_soulkitchen['ingredients'];
-            $product_soulkitchen->cooking_time = $product_soulkitchen['cooking_time'];
-            $product_soulkitchen->price = $product_soulkitchen['price'];
-            $product_soulkitchen->visible = rand(0, 1);
-            $product_soulkitchen->user_id = 29;
-            $product_soulkitchen->save();
+            $new_product = new Product();
+            $new_product->name = $product_soulkitchen['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_soulkitchen['description'];
+            $new_product->ingredients = $product_soulkitchen['ingredients'];
+            $new_product->cooking_time = $product_soulkitchen['cooking_time'];
+            $new_product->price = $product_soulkitchen['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 29;
+            $new_product->save();
         }
 
         ////////////////////////////////////////////////////////////////////
@@ -832,16 +832,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_casavietnam as $product_casavietnam) {
-            $product_casavietnam = new Product();
-            $product_casavietnam->name = $product_casavietnam['name'];
-            $product_casavietnam->cover = null;
-            $product_casavietnam->description = $product_casavietnam['description'];
-            $product_casavietnam->ingredients = $product_casavietnam['ingredients'];
-            $product_casavietnam->cooking_time = $product_casavietnam['cooking_time'];
-            $product_casavietnam->price = $product_casavietnam['price'];
-            $product_casavietnam->visible = rand(0, 1);
-            $product_casavietnam->user_id = 30;
-            $product_casavietnam->save();
+            $new_product = new Product();
+            $new_product->name = $product_casavietnam['name'];
+            $new_product->cover = null;
+            $new_product->description = $product_casavietnam['description'];
+            $new_product->ingredients = $product_casavietnam['ingredients'];
+            $new_product->cooking_time = $product_casavietnam['cooking_time'];
+            $new_product->price = $product_casavietnam['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 30;
+            $new_product->save();
         }
 
         $products_thienkim = [
@@ -869,16 +869,16 @@ class PresentationProductsTableSeeder extends Seeder
         ];
 
         foreach($products_thienkim as $products_thienkim) {
-            $products_thienkim = new Product();
-            $products_thienkim->name = $products_thienkim['name'];
-            $products_thienkim->cover = null;
-            $products_thienkim->description = $products_thienkim['description'];
-            $products_thienkim->ingredients = $products_thienkim['ingredients'];
-            $products_thienkim->cooking_time = $products_thienkim['cooking_time'];
-            $products_thienkim->price = $products_thienkim['price'];
-            $products_thienkim->visible = rand(0, 1);
-            $products_thienkim->user_id = 31;
-            $products_thienkim->save();
+            $new_product = new Product();
+            $new_product->name = $products_thienkim['name'];
+            $new_product->cover = null;
+            $new_product->description = $products_thienkim['description'];
+            $new_product->ingredients = $products_thienkim['ingredients'];
+            $new_product->cooking_time = $products_thienkim['cooking_time'];
+            $new_product->price = $products_thienkim['price'];
+            $new_product->visible = rand(0, 1);
+            $new_product->user_id = 31;
+            $new_product->save();
         }
     }
 }
