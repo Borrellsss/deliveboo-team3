@@ -52,7 +52,7 @@
 
                                         <!-- Product Cover -->
                                         <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
-                                        <img v-else class="card-img" src="https://i.ibb.co/QmbxCVg/backup-posatedarker.png" :alt="product.name">
+                                        <img v-else class="card-img" src="https://i.ibb.co/FwnKbJL/pic1.jpg" :alt="product.name">
 
                                         <!-- Product Info Pop-up -->
                                         <a class="info-popup-inline" href="#popup1" @click.prevent="selectProduct(product), showProductInfo()">
@@ -548,8 +548,8 @@ export default {
 
 section {
     background-color: $primary-color;
-    // background-image: url('https://img.freepik.com/premium-vector/food-vector-seamless-pattern-cuisine-fast-food-cafe-wallpaper-with-gastronomy-icons-yellow-gold-color-texture-decorative-textile-wrapping-paper-design-bright-background-menu-receipts_106317-9575.jpg?w=2000');
-    // background-repeat: repeat;
+
+
 }
 
 // Jumbotron

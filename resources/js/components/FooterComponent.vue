@@ -16,16 +16,19 @@
               Toast Rider
             </li>
             <li>
-              <a href="#!" class="text-white">Storia</a>
+              <a href="#!" class="text-white">Impara a cucinare</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Assistenza</a>
+              <a href="#!" class="text-white">Ascoli Porto Sant'Elpidio</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Cerca locale</a>
+              <a href="#!" class="text-white">Facci un Surrounding</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Ami i toast?</a>
+              <a href="#!" class="text-white">Bububaba</a>
+            </li>
+            <li>
+              <a href="https://campo-minato.com" class="text-white">Campo Minato</a>
             </li>
           </ul>
         </div>
@@ -39,16 +42,19 @@
               Dove siamo
             </li>
             <li>
-              <a href="#!" class="text-white">Italia</a>
+              <a href="#!" class="text-white">Roma</a>
             </li>
             <li>
-              <a href="#!" class="text-white">San Marino</a>
+              <a href="#!" class="text-white">Salerno</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Isole Fær Øer</a>
+              <a href="#!" class="text-white">Madrid</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Ascoli</a>
+              <a href="#!" class="text-white">Brolo</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Catania</a>
             </li>
           </ul>
         </div>
@@ -62,13 +68,19 @@
               Lavora con noi
             </li>
             <li>
-              <a href="#!" class="text-white">Entra nel Team</a>
+              <a href="https://github.com/Borrellsss" class="text-white">Edoardo Filippo Borrello</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Parti da zero</a>
+              <a href="https://github.com/Ilariallaria" class="text-white">Ilaria Leone</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Offerte studenti</a>
+              <a href="https://github.com/Giuseppe-lore" class="text-white">Giuseppe Lo Re</a>
+            </li>
+            <li>
+              <a href="https://github.com/jacoposergio" class="text-white">Jacopo Sergio</a>
+            </li>
+            <li>
+              <a href="https://github.com/Zibo88" class="text-white">Vincenzo Tardino</a>
             </li>
           </ul>
         </div>
@@ -80,6 +92,9 @@
           <ul class="list-unstyled mb-0">
             <li>
               Note Legali
+            </li>
+            <li>
+              <a href="#!" class="text-white">Vince, non ti vedo convinto!</a>
             </li>
             <li>
               <a href="#!" class="text-white">Condizioni</a>

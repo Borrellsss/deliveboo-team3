@@ -8557,22 +8557,27 @@ var staticRenderFns = [function () {
     attrs: {
       href: "#!"
     }
-  }, [_vm._v("Storia")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Impara a cucinare")])]), _vm._v(" "), _c("li", [_c("a", {
     staticClass: "text-white",
     attrs: {
       href: "#!"
     }
-  }, [_vm._v("Assistenza")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Ascoli Porto Sant'Elpidio")])]), _vm._v(" "), _c("li", [_c("a", {
     staticClass: "text-white",
     attrs: {
       href: "#!"
     }
-  }, [_vm._v("Cerca locale")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Facci un Surrounding")])]), _vm._v(" "), _c("li", [_c("a", {
     staticClass: "text-white",
     attrs: {
       href: "#!"
     }
-  }, [_vm._v("Ami i toast?")])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Bububaba")])]), _vm._v(" "), _c("li", [_c("a", {
+    staticClass: "text-white",
+    attrs: {
+      href: "https://campo-minato.com"
+    }
+  }, [_vm._v("Campo Minato")])])])]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("ul", {
     staticClass: "list-unstyled mb-0"
@@ -8581,45 +8586,65 @@ var staticRenderFns = [function () {
     attrs: {
       href: "#!"
     }
-  }, [_vm._v("Italia")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Roma")])]), _vm._v(" "), _c("li", [_c("a", {
     staticClass: "text-white",
     attrs: {
       href: "#!"
     }
-  }, [_vm._v("San Marino")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Salerno")])]), _vm._v(" "), _c("li", [_c("a", {
     staticClass: "text-white",
     attrs: {
       href: "#!"
     }
-  }, [_vm._v("Isole Fær Øer")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Madrid")])]), _vm._v(" "), _c("li", [_c("a", {
     staticClass: "text-white",
     attrs: {
       href: "#!"
     }
-  }, [_vm._v("Ascoli")])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Brolo")])]), _vm._v(" "), _c("li", [_c("a", {
+    staticClass: "text-white",
+    attrs: {
+      href: "#!"
+    }
+  }, [_vm._v("Catania")])])])]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("ul", {
     staticClass: "list-unstyled mb-0"
   }, [_c("li", [_vm._v("\n              Lavora con noi\n            ")]), _vm._v(" "), _c("li", [_c("a", {
     staticClass: "text-white",
     attrs: {
-      href: "#!"
+      href: "https://github.com/Borrellsss"
     }
-  }, [_vm._v("Entra nel Team")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Edoardo Filippo Borrello")])]), _vm._v(" "), _c("li", [_c("a", {
     staticClass: "text-white",
     attrs: {
-      href: "#!"
+      href: "https://github.com/Ilariallaria"
     }
-  }, [_vm._v("Parti da zero")])]), _vm._v(" "), _c("li", [_c("a", {
+  }, [_vm._v("Ilaria Leone")])]), _vm._v(" "), _c("li", [_c("a", {
     staticClass: "text-white",
     attrs: {
-      href: "#!"
+      href: "https://github.com/Giuseppe-lore"
     }
-  }, [_vm._v("Offerte studenti")])])])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("Giuseppe Lo Re")])]), _vm._v(" "), _c("li", [_c("a", {
+    staticClass: "text-white",
+    attrs: {
+      href: "https://github.com/jacoposergio"
+    }
+  }, [_vm._v("Jacopo Sergio")])]), _vm._v(" "), _c("li", [_c("a", {
+    staticClass: "text-white",
+    attrs: {
+      href: "https://github.com/Zibo88"
+    }
+  }, [_vm._v("Vincenzo Tardino")])])])]), _vm._v(" "), _c("div", {
     staticClass: "col"
   }, [_c("ul", {
     staticClass: "list-unstyled mb-0"
   }, [_c("li", [_vm._v("\n              Note Legali\n            ")]), _vm._v(" "), _c("li", [_c("a", {
+    staticClass: "text-white",
+    attrs: {
+      href: "#!"
+    }
+  }, [_vm._v("Vince, non ti vedo convinto!")])]), _vm._v(" "), _c("li", [_c("a", {
     staticClass: "text-white",
     attrs: {
       href: "#!"
@@ -9382,7 +9407,7 @@ var render = function render() {
     }) : _c("img", {
       staticClass: "card-img",
       attrs: {
-        src: "https://i.ibb.co/QmbxCVg/backup-posatedarker.png",
+        src: "https://i.ibb.co/FwnKbJL/pic1.jpg",
         alt: product.name
       }
     }), _vm._v(" "), _c("a", {
@@ -9852,7 +9877,7 @@ var render = function render() {
       }
     }) : _c("img", {
       attrs: {
-        src: "https://i.ibb.co/JvkF0TR/tostino-no-image.jpg",
+        src: "https://i.ibb.co/BPnkDqD/backup-posate-aggiustate.jpg",
         alt: user.business_name
       }
     })]), _vm._v(" "), _c("div", {

@@ -64,7 +64,7 @@
                         <router-link v-for="user in users" :key="user.id" :to="{name: 'products-page',params: {slug: user.slug} }" class="ms_restaurant-card">
                             <div class="img-container">
                                 <img v-if="user.cover" :src="'storage/' + user.cover" :alt="user.business_name">
-                                <img v-else src="https://i.ibb.co/JvkF0TR/tostino-no-image.jpg" :alt="user.business_name">
+                                <img v-else src="https://i.ibb.co/BPnkDqD/backup-posate-aggiustate.jpg" :alt="user.business_name">
                             </div>
                             <div class="ms_card-body">
                                 <div class="ms_card-heading">
