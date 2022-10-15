@@ -117,7 +117,7 @@ header {
                 color: $secondary-color;
                 width: 100%;
                 height: 100%;
-                transition: transform 60s;
+                transition: transform 10s;
         
                 &:hover {
                     color: $primary-color;
@@ -137,6 +137,12 @@ header {
         background-color: $primary-color;
         color:white;
         font-weight: 600;
+
+        &:hover {
+            background-color: $secondary-color;
+            color:$primary-color;
+
+        }
     
     }
 
