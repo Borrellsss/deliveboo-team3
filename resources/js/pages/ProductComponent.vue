@@ -835,7 +835,7 @@ section {
     }
 
     .popup {
-        margin: 15vh auto;
+        margin: 10vh auto;
         padding: 20px;
         background: #fff;
         border-radius: 15px;
@@ -1178,7 +1178,7 @@ section {
     .info-popup{
 
         .popup {
-            margin: 15vh auto;
+            margin: 10vh auto;
             width: 50%;
         }
     }
