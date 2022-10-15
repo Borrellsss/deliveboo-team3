@@ -7913,9 +7913,13 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'HeaderComponent',
+  data: function data() {
+    return {// user
+    };
+  },
   computed: {
     isUserLogged: function isUserLogged() {
-      return window.userLogged;
+      return window.user;
     }
   }
 });
@@ -8418,11 +8422,6 @@ __webpack_require__.r(__webpack_exports__);
     HeaderComponent: _components_HeaderComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     FooterComponent: _components_FooterComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     CookiesComponent: _components_CookiesComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-  },
-  computed: {
-    isUserLogged: function isUserLogged() {
-      return window.userLogged;
-    }
   }
 });
 
@@ -8741,22 +8740,36 @@ var render = function render() {
     attrs: {
       d: "M168 629 c-32 -12 -43 -40 -29 -68 15 -26 39 -33 81 -21 53 15 64 46\n                             30 80 -22 22 -40 24 -82 9z"
     }
-  })])])])])]), _vm._v(" "), _vm._m(0)])])]);
+  })])])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col col-9 d-flex align-items-center justify-content-end"
+  }, [_c("div", {
+    staticClass: "nav-container"
+  }, [_vm.isUserLogged ? _c("div", [_vm._m(0)]) : _c("div", {
+    staticClass: "ms_banner d-flex"
+  }, [_c("div", {
+    staticClass: "ms_text d-flex align-items-center"
+  }, [_vm._v("\n                             Sei un ristoratore? \n                         ")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "ms_text d-flex align-items-center"
+  }, [_vm._v("\n                             oppure \n                         ")]), _vm._v(" "), _vm._m(2)])])])])])]);
 };
 
 var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
+  return _c("a", {
+    staticClass: "js_btn",
+    attrs: {
+      href: "/admin"
+    }
+  }, [_vm._v("\n                             Area privata "), _c("i", {
+    staticClass: "cell-symbol fa-solid fa-right-to-bracket"
+  })]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
   return _c("div", {
-    staticClass: "col col-9 d-flex align-items-center justify-content-end"
-  }, [_c("div", {
-    staticClass: "nav-container"
-  }, [_c("div", {
-    staticClass: "ms_banner d-flex"
-  }, [_c("div", {
-    staticClass: "ms_text d-flex align-items-center"
-  }, [_vm._v("\n                             Sei un ristoratore? \n                         ")]), _vm._v(" "), _c("div", {
     staticClass: "ms_login"
   }, [_c("a", {
     staticClass: "js_btn",
@@ -8765,9 +8778,12 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v("\n                                 Accedi "), _c("i", {
     staticClass: "cell-symbol fa-solid fa-house"
-  })])]), _vm._v(" "), _c("div", {
-    staticClass: "ms_text d-flex align-items-center"
-  }, [_vm._v("\n                             oppure \n                         ")]), _vm._v(" "), _c("div", {
+  })])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
     staticClass: "ms_register"
   }, [_c("a", {
     staticClass: "js_btn",
@@ -8776,7 +8792,7 @@ var staticRenderFns = [function () {
     }
   }, [_vm._v("\n                                 Registrati "), _c("i", {
     staticClass: "cell-symbol fa-solid fa-right-to-bracket"
-  })])])])])]);
+  })])]);
 }];
 render._withStripped = true;
 
@@ -14295,7 +14311,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "*[data-v-153bfd55] {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\nimg[data-v-153bfd55] {\n  width: 100%;\n  display: block;\n}\nul[data-v-153bfd55] {\n  list-style-type: none;\n}\na[data-v-153bfd55] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-153bfd55] {\n  color: #ffc509;\n}\n.ms_btn[data-v-153bfd55] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-153bfd55] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-153bfd55] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-153bfd55] {\n  padding-left: 0;\n}\ndl[data-v-153bfd55], ol[data-v-153bfd55], ul[data-v-153bfd55] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.pl-3[data-v-153bfd55], .px-3[data-v-153bfd55] {\n  padding-left: 0 !important;\n}\n.pr-3[data-v-153bfd55], .pr-3[data-v-153bfd55] {\n  padding-right: 0 !important;\n}\n.row[data-v-153bfd55] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\nh1[data-v-153bfd55], h2[data-v-153bfd55], h3[data-v-153bfd55], h4[data-v-153bfd55], h5[data-v-153bfd55], h6[data-v-153bfd55], .h1[data-v-153bfd55], .h2[data-v-153bfd55], .h3[data-v-153bfd55], .h4[data-v-153bfd55], .h5[data-v-153bfd55], .h6[data-v-153bfd55], p[data-v-153bfd55], .p[data-v-153bfd55] {\n  margin-bottom: 0;\n}\n.main_title[data-v-153bfd55] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-153bfd55] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-153bfd55] {\n  padding: 0.5rem 2rem;\n}\nh2.front-office-style[data-v-153bfd55] {\n  font-weight: 900;\n  font-size: 7rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.front-office-style[data-v-153bfd55] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.front-office-style[data-v-153bfd55] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.front-office-style[data-v-153bfd55] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.front-office-style[data-v-153bfd55] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\nheader[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n  height: 5.5rem;\n  position: fixed;\n  top: 0;\n  z-index: 15;\n  background-color: white;\n  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\nheader .ms_container[data-v-153bfd55] {\n  width: 87%;\n  margin: 0 auto;\n}\nheader .ms_container .ms_logo-container[data-v-153bfd55] {\n  width: 5rem;\n}\nheader .ms_container .ms_logo-container svg[data-v-153bfd55] {\n  color: #740602;\n  width: 100%;\n  height: 100%;\n  transition: transform 60s;\n}\nheader .ms_container .ms_logo-container svg[data-v-153bfd55]:hover {\n  color: #ffc509;\n  width: 100%;\n  transform: rotate(-1080deg);\n}\nheader .ms_container .ms_banner .js_btn[data-v-153bfd55] {\n  margin: 0 0.3rem;\n  padding: 0.1em 0.8em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #ffc509;\n  color: white;\n  font-weight: 600;\n}\n@media only screen and (max-width: 992px) {\n.ms_text[data-v-153bfd55] {\n    display: none !important;\n}\n.cell-symbol[data-v-153bfd55] {\n    display: none;\n}\n}", ""]);
+exports.push([module.i, "*[data-v-153bfd55] {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\nimg[data-v-153bfd55] {\n  width: 100%;\n  display: block;\n}\nul[data-v-153bfd55] {\n  list-style-type: none;\n}\na[data-v-153bfd55] {\n  color: inherit;\n  text-decoration: none;\n}\na[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: inherit;\n}\n.ms_link[data-v-153bfd55] {\n  color: #ffc509;\n}\n.ms_btn[data-v-153bfd55] {\n  padding: 0.2em 1em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #740602;\n  color: #ffc509;\n}\n.ms_btn[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\n.ms_btn-secondary[data-v-153bfd55] {\n  background-color: #ffc509;\n  color: #740602;\n}\n.ms_btn-secondary[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #740602;\n}\n.ms_btn-tertiary[data-v-153bfd55] {\n  background-color: #264f36;\n  color: #ffc509;\n}\n.ms_btn-tertiary[data-v-153bfd55]:hover {\n  text-decoration: none;\n  color: #ffc509;\n}\nul[data-v-153bfd55] {\n  padding-left: 0;\n}\ndl[data-v-153bfd55], ol[data-v-153bfd55], ul[data-v-153bfd55] {\n  margin-top: 0;\n  margin-bottom: 0rem;\n}\n.pl-3[data-v-153bfd55], .px-3[data-v-153bfd55] {\n  padding-left: 0 !important;\n}\n.pr-3[data-v-153bfd55], .pr-3[data-v-153bfd55] {\n  padding-right: 0 !important;\n}\n.row[data-v-153bfd55] {\n  --bs-gutter-x: 0px;\n  margin-right: 0px;\n  margin-left: 0px;\n}\nh1[data-v-153bfd55], h2[data-v-153bfd55], h3[data-v-153bfd55], h4[data-v-153bfd55], h5[data-v-153bfd55], h6[data-v-153bfd55], .h1[data-v-153bfd55], .h2[data-v-153bfd55], .h3[data-v-153bfd55], .h4[data-v-153bfd55], .h5[data-v-153bfd55], .h6[data-v-153bfd55], p[data-v-153bfd55], .p[data-v-153bfd55] {\n  margin-bottom: 0;\n}\n.main_title[data-v-153bfd55] {\n  margin: 100px auto 0 auto;\n  text-align: center;\n  width: 40%;\n}\n.js_button[data-v-153bfd55] {\n  display: inline-block;\n  text-align: center;\n  padding: 0.7rem 2rem;\n  text-transform: uppercase;\n  color: white;\n  border-radius: 20px;\n  font-weight: 900;\n  font-size: 0.8rem;\n  letter-spacing: 1px;\n}\n.js_card[data-v-153bfd55] {\n  padding: 0.5rem 2rem;\n}\nh2.front-office-style[data-v-153bfd55] {\n  font-weight: 900;\n  font-size: 7rem;\n  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;\n}\nh3.front-office-style[data-v-153bfd55] {\n  font-weight: 700;\n  font-size: 2rem;\n}\nh4.front-office-style[data-v-153bfd55] {\n  font-weight: 700;\n  font-size: 1.4rem;\n}\nh5.front-office-style[data-v-153bfd55] {\n  font-weight: 900;\n  font-size: 1.4rem;\n}\np.front-office-style[data-v-153bfd55] {\n  font-size: 1.2rem;\n  text-align: center;\n  font-weight: 900;\n}\nheader[data-v-153bfd55] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n  height: 5.5rem;\n  position: fixed;\n  top: 0;\n  z-index: 15;\n  background-color: white;\n  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\nheader .ms_container[data-v-153bfd55] {\n  width: 87%;\n  margin: 0 auto;\n}\nheader .ms_container .ms_logo-container[data-v-153bfd55] {\n  width: 5rem;\n}\nheader .ms_container .ms_logo-container svg[data-v-153bfd55] {\n  color: #740602;\n  width: 100%;\n  height: 100%;\n  transition: transform 60s;\n}\nheader .ms_container .ms_logo-container svg[data-v-153bfd55]:hover {\n  color: #ffc509;\n  width: 100%;\n  transform: rotate(-1080deg);\n}\nheader .js_btn[data-v-153bfd55] {\n  margin: 0 0.3rem;\n  padding: 0.1em 0.8em;\n  display: inline-block;\n  border: none;\n  border-radius: 10rem;\n  background-color: #ffc509;\n  color: white;\n  font-weight: 600;\n}\n@media only screen and (max-width: 992px) {\n.ms_text[data-v-153bfd55] {\n    display: none !important;\n}\n.cell-symbol[data-v-153bfd55] {\n    display: none;\n}\n}", ""]);
 
 // exports
 

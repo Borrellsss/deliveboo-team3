@@ -41,7 +41,12 @@
                 </div>
                 <div class="col col-9 d-flex align-items-center justify-content-end">
                     <div class="nav-container">
-                        <div class="ms_banner d-flex">
+                        <div v-if="isUserLogged">
+                            <a href="/admin" class="js_btn">
+                                Area privata <i class="cell-symbol  fa-solid fa-right-to-bracket"></i>
+                            </a>
+                        </div>
+                        <div class="ms_banner d-flex" v-else>
                             <div class="ms_text d-flex align-items-center">
                                 Sei un ristoratore? 
                             </div>
@@ -70,10 +75,18 @@
 <script>
 export default {
     name: 'HeaderComponent',
+    data(){
+        return{
+            // user
+           
+        }
+    },
     computed: {
         isUserLogged() {
-            return  window.userLogged;
+            return  window.user;
         }
+
+
     }
 }
 </script>
@@ -82,53 +95,51 @@ export default {
 @import '../style/variables';
 @import '../style/common';
 
-header{
-display: flex;
-align-items: center;
-width: 100%;
-height: 5.5rem;
-position: fixed;
-top: 0;
-z-index: 15;
-background-color: white;
-box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
-user-select: none;
+header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5.5rem;
+    position: fixed;
+    top: 0;
+    z-index: 15;
+    background-color: white;
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
+    user-select: none;
 
-.ms_container{
-width: 87%;
-margin: 0 auto;
-    .ms_logo-container{
-        width: 5rem;
-    
-        svg{
-        color: $secondary-color;
-        width: 100%;
-        height: 100%;
-        transition: transform 60s;
-    
-            &:hover{
-                color: $primary-color;
+    .ms_container {
+        width: 87%;
+        margin: 0 auto;
+
+        .ms_logo-container {
+            width: 5rem;
+
+            svg {
+                color: $secondary-color;
                 width: 100%;
-                transform: rotate(-1080deg);
+                height: 100%;
+                transition: transform 60s;
+        
+                &:hover {
+                    color: $primary-color;
+                    width: 100%;
+                    transform: rotate(-1080deg);
+                }
             }
         }
-      }
+    }
+
+    .js_btn {
+        margin: 0 0.3rem;
+        padding: 0.1em 0.8em;
+        display: inline-block;
+        border: none;
+        border-radius: 10rem;
+        background-color: $primary-color;
+        color:white;
+        font-weight: 600;
     
-    .ms_banner{
-    
-        .js_btn{
-            margin: 0 0.3rem;
-            padding: 0.1em 0.8em;
-            display: inline-block;
-            border: none;
-            border-radius: 10rem;
-            background-color: $primary-color;
-            color:white;
-            font-weight: 600;
-    
-         }
-      }
-}
+    }
 
 }
 

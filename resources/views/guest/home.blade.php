@@ -25,9 +25,10 @@
         
     </div>
 
+    {{-- permette di visualizzare nella porzione guest l'utente loggato --}}
     @auth
         <script>
-            window.userLogged = true;
+            window.user = true;
         </script>
     @endauth
     

@@ -27,11 +27,6 @@ export default {
         FooterComponent,
         CookiesComponent
     },
-    computed: {
-        isUserLogged() {
-            return  window.userLogged;
-        }
-    }
 }
 </script>
 
