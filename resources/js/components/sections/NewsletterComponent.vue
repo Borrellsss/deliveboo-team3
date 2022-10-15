@@ -1,5 +1,5 @@
 <template>
-    <section class="p-3">
+    <section>
 
         <div class=" text text-center">
 
@@ -37,6 +37,7 @@ export default {
   
 section {
     font-size: 0.9rem;
+    padding-block: 4rem;
     background-color: $secondary-color;
     background: radial-gradient(circle, rgba(116,6,2,1) 58%, rgba(75,3,0,1) 80%, rgba(69,7,5,1) 100%);
 
@@ -62,8 +63,5 @@ section {
             padding: 0.5rem;
         }
     }
-
-
-
 }
 </style>
