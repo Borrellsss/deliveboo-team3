@@ -9256,7 +9256,7 @@ var staticRenderFns = [function () {
     staticClass: "front-office-style"
   }, [_vm._v("TOAST RIDER")]), _vm._v(" "), _c("p", {
     staticClass: "front-office-style"
-  }, [_vm._v("\r\n            L'unico servizio di delivery che porta i migliori ristoranti a casa tua, "), _c("br"), _vm._v("\r\n            rapidamente e senza spese di spedizione. "), _c("br"), _vm._v("\r\n            Affidati al potere del toast!\r\n        ")])])])])]);
+  }, [_vm._v("\n            L'unico servizio di delivery che porta i migliori ristoranti a casa tua, "), _c("br"), _vm._v("\n            rapidamente e senza spese di spedizione. "), _c("br"), _vm._v("\n            Affidati al potere del toast!\n        ")])])])])]);
 }];
 render._withStripped = true;
 
@@ -63277,9 +63277,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\back-sass\back.scss */"./resources/sass/back-sass/back.scss");
+__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })
