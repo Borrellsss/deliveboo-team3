@@ -312,7 +312,6 @@ export default {
             
             // Definisco una variabile per visionare il carrello, servirà per rimuovere il carrello quando il pagamento viene eseguito
             cartVisible: true
-            
         }
     },
     created() {
