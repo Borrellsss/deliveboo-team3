@@ -34,11 +34,12 @@ section {
     background-repeat: no-repeat;
     background-position-x: 80%;
     background-position-y: 0;
+    overflow: hidden;
 
     .join-us-container{
         margin-inline: auto;
         width: 80%;
-        height: 500px;
+        height: 550px;
         position: relative;
         
         .text-container{
@@ -74,4 +75,21 @@ section {
         }
     }
 }
- </style>
+
+// MEDIA QUERIES
+@media only screen and (max-width: 1100px) {
+    section {
+        background-position-x: 70%;
+    }
+}
+@media only screen and (max-width: 850px) {
+    section {
+        background-position-x: 55%;
+    }
+}
+@media only screen and (max-width: 450px) {
+    section {
+        background-position-x: 30%;
+    }
+}
+</style>
