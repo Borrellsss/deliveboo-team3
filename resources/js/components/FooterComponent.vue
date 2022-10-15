@@ -45,13 +45,13 @@
               <a href="#!" class="text-white">Roma</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Salerno</a>
-            </li>
-            <li>
               <a href="#!" class="text-white">Madrid</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Brolo</a>
+              <a href="#!" class="text-white">Messina</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Caserta</a>
             </li>
             <li>
               <a href="#!" class="text-white">Catania</a>
@@ -97,13 +97,13 @@
               <a href="#!" class="text-white">Vince, non ti vedo convinto!</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Condizioni</a>
+              <a href="#!" class="text-white">Poi lo vediamo</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Privacy Policy</a>
+              <a href="#!" class="text-white">Funziona cosi...</a>
             </li>
             <li>
-              <a href="#!" class="text-white">Cookies</a>
+              <a href="#!" class="text-white">Il Browser</a>
             </li>
             <li>
               <a href="https://www.youtube.com/watch?v=Fq0HUIWLo5o" class="text-white">Facci causa!</a>
