@@ -118,6 +118,9 @@
 
         <!-- join us component -->
         <JoinUsComponent />
+
+        <!-- Newsletter Component -->
+        <NewsletterComponent />
     </div>   
 
 </template>
@@ -128,6 +131,7 @@ import HiringComponent from '../components/sections/HiringComponent.vue';
 import MobileBannerComponent from '../components/MobileBannerComponent.vue';
 import JoinUsComponent from '../components/sections/JoinUsComponent.vue';
 import LoaderComponent from '../components/LoaderComponent.vue';
+import NewsletterComponent from '../components/sections/NewsletterComponent.vue';
 
 
 export default {
@@ -138,6 +142,7 @@ export default {
         MobileBannerComponent,
         JoinUsComponent,
         LoaderComponent,
+        NewsletterComponent,
     },
     data(){
         return{
@@ -212,6 +217,7 @@ export default {
     background-color: rgba(white, $alpha: 0.85);
     background-blend-mode: screen;
 }
+
 .category-filter-container {
 
     h3 {
