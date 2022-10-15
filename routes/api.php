@@ -18,8 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// creo la route per per la visione di tutti i ristoranti con vuejs
-Route::get('/{id}/menu', 'Api\ProductController@restaurantMenu');
+// creo la route che ci permette di accedere a tutti gli utenti
+Route::get('/{slug}/user', 'Api\UserController@getUser');
+
+// creo la route per la visione di tutti i ristoranti con vuejs
+Route::get('/{slug}/menu', 'Api\ProductController@restaurantMenu');
 
 // creo l'api per ottenere tutte le categorie
 Route::get('/restaurants-categories', 'Api\CategoryController@getAllCategories');

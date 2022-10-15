@@ -8104,6 +8104,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      user: [],
       // Toogle che rende visibile/invisibile il pop-up
       toggle_popup: false,
       // Array in cui salvo l'id del prodotto visualizzato nel pop-up dettagli prodotto
@@ -8124,8 +8125,11 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     // $this.route.paramas.id rappresenta il passaggio di informazioni eseguiro con il router link
-    axios.get("http://127.0.0.1:8000/api/".concat(this.$route.params.id, "/menu")).then(function (response) {
+    axios.get("http://127.0.0.1:8000/api/".concat(this.$route.params.slug, "/menu")).then(function (response) {
       _this.products = response.data.results;
+    });
+    axios.get("http://127.0.0.1:8000/api/".concat(this.$route.params.slug, "/user")).then(function (response) {
+      _this.user = response.data.results; //   console.log(response.data.results)
     }); // Se il carrello non è null
 
     if (localStorage.cart) {
@@ -9312,7 +9316,19 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("section", [_vm._m(0), _vm._v(" "), _c("div", {
+  return _c("section", [_c("div", {
+    staticClass: "jumbotron jumbotron-fluid"
+  }, [_c("div", {
+    staticClass: "jumbotron-overlay"
+  }), _vm._v(" "), _c("div", {
+    staticClass: "container d-flex justify-content-around"
+  }, [_c("div", {
+    staticClass: "restaurant-heading"
+  }, [_c("h2", [_vm._v("\n                    " + _vm._s(_vm.user.business_name) + "\n                ")]), _vm._v(" "), _c("p", {
+    staticClass: "lead"
+  }, [_c("i", {
+    staticClass: "fa-solid fa-location-dot mr-2"
+  }), _vm._v("\n                    " + _vm._s(_vm.user.address) + "\n                ")])])])]), _vm._v(" "), _c("div", {
     staticClass: "products-cart-wrapper"
   }, [_vm.cart.length ? _c("a", {
     staticClass: "floating-cart",
@@ -9381,7 +9397,7 @@ var render = function render() {
           return _vm.addItem(product);
         }
       }
-    }, [_vm._m(1, true)])])]), _vm._v(" "), _c("div", {
+    }, [_vm._m(0, true)])])]), _vm._v(" "), _c("div", {
       staticClass: "info-popup",
       "class": {
         ms_visible: _vm.toggle_popup
@@ -9569,7 +9585,7 @@ var render = function render() {
       }
     }, [_c("div", {
       staticClass: "modal-content ms_modal_container"
-    }, [_vm._m(2, true), _vm._v(" "), _vm._m(3, true), _vm._v(" "), _c("div", {
+    }, [_vm._m(1, true), _vm._v(" "), _vm._m(2, true), _vm._v(" "), _c("div", {
       staticClass: "text-center"
     }, [_c("button", {
       staticClass: "ms_btn boxshadow mt-3",
@@ -9599,7 +9615,7 @@ var render = function render() {
       }
     }, [_c("div", {
       staticClass: "modal-content ms_modal_container"
-    }, [_vm._m(4, true), _vm._v(" "), _vm._m(5, true), _vm._v(" "), _c("div", {
+    }, [_vm._m(3, true), _vm._v(" "), _vm._m(4, true), _vm._v(" "), _c("div", {
       staticClass: "text-center"
     }, [_c("button", {
       staticClass: "ms_btn boxshadow mt-3",
@@ -9617,23 +9633,6 @@ var render = function render() {
 };
 
 var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "jumbotron jumbotron-fluid"
-  }, [_c("div", {
-    staticClass: "jumbotron-overlay"
-  }), _vm._v(" "), _c("div", {
-    staticClass: "container d-flex justify-content-around"
-  }, [_c("div", {
-    staticClass: "restaurant-heading"
-  }, [_c("h2", [_vm._v("\n                    Nome Ristorante\n                ")]), _vm._v(" "), _c("p", {
-    staticClass: "lead"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-location-dot mr-2"
-  }), _vm._v("\n                    Via dei girasoli, 15\n                ")])])])]);
-}, function () {
   var _vm = this,
       _c = _vm._self._c;
 
@@ -9822,7 +9821,7 @@ var render = function render() {
         to: {
           name: "products-page",
           params: {
-            id: user.id
+            slug: user.slug
           }
         }
       }
@@ -63072,7 +63071,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: _pages_UserRestaurantComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, //  rotta per il singolo menu
   {
-    path: '/:id/menu',
+    path: '/:slug/menu',
     name: 'products-page',
     component: _pages_ProductComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, //  rotta 404
@@ -63209,9 +63208,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
+__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })
