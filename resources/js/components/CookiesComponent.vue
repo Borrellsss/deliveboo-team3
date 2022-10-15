@@ -30,7 +30,8 @@
                     </span>
                 </button>
             </div>
-                <!-- Close x -->
+
+            <!-- Close x -->
             <button type="button" class="close brown x-close" data-dismiss="alert" aria-label="Close"  @click="checkCookies()">
                 <span aria-hidden="true">
                     &times;
