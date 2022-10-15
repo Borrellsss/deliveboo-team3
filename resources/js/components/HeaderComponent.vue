@@ -69,7 +69,6 @@
             </div>
         </div>
    </header>
-   
 </template>
 
 <script>
@@ -143,8 +142,7 @@ header {
 
 }
 
-    //////// MEDIA QUERIES ////////
-
+// MEDIA QUERIES
 @media only screen and (max-width: 992px) {
     .ms_text{
     display: none !important;

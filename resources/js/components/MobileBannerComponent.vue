@@ -66,7 +66,6 @@ export default {
     padding-block: 4rem;
     background: $primary-color;
     background: radial-gradient(circle, rgba(255,197,9,1) 58%, rgba(235,179,2,1) 80%, rgba(208,158,0,1) 100%);
-    border-bottom: 2px solid #212529;
 
     .ms_container {
         margin-inline: auto;

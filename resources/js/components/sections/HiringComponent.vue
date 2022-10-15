@@ -70,7 +70,6 @@ export default {
 
 section {
     padding-block: 4rem;
-    border-bottom: 2px solid #212529;
 
     .ms_main-container {
         margin-inline: auto;

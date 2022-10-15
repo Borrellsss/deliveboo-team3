@@ -123,8 +123,7 @@ export default {
         }
     }
 
-    ///////////// MEDIA //////////
-
+    // MEDIA
     @media only screen and (max-width: 576px) {
 
         #cookie {
