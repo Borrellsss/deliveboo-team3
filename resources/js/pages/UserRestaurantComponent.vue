@@ -212,6 +212,7 @@ export default {
     background-color: rgba(white, $alpha: 0.85);
     background-blend-mode: screen;
 }
+
 .category-filter-container {
 
     h3 {

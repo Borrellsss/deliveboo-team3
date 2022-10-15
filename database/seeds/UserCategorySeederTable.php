@@ -14,17 +14,13 @@ class UserCategorySeederTable extends Seeder
     {
         $categories = [
             'Cinese',
-            'Friggitoria',
             'Giapponese',
             'Hamburgheria',
             'Indiano',
             'Italiano',
             'Libanese',
             'Messicano',
-            'Panineria',
-            'Piadineria',
             'Pizzeria',
-            'Steak House',
             'Vegano',
             'Vietnamita',
         ];
