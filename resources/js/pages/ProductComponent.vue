@@ -546,8 +546,7 @@ export default {
 @import '../style/common';
 
 section {
-    background-color: $primary-color;
-
+    background-color: (white);
 
 }
 
@@ -654,12 +653,11 @@ section {
 }
   
 // ******************** PRODUCT CARDS ******************** // 
-
 .ms_pattern-background{
     background-image: url(https://i.ibb.co/mX7bXgD/foodpattern1.png);
-    background-color: rgba($color: $primary-color, $alpha: 0.5);
+    background-color: rgba(white, $alpha: 0.8);
     background-size: 700px;
-    background-blend-mode: color-dodge;
+    background-blend-mode: screen;
     padding-top: 4rem;
 }
 .products-cart-wrapper {
@@ -952,13 +950,16 @@ section {
 
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
+    background: #f1f1f1;
     }
 
 ::-webkit-scrollbar-thumb {
     background-color: #6c808f;
+    background-color: #ffc509;  //primary
     }
 
 ::-webkit-scrollbar-thumb:hover {
+    background-color: #9ba9b4;
     background-color: #9ba9b4;
     }
 
@@ -984,6 +985,7 @@ section {
             width: (calc(100% / 9) * 5);
             padding: 1rem 0;
             .title-product-cart{
+                font-weight: 600;
                 padding-left: 5%;
             }
             .delete-item-cart{
@@ -1011,6 +1013,7 @@ section {
             }
        }
        .price-product-cart{
+            font-weight: 600;
             width: (calc(100% / 9) * 2);
             color:black;
             font-size: 1rem;
