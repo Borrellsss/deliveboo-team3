@@ -104,7 +104,7 @@
                                                     </h2>
 
                                                     <!-- Product image -->
-                                                    <img :src="element.cover " :alt="element.name">
+                                                    <img v-if="element.cover" :src="element.cover" :alt="element.name">
                                                         
                                                     <!-- Product Content -->
                                                     <div class="ms_content">
