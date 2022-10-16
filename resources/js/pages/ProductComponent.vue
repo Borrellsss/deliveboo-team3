@@ -46,7 +46,7 @@
                         
                         <!-- Products Container  -->
                         <div class="products-side">
-                            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-between">
+                            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-start">
 
                                 <!-- Product Cards -->
                                 <div v-for="product,index in products" :key="index" class="col p-3">
