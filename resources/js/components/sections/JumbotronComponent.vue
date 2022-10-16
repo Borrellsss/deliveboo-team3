@@ -12,9 +12,9 @@
 
           <!-- Subtitle -->
           <p class="front-office-style">
-              L'unico servizio di delivery che porta i migliori ristoranti a casa tua, <br>
-              rapidamente e senza spese di spedizione. <br>
-              Affidati al potere del toast!
+            L'unico servizio di delivery che porta i migliori ristoranti a casa tua, <br>
+            rapidamente e senza spese di spedizione. <br>
+            Affidati al potere del toast!
           </p>
         </div>
       </div> 

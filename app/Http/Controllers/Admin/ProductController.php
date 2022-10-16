@@ -325,7 +325,7 @@ class ProductController extends Controller
     public function getValidationRules() {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'cover' => ['file', 'mimes:jpeg,jpg,bmp,png', 'max:10000', 'nullable'],
+            'cover' => ['file', 'mimes:jpeg,jpg,bmp,png', 'max:15000', 'nullable'],
             'description' => ['max:60000', 'nullable'],
             'ingredients' => ['max:60000', 'nullable'],
             'cooking_time' => ['max:2', 'nullable'],

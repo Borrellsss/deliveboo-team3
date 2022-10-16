@@ -2,14 +2,13 @@
     <section>
     
         <!-- Jumbotron  -->
-        <div class="jumbotron jumbotron-fluid">
-            <div class="jumbotron-overlay"></div>
-            <div class="container d-flex justify-content-around">
+        <div class="jumbotron">
 
-                <img v-if="user.cover" :src="`storage/${user.cover}`" :alt="user.business_name">
-                <img v-else src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" :alt="user.business_name">
-                <div class="restaurant-heading">
+            <img v-if="user.cover" :src="user.cover" :alt="user.business_name" class="ms_jumbotron-bg-img">
+            <img v-else src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" :alt="user.business_name" class="ms_jumbotron-bg-img">
 
+            <div class="ms_jumbotron-txt">
+                <div>
                     <!-- Restaurant Name -->
                     <h2>
                         {{ user.business_name }}
@@ -17,7 +16,6 @@
 
                     <!-- Restaurant Address -->
                     <p class="lead">
-
                         <!-- Location Icon -->
                         <i class="fa-solid fa-location-dot mr-2"></i>
                         {{ user.address }}
@@ -52,7 +50,7 @@
 
                                 <!-- Product Cards -->
                                 <div v-for="product,index in products" :key="index" class="col p-3">
-                                    <div class="ms-product-card">
+                                    <div class="ms-product-card " :class="{'not-avaible' : !product.visible}">
 
                                         <!-- Product Cover -->
                                         <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
@@ -72,17 +70,19 @@
 
                                                 <!-- Product name -->
                                                 <h5 class="ms-card-title">
-                                                    {{product.name}}
+                                                     {{ product.name.slice(0, 17) }}<span v-if="product.name.length > 17">...</span>
                                                 </h5>
-                                                
-                                                <!-- Product Price -->
-                                                <div class="product-card-price">
-                                                    {{product.price}}&euro;
-                                                </div>
+
+                                                <!-- Product Price - Product availability  -->
+                                                <div class="product-availability">
+                                                    <div class="product-card-price" v-if="product.visible == 1">
+                                                        {{product.price}}&euro;
+                                                    </div>
+                                                </div>   
                                             </div>
 
                                             <!-- CTA Add to Cart -->
-                                            <div @click='addItem(product), AddedItemAlert();' class="cart-card-symbol">
+                                            <div @click='addItem(product), feedbackAddedAlert();' class="cart-card-symbol">
                                                 <a class="add-to-cart">
 
                                                     <!-- Cart Icon -->
@@ -354,7 +354,7 @@
                         <div class="text-center">
 
                             <!-- Button -->
-                            <button type="button" data-dismiss="modal" class="ms_btn white-weight pad-radius mt-4" @click="PaymentDone()">
+                            <button type="button" data-dismiss="modal" class="ms_btn white-weight pad-radius mt-4" @click="paymentDone()">
                                 Ok
                             </button>
                         </div>
@@ -375,7 +375,8 @@ export default {
     name: 'ProductComponent',
     components: {
         PaymentComponent,
-        NewsletterComponent
+        NewsletterComponent,
+        swal
     },
 
     data(){
@@ -402,6 +403,9 @@ export default {
             
             // Definisco una variabile per visionare il carrello, servirà per rimuovere il carrello quando il pagamento viene eseguito
             cartVisible: true,
+
+
+
         }
     },
     created() {
@@ -415,7 +419,6 @@ export default {
         axios.get(`http://127.0.0.1:8000/api/${this.$route.params.slug}/user`)
         .then((response) =>{
             this.user = response.data.results
-            console.log(response.data);
         });
 
         // Se il carrello non è null
@@ -539,9 +542,6 @@ export default {
 
                                 // Salvo il carrello
                                 this.saveCart();
-
-                                // Richiamo la funzione che mostra il messaggio di prodotto aggiunto al carrello
-                                this.AddedItemAlert();
                             }
                         }
                     }
@@ -553,9 +553,6 @@ export default {
                     this.saveCart();
                 }
             }
-
-            // Richiamo la funzione che mostra il messaggio di prodotto aggiunto al carrello
-            this.AddedItemAlert();
         },
 
         // Funzione salva carrello
@@ -623,7 +620,7 @@ export default {
         },   
 
         // Funzione per cancellare il carrello sia in local storage che in pagina
-        PaymentDone(cart){
+        paymentDone(cart){
             if(this.cart.length > 0){
                  this.cartVisible = false
             }
@@ -632,14 +629,14 @@ export default {
             localStorage.removeItem('cart');
         },
 
-        // Funzione che attraverso un alert, avvisa l'user che l'articolo è stato aggiunto al carrello
-        AddedItemAlert(){
+        feedbackAddedAlert(){
             swal("Aggiunto al carrello!", {
             icon: "success",
             buttons: [false],
             timer: 1000,           
             });
         }
+
     },
 }
 </script>
@@ -648,6 +645,11 @@ export default {
 @import '../style/variables';
 @import '../style/common';
 
+.swal-dimension{
+    width: 300px, !important;
+    height: 180px, !important;
+}
+
 section {
     background-color: white;
 
@@ -655,46 +657,36 @@ section {
     .jumbotron {
         margin-top: 5.5rem;
         height: 700px;
-        // background-image: url(https://www.settimoristorante.it/wp-content/uploads/sites/106/2020/01/slide_home_sofitel_settimo_ristorante_terrazza2.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position-x: 50%;
-        background-position-y: 0;
         position: relative;
 
-        &:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(20, 20, 20, .3);
-            z-index: -1;
+        > .ms_jumbotron-bg-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .container {
+        > .ms_jumbotron-txt {
+            padding-inline: 10%;
+            width: 100%;
             height: 100%;
-            text-align: center;
-            color: white;
             display: flex;
             justify-content: center;
-            align-content: center;
-            flex-direction: column;
-            margin: 0 auto;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            color: #fff;
+            text-align: center;
+            background: rgba(0, 0, 0, .55);
 
-            .restaurant-heading {
-                padding: 2rem 0.3rem;
-                display: inline-block;
-                margin-bottom: 3.5rem;
+            h2 {
+                font-size: 5rem;
+                margin-bottom: 0.8rem;
+            }
 
-                h2 {
-                    font-size: 4.5rem;
-                }
-
-                p {
-                    font-size: 1.3rem;
-                }
+            p {
+                font-size: 1.4rem;
             }
         }
     }
@@ -804,6 +796,11 @@ section {
                 box-shadow: 5px 20px 30px rgba(0,0,0,0.3);
             }
 
+            &.not-avaible {
+                opacity: 0.6;
+                pointer-events: none;
+            }
+
             .card-img {
                 object-fit: cover;
                 height: 70%;
@@ -857,6 +854,13 @@ section {
                         overflow: hidden ;
                         text-overflow: ellipsis;
                         font-size: 0.9rem;
+                    }
+
+                    .not-availability{
+                        font-size: 0.7rem;
+                        padding: 0.3rem 0;
+                        color: $secondary-color;
+                        font-weight: 700;
                     }
 
                     .product-card-price {
@@ -1369,9 +1373,31 @@ section {
    .jumbotron {
         height: 600px;
     }
-
 }  
 
-// ******************** END MEDIA QUERY ******************** //
+// MEDIA QUERIES
+@media only screen and (max-width: 560px) {
 
+    section {
+
+        // Jumbotron
+        .jumbotron {
+            height: 550px;
+
+            > .ms_jumbotron-txt {
+                padding-inline: 2rem;
+
+                h2 {
+                    font-size: 2.4rem;
+                    margin-bottom: 0.9rem;
+                }
+
+                p {
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+}
+// ******************** END MEDIA QUERY ******************** //
 </style>
