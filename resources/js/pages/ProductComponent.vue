@@ -79,7 +79,7 @@
                                             </div>
 
                                             <!-- CTA Add to Cart -->
-                                            <div @click='addItem(product), feedbackAddedAlert();' class="cart-card-symbol">
+                                            <div @click='addItem(product), AddedItemAlert();' class="cart-card-symbol">
                                                 <a class="add-to-cart">
 
                                                     <!-- Cart Icon -->
@@ -351,7 +351,7 @@
                         <div class="text-center">
 
                             <!-- Button -->
-                            <button type="button" data-dismiss="modal" class="ms_btn white-weight pad-radius mt-4" @click="paymentDone()">
+                            <button type="button" data-dismiss="modal" class="ms_btn white-weight pad-radius mt-4" @click="PaymentDone()">
                                 Ok
                             </button>
                         </div>
@@ -372,8 +372,7 @@ export default {
     name: 'ProductComponent',
     components: {
         PaymentComponent,
-        NewsletterComponent,
-        swal
+        NewsletterComponent
     },
 
     data(){
@@ -537,6 +536,9 @@ export default {
 
                                 // Salvo il carrello
                                 this.saveCart();
+
+                                // Richiamo la funzione che mostra il messaggio di prodotto aggiunto al carrello
+                                this.AddedItemAlert();
                             }
                         }
                     }
@@ -548,6 +550,9 @@ export default {
                     this.saveCart();
                 }
             }
+
+            // Richiamo la funzione che mostra il messaggio di prodotto aggiunto al carrello
+            this.AddedItemAlert();
         },
 
         // Funzione salva carrello
@@ -615,7 +620,7 @@ export default {
         },   
 
         // Funzione per cancellare il carrello sia in local storage che in pagina
-        paymentDone(cart){
+        PaymentDone(cart){
             if(this.cart.length > 0){
                  this.cartVisible = false
             }
@@ -624,14 +629,14 @@ export default {
             localStorage.removeItem('cart');
         },
 
-        feedbackAddedAlert(){
+        // Funzione che attraverso un alert, avvisa l'user che l'articolo è stato aggiunto al carrello
+        AddedItemAlert(){
             swal("Aggiunto al carrello!", {
             icon: "success",
             buttons: [false],
             timer: 1000,           
             });
         }
-
     },
 }
 </script>
@@ -639,11 +644,6 @@ export default {
 <style lang="scss" scoped>
 @import '../style/variables';
 @import '../style/common';
-
-.swal-dimension{
-    width: 300px, !important;
-    height: 180px, !important;
-}
 
 section {
     background-color: white;
