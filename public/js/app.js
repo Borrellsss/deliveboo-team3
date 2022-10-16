@@ -8126,6 +8126,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_sections_NewsletterComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/sections/NewsletterComponent.vue */ "./resources/js/components/sections/NewsletterComponent.vue");
 /* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
 /* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_LoaderComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/LoaderComponent.vue */ "./resources/js/components/LoaderComponent.vue");
+
 
 
 
@@ -8134,7 +8136,8 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     PaymentComponent: _components_PaymentComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     NewsletterComponent: _components_sections_NewsletterComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    swal: sweetalert__WEBPACK_IMPORTED_MODULE_2___default.a
+    swal: sweetalert__WEBPACK_IMPORTED_MODULE_2___default.a,
+    LoaderComponent: _components_LoaderComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
@@ -9512,7 +9515,7 @@ var render = function render() {
     staticClass: "col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 products-col"
   }, [_c("div", {
     staticClass: "products-side"
-  }, [_c("div", {
+  }, [_vm.products.length === 0 ? _c("LoaderComponent") : _c("div", {
     staticClass: "row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-start"
   }, _vm._l(_vm.products, function (product, index) {
     return _c("div", {
@@ -9567,7 +9570,11 @@ var render = function render() {
           return _vm.addItem(product);
         }
       }
-    }, [_vm._m(0, true)])])]), _vm._v(" "), _c("div", {
+    }, [_c("a", {
+      staticClass: "add-to-cart"
+    }, [_c("i", {
+      staticClass: "fa-solid fa-cart-shopping"
+    })])])])]), _vm._v(" "), _c("div", {
       staticClass: "info-popup",
       "class": {
         ms_visible: _vm.toggle_popup
@@ -9582,12 +9589,12 @@ var render = function render() {
         key: index
       }, [_c("div", {
         staticClass: "popup"
-      }, [_c("h2", [_vm._v("\n                                                    " + _vm._s(element.name) + "\n                                                ")]), _vm._v(" "), _c("img", {
+      }, [_c("h2", [_vm._v("\n                                                    " + _vm._s(element.name) + "\n                                                ")]), _vm._v(" "), element.cover ? _c("img", {
         attrs: {
           src: element.cover,
           alt: element.name
         }
-      }), _vm._v(" "), _c("div", {
+      }) : _vm._e(), _vm._v(" "), _c("div", {
         staticClass: "ms_content"
       }, [_c("p", {
         staticClass: "description"
@@ -9615,7 +9622,7 @@ var render = function render() {
         }
       }, [_vm._v("×")])])]);
     }), 0)])]);
-  }), 0)])]), _vm._v(" "), _c("div", {
+  }), 0)], 1)]), _vm._v(" "), _c("div", {
     staticClass: "col-12 col-sm-10 col-md-10 col-lg-4 col-xl-4 cart-col"
   }, [_vm.cart.length > 0 ? _c("div", {
     staticClass: "cart-container"
@@ -9755,7 +9762,7 @@ var render = function render() {
       }
     }, [_c("div", {
       staticClass: "modal-content ms_modal_container"
-    }, [_vm._m(1, true), _vm._v(" "), _vm._m(2, true), _vm._v(" "), _c("div", {
+    }, [_vm._m(0, true), _vm._v(" "), _vm._m(1, true), _vm._v(" "), _c("div", {
       staticClass: "text-center"
     }, [_c("button", {
       staticClass: "ms_btn white-weight pad-radius mt-4",
@@ -9785,7 +9792,7 @@ var render = function render() {
       }
     }, [_c("div", {
       staticClass: "modal-content ms_modal_container"
-    }, [_vm._m(3, true), _vm._v(" "), _vm._m(4, true), _vm._v(" "), _c("div", {
+    }, [_vm._m(2, true), _vm._v(" "), _vm._m(3, true), _vm._v(" "), _c("div", {
       staticClass: "text-center"
     }, [_c("button", {
       staticClass: "ms_btn white-weight pad-radius mt-4",
@@ -9803,15 +9810,6 @@ var render = function render() {
 };
 
 var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("a", {
-    staticClass: "add-to-cart"
-  }, [_c("i", {
-    staticClass: "fa-solid fa-cart-shopping"
-  })]);
-}, function () {
   var _vm = this,
       _c = _vm._self._c;
 
@@ -63556,9 +63554,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Jack\boolean progetti\laravel-projects\deliveboo-team3\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\Jack\boolean progetti\laravel-projects\deliveboo-team3\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\Jack\boolean progetti\laravel-projects\deliveboo-team3\resources\sass\back-sass\back.scss */"./resources/sass/back-sass/back.scss");
+__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\edo_e\Classe 66 - Boolean\laravel-projects\deliveboo-team3\resources\sass\back-sass\back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })

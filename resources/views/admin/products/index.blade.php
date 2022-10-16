@@ -25,7 +25,8 @@
                     {{-- card singola --}}
                     <div class="ms_product-card text-center">
                         <h5 class="card-title">{{$product->name}}</h5>
-                        <p class="card-text mb-2">{{str_replace('.', ',', $product->price) . '€'}}</p>
+                        <div class="card-text mb-2">{{str_replace('.', ',', $product->price) . '€'}}</div>
+                        <div class="{{$product->visible === 0 ? 'ms_not-available' : 'ms_available'}} text-center">{{$product->visible == 0 ? 'Prodotto non disponibile' : 'Prodotto disponibile'}}</div>
                         <form action="{{route('admin.products.destroy', ['product' => $product->id])}}" method="POST">
                             @csrf
                             @method('DELETE')

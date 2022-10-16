@@ -43,10 +43,14 @@
                 <!-- Main Container -->
                 <div class="row master-row">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 products-col">
-                        
+
                         <!-- Products Container  -->
                         <div class="products-side">
-                            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-start">
+
+                            <!-- Loader Component -->
+                            <LoaderComponent v-if="products.length === 0"/>
+                            
+                            <div v-else class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-start">
 
                                 <!-- Product Cards -->
                                 <div v-for="product,index in products" :key="index" class="col p-3">
@@ -379,13 +383,15 @@
 import PaymentComponent from "../components/PaymentComponent.vue";
 import NewsletterComponent from '../components/sections/NewsletterComponent.vue';
 import swal from 'sweetalert';
+import LoaderComponent from '../components/LoaderComponent.vue';
 
 export default {
     name: 'ProductComponent',
     components: {
         PaymentComponent,
         NewsletterComponent,
-        swal
+        swal,
+        LoaderComponent,
     },
 
     data(){
@@ -412,9 +418,6 @@ export default {
             
             // Definisco una variabile per visionare il carrello, servirà per rimuovere il carrello quando il pagamento viene eseguito
             cartVisible: true,
-
-
-
         }
     },
     created() {

@@ -263,6 +263,15 @@ section {
   border-radius: 1rem;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
+.ms_product-card-wrapper .ms_product-card > div.text-center {
+  margin-bottom: 0.9rem;
+}
+.ms_product-card-wrapper .ms_product-card > div.text-center.ms_available {
+  color: #264f36;
+}
+.ms_product-card-wrapper .ms_product-card > div.text-center.ms_not-available {
+  color: #740602;
+}
 
 @media (min-width: 1670px) {
   .ms_product-card-wrapper {

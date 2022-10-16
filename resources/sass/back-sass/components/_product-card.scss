@@ -10,6 +10,17 @@
         border: 1px solid rgba(0, 0, 0, 0.3);
         border-radius: 1rem;
         box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+
+        > div.text-center {
+            margin-bottom: 0.9rem;
+
+            &.ms_available {
+                color: $tertiary-color;
+            }
+            &.ms_not-available {
+                color: $secondary-color;
+            }
+        }
     }
 }
 
