@@ -8085,7 +8085,18 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'NewsletterComponent'
+  name: 'NewsletterComponent',
+  data: function data() {
+    return {
+      newsLetterEmail: '',
+      isVisible: false
+    };
+  },
+  methods: {
+    removeNewsLetter: function removeNewsLetter() {
+      this.newsLetterEmail = '', this.isVisible = true;
+    }
+  }
 });
 
 /***/ }),
@@ -9297,18 +9308,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("section", [_c("div", {
-    staticClass: "text text-center"
-  }, [_c("div", [_vm._v("\n                Vorresti restare aggiornatə su tutte le nostre novità?\n            ")]), _vm._v(" "), _c("div", {
-    staticClass: "pt-2"
-  }, [_vm._v("\n                Iscriviti alla nostra newsletter!\n            ")])]), _vm._v(" "), _c("div", {
+  return _c("section", [_vm._m(0), _vm._v(" "), _c("div", {
     staticClass: "text-center p-4"
   }, [_c("form", {
     staticClass: "newsletter",
@@ -9316,18 +9316,53 @@ var staticRenderFns = [function () {
       action: "#",
       method: "Post"
     }
-  }, [_c("input", {
+  }, [_c("label", {
     attrs: {
-      type: "text",
+      "for": "text"
+    }
+  }), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.newsLetterEmail,
+      expression: "newsLetterEmail"
+    }],
+    attrs: {
+      type: "email",
       name: "text",
       placeholder: "inserisci la tua mail"
+    },
+    domProps: {
+      value: _vm.newsLetterEmail
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.newsLetterEmail = $event.target.value;
+      }
     }
   }), _vm._v(" "), _c("button", {
     staticClass: "btn btn-secondary",
     attrs: {
       type: "button"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.removeNewsLetter();
+      }
     }
   }, [_vm._v("Invia")])])])]);
+};
+
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "text text-center"
+  }, [_c("div", [_vm._v("\n                Vorresti restare aggiornatə su tutte le nostre novità?\n            ")]), _vm._v(" "), _c("div", {
+    staticClass: "pt-2"
+  }, [_vm._v("\n                Iscriviti alla nostra newsletter!\n            ")])]);
 }];
 render._withStripped = true;
 
@@ -63486,9 +63521,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/beppe/Boolean_progetti_Classe_66/laravel-projects/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
+__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/vincenzotardino/Boolean66/laravel-project/deliveboo-team3/resources/sass/back-sass/back.scss */"./resources/sass/back-sass/back.scss");
 
 
 /***/ })
