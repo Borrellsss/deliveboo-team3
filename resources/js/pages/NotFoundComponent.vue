@@ -69,6 +69,9 @@ export default {
 @import '../style/variables';
 @import '../style/common';
 
+section {
+    padding-block: 7rem;
+}
 .svg-box {
     padding-top: 8rem;
 
