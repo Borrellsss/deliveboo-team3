@@ -79,11 +79,11 @@
                                             </div>
 
                                             <!-- CTA Add to Cart -->
-                                            <div @click='addItem(product)' class="cart-card-symbol">
+                                            <div @click='addItem(product), feedbackAddedAlert();' class="cart-card-symbol">
                                                 <a class="add-to-cart">
 
                                                     <!-- Cart Icon -->
-                                                    <i class="fa-solid fa-cart-shopping"></i>
+                                                    <i class="fa-solid fa-cart-shopping" ></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -366,12 +366,14 @@
 <script>
 import PaymentComponent from "../components/PaymentComponent.vue";
 import NewsletterComponent from '../components/sections/NewsletterComponent.vue';
+import swal from 'sweetalert';
 
 export default {
     name: 'ProductComponent',
     components: {
         PaymentComponent,
-        NewsletterComponent
+        NewsletterComponent,
+        swal
     },
 
     data(){
@@ -397,7 +399,8 @@ export default {
             isVisible: false,
             
             // Definisco una variabile per visionare il carrello, servirà per rimuovere il carrello quando il pagamento viene eseguito
-            cartVisible: true
+            cartVisible: true,
+
         }
     },
     created() {
@@ -619,7 +622,16 @@ export default {
             this.cart.length = 0
             this.cartVisible = true
             localStorage.removeItem('cart');
+        },
+
+        feedbackAddedAlert(){
+            swal("Aggiunto al carrello!", {
+            icon: "success",
+            buttons: [false],
+            timer: 1000,           
+            });
         }
+
     },
 }
 </script>
@@ -627,6 +639,11 @@ export default {
 <style lang="scss" scoped>
 @import '../style/variables';
 @import '../style/common';
+
+.swal-dimension{
+    width: 300px, !important;
+    height: 180px, !important;
+}
 
 section {
     background-color: white;
