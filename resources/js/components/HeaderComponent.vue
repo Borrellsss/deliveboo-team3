@@ -146,6 +146,11 @@ header {
         font-weight: 600;
         background-color: $primary-color;
 
+        &:hover {
+            background-color: $secondary_color;
+            color: $primary-color;
+        }
+
         .fa-house {
             margin-left: 0.3rem;
             font-size: 0.8rem;
