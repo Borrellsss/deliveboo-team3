@@ -350,7 +350,7 @@ export default {
     font-weight: 500;
     letter-spacing: 3px;
     background-color: $primary-color;
-    background: radial-gradient(circle, rgba(255,197,9,1) 58%, rgba(235,179,2,1) 80%, rgba(208,158,0,1) 100%);
+    background: radial-gradient(circle, rgba(255,197,9,1) 58%, rgba(235,179,2,1) 80%, rgb(196, 150, 0) 100%);
 }
 
 .ms_restaurant-cards-container {
