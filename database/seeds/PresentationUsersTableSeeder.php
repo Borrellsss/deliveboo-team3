@@ -21,7 +21,7 @@ class PresentationUsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via Nino Bixio, 29, 20129 Milano MI',
                 'vat' => '12345678925',
-                'categories' => [1],
+                'categories' => [1, 2],
             ],
             [
                 'email' => 'wang_jao@mail.it',
@@ -39,7 +39,7 @@ class PresentationUsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via dei Mercanti, 16, 10122 Torino TO',
                 'vat' => '12345678927',
-                'categories' => [2],
+                'categories' => [2, 10],
             ],
             [
                 'email' => 'teikit@mail.it',
@@ -84,7 +84,7 @@ class PresentationUsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via Giuseppe la Masa, 2, 90139 Palermo PA',
                 'vat' => '12345678931',
-                'categories' => [4],
+                'categories' => [4, 10],
             ],
             [
                 'email' => 'el_pueblo@mail.it',
@@ -93,7 +93,7 @@ class PresentationUsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via Giacinto de Vecchi Pieralice, 34, 00167 Roma RM',
                 'vat' => '12345678932',
-                'categories' => [7],
+                'categories' => [7, 3],
             ],
             [
                 'email' => 'piedra_del_sol@mail.it',
@@ -111,7 +111,7 @@ class PresentationUsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via Cesare Sersale, 1, 80139 Napoli NA',
                 'vat' => '12345678934',
-                'categories' => [8],
+                'categories' => [8, 5],
             ],
             [
                 'email' => 'pizzeria_gourmet@mail.it',
@@ -120,7 +120,7 @@ class PresentationUsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via Luca Giordano, 162, 80129 Napoli NA',
                 'vat' => '12345678935',
-                'categories' => [8],
+                'categories' => [8, 5],
             ],
             [
                 'email' => 'romeow_cat_bistrot@mail.it',
@@ -147,7 +147,7 @@ class PresentationUsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Viale Nazario Sauro 5, 20124 Milano',
                 'vat' => '12345678938',
-                'categories' => [10],
+                'categories' => [10, 4],
             ],
             [
                 'email' => 'thien_kim@mail.it',

@@ -864,7 +864,7 @@ class PresentationProductsTableSeeder extends Seeder
                 'description' => 'crêpe di farina di riso, latte di cocco e curcuma, farcita con pesce, germogli di soia. Viene servita fritta e avvolta in foglie di lattuga e  con menta',
                 'ingredients' => 'Farina di riso, latte di cocco, cipollato fresco, carote, curcuma, gamberi, salsa di soia, semi di sesamo, germogli di soia e spinaci freschi',
                 'cooking_time' => 14,
-                'price' => 13.5
+                'price' => 13.50
             ],
         ];
 

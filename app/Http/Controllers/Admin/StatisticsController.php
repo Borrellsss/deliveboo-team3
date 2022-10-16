@@ -17,8 +17,8 @@ class StatisticsController extends Controller
         
         $user = Auth::user();
 
-        $sql_query_monthly_orders = 'SELECT COUNT(id) as orders_per_month, created_at FROM orders  WHERE user_id = ' . $user->id . ' GROUP BY month(created_at) ORDER BY created_at DESC';
-        $sql_query_monthly_revenue = 'SELECT  SUM(total_amount) as revenue_per_month, created_at FROM orders WHERE user_id = '  . $user->id . ' GROUP BY month(created_at) ORDER BY created_at DESC';
+        $sql_query_monthly_orders = 'SELECT COUNT(id) as orders_per_month, created_at FROM orders  WHERE user_id = ' . $user->id . ' GROUP bY MONTH(created_at), YEAR(created_at) ORDER BY created_at DESC LIMIT 12';
+        $sql_query_monthly_revenue = 'SELECT  SUM(total_amount) as revenue_per_month, created_at FROM orders WHERE user_id = '  . $user->id . ' GROUP bY MONTH(created_at), YEAR(created_at) ORDER BY created_at DESC LIMIT 12';
         
         $user_orders = DB::select($sql_query_monthly_orders);
         $user_revenues = DB::select($sql_query_monthly_revenue);

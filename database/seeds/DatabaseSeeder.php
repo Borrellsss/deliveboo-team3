@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         // seeder per la presentazione
         $this->call(PresentationUsersTableSeeder::class);
         $this->call(PresentationProductsTableSeeder::class);
+        $this->call(PresentationOrdersTableSeeder::class);
     }
 }
