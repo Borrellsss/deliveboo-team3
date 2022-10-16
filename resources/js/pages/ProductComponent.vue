@@ -3,7 +3,8 @@
     
         <!-- Jumbotron  -->
         <div class="jumbotron jumbotron-fluid">
-            <div class="jumbotron-overlay"></div>
+            <img v-if="user.cover" :src="'storage/' + user.cover" :alt="user.business_name">
+            <img v-else src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" :alt="user.business_name">
             <div class="container d-flex justify-content-around">
                 <div class="restaurant-heading">
 
@@ -101,7 +102,9 @@
                                                     </h2>
 
                                                     <!-- Product image -->
-                                                    <img v-if="element.cover" src="element.cover" alt="element.name">
+                                                    <!-- <img v-if="element.cover" :src="element.cover" :alt="element.name"> -->
+                                                    <img v-if="element.cover" :src="'storage/' + element.cover" :alt="element.name">
+
                                                         
                                                     <!-- Product Content -->
                                                     <div class="ms_content">
@@ -635,22 +638,22 @@ section {
     .jumbotron {
         margin-top: 5.5rem;
         height: 700px;
-        background-image: url(https://www.settimoristorante.it/wp-content/uploads/sites/106/2020/01/slide_home_sofitel_settimo_ristorante_terrazza2.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position-x: 50%;
-        background-position-y: 0;
         position: relative;
 
-        &:after {
+        img{
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+        }
+
+        &::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(20, 20, 20, .3);
-            z-index: -1;
+            background: rgba(20, 20, 20, 0.3);
         }
 
         .container {
@@ -662,6 +665,12 @@ section {
             align-content: center;
             flex-direction: column;
             margin: 0 auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
 
             .restaurant-heading {
                 padding: 2rem 0.3rem;
