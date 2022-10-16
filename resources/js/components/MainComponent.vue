@@ -24,10 +24,7 @@
 @import '../style/variables';
 @import '../style/common';
 
-  main{
-    background-color: lightgray;
-  }
-
-  
-
+main {
+  background-color: lightgray;
+}
 </style>

@@ -2,11 +2,19 @@
    <section>
         <div class="join-us-container">
             <div class="text-container">
-                <h3 class="fo-style">Hai un ristorante?</h3>
+
+                <!-- Title -->
+                <h3 class="fo-style">
+                    Hai un ristorante?
+                </h3>
+
+                <!-- Subtitle -->
                 <h4 class="fo-style">
                     Diventa Partner! <br>
                     Per te subito grandi vantaggi.
                 </h4>
+
+                <!-- Button CTA Register -->
                 <a class="js_btn" href="/register">
                     Registrati
                     <i class="cell-symbol  fa-solid fa-right-to-bracket"></i>
@@ -35,15 +43,14 @@ section {
     background-position-x: 80%;
     background-position-y: 0;
     overflow: hidden;
-    // border-bottom: 2px solid #212529;
 
-    .join-us-container{
+    .join-us-container {
         margin-inline: auto;
         width: 80%;
         height: 550px;
         position: relative;
         
-        .text-container{
+        .text-container {
             color: white;
             text-align: left;
             position: absolute;
@@ -51,17 +58,17 @@ section {
             left: 0;
             translate: 0 -50%;
     
-            h3{
+            h3 {
                 font-size: 2.5rem;
                 color: $primary-color;
             }
 
-            h4{
+            h4 {
                 font-size: 1.5rem;
                 margin: 0.5rem 0;
             }
 
-            .js_btn{
+            .js_btn {
                 font-size: 1.2rem;
                 margin: 0.5rem 0.3rem;
                 padding: 0.1em 0.8em;
@@ -71,7 +78,6 @@ section {
                 background-color: $primary-color;
                 color: $tertiary-color;
                 font-weight: 600;
-
             }
         }
     }

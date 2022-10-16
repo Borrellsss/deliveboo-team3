@@ -3,9 +3,15 @@
     <div>
         <JumbotronComponent/>
         <section class="ms_restaurants-cards-section">
-            <!-- filters categories  -->
+
+            <!-- Filters Categories  -->
             <div class="category-filter-container">
-                <h3 class="front-office-style">Scegli la tua categoria</h3>
+
+                <!-- Category Title -->
+                <h3 class="front-office-style">
+                    Scegli la tua categoria
+                </h3>
+
                 <div class="categories-bar">
                     <svg class="checkbox-symbol">
                         <symbol id="check" viewbox="0 0 12 10">
@@ -18,10 +24,10 @@
                         </symbol>
                     </svg>
 
-                    <!-- loader component -->
+                    <!-- Loader Component -->
                     <LoaderComponent v-if="categories.length === 0"/>
 
-                    <!-- checkbox container  -->
+                    <!-- Checkbox Container  -->
                     <div v-else class="checkbox-container">
                         <div v-for="category in categories" :key="category.id">
                             <input class="checkbox-input" :id="'category-' + category.id" type="checkbox" :value="category.id" v-model="selectedCategories" @change="getSelectedCategories()" :disabled="isWaiting ? '' : false"/>
@@ -31,20 +37,24 @@
                                     <use xlink:href="#check"></use>
                                 </svg>
                                 </span>
-                                <span>{{category.name}}</span>
+
+                                <!-- Category Name -->
+                                <span>{{ category.name }}</span>
                             </label>
                         </div>
                     </div>
                 </div>
             </div>
                 
-            <!-- restaurant cards container  -->
+            <!-- Restaurant Cards Container  -->
             <div>
-                <!-- loader component -->
+                <!-- Loader Component -->
                 <LoaderComponent v-if="isWaiting"/>
 
                 <div v-else-if="users === null && categories.length !== 0">
                     <div class="fo-container">
+
+                        <!-- Empty Category Message -->
                         <div class="ms_empty-category text-center">
                             Nessuna categoria selezionata
                         </div>
@@ -52,12 +62,14 @@
                 </div>
 
                 <div v-else-if="isEmpty">
+
+                    <!-- Empty Restaurant Message -->
                     <div class="text-center ms_empty-category">
                         Nessun ristorante corrisponde alla tua selezione
                     </div>
                 </div>
                     
-                <!-- stampa ristoranti -->
+                <!-- Restaurant Print -->
                 <div v-else class="ms_restaurant-cards-container">
                     <div class="d-flex">
                         <router-link v-for="user in users" :key="user.id" :to="{name: 'products-page',params: {slug: user.slug} }" class="ms_restaurant-card">
@@ -95,13 +107,16 @@
                                 </svg>
                             </div>
                             <div class="ms_card-body">
+
+                                <!-- Card Header -->
                                 <div class="ms_card-heading">
-                                    <!-- <div v-if="user.business_name.length < 33" class="space_line"></div> -->
-                                    {{user.business_name.slice(0, 20)}}<span v-if="user.business_name.length > 20">...</span>
+                                    {{ user.business_name.slice(0, 20) }}<span v-if="user.business_name.length > 20">...</span>
                                 </div>
+
+                                <!-- Card Text -->
                                 <div class="ms_card-text">
                                     <i class="ms_card-address fa-solid fa-location-dot"></i>
-                                    {{user.address.slice(0, 20)}}<span v-if="user.address.length > 20">...</span>
+                                    {{ user.address.slice(0, 20) }}<span v-if="user.address.length > 20">...</span>
                                 </div>
                             </div>
                         </router-link>
@@ -192,7 +207,6 @@ export default {
         }
     },
     mounted(){
-
         this.getAllCategories()
     }
 }
@@ -328,7 +342,7 @@ export default {
     }
 }
 
-// Restaurant cards 
+// Restaurant Cards 
 .ms_empty-category {
     margin-top: 3rem;
     padding-block: 2rem;

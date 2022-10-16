@@ -1,7 +1,7 @@
 <template>
 
-     <!-- Cookie -->
-     <section v-if="!cookies.includes(false)">
+    <!-- Cookie -->
+    <section v-if="!cookies.includes(false)">
         <div id="cookie" class="alert-warning d-flex justify-content-spacebetween align-items-center" role="alert">
 
             <!-- Cookie Icon -->
@@ -38,7 +38,7 @@
                 </span>
             </button>
         </div>
-     </section>
+    </section>
 </template>
 
 <script>
@@ -108,7 +108,7 @@ export default {
             padding: 1.5rem;
         }
 
-        .close.brown.ms_button{
+        .close.brown.ms_button {
             padding: 0.4rem;
             font-size: 1rem;
             border: 1px solid #856404;
@@ -116,7 +116,7 @@ export default {
             border-radius: 10px;
         }
 
-        .close.brown.x-close{
+        .close.brown.x-close {
             position: absolute;
             top: 1rem;
             right: 1rem;

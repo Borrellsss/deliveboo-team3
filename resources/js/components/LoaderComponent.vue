@@ -1,6 +1,12 @@
 <template>
+    <!-- Loader Text -->
     <div class="ms_loader-wrapper">
-        Loading<span class="ms_animated-dot-1">.</span><span class="ms_animated-dot-2">.</span><span class="ms_animated-dot-3">.</span>
+        Loading
+
+        <!-- Loader Ellipsis -->
+        <span class="ms_animated-dot-1">.</span>
+        <span class="ms_animated-dot-2">.</span>
+        <span class="ms_animated-dot-3">.</span>
     </div>
 </template>
 
@@ -43,6 +49,7 @@ export default {
             }
         }
     }
+    
     > .ms_animated-dot-2 {
         animation: second-dot 400ms infinite;
         animation-delay: 300ms;

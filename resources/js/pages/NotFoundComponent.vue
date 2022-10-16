@@ -41,14 +41,14 @@
             </svg>
         </div>
 
-        <!-- text -->
+        <!-- Text -->
         <div class="container text">
             <div class="error">404</div>
             <div class="page-not-found">Page Not Found</div>
             <p>La pagina che stai cercando non esiste</p> 
             <div> 
                <span class="come-back"> Vuoi tornare alla </span> 
-                <router-link :to="{name: 'home'}"> 
+                <router-link :to="{ name: 'home' }"> 
                     <span class="home">
                         Home
                     </span> 
@@ -56,7 +56,6 @@
                 </router-link> 
             </div>
         </div>
-      
     </section>
 </template>
 
@@ -70,7 +69,7 @@ export default {
 @import '../style/variables';
 @import '../style/common';
 
-.svg-box{
+.svg-box {
     padding-top: 8rem;
 
     svg {
@@ -99,19 +98,13 @@ export default {
         opacity: 0.5;
     }
 
-    .come-back, .question{
+    .come-back, 
+    .question {
         opacity: 0.5;
     }
 
-    .home{
+    .home {
         color: $primary-color;
     }
-
-   
 }
-
- 
-
-
-
 </style>

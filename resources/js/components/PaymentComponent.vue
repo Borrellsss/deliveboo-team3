@@ -4,6 +4,7 @@
     <!-- User Form -->
     <div>
       <form>
+
         <!-- Name -->
         <div class="mb-1">
           <label for="customer_name" class="form-label"></label>
@@ -73,6 +74,7 @@ export default {
               this.token = response.data.token;
           })
   },
+
   methods: {
     payment() {
       axios.post(
@@ -81,10 +83,13 @@ export default {
           amount: this.amount
         })
         .then((result) => {
+
           // Se la transazione va a buon fine
           if(result.data.success === true){
+
             // salvo il contenuto del carrello in "cart"
             this.cart = JSON.parse(localStorage.getItem('cart'))
+
             // salvo "order" e tutti i dati inseriti dall'utente nel form in "orderData"
             this.orderData.push(this.cart, this.amount, this.formData);
             axios.post(
@@ -96,16 +101,16 @@ export default {
                 order_customerAddress: this.customerAddress
               })
               .then((result) => {
-                console.log(result);
               })
 
               // Mostro il Modal in pagina
               $('#orderconfirmed').modal('show');
-          }
+          } 
 
           // Nascondo il form e il drop-in del pagamento
           this.Payed = false
-        })
+        }
+      )
     }
   }
 }
@@ -113,14 +118,13 @@ export default {
 
 <style lang="scss" scoped>
 @import '../style/variables';
-// @import '../style/common';
 
-.payment-form-braintree{
+.payment-form-braintree {
   padding-top: 2rem;
   border-top: 1px solid #c1c1c3;
 }
 
-.form-control{
+.form-control {
   width: 90%;
   margin: 0 auto;
 
@@ -135,26 +139,24 @@ export default {
   justify-content: center;
 } 
 
-.drop-in{
+.drop-in {
   width: 90%;
   margin: 0 auto;
   background-color: #f5f5f5;
   background-color: $cart-bg;
 }
 
-.check-out-btn{
-    margin: 0.5rem 0 1rem 0;
-    font-weight: 600;
-    padding-block: 0.2rem;
-    border-radius: 15px;
-    border: 0 solid grey;
-    text-align: center;
-    width:50%;
-    color: white;
-    background-color: #6c808f;
-    background-color: $pay-now-btn;
-    cursor: pointer;
+.check-out-btn {
+  margin: 0.5rem 0 1rem 0;
+  font-weight: 600;
+  padding-block: 0.2rem;
+  border-radius: 15px;
+  border: 0 solid grey;
+  text-align: center;
+  width:50%;
+  color: white;
+  background-color: #6c808f;
+  background-color: $pay-now-btn;
+  cursor: pointer;
 }
-
-
 </style>

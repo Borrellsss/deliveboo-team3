@@ -36,11 +36,20 @@
                 </div>
             </div>
             <div class="ms_mobile-app-right">
-                <h2>Scarica l'App</h2>
+
+                <!-- banner Title -->
+                <h2>
+                    Scarica l'App
+                </h2>
+
                 <div class="d-flex ms_app-link">
+
+                    <!-- Apple Store Logo -->
                     <a class="ms_mobile-logo" href="https://www.apple.com/it/app-store/">
                         <img src="https://www.mcdonalds.it/themes/mcd/build/images/app/app-store.png" alt="App Store logo">
                     </a>
+                    
+                    <!-- Google Play Logo -->
                     <a class="ms_mobile-logo" href="https://play.google.com/store/games?hl=it&gl=US">
                         <img src="https://www.mcdonalds.it/themes/mcd/build/images/app/google-play.png" alt="Google Play logo">
                     </a>
@@ -53,7 +62,6 @@
 <script>
 export default {
     name: 'MobileBannerComponent',
-
 }
 
 </script>
@@ -65,7 +73,10 @@ export default {
 .ms_mobile-app {
     padding-block: 4rem;
     background: $primary-color;
-    background: radial-gradient(circle, rgba(255,197,9,1) 58%, rgba(235,179,2,1) 80%, rgba(208,158,0,1) 100%);
+    background: radial-gradient(circle, 
+                rgba(255,197,9,1) 58%,
+                rgba(235,179,2,1) 80%, 
+                rgba(208,158,0,1) 100%);
 
     .ms_container {
         margin-inline: auto;
@@ -85,7 +96,9 @@ export default {
                 position: relative;
                 background-color: #fff;
                 border-radius: 2.8rem;
-                box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+                box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
+                            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+                            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 
                 > svg {
                     width: 150px;
@@ -108,6 +121,7 @@ export default {
                 color: #212529;
                 font-weight: 700;
             }
+
             > .d-flex {
                 gap: 0 1.5rem;
 
@@ -132,7 +146,6 @@ export default {
             width: 60%;
         }
     }
-    
 }
 
 @media (max-width: 768px) { 
@@ -148,6 +161,7 @@ export default {
                     margin-bottom: 1.5rem;
                 }
             }
+
             .ms_mobile-app-right {
                 width: 90%;
             }
@@ -185,15 +199,13 @@ export default {
                     > a.ms_mobile-logo {
                         width: 200px;
                     }
+
                     > a.ms_mobile-logo:first-child {
                         margin-bottom: 1.5rem;
                     }
                 }
             }
-            
-
         }
     } 
 }
-
 </style>

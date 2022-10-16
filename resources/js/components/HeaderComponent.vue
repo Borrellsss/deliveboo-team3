@@ -1,5 +1,4 @@
 <template>
-
    <header>
         <div class="ms_container">
             <div class="row d-flex align-items-center">
@@ -43,16 +42,23 @@
                     <div class="nav-container">
                         <div v-if="isUserLogged">
                             <a href="/admin" class="js_btn">
-                                Area privata <i class="cell-symbol  fa-solid fa-right-to-bracket"></i>
+                                Area privata 
+
+                                <!-- Bracket Icon -->
+                                <i class="cell-symbol  fa-solid fa-right-to-bracket"></i>
                             </a>
                         </div>
                         <div class="ms_banner d-flex" v-else>
+
                             <div class="ms_text d-flex align-items-center">
                                 Sei un ristoratore? 
                             </div>
                             <div class="ms_login">
                                 <a href="/login" class="js_btn">
-                                    Accedi <i class="cell-symbol  fa-solid fa-house"></i>
+                                    Accedi 
+
+                                    <!-- House Icon -->
+                                    <i class="cell-symbol  fa-solid fa-house"></i>
                                 </a>
                             </div>
                             <div class="ms_text d-flex align-items-center">
@@ -60,7 +66,10 @@
                             </div >
                             <div class="ms_register">
                                 <a href="/register" class="js_btn">
-                                    Registrati <i class="cell-symbol  fa-solid fa-right-to-bracket"></i>
+                                    Registrati 
+
+                                    <!-- Bracket Icon -->
+                                    <i class="cell-symbol  fa-solid fa-right-to-bracket"></i>
                                 </a>
                             </div>
                        </div>
@@ -74,18 +83,10 @@
 <script>
 export default {
     name: 'HeaderComponent',
-    data(){
-        return{
-            // user
-           
-        }
-    },
     computed: {
         isUserLogged() {
             return  window.user;
         }
-
-
     }
 }
 </script>
@@ -141,25 +142,21 @@ header {
         &:hover {
             background-color: $secondary-color;
             color:$primary-color;
-
         }
-    
     }
-
 }
 
 // MEDIA QUERIES
 @media only screen and (max-width: 992px) {
-    .ms_text{
+    .ms_text {
     display: none !important;
     }
 
-    .cell-symbol{
+    .cell-symbol {
     display: none;
     }
 }      
 
 @media only screen and (max-width: 768px) {
 }
-
 </style>

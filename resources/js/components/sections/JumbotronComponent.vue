@@ -1,25 +1,25 @@
 <template>
 
-<section>
-  <div class="ms_main-jumbotron">
-    <div class="ms_jumbotron-container d-flex">
-      <div class="jumbotron-text">
+  <section>
+    <div class="ms_main-jumbotron">
+      <div class="ms_jumbotron-container d-flex">
+        <div class="jumbotron-text">
 
-        <!-- Title -->
-        <h1 class="front-office-style">
-          TOAST RIDER
-        </h1>
+          <!-- Title -->
+          <h1 class="front-office-style">
+            TOAST RIDER
+          </h1>
 
-        <!-- Subtitle -->
-        <p class="front-office-style">
-            L'unico servizio di delivery che porta i migliori ristoranti a casa tua, <br>
-            rapidamente e senza spese di spedizione. <br>
-            Affidati al potere del toast!
-        </p>
-      </div>
+          <!-- Subtitle -->
+          <p class="front-office-style">
+              L'unico servizio di delivery che porta i migliori ristoranti a casa tua, <br>
+              rapidamente e senza spese di spedizione. <br>
+              Affidati al potere del toast!
+          </p>
+        </div>
+      </div> 
     </div> 
-  </div> 
-</section>
+  </section>
 </template>
 
 <script>
@@ -42,7 +42,6 @@ export default {
     #ffc509, -4px -4px 0 #ffc509, 4px 0px 0 
     #ffc509, 0px 4px 0 #ffc509, -4px 0px 0 
     #ffc509, 0px -4px 0 #ffc509;
-    // box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   }
 
   margin-top: 5.5rem;
