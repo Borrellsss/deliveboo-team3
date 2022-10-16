@@ -37,7 +37,7 @@ export default {
 
   h1 {
     font-size: 9.5rem;
-    font-weight: 600;
+    font-weight: 700;
     text-shadow: 4px 4px 0 #ffc509, 4px -4px 0 #ffc509,-4px 4px 0 
     #ffc509, -4px -4px 0 #ffc509, 4px 0px 0 
     #ffc509, 0px 4px 0 #ffc509, -4px 0px 0 

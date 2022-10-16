@@ -31,7 +31,7 @@
 
                     <!-- Counter Cart -->
                     <div class="count-float">
-                        <span>{{totalQuantity(cart)}}</span>
+                        <span class="red">{{totalQuantity(cart)}}</span>
                     </div>
 
                     <!-- Cart Icon -->
@@ -650,6 +650,11 @@ section {
 
     &:hover ~ .fa-cart-shopping {
         color: rgb(249, 246, 246);
+    }
+
+    .red {
+        color: $secondary-color;
+        font-weight: 700;
     }
 }
   
