@@ -225,7 +225,7 @@ export default {
 // FILTER CATEGORIES
 .ms_restaurants-cards-section {
     padding-block: 4rem 8rem;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0) 80%, rgba(255,255,255,1)), url(https://i.ibb.co/mX7bXgD/foodpattern1.png);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0) 80%, rgba(255,255,255,1)), url(https://i.ibb.co/4RvcfGG/foodpatternrightside.png);
     background-size: 700px;
     background-color: rgba(white, $alpha: 0.85);
     background-blend-mode: screen;
@@ -379,8 +379,9 @@ export default {
             .img-container {
                 width: 100%;
                 height: 200px;
-                background: radial-gradient(circle, rgba(255,197,9,1) 58%, rgba(235,179,2,1) 80%, rgb(226, 174, 2) 100%);
                 position: relative;
+                background: rgb(255,197,9);
+                background: radial-gradient(circle, rgba(255,197,9,1) 0%, rgba(255,197,9,1) 64%, rgba(242,188,12,1) 100%);
                 
                 img {
                     height: 100%;

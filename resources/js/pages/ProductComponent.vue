@@ -5,7 +5,7 @@
         <div class="jumbotron">
 
             <img v-if="user.cover" :src="user.cover" :alt="user.business_name" class="ms_jumbotron-bg-img">
-            <img v-else src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" :alt="user.business_name" class="ms_jumbotron-bg-img">
+            <img v-else src="https://i.ibb.co/W3NLMbb/fallbackdarkred.jpg" class="ms_jumbotron-bg-img">
 
             <div class="ms_jumbotron-txt">
                 <div>
@@ -46,7 +46,7 @@
                         
                         <!-- Products Container  -->
                         <div class="products-side">
-                            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-between">
+                            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 d-flex justify-content-start">
 
                                 <!-- Product Cards -->
                                 <div v-for="product,index in products" :key="index" class="col p-3">
@@ -768,7 +768,7 @@ section {
   
     // ******************** PRODUCT CARDS ******************** // 
     .ms_pattern-background{
-        background-image: url(https://i.ibb.co/mX7bXgD/foodpattern1.png);
+        background-image: url(https://i.ibb.co/4RvcfGG/foodpatternrightside.png);
         background-color: rgba(white, $alpha: 0.8);
         background-size: 700px;
         background-blend-mode: screen;
@@ -1349,7 +1349,7 @@ section {
     }
 
     .floating-cart {
-        display: flex;
+        display: flex !important;
     } 
 
     .info-popup {
