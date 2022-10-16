@@ -690,7 +690,7 @@ section {
 
     // Floating Cart
     .floating-cart {
-        display: none;
+       
         position: fixed;
         top: 0;
         right: 30px;
@@ -706,6 +706,7 @@ section {
         cursor: pointer;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
         0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        display: none;
 
         .fa-cart-shopping {
             font-size: 2.3rem;
@@ -1311,7 +1312,7 @@ section {
     }
 
     .floating-cart {
-        display: flex;
+        display: flex !important;
     } 
 
     .info-popup {
