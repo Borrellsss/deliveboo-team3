@@ -1,6 +1,5 @@
 <template>
     <section>
-
         <div class=" text text-center">
 
             <!-- Text left -->
@@ -12,7 +11,6 @@
             <div class="pt-2">
                 Iscriviti alla nostra newsletter!
             </div>
-
         </div>
 
         <!-- Newsletter Form -->

@@ -145,11 +145,11 @@ export default {
 .check-out-btn{
     margin: 0.5rem 0 1rem 0;
     font-weight: 600;
-    padding: 0.4rem 0;
+    padding-block: 0.2rem;
     border-radius: 15px;
     border: 0 solid grey;
     text-align: center;
-    width: 50%;
+    width:50%;
     color: white;
     background-color: #6c808f;
     background-color: $pay-now-btn;
