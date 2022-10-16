@@ -114,7 +114,7 @@ header {
                 width: 100%;
                 height: 100%;
                 color: $secondary-color;
-                transition: transform 60s;
+                transition: transform 10s;
         
                 &:hover {
                     color: $primary-color;
@@ -122,6 +122,7 @@ header {
                 }
             }
         }
+        
         .ms_nav-container {
             align-items: center;
             
