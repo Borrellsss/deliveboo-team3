@@ -5,6 +5,9 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="jumbotron-overlay"></div>
             <div class="container d-flex justify-content-around">
+
+                <img v-if="user.cover" :src="`storage/${user.cover}`" :alt="user.business_name">
+                <img v-else src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" :alt="user.business_name">
                 <div class="restaurant-heading">
 
                     <!-- Restaurant Name -->
@@ -49,7 +52,7 @@
 
                                 <!-- Product Cards -->
                                 <div v-for="product,index in products" :key="index" class="col p-3">
-                                    <div class="ms-product-card " :class="{'not-avaible' : !product.visible}">
+                                    <div class="ms-product-card">
 
                                         <!-- Product Cover -->
                                         <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
@@ -64,20 +67,18 @@
                                         </a>
 
                                         <!-- Card Footer -->
-                                        <div class="ms-card-body d-flex ">
+                                        <div class="ms-card-body d-flex">
                                             <div class="title-price">
 
                                                 <!-- Product name -->
                                                 <h5 class="ms-card-title">
-                                                     {{ product.name.slice(0, 17) }}<span v-if="product.name.length > 17">...</span>
+                                                    {{product.name}}
                                                 </h5>
-
-                                                <!-- Product Price - Product availability  -->
-                                                <div class="product-availability">
-                                                    <div class="product-card-price" v-if="product.visible == 1">
-                                                        {{product.price}}&euro;
-                                                    </div>
-                                                </div>   
+                                                
+                                                <!-- Product Price -->
+                                                <div class="product-card-price">
+                                                    {{product.price}}&euro;
+                                                </div>
                                             </div>
 
                                             <!-- CTA Add to Cart -->
@@ -401,11 +402,6 @@ export default {
             
             // Definisco una variabile per visionare il carrello, servirà per rimuovere il carrello quando il pagamento viene eseguito
             cartVisible: true,
-
-            //Definisco una variabile per impedire all'utente di cliccare un prodotto non disponibile 
-            isVisibleCard: true,
-
-
         }
     },
     created() {
@@ -419,6 +415,7 @@ export default {
         axios.get(`http://127.0.0.1:8000/api/${this.$route.params.slug}/user`)
         .then((response) =>{
             this.user = response.data.results
+            console.log(response.data);
         });
 
         // Se il carrello non è null
@@ -658,7 +655,7 @@ section {
     .jumbotron {
         margin-top: 5.5rem;
         height: 700px;
-        background-image: url(https://www.settimoristorante.it/wp-content/uploads/sites/106/2020/01/slide_home_sofitel_settimo_ristorante_terrazza2.jpg);
+        // background-image: url(https://www.settimoristorante.it/wp-content/uploads/sites/106/2020/01/slide_home_sofitel_settimo_ristorante_terrazza2.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         background-position-x: 50%;
@@ -807,11 +804,6 @@ section {
                 box-shadow: 5px 20px 30px rgba(0,0,0,0.3);
             }
 
-            &.not-avaible {
-                opacity: 0.6;
-                pointer-events: none;
-            }
-
             .card-img {
                 object-fit: cover;
                 height: 70%;
@@ -865,14 +857,6 @@ section {
                         overflow: hidden ;
                         text-overflow: ellipsis;
                         font-size: 0.9rem;
-                    }
-
-                    .not-availability{
-                        font-size: 0.7rem;
-                        padding: 0.3rem 0;
-                        color: $secondary-color;
-                        z-index: 100000000000;
-                        font-weight: 700;
                     }
 
                     .product-card-price {
