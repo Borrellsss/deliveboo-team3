@@ -11,7 +11,7 @@
             {{ $user_orders->links() }}
         </div>
         
-        @if (isset($user_order) && count($user_order) > 0)
+        @if (count($user_order) > 0)
             <div>
                 @foreach ($user_orders as $order)
                     <div class="d-flex ms_order-row mb-4">
