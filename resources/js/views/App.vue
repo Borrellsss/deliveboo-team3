@@ -1,13 +1,16 @@
 <template>
     <div>
+        <!-- Header Component -->
         <HeaderComponent />
 
         <main>
 			<router-view></router-view>
 	    </main>
 
+        <!-- Cookies Component -->
         <CookiesComponent/>
 
+        <!-- Footer Component -->
         <FooterComponent/>
     </div>
 </template>

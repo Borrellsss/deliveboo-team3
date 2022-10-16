@@ -117,7 +117,7 @@
                                                         </div>
 
                                                         <!-- Add to Cart Button -->
-                                                        <div @click='addItem(element), showProductInfo()' class="add-to-cart-popup">
+                                                        <div @click='showProductInfo(), addItem(element)' class="add-to-cart-popup">
                                                             <div class="popup-add-btn">
                                                                 Aggiungi al carrello
                                                             </div>

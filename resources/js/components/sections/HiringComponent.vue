@@ -38,6 +38,7 @@
                 </div>
 
                 <div class="box">
+                    
                     <!-- Card Icon -->
                     <div class="text-center pb-3 secondary-color">
                         <i class="fa-solid fa-utensils fa-4x"></i>

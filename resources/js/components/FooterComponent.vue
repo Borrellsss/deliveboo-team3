@@ -2,6 +2,7 @@
   <!-- Footer -->
 
   <footer class="text-center text-white">
+
     <!-- Grid container -->
     <div class="ms_container p-4">
 
@@ -9,124 +10,124 @@
       <div class="links-container">
 
       <!--Grid row-->
-        <div class="row">
+      <div class="row">
 
-          <!--Grid column-->
-          <div class="col">
-            <ul class="list-unstyled mb-0">
+        <!--Grid column-->
+        <div class="col">
+          <ul class="list-unstyled mb-0">
 
-              <!-- Title -->
-              <h5>
-                Toast Rider
-              </h5>
+            <!-- Title -->
+            <h5>
+              Toast Rider
+            </h5>
 
-              <!-- List -->
-              <li>
-                <a href="#!" class="text-white">Impara a cucinare</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Ascoli Porto Sant'Elpidio</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Facci un Surrounding</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Bububaba</a>
-              </li>
-              <li>
-                <a href="https://campo-minato.com" class="text-white">Campo Minato</a>
-              </li>
-            </ul>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col">
-            <ul class="list-unstyled mb-0">
-
-              <!-- Title -->
-              <h5>
-                Dove siamo
-              </h5>
-
-              <!-- List -->
-              <li>
-                <a href="#!" class="text-white">Roma</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Madrid</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Messina</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Caserta</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Catania</a>
-              </li>
-            </ul>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col">
-            <ul class="list-unstyled mb-0">
-
-              <!-- Title -->
-              <h5>
-                Lavora con noi
-              </h5>
-
-              <!-- List -->
-              <li>
-                <a href="https://github.com/Borrellsss" class="text-white">Edoardo Filippo Borrello</a>
-              </li>
-              <li>
-                <a href="https://github.com/Ilariallaria" class="text-white">Ilaria Leone</a>
-              </li>
-              <li>
-                <a href="https://github.com/Giuseppe-lore" class="text-white">Giuseppe Lo Re</a>
-              </li>
-              <li>
-                <a href="https://github.com/jacoposergio" class="text-white">Jacopo Sergio</a>
-              </li>
-              <li>
-                <a href="https://github.com/Zibo88" class="text-white">Vincenzo Tardino</a>
-              </li>
-            </ul>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col">
-            <ul class="list-unstyled mb-0">
-
-              <!-- Title -->
-              <h5>
-                Note Legali
-              </h5>
-
-              <!-- List -->
-              <li>
-                <a href="#!" class="text-white">Vince, non ti vedo convinto!</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Poi lo vediamo</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Funziona cosi...</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Il Browser</a>
-              </li>
-              <li>
-                <a href="https://www.youtube.com/watch?v=Fq0HUIWLo5o" class="text-white">Facci causa!</a>
-              </li>
-            </ul>
-          </div>
-          <!--Grid column-->
+            <!-- List -->
+            <li>
+              <a href="#!" class="text-white">Impara a cucinare</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Ascoli Porto Sant'Elpidio</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Facci un Surrounding</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Bububaba</a>
+            </li>
+            <li>
+              <a href="https://campo-minato.com" class="text-white">Campo Minato</a>
+            </li>
+          </ul>
         </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col">
+          <ul class="list-unstyled mb-0">
+
+            <!-- Title -->
+            <h5>
+              Dove siamo
+            </h5>
+
+            <!-- List -->
+            <li>
+              <a href="#!" class="text-white">Roma</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Madrid</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Messina</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Caserta</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Catania</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col">
+          <ul class="list-unstyled mb-0">
+
+            <!-- Title -->
+            <h5>
+              Lavora con noi
+            </h5>
+
+            <!-- List -->
+            <li>
+              <a href="https://github.com/Borrellsss" class="text-white">Edoardo Filippo Borrello</a>
+            </li>
+            <li>
+              <a href="https://github.com/Ilariallaria" class="text-white">Ilaria Leone</a>
+            </li>
+            <li>
+              <a href="https://github.com/Giuseppe-lore" class="text-white">Giuseppe Lo Re</a>
+            </li>
+            <li>
+              <a href="https://github.com/jacoposergio" class="text-white">Jacopo Sergio</a>
+            </li>
+            <li>
+              <a href="https://github.com/Zibo88" class="text-white">Vincenzo Tardino</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col">
+          <ul class="list-unstyled mb-0">
+
+            <!-- Title -->
+            <h5>
+              Note Legali
+            </h5>
+
+            <!-- List -->
+            <li>
+              <a href="#!" class="text-white">Vince, non ti vedo convinto!</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Poi lo vediamo</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Funziona cosi...</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Il Browser</a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=Fq0HUIWLo5o" class="text-white">Facci causa!</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
       <!--Grid row-->
       </div>
 
