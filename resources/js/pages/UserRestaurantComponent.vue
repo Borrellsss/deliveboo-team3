@@ -379,8 +379,10 @@ export default {
             .img-container {
                 width: 100%;
                 height: 200px;
-                background: radial-gradient(circle, rgba(255,197,9,1) 58%, rgba(235,179,2,1) 80%, rgb(226, 174, 2) 100%);
                 position: relative;
+                // background: radial-gradient(circle, rgba(255,197,9,1) 58%, rgba(235,179,2,1) 80%, rgb(226, 174, 2) 100%);
+               background: rgb(255,197,9);
+               background: radial-gradient(circle, rgba(255,197,9,1) 0%, rgba(255,197,9,1) 64%, rgba(242,188,12,1) 100%);
                 
                 img {
                     height: 100%;

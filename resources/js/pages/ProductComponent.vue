@@ -53,7 +53,7 @@
 
                                         <!-- Product Cover -->
                                         <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
-                                        <img v-else class="card-img" src="https://i.ibb.co/FwnKbJL/pic1.jpg" :alt="product.name">
+                                        <img v-else class="card-img" src="https://i.postimg.cc/D06662Cc/fallbackpic.jpg" :alt="product.name">
 
                                         <!-- Product Info Pop-up -->
                                         <a class="info-popup-inline" href="#popup1" @click.prevent="selectProduct(product), showProductInfo()">
@@ -101,7 +101,7 @@
                                                     </h2>
 
                                                     <!-- Product image -->
-                                                    <img src="https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg" alt="">
+                                                    <img v-if="element.cover" src="element.cover" alt="element.name">
                                                         
                                                     <!-- Product Content -->
                                                     <div class="ms_content">
