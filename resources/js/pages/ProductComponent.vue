@@ -49,7 +49,7 @@
 
                                 <!-- Product Cards -->
                                 <div v-for="product,index in products" :key="index" class="col p-3">
-                                    <div class="ms-product-card">
+                                    <div class="ms-product-card " :class="{'not-avaible' : !product.visible}">
 
                                         <!-- Product Cover -->
                                         <img v-if="product.cover" class="card-img" :src="product.cover" alt="product.name">
@@ -64,18 +64,20 @@
                                         </a>
 
                                         <!-- Card Footer -->
-                                        <div class="ms-card-body d-flex">
+                                        <div class="ms-card-body d-flex ">
                                             <div class="title-price">
 
                                                 <!-- Product name -->
                                                 <h5 class="ms-card-title">
-                                                    {{product.name}}
+                                                     {{ product.name.slice(0, 17) }}<span v-if="product.name.length > 17">...</span>
                                                 </h5>
-                                                
-                                                <!-- Product Price -->
-                                                <div class="product-card-price">
-                                                    {{product.price}}&euro;
-                                                </div>
+
+                                                <!-- Product Price - Product availability  -->
+                                                <div class="product-availability">
+                                                    <div class="product-card-price" v-if="product.visible == 1">
+                                                        {{product.price}}&euro;
+                                                    </div>
+                                                </div>   
                                             </div>
 
                                             <!-- CTA Add to Cart -->
@@ -400,6 +402,10 @@ export default {
             
             // Definisco una variabile per visionare il carrello, servirà per rimuovere il carrello quando il pagamento viene eseguito
             cartVisible: true,
+
+            //Definisco una variabile per impedire all'utente di cliccare un prodotto non disponibile 
+            isVisibleCard: true,
+
 
         }
     },
@@ -801,6 +807,11 @@ section {
                 box-shadow: 5px 20px 30px rgba(0,0,0,0.3);
             }
 
+            &.not-avaible {
+                opacity: 0.6;
+                pointer-events: none;
+            }
+
             .card-img {
                 object-fit: cover;
                 height: 70%;
@@ -854,6 +865,14 @@ section {
                         overflow: hidden ;
                         text-overflow: ellipsis;
                         font-size: 0.9rem;
+                    }
+
+                    .not-availability{
+                        font-size: 0.7rem;
+                        padding: 0.3rem 0;
+                        color: $secondary-color;
+                        z-index: 100000000000;
+                        font-weight: 700;
                     }
 
                     .product-card-price {
