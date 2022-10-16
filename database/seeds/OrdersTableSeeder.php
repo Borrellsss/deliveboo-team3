@@ -26,7 +26,7 @@ class OrdersTableSeeder extends Seeder
             $order->user_id = $user_id;
             $order->total_amount = $faker->randomFloat(2, 20, 300);
             $order->order_number = $faker->numberBetween(100000000000000, 999999999999999);
-            $order->customer_name = $faker->firstNameMale();
+            $order->customer_name = $faker->firstName($gender = $faker->randomElements(['male', 'female'])) . '' . $faker->lastName();;
             $order->customer_mail = $faker->freeEmail();
             $order->customer_address = $faker->address();
             $order->customer_phone_number = $faker->phoneNumber();

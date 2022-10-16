@@ -18,7 +18,7 @@ class ProductsTableSeeder extends Seeder
 
         $counter = 1;
 
-        for($i = 1; $i < 151; $i++) {
+        for($i = 1; $i < 150 + 1; $i++) {
             $product = new Product();
             $product->name = $faker->foodName();
             $product->cover = null;

@@ -47,6 +47,7 @@ section {
     .join-us-container {
         margin-inline: auto;
         width: 80%;
+        max-width: 1300px;
         height: 550px;
         position: relative;
         

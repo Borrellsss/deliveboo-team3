@@ -75,6 +75,7 @@ section {
     .ms_main-container {
         margin-inline: auto;
         width: 80%;
+        max-width: 1300px;
         
         > .d-flex {
             gap: 1.5rem;

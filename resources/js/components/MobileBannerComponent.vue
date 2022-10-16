@@ -81,6 +81,7 @@ export default {
     .ms_container {
         margin-inline: auto;
         width: 50%;
+        max-width: 800px;
         display: flex;
         flex-direction: row;
         align-items: center;

@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via Cremona 8, RM',
                 'vat' => '12345678910',
-                'categories' => [1, 3],
+                'categories' => [1, 2],
             ],
             [
                 'email' => 'tyler@mail.it',
@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Piazzale di Ponte Milvio 31, RM',
                 'vat' => '12345678911',
-                'categories' => [4],
+                'categories' => [3],
             ],
             [
                 'email' => 'pizzium@mail.it',
@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via Piave 9, RM',
                 'vat' => '12345678912',
-                'categories' => [11],
+                'categories' => [8],
             ],
             [
                 'email' => 'ami_poke@mail.it',
@@ -49,7 +49,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via della Madonna dei Monti 38, RM',
                 'vat' => '12345678913',
-                'categories' => [1, 3, 13],
+                'categories' => [1, 2, 9],
             ],
             [
                 'email' => 'smash_tag@mail.it',
@@ -58,7 +58,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via Michele di Lando 22/24, RM',
                 'vat' => '12345678914',
-                'categories' => [4],
+                'categories' => [3],
             ],
             [
                 'email' => 'neko_sushi@mail.it',
@@ -67,7 +67,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via Nomentana 861/A, RM',
                 'vat' => '12345678915',
-                'categories' => [1, 3],
+                'categories' => [1, 2],
             ],
             [
                 'email' => 'tiki111@mail.it',
@@ -76,7 +76,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'V.le America 111, RM',
                 'vat' => '12345678916',
-                'categories' => [1, 3],
+                'categories' => [2],
             ],
             [
                 'email' => 'pizzarium_bonci@mail.it',
@@ -85,7 +85,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via della Meloria 43, RM',
                 'vat' => '12345678917',
-                'categories' => [11],
+                'categories' => [8],
             ],
             [
                 'email' => 'mcdonalds@mail.it',
@@ -94,7 +94,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Piazza Regina Margherita 15, RM',
                 'vat' => '12345678918',
-                'categories' => [4],
+                'categories' => [3],
             ],
             [
                 'email' => 'mex&tex@mail.it',
@@ -103,7 +103,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via del Quartaccio 28, RM',
                 'vat' => '12345678919',
-                'categories' => [4, 8],
+                'categories' => [3, 7],
             ],
             [
                 'email' => 'aromaticus@mail.it',
@@ -112,7 +112,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via Urbana 134, RM',
                 'vat' => '12345678920',
-                'categories' => [13],
+                'categories' => [9],
             ],
             [
                 'email' => 'maharajah@mail.it',
@@ -121,7 +121,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via dei Serpenti 124, RM',
                 'vat' => '12345678921',
-                'categories' => [5],
+                'categories' => [4],
             ],
             [
                 'email' => 'sancho_pizza@mail.it',
@@ -130,7 +130,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via della Torre Clementina 142, RM',
                 'vat' => '12345678922',
-                'categories' => [11],
+                'categories' => [8],
             ],
             [
                 'email' => 'pho1@mail.it',
@@ -139,7 +139,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via Merulana 115, RM',
                 'vat' => '12345678923',
-                'categories' => [14],
+                'categories' => [10],
             ],
             [
                 'email' => 'yallayalla@mail.it',
@@ -148,7 +148,7 @@ class UsersTableSeeder extends Seeder
                 'cover' => null,
                 'address' => 'Via Cavour 291, RM',
                 'vat' => '12345678924',
-                'categories' => [7],
+                'categories' => [6],
             ],
         ];
 

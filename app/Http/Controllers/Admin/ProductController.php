@@ -23,7 +23,7 @@ class ProductController extends Controller
         $user = Auth::user();
 
         // salvo in $products tutta la lista dei prodotti associati all'utente loggato
-        $products = $user->product;
+        $products = Product::where('user_id', '=', $user->id)->orderBy('name')->get();
 
         // se $request['product_deleted'] esiste salvo in $product_deleted_confirm
         // il dato e lo passo nei data altrimenti salvo nei data solo $products
