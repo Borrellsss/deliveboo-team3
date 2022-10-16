@@ -151,7 +151,7 @@ class UserController extends Controller
     public function getValidationRules() {
         return [
             'business_name' => ['required', 'string', 'max:255'],
-            'cover' => ['file', 'mimes:jpeg,jpg,bmp,png', 'max:1024', 'nullable'],
+            'cover' => ['file', 'mimes:jpeg,jpg,bmp,png', 'max:10000', 'nullable'],
             'address' => ['required', 'max:60000'],
             'vat' => ['required', 'string', 'max:20'],
         ];
