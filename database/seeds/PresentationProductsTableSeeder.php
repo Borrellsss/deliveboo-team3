@@ -128,7 +128,7 @@ class PresentationProductsTableSeeder extends Seeder
         ////////////////////////////////////////////////////////////////////
 
         // giapponese
-        $products_kensho = [
+        $products_keinsho = [
             [
                 'name' => 'Sashimi assortito',
                 'description' => 'Sashimi di salmone, polpo, sgombro, gamberi, ventresca, tonno pinna gialla',
@@ -173,7 +173,7 @@ class PresentationProductsTableSeeder extends Seeder
             ],
         ];
 
-        foreach($products_kensho as $product_kensho) {
+        foreach($products_keinsho as $product_keinsho) {
             $new_product = new Product();
             $new_product->name = $product_kensho['name'];
             $new_product->cover = null;

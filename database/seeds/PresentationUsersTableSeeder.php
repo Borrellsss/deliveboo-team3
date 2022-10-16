@@ -35,7 +35,7 @@ class PresentationUsersTableSeeder extends Seeder
             [
                 'email' => 'kensho@mail.it',
                 'password' => Hash::make('12345678'),
-                'business_name' => 'Kensho',
+                'business_name' => 'Keinsho',
                 'cover' => null,
                 'address' => 'Via dei Mercanti, 16, 10122 Torino TO',
                 'vat' => '12345678927',

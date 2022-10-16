@@ -677,6 +677,7 @@ section {
             left: 50%;
             translate: -50% -50%;
             color: #fff;
+            font-weight: 600;
             text-align: center;
             background: rgba(0, 0, 0, .55);
 
@@ -880,13 +881,8 @@ section {
                     background-color: #f5f5f5;
                     background-color: $product-card-bg;
 
-                    &:hover {
-                        background:#eae1e1;
-                        background: $product-card-cart-icon-hover;
-                    }
-
                     &:hover .fa-cart-shopping {
-                            transform: translateY(5px);
+                        transform: translateY(5px);
                     }
 
                     .add-to-cart {
@@ -1125,10 +1121,10 @@ section {
         }
 
         .price-product-cart {
-                font-weight: 600;
-                width: (calc(100% / 9) * 2);
-                color:black;
-                font-size: 1rem;
+            font-weight: 600;
+            width: (calc(100% / 9) * 2);
+            color:black;
+            font-size: 1rem;
         }
     }
         
@@ -1373,6 +1369,21 @@ section {
    .jumbotron {
         height: 600px;
     }
+
+    .ms-card-body {
+
+        .title-price {
+                    
+            .ms-card-title {
+                margin-bottom: 0.3rem;
+                font-size: 1.6rem !important;
+            }
+
+            .product-card-price {
+                font-size: 1.3rem !important;
+            }
+        }
+    }
 }  
 
 // MEDIA QUERIES
@@ -1388,12 +1399,27 @@ section {
                 padding-inline: 2rem;
 
                 h2 {
-                    font-size: 2.4rem;
+                    font-size: 3rem;
                     margin-bottom: 0.9rem;
                 }
 
                 p {
-                    font-size: 0.9rem;
+                    font-size: 0.9rem
+                }
+            }
+        }
+
+        .ms-card-body {
+
+            .title-price {
+                        
+                .ms-card-title {
+                    margin-bottom: 0.3rem;
+                    font-size: 1.4rem !important;
+                }
+
+                .product-card-price {
+                    font-size: 0.8rem !important;
                 }
             }
         }
