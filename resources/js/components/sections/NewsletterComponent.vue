@@ -16,8 +16,9 @@
         <!-- Newsletter Form -->
         <div class="text-center p-4">
             <form action="#" method="Post" class="newsletter">
-                <input type="text" name="text" placeholder="inserisci la tua mail">
-                <button type="button" class="btn btn-secondary">Invia</button>
+                <label for="text"></label>
+                <input type="email" name="text" v-model="newsLetterEmail" placeholder="inserisci la tua mail">
+                <button type="button" class="btn btn-secondary"  @click="removeNewsLetter()">Invia</button>
             </form>
         </div>
 	</section>
@@ -25,7 +26,20 @@
 
 <script>
 export default {
-    name: 'NewsletterComponent'
+    name: 'NewsletterComponent',
+    data(){
+        return{
+            newsLetterEmail: '',
+            isVisible: false,
+        }
+    },
+    methods: {
+
+        removeNewsLetter(){
+            this.newsLetterEmail = '',
+            this.isVisible = true;
+        }
+    }
 }
 </script>
 
