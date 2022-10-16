@@ -31,7 +31,7 @@
 
                     <!-- Counter Cart -->
                     <div class="count-float">
-                        <span>{{totalQuantity(cart)}}</span>
+                        <span class="red">{{totalQuantity(cart)}}</span>
                     </div>
 
                     <!-- Cart Icon -->
@@ -212,6 +212,9 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Newsletter Component -->
+            <NewsletterComponent />
         </div>    
 
         <!-- MODALS SECTION -->
@@ -232,12 +235,12 @@
                     <!--Body-->
                     <div class="text-center">
                         <span class="yellow pb-4"><i class="fas fa-credit-card fa-4x"></i></span>
-                        <p class="pt-4">Vuoi concludere il tuo ordine e procedere al pagameto?</p>
+                        <p class="pt-4">Vuoi concludere il tuo ordine e procedere al pagamento?</p>
                     </div>
 
                         <!--Footer-->
                         <div class="text-center">
-                            <button type="button" @click="ViewFormPayment()" data-dismiss="modal" class="ms_btn boxshadow mt-3">Si, ho FAME!</button>
+                            <button type="button" @click="ViewFormPayment()" data-dismiss="modal" class="ms_btn white-weight b-radius boxshadow mt-3">Si, ho fame!</button>
                         </div>
                     </div>
                     <!--/.Content-->
@@ -267,7 +270,7 @@
 
                         <!--Footer-->
                         <div class="text-center">
-                            <button type="button" data-dismiss="modal" class="ms_btn boxshadow mt-3" @click="paymentDone()">Ok</button>
+                            <button type="button" data-dismiss="modal" class="ms_btn white-weight b-radius boxshadow mt-3" @click="paymentDone()">Ok</button>
                         </div>
                     </div>
                     <!--/.Content-->
@@ -280,11 +283,13 @@
 
 <script>
 import PaymentComponent from "../components/PaymentComponent.vue";
+import NewsletterComponent from '../components/sections/NewsletterComponent.vue';
 
 export default {
     name: 'ProductComponent',
     components: {
         PaymentComponent,
+        NewsletterComponent
     },
 
     data(){
@@ -407,9 +412,6 @@ export default {
 
                 // Se l'id del prodotto presente nel carrello è diverso dall'user_id presente nella tabella prodotti
                 if(this.cart[0].user_id !== product.user_id){
-                    
-                    // Mostro il Modal in pagina
-                    // $('#changerestaurant').modal('show');
 
                     // Se conferma di cambiare ristorante
                     if(confirm("Stai provando ad aggiungere un prodotto di altro ristorante, così facendo perderai il contenuto del tuo carrello. Vuoi cambiare ristorante?")){
@@ -649,6 +651,11 @@ section {
     &:hover ~ .fa-cart-shopping {
         color: rgb(249, 246, 246);
     }
+
+    .red {
+        color: $secondary-color;
+        font-weight: 700;
+    }
 }
   
 // ******************** PRODUCT CARDS ******************** // 
@@ -659,6 +666,7 @@ section {
     background-blend-mode: screen;
     padding-top: 4rem;
 }
+
 .products-cart-wrapper {
     width: 86%;
     margin: 0 auto;
@@ -692,7 +700,7 @@ section {
         border-radius: 10px 10px 10px 10px;
         transition: box-shadow 0.5s, transform 0.5s;
 
-        &:hover{
+        &:hover {
                 box-shadow: 5px 20px 30px rgba(0,0,0,0.3);
         }
 
@@ -714,6 +722,7 @@ section {
                 z-index: 2;
             
             }
+
             .overlay-info{
                 position: absolute;
                 top: 12px;
@@ -724,6 +733,7 @@ section {
                 background-color: $secondary-color;
                 background-color: $product-card-info-under;
             }
+
         &:hover .overlay-info{
                 opacity: 0;
             }   
@@ -742,7 +752,6 @@ section {
                 background-color: #f5f5f5;
                 background-color: $product-card-bg;
                         
-
                 .ms-card-title {
                     margin-top: 1rem;
                     font-weight: 600;
@@ -787,8 +796,6 @@ section {
                         color: $secondary-color;
                         color: $product-card-cart-icon;
                     }
-
-                   
                 }
             }
         }
@@ -833,7 +840,7 @@ section {
     }
 
     .popup {
-        margin: 15vh auto;
+        margin: 10vh auto;
         padding: 20px;
         background: #fff;
         border-radius: 15px;
@@ -880,7 +887,6 @@ section {
                 cursor: pointer;
                 background-color: $secondary-color;
                 background-color: $popup-cart-btn-bg;
-
             }
         }    
      }
@@ -942,7 +948,7 @@ section {
     background-color: #f5f5f5;
     background-color:$cart-bg;
 
-    // custom scrollbar cart
+// custom scrollbar cart
 ::-webkit-scrollbar {
     width: 10px;
     }
@@ -1122,7 +1128,7 @@ section {
         margin: 0 auto;
         background: linear-gradient(to left right, $secondary-color, white);
         color: black;
-        font-size: 1.35rem;
+        font-size: 1.1rem;
         padding: 1.7rem;
         border-radius: 15px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -1135,9 +1141,20 @@ section {
             color: $secondary_color;
         }
 
-        .boxshadow {
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        .white-weight {
+            color: white;
+            font-weight: 500;
         }
+
+        .boxshadow {
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+                        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
+                        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+    }
+
+    .b-radius {
+        border-radius: 15px;
     }
 
     .modal-dialog {
@@ -1166,7 +1183,7 @@ section {
     .info-popup{
 
         .popup {
-            margin: 15vh auto;
+            margin: 10vh auto;
             width: 50%;
         }
     }

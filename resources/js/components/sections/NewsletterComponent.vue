@@ -61,6 +61,12 @@ section {
             background-color: $primary-color;
             color: black;
             padding: 0.5rem;
+
+            &:hover {
+                background-color: $secondary-color;
+                color: $primary-color;
+                box-shadow: 0 0 5px $primary-color;
+            }
         }
     }
 }
