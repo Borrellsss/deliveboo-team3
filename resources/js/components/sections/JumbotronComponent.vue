@@ -1,5 +1,4 @@
 <template>
-
   <section>
     <div class="ms_main-jumbotron">
       <div class="ms_jumbotron-container d-flex">
@@ -76,7 +75,7 @@ export default {
 
   .ms_main-jumbotron {
     margin-top: 5.5rem;
-    height: 550px;
+    height: 570px;
 
     .ms_jumbotron-container {
 

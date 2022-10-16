@@ -1382,7 +1382,7 @@ section {
 
         // Jumbotron
         .jumbotron {
-            height: 550px;
+            height: 570px;
 
             > .ms_jumbotron-txt {
                 padding-inline: 2rem;
