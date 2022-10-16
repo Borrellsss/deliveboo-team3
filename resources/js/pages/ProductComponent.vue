@@ -82,7 +82,7 @@
                                             </div>
 
                                             <!-- CTA Add to Cart -->
-                                            <div @click='addItem(product), feedbackAddedAlert();' class="cart-card-symbol">
+                                            <div @click='addItem(product);' class="cart-card-symbol">
                                                 <a class="add-to-cart">
 
                                                     <!-- Cart Icon -->
@@ -104,19 +104,28 @@
                                                     </h2>
 
                                                     <!-- Product image -->
-                                                    <img src="https://www.viaggiamo.it/wp-content/uploads/2015/10/Dieci-migliori-ristoranti-di-Roma.jpg" alt="">
+                                                    <img :src="element.cover " :alt="element.name">
                                                         
                                                     <!-- Product Content -->
                                                     <div class="ms_content">
 
                                                         <!-- Product Description -->
-                                                        <p>
-                                                            {{element.description}}
+                                                        <p class="description">
+                                                            {{ element.description }}
                                                         </p>
 
                                                         <!-- Product Ingredients -->
                                                         <div class="popup-ingredients">
-                                                        <span class="ingredienti-text">Ingredienti:  </span>{{element.ingredients}}
+                                                        
+                                                        <!-- Description -->
+                                                        <span class="ingredients-title">
+                                                            Ingredienti:  
+                                                        </span>
+
+                                                        <!-- Ingredients -->
+                                                        <span class="ingredients-content">
+                                                            {{ element.ingredients }}
+                                                        </span> 
                                                         </div>
 
                                                         <!-- Add to Cart Button -->
@@ -542,6 +551,9 @@ export default {
 
                                 // Salvo il carrello
                                 this.saveCart();
+
+                                // Richiamo la funziona che mostra un messagggio all'utente dell'aggiunta del prodotto al carrello
+                                this.addedToCartMessage()
                             }
                         }
                     }
@@ -553,6 +565,9 @@ export default {
                     this.saveCart();
                 }
             }
+
+            // Richiamo la funziona che mostra un messagggio all'utente dell'aggiunta del prodotto al carrello
+            this.addedToCartMessage()
         },
 
         // Funzione salva carrello
@@ -629,7 +644,7 @@ export default {
             localStorage.removeItem('cart');
         },
 
-        feedbackAddedAlert(){
+        addedToCartMessage(){
             swal("Aggiunto al carrello!", {
             icon: "success",
             buttons: [false],
@@ -950,6 +965,7 @@ section {
         .popup h2 {
             margin-bottom: 1rem;
             color: black;
+            text-align: center;
         }
 
         img {
@@ -962,14 +978,25 @@ section {
         .ms_content {
             margin: 1rem 0;
 
+            .description {
+                text-align: center;
+                font-weight: 600;
+            }
+
             .popup-ingredients {
                 margin-top: 0.5rem;
                 font-size: 0.9rem;
+                
 
-                .ingredienti-text{
-                    color: grey;
-                    font-size: 0.9rem;
+                .ingredients-title {
+                    font-weight: 600;
                 }
+                
+                .ingredients-content {
+                    font-style: italic;
+                    font-weight: 500;
+                }
+
             }
             
             .add-to-cart-popup {
